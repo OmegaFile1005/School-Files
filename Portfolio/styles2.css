@@ -1,0 +1,13 @@
+dl {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+dt, dd {
+  margin: 0;
+  flex: 0 0 50%;
+}
+
+dl {
+  margin: 0;
+}

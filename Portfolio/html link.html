@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Content of the page -->
+
+    <a href="#bottom">Jump to Bottom</a>
+
+    <!-- Content of the page -->
+
+    <!-- Place this anchor at the bottom of the page -->
+    <a id="bottom"></a>
+    <br>
+
+    <a href="https://www.google.com">Google</a>
+    <a href="https://www.youtube.com">Youtube</a>
+    <a href="https://www.facebook.com">Facebook</a>
+    <a href="https://www.instagram.com">Instagram</a>
+    <a href="https://www.twitter.com">Twitter</a>
+
+    <style>
+        .upper-middle-section {
+            position: relative;
+            height: 50vh;
+            /* Adjust the height as needed */
+        }
+
+        .links {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+
+    <div class="upper-border-section">
+        <div class="links">
+            <a href="https://www.google.com" target="Google">Link to Google</a>
+            <a href="https://www.youtube.com" target="Youtube">Link to Youtube</a>
+            <a href="https://www.facebook.com" target="Facebook">Link to Facebook</a>
+            <a href="https://www.instagram.com" target="Instagram">Link to Instagram</a>
+            <a href="https://www.twitter.com" target="Twitter">Link to Twitter</a>
+        </div>
+    </div>
+
+    <style>
+        .top-link {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+    </style>
+
+    <!-- Content of the page -->
+
+    <!-- Place this anchor at the top of the page -->
+    <a id="top"></a>
+
+    <!-- Content of the page -->
+
+    <a href="#top" class="top-link">Back to Top</a>
+
+
+</body>
+
+</html>

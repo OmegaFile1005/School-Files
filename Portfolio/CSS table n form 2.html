@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="stylestabnform2.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <fieldset>
+        <legend>Advertising Estimate</legend>
+        <label for="name">Name / Company name <span class="highlight">*</span></label>
+        <input type="text" name="name" id="company" size="55" required><br>
+        <label for="email">Email <span class="highlight">*</span></label>
+        <input type="text" name="email" id="email" size="55" required><br>
+        <label for="date">Ad Start Date <span class="highlight">*</span></label>
+        <input type="date" name="date" id="date" required><br>
+        <label for="date">Ad End Date <span class="highlight">*</span></label>
+        <input type="date" name="date" id="date" required>
+    </fieldset>
+    <fieldset class="question">
+        <legend>Advertising Size (pixels)</legend>
+        <label>
+            <input type="radio" name="option" value="option1">
+            Option A
+        </label>
+        <label>
+            <input type="radio" name="option" value="option2">
+            Option B
+        </label>
+        <label>
+            <input type="radio" name="option" value="option3">
+            Option C
+        </label>
+    </fieldset>
+    <fieldset>
+        <legend>Which sites would you like to advertise on?</legend>
+        <div id="form-fields">
+            <label>
+                <input type="checkbox" name="option1" value="option1">
+                Option 1
+            </label>
+            <label>
+                <input type="checkbox" name="option2" value="option2">
+                Option 2
+            </label>
+            <label>
+                <input type="checkbox" name="option3" value="option3">
+                Option 3
+            </label><br>
+        </div>
+        <label for="name">Website to be advertised <span class="highlight">*</span></label>
+        <input type="text" name="website" id="website" size="55" required><br>
+        <label for="comment">Comments</label>
+        <textarea name="comment" id="comment" cols="50" rows="10"></textarea><br>
+        <input type="submit" value="Submit">
+    </fieldset>
+</body>
+
+</html>
