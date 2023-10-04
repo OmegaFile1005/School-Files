@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="stylesbootproduct1.css">
 </head>
 
@@ -39,11 +40,10 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
                                     <button type="button" class="btn position-relative">
-                                        <img src="Pictures/cart2.svg" alt="cart" width="30" height="30">
+                                        <i class="bi bi-cart2" style="font-size: 30px;"></i>
                                         <span
-                                            class="position-absolute top-0 start-75 translate-middle badge rounded-pill bg-warning">
-                                            1
-                                            <span class="visually-hidden">unread messages</span>
+                                            class="position-absolute top-0 start-75 translate-middle badge rounded-pill bg-warning">2<span
+                                                class="visually-hidden">unread messages</span>
                                         </span>
                                     </button>
                                 </a>
@@ -55,58 +55,71 @@
         </div>
         <div class="row">
             <div class="col text-secondary bg-body-secondary p-5">
-                <h2>Home / About</h2>
+                <h2>Home / Products</h2>
             </div>
         </div>
-    </div>  
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <input type="search" class="form-control" placeholder="Search">
-                    <ul class="list-without-bullets">Company
-                        <li>All</li>
-                        <li>Ikea</li>
-                        <li>Macros</li>
-                    </ul>
-                </div>
-                <div class="col">
-                    <img src="Pictures/high end bench.png" alt="2 chair" width="300" height="200">
-                    <h5>High-End Bench</h5>
-                    <p>$9.99</p>
-                </div>
-                <div class="col">
-                    <img src="Pictures/leather sofa.png" alt="sofa" width="300" height="200">
-                    <h5>Leather Sofa</h5>
-                    <p>$9.99</p>
-                </div>
-                <div class="col">
-                    <img src="Pictures/entertainment centers.png" alt="shelves">
-                    <h5>Entertainment Centers</h5>
-                    <p>$9.99</p>
-                </div>
+    </div>
+    <div class="container pt-3">
+        <div class="row">
+            <div class="col">
+                <input type="search" class="form-control" placeholder="Search">
+                <h5 class="pt-2">Company</h5>
+                <ul class="list-without-bullets">
+                    <li>All</li>
+                    <li>Ikea</li>
+                    <li>Macros</li>
+                </ul>
+                <h5>Price</h5>
+                <input type="range" class="form-range" min="0" max="100" step="5">
+                <label for="price">Value: $80</label>
             </div>
-            <div class="row">
-                <div class="col">
-                    <input type="range" class="form-range" min="0" max="100" step="10">
-                    <title>Value: $80</title>
-                </div>
-                <div class="col">
+            <div class="col text-center">
+                <a href="Bootstrap single-product.html">
                     <img src="Pictures/high end bench.png" alt="2 chair" width="300" height="200">
-                    <h5>High-End Bench</h5>
-                    <p>$9.99</p>
-                </div>
-                <div class="col">
+                </a>
+                <h5>High-End Bench</h5>
+                <p>$9.99</p>
+            </div>
+            <div class="col text-center">
+                <a href="Bootstrap single-product.html">
                     <img src="Pictures/leather sofa.png" alt="sofa" width="300" height="200">
-                    <h5>Leather Sofa</h5>
-                    <p>$9.99</p>
-                </div>
-                <div class="col">
-                    <img src="Pictures/entertainment centers.png" alt="shelves">
-                    <h5>Entertainment Centers</h5>
-                    <p>$9.99</p>
-                </div>
+                </a>
+                <h5>Leather Sofa</h5>
+                <p>$9.99</p>
+            </div>
+            <div class="col text-center">
+                <a href="Bootstrap single-product.html">
+                    <img src="Pictures/entertainment centers.png" alt="shelves" width="300" height="200">
+                </a>
+                <h5>High-End Bench</h5>
+                <p>$9.99</p>
             </div>
         </div>
+        <div class="row text-center">
+            <div class="col"></div>
+            <div class="col">
+                <a href="Bootstrap single-product.html">
+                    <img src="Pictures/high end bench.png" alt="2 chair" width="300" height="200">
+                </a>
+                <h5>High-End Bench</h5>
+                <p>$9.99</p>
+            </div>
+            <div class="col">
+                <a href="Bootstrap single-product.html">
+                    <img src="Pictures/leather sofa.png" alt="sofa" width="300" height="200">
+                </a>
+                <h5>High-End Bench</h5>
+                <p>$9.99</p>
+            </div>
+            <div class="col">
+                <a href="Bootstrap single-product.html">
+                    <img src="Pictures/entertainment centers.png" alt="shelves" width="300" height="">
+                </a>
+                <h5>High-End Bench</h5>
+                <p>$9.99</p>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
