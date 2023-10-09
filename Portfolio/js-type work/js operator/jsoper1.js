@@ -65,7 +65,6 @@ function performCalculations() {
 
 }
 
-
 function clearOutput() {
     document.getElementById('sum').innerHTML = ``;
     document.getElementById('difference').innerHTML = ``;
