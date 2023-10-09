@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=0, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="jsexp1.js"></script>
+    <link rel="stylesheet" href="stylesjsexp1.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Calculating area of a triangle</h1>
+        <hr>
+        <div class="equation-container">
+            <p>A method for calculating the area of a triangle given the lengths of all three sides is Heron's formula.</p>
+            <!-- <p></p> -->
+            <p>Where p is the perimeter of the triangle and it is calculated using this formula:</p>
+            <p></p>
+            <div class="input-container">
+                <label for="side1">Side a</label>
+                <input type="number" id="side1" placeholder="Side a (inches)">
+                <label for="side2">Side b</label>
+                <input type="number" id="side2" placeholder="Side b (inches)">
+                <label for="side3">Side c</label>
+                <input type="number" id="side3" placeholder="Side c (inches)">
+                <button class="btn btn-primary" onclick="calculateArea()">Calculate</button>
+            </div>
+            <p>Area: <span id="area-result"></span></p>
+        </div>
+    </div>
+</body>
+
+</html>
