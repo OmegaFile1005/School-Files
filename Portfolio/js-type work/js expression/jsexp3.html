@@ -37,7 +37,7 @@
                             <input type="number" id="side2">
                         </p>
                         <button class="btn btn-primary" type="submit" onclick="calculateHypotenuse()">Calculate</button>
-                        <button class="btn btn-primary" type="reset" onclick="clearFields()">Clear Fields</button>
+                        <button class="btn btn-primary" type="reset" onclick="clearHypotenuse()">Clear Fields</button>
                     </div>
                     <div class="card-footer text-body-secondary">
                         Hypotenuse of Triangle
@@ -56,7 +56,7 @@
                             <input type="number" id="seconds">
                         </p>
                         <button class="btn btn-primary" type="submit" onclick="calculateTime()">Calculate</button>
-                        <button class="btn btn-primary" type="reset" onclick="clearFields()">Clear Fields</button>
+                        <button class="btn btn-primary" type="reset" onclick="clearTime()">Clear Fields</button>
                     </div>
                     <div class="card-footer text-body-secondary">
                         Calculating Time </div>
@@ -78,26 +78,32 @@
                             <input type="number" id="thirdvalue">
                         </p>
                         <button class="btn btn-primary" type="submit" onclick="calculateAverage()">Calculate</button>
-                        <button class="btn btn-primary" type="reset" onclick="clearFields()">Clear Fields</button>
+                        <button class="btn btn-primary" type="reset" onclick="clearAverage()">Clear Fields</button>
                     </div>
                     <div class="card-footer text-body-secondary">
                         Calculating Average </div>
                 </div>
             </div>
         </div>
-        <footer>
-            <div class="row">
-                <div class="col">
+        <div class="row mt-4">
+            <div class="col">
+                <div class="alert alert-success h-100">
                     <p>Hypotenuse: <span id="hypotenuse"></span></p>
                 </div>
-                <div class="col">
-                    <p>Time: <span id="time"></span></p>
+            </div>
+            <div class="col">
+                <div class="alert alert-success h-100">
+                    <p>Hours: <span id="hours"></span></p>
+                    <p>Minutes: <span id="minutes"></span></p>
+                    <p>Seconds: <span id="Seconds"></span></p>
                 </div>
-                <div class="col">
+            </div>
+            <div class="col">
+                <div class="alert alert-success h-100">
                     <p>Average: <span id="average"></span></p>
                 </div>
             </div>
-        </footer>
+        </div>
     </div>
 </body>
 
