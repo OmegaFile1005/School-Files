@@ -19,4 +19,4 @@ function checkNumber() {
     }
 }
 
-document.getElementById("btn").addEventListener("click", checkNumber);
+document.getElementById("output").addEventListener("click", checkNumber);
