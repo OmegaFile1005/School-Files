@@ -27,32 +27,32 @@ function divide() {
 }
 
 function assignmentEqual() {
-  var a = /* assign value to variable a */;
-  var b = /* assign value to variable b */;
+  var a = parseInt(document.getElementById("number1").value);
+  var b = parseInt(document.getElementById("number2").value);
 
   var result = a == b ? "Yes" : "No";
   document.getElementById("result").textContent = result;
 }
 
 function assignmentGreaterThan() {
-  var a = /* assign value to variable a */;
-  var b = /* assign value to variable b */;
+  var a = parseInt(document.getElementById("number1").value);
+  var b = parseInt(document.getElementById("number2").value);
 
   var result = a > b ? "Yes" : "No";
   document.getElementById("result").textContent = result;
 }
 
 function assignmentLessThan() {
-  var a = /* assign value to variable a */;
-  var b = /* assign value to variable b */;
+  var a = parseInt(document.getElementById("number1").value);
+  var b = parseInt(document.getElementById("number2").value);
 
   var result = a < b ? "Yes" : "No";
   document.getElementById("result").textContent = result;
 }
 
 function assignmentNotEqual() {
-  var a = /* assign value to variable a */;
-  var b = /* assign value to variable b */;
+  var a = parseInt(document.getElementById("number1").value);
+  var b = parseInt(document.getElementById("number2").value);
 
   var result = a != b ? "Yes" : "No";
   document.getElementById("result").textContent = result;

@@ -1,4 +1,14 @@
-.result {
-    background-color: rgb(161, 232, 255);
+#result {
+    background-color: rgb(238, 238, 238);
     border-radius: 5px;
+    padding: 5px;
+    border: rgb(204, 204, 204) solid 1px;
+    height: 4vh;
+    width: 30vw;
+}
+
+input {
+    border-radius: 5px;
+    border: rgb(204, 204, 204) solid 1px;
+    width: 30vw;
 }
