@@ -10,7 +10,18 @@
 </head>
 
 <body>
-
+    <h1>Calories from Fat</h1>
+    <label for="caloriesInput">Enter the total number of calories:</label>
+    <input type="number" id="caloriesInput">
+    <br>
+    <label for="fatGramsInput">Enter the number of fat grams:</label>
+    <input type="number" id="fatGramsInput">
+    <br>
+    <label for="lowFatCheckbox">Is the food low fat?</label>
+    <input type="checkbox" id="lowFatCheckbox">
+    <br>
+    <button onclick="calculateCalories()">Calculate</button>
+    <p id="output"></p>
 </body>
 
 </html>

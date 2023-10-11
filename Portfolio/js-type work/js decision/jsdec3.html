@@ -10,7 +10,18 @@
 </head>
 
 <body>
-
+    <h1>Magic Date Checker</h1>
+    <label for="monthInput">Enter the month (numeric form):</label>
+    <input type="number" id="monthInput" min="1" max="12">
+    <br>
+    <label for="dayInput">Enter the day:</label>
+    <input type="number" id="dayInput" min="1" max="31">
+    <br>
+    <label for="yearInput">Enter the two-digit year:</label>
+    <input type="number" id="yearInput" min="0" max="99">
+    <br>
+    <button onclick="checkMagicDate()">Check Date</button>
+    <p id="output"></p>
 </body>
 
 </html>

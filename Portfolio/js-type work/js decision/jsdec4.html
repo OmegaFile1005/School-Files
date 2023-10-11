@@ -7,10 +7,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="jsdec4.js"></script>
+    <link rel="stylesheet" href="stylesjsdec4.css">
 </head>
 
 <body>
-
+    <h1>Color Mixer</h1>
+    <form>
+        <label>
+            <input type="radio" name="firstColor" value="red"> Red
+        </label>
+        <label>
+            <input type="radio" name="firstColor" value="blue"> Blue
+        </label>
+        <label>
+            <input type="radio" name="firstColor" value="yellow"> Yellow
+        </label>
+        <br>
+        <label>
+            <input type="radio" name="secondColor" value="red"> Red
+        </label>
+        <label>
+            <input type="radio" name="secondColor" value="blue"> Blue
+        </label>
+        <label>
+            <input type="radio" name="secondColor" value="yellow"> Yellow
+        </label>
+        <br>
+        <button type="button" onclick="mixColors()">Mix</button>
+    </form>
 </body>
 
 </html>
