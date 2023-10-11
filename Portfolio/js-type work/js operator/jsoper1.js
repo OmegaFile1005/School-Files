@@ -1,7 +1,7 @@
 function performCalculations() {
 
-    const a = parseFloat(document.getElementById('a').value);
-    const b = parseFloat(document.getElementById('b').value);
+    const a = parseFloat(document.getElementById('number1').value);
+    const b = parseFloat(document.getElementById('number2').value);
 
     let sum = a + b;
     document.getElementById('sum').innerHTML = `${sum}`;
@@ -66,6 +66,8 @@ function performCalculations() {
 }
 
 function clearOutput() {
+    document.getElementById('number1').innerHTML = ``;
+    document.getElementById('number2').innerHTML = ``;
     document.getElementById('sum').innerHTML = ``;
     document.getElementById('difference').innerHTML = ``;
     document.getElementById('product').innerHTML = ``;
