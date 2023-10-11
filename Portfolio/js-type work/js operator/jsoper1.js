@@ -65,9 +65,12 @@ function performCalculations() {
 
 }
 
+function clearInput() {
+    document.getElementById('number1').value = ``;
+    document.getElementById('number2').value = ``;
+}
+
 function clearOutput() {
-    document.getElementById('number1').innerHTML = ``;
-    document.getElementById('number2').innerHTML = ``;
     document.getElementById('sum').innerHTML = ``;
     document.getElementById('difference').innerHTML = ``;
     document.getElementById('product').innerHTML = ``;
