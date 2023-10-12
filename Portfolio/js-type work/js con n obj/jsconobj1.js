@@ -19,25 +19,24 @@ const userObj = {}; // Define userObj as a global variable
 
 function registerUser() {
 
-    const getUserInput = (id) => document.getElementById(id).value;
+    const name = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const address = document.getElementById('address').value;
+    const age = document.getElementById('age').value;
+    const gender = document.querySelector('input[name="gender"]:checked').value;
+    const user = document.getElementById('user').value;
+    const password = document.getElementById('password').value;
 
-    const name = getUserInput('name');
-    const lastName = getUserInput('lastName');
-    const address = getUserInput('address');
-    const age = getUserInput('age');
-    const gender = getUserInput('gender');
-    const user = getUserInput('user');
-    const password = getUserInput('password');
+    userObj.Name = name;
+    userObj.LastName = lastName
+    userObj.Address = address;
+    userObj.Age = age;
+    userObj.Gender = gender;
+    userObj.User = user;
+    userObj.Password = password;
 
-    userObj.name = name;
-    userObj.lastName = lastName;
-    userObj.address = address;
-    userObj.age = age;
-    userObj.gender = gender;
-    userObj.user = user;
-    userObj.password = password;
-
-alert('User successfully registered!');}
+    alert('User successfully registered!');
+}
 
 function getUserInfo() {
     const userInfoDiv = document.getElementById('userInfo');
@@ -49,5 +48,3 @@ function getUserInfo() {
         userInfoDiv.appendChild(p);
     }
 }
-
-// document.getElementById('register').addEventListener('click', register);
