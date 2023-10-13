@@ -15,32 +15,41 @@
 <body>
     <div class="container" style="background-color: rgb(240, 240, 240);">
         <div class="row">
-            <div class="col">
+            <div class="col mt-2">
                 <h1>Fahrenheit to Celsius Conversion</h1>
                 <hr>
                 <form>
                     <div class="row mb-3">
-                        <label for="fahrenheit" class="col-sm-1 col-form-label">Fahrenheit:</label>
-                        <div class="col-sm-5">
-                            <input type="number" class="form-control" id="fahrenheit">
-                            <button type="button" class="btn btn-primary" onclick="fahrenheitToCelsius()"><i
-                                    class="bi bi-arrow-repeat"></i> Convert</button>
-                            <button type="button" class="btn btn-primary" onclick="reset()"><i class="bi bi-x-lg"></i>
-                                Reset</button>
-                            <button type="button" class="btn btn-primary" onclick="swap()"><i class="bi bi-repeat"></i>
-                                Swap</button>
+                        <label for="fahrenheit" class="col-sm-3 col-form-label">Fahrenheit:</label>
+                        <div class="col-sm-4">
+                            <div class="input-group pb-2">
+                                <input type="number" class="form-control" id="fahrenheit">
+                                <span class="input-group-text">°F</span>
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="fahrenheitToCelsius()">
+                                <i class="bi bi-arrow-repeat"></i> Convert
+                            </button>
+                            <button type="button" class="btn btn-primary" onclick="reset()">
+                                <i class="bi bi-x-lg"></i> Reset
+                            </button>
+                            <button type="button" class="btn btn-primary" onclick="swap()">
+                                <i class="bi bi-repeat"></i> Swap
+                            </button>
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="celsius" class="col-sm-1 col-form-label">Celsius:</label>
-                        <div class="col-sm-5 bg-success-subtle">
-                            <input type="number" class="form-control" id="celsius">
+                        <label for="celsius" class="col-sm-3 col-form-label">Celsius:</label>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="celsius">
+                                <span class="input-group-text">°C</span>
+                            </div>
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="calculation" class="col-sm-1 col-form-label">Calculation:</label>
+                        <label for="calculation" class="col-sm-3 col-form-label">Calculation:</label>
                         <div class="col-sm-5">
-                            <textarea name="result" id="calculation" cols="50" rows="3"></textarea>
+                            <textarea name="result" id="calculation" cols="30" rows="3"></textarea>
                         </div>
                     </div>
                 </form>
