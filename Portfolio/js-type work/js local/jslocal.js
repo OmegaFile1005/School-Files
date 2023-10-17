@@ -8,7 +8,7 @@ var date1 = new Date(pickupDate);
 var date2 = new Date(returnDate);
 
 // Get the pickup date from the "pickup" input element
-var pickupDateInput = document.getElementById("pickupDate");
+var pickupDateInput = document.getElementById("pickup");
 pickupDateInput.addEventListener("change", function () {
     var pickupDate = new Date(pickupDateInput);
 
@@ -38,7 +38,7 @@ function calculate() {
         if (timeDifference < returnDate) {
             alert("Return date must be after pickup date");
 
-            if (timeDifference >= 15 * 24 * 60 * 60 * 1000) {
+            if (timeDifference > (15 * 24 * 60 * 60 * 1000)) {
                 alert("You are eligible for a discount! Enjoy your trip!");
             } else {
                 alert("Have a safe trip!");
@@ -48,9 +48,6 @@ function calculate() {
             window.location.href = "jslocal2.html";
         }
 
-        Math
-
-    }
 }
 
     // function showInfo() {
