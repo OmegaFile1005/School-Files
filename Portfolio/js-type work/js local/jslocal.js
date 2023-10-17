@@ -47,7 +47,7 @@ function calculate() {
         } else {
             window.location.href = "jslocal2.html";
         }
-
+    }
 }
 
     // function showInfo() {
