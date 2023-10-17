@@ -13,7 +13,7 @@ function checkGuess() {
     if (guess === randomNumber) {
         alert("Congratulations! You guessed the correct number!");
     } else if (guess >= 1 && guess <= 10) {
-        alert("The correct number was: " + randomNumber);
+        alert("Incorrect guess! The correct number was: " + randomNumber);
     } else {
         alert("Invalid input. Please enter a number between 1 and 10.");
     }
