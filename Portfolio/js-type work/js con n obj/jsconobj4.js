@@ -51,33 +51,33 @@ function updateFahrenheitBackground() {
     }
 }
 
-// function celsiusToFahrenheit() {
-//     var celsiusInput = document.getElementById("celsius");
-//     var fahrenheitInput = document.getElementById("fahrenheit");
-//     var calculationTextarea = document.getElementById("calculation");
+function celsiusToFahrenheit() {
+    var celsiusInput = document.getElementById("celsius");
+    var fahrenheitInput = document.getElementById("fahrenheit");
+    var calculationTextarea = document.getElementById("calculation");
 
-//     var celsius = parseFloat(celsiusInput.value);
-//     var fahrenheit = (celsius * 9 / 5) + 32;
+    var celsius = parseFloat(celsiusInput.value);
+    var fahrenheit = (celsius * 9 / 5) + 32;
 
-//     if (celsiusInput.value === "") {
-//         fahrenheitInput.value = "";
-//         calculationTextarea.value = "No input value present";
-//         calculationTextarea.style.backgroundColor = "";
-//     } else if (Number.isNaN(fahrenheit)) {
-//         fahrenheitInput.value = "";
-//         calculationTextarea.value = "";
-//         celsiusInput.value = "";
-//         fahrenheitInput.placeholder = "Invalid input";
-//         calculationTextarea.style.backgroundColor = "";
-//     } else if (Number.isInteger(fahrenheit)) {
-//         fahrenheitInput.value = fahrenheit;
-//         calculationTextarea.value = `${celsius}°C * 9 / 5 + 32 = ${fahrenheit}°F`;
-//         calculationTextarea.style.backgroundColor = "rgb(255, 0, 0)"; // Custom RGB color
-//     } else {
-//         fahrenheitInput.value = fahrenheit.toFixed(1);
-//         calculationTextarea.value = `${celsius}°C * 9 / 5 + 32 = ${fahrenheit.toFixed(1)}°F`;
-//         calculationTextarea.style.backgroundColor = "rgb(224, 240, 224)"; // Custom RGB color
-//     }
+    if (celsiusInput.value === "") {
+        fahrenheitInput.value = "";
+        calculationTextarea.value = "No input value present";
+        calculationTextarea.style.backgroundColor = "";
+    } else if (Number.isNaN(fahrenheit)) {
+        fahrenheitInput.value = "";
+        calculationTextarea.value = "";
+        celsiusInput.value = "";
+        fahrenheitInput.placeholder = "Invalid input";
+        calculationTextarea.style.backgroundColor = "";
+    } else if (Number.isInteger(fahrenheit)) {
+        fahrenheitInput.value = fahrenheit;
+        calculationTextarea.value = `${celsius}°C * 9 / 5 + 32 = ${fahrenheit}°F`;
+        calculationTextarea.style.backgroundColor = "rgb(255, 0, 0)"; // Custom RGB color
+    } else {
+        fahrenheitInput.value = fahrenheit.toFixed(1);
+        calculationTextarea.value = `${celsius}°C * 9 / 5 + 32 = ${fahrenheit.toFixed(1)}°F`;
+        calculationTextarea.style.backgroundColor = "rgb(224, 240, 224)"; // Custom RGB color
+    }
 
-//     updateFahrenheitBackground();
-// }
+    updateFahrenheitBackground();
+}
