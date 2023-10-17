@@ -38,16 +38,14 @@ function calculate() {
         if (timeDifference < returnDate) {
             alert("Return date must be after pickup date");
 
-            if (timeDifference >= 15) {
+            if (timeDifference >= 15 * 24 * 60 * 60 * 1000) {
                 alert("You are eligible for a discount! Enjoy your trip!");
             } else {
                 alert("Have a safe trip!");
-                return
             }
 
         } else {
             window.location.href = "jslocal2.html";
-
         }
 
         Math
