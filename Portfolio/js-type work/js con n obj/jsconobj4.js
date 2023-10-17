@@ -1,3 +1,9 @@
+function reset() {
+    var resultTextarea = document.getElementById("calculation", "fahrenheit", "celsius");
+    resultTextarea.style.backgroundColor = "transparent";
+    // Other reset logic...
+}
+
 function updateCelsiusBackground() {
     var fahrenheitInput = document.getElementById("fahrenheit");
     var celsiusInput = document.getElementById("celsius");
@@ -80,4 +86,16 @@ function celsiusToFahrenheit() {
     }
 
     updateFahrenheitBackground();
+}
+
+function swap() {
+    var currentURL = window.location.href;
+
+    if (currentURL.endsWith("jsconobj4p1.html")) {
+        window.location.href = currentURL.replace("jsconobj4p1.html", "jsconobj4p2.html");
+    } else if (currentURL.endsWith("jsconobj4p2.html")) {
+        window.location.href = currentURL.replace("jsconobj4p2.html", "jsconobj4p1.html");
+    } else {
+        // Do nothing or display an error message
+    }
 }
