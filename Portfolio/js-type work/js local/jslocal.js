@@ -59,8 +59,12 @@ function showInfo() {
     infoDiv.innerHTML = "";
     for (const key in userObj) {
         const p = document.createElement("p");
-        p.textContent = `${key}: ${userObj[key]}`;
-        userObj[key] = userObj[key] == 'pickupDate' ? userObj[key].substring(0, 10) : userObj[key];
-        infoDiv.appendChild(p);
+        if (key == "pickupDate" || key == "returnDate")
+            p.textContent = `${key}: ${userObj[key].substring(0, 10)}`;
+        else
+            p.textContent = `${key}: ${userObj[key]}`;
+        if (key == "payment")
+            p.textContent = `${key}: $${userObj[key].toFixed(2)}`;
+            infoDiv.appendChild(p);
     }
 }

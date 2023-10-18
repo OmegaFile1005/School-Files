@@ -15,43 +15,44 @@
     <!-- 2 calenders, 3 inputs, 1 button, 1 output, 10% discount if 15+ days, 2 functions -->
     <div class="container mt-3 border p-3 rounded">
         <h1>Car Rental</h1>
-<div class="row">
-    <div class="col">
-        <form>
-            <div class="row mb-3">
-                <label for="last">Last Name:</label>
-                <div class="col-sm-10">
-                    <input type="text" id="last">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="first">Name:</label>
-                <div class="col-sm-10">
-                    <input type="text" id="first">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="car">Car Type:</label>
-                <div class="col-sm-10">
-                    <input type="text" id="car">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="pickup">Pickup Date:
-                    <div class="col-sm-10">
-                        <input type="date" id="pickup">
+        <div class="row">
+            <div class="col">
+                <form>
+                    <div class="row mb-3">
+                        <label for="last">Last Name:</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="last">
+                        </div>
                     </div>
-            </div>
-            <div class="row mb-3">
-                <label for="return">Return Date:
-                    <div class="col-sm-10">
-                        <input type="date" id="return" min="">
+                    <div class="row mb-3">
+                        <label for="first">Name:</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="first">
+                        </div>
                     </div>
+                    <div class="row mb-3">
+                        <label for="car">Car Type:</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="car">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="pickup">Pickup Date:
+                            <div class="col-sm-10">
+                                <input type="date" id="pickup">
+                            </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="return">Return Date:
+                            <div class="col-sm-10">
+                                <input type="date" id="return" min="">
+                            </div>
+                    </div>
+                    <button type="button" class="btn btn-success" onclick="calculate()">Submit</button>
+                    <button type="button" class="btn btn-success" onclick="window.location.href='jslocal2.html'">Show
+                        Info</button>
+                </form>
             </div>
-            <button type="button" class="btn btn-success" onclick="calculate()">Submit</button>
-            <button type="button" class="btn btn-success" onclick="window.location.href='jslocal2.html'">Show Info</button>
-        </form>
-    </div>
 </body>
 
 </html>
