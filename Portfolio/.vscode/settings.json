@@ -2,5 +2,6 @@
     "liveServer.settings.port": 5503,
     "files.autoSave": "afterDelay",
     "window.autoDetectColorScheme": false,
-    "editor.smoothScrolling": true
+    "editor.smoothScrolling": true,
+    "codeium.enableSearch": true
 }
