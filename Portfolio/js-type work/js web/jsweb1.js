@@ -1,76 +1,62 @@
 function sendOrder() {
     const selectedSize = document.querySelector('input[name="size"]:checked').value;
-    const selectedToppings = Array.from(document.querySelectorAll('input[name="toppings"]:checked')).map(topping => topping.value);
+    const selectedToppings = Array.from(document.querySelectorAll('input[name="toppings"]:checked'))
+        .map(topping => capitalize(topping));
 
-    const selectedDrinks = Array.from(document.querySelectorAll('#drinks input[type="number"]')).reduce((acc, drink) => {
-        const name = drink.previousElementSibling.textContent;
-        const quantity = parseInt(drink.value) || 0;
-        const price = parseFloat(drink.getAttribute('data-price')) || 0;
-        acc.push({ name, quantity, price });
-        return acc;
-    }, []);
+    const selectedDrinks = Array.from(document.querySelectorAll('#drinks input[type="number"]'))
+        .map(drink => ({
+            name: capitalize(drink.previousElementSibling.textContent),
+            quantity: parseInt(drink.value) || 0,
+            price: parseFloat(drink.getAttribute('data-price')) || 0
+        }));
 
-    let totalCost = 0;
+    const sizeCosts = {
+        small: 6.00,
+        medium: 8.00,
+        large: 10.00,
+        "extra-large": 12.00
+    };
+    let totalCost = sizeCosts[selectedSize];
 
-    switch (selectedSize) {
-        case 'small':
-            totalCost += 6.00;
-            break;
-        case 'medium':
-            totalCost += 8.00;
-            break;
-        case 'large':
-            totalCost += 10.00;
-            break;
-        case 'extra-large':
-            totalCost += 12.00;
-            break;
-    }
-
+    const toppingCosts = {
+        pepperoni: 0.50,
+        sausage: 0.50,
+        "extra-cheese": 0.25,
+        olives: 0.25,
+        onions: 0.25
+    };
     selectedToppings.forEach(topping => {
-        switch (topping) {
-            case 'pepperoni':
-            case 'sausage':
-                totalCost += 0.50;
-                break;
-            case 'extra-cheese':
-            case 'olives':
-            case 'onions':
-                totalCost += 0.25;
-                break;
-        }
+        totalCost += toppingCosts[topping];
     });
 
-    selectedDrinks.forEach(_drink => {
-        const selectedDrink = document.querySelector('input[name="drink"]:checked').value;
-
-        switch (selectedDrink) {
-            case 'soda-can':
-                totalCost += 1.50;
-                break;
-            case 'soda-20oz':
-                totalCost += 2.00;
-                break;
-            case 'soda-2L':
-                totalCost += 5.00;
-                break;
-            case 'orange-juice':
-                totalCost += 2.50;
-                break;
-            case 'water':
-                totalCost += 1.00;
-                break;
-        }
+    const drinkCosts = {
+        "soda-can": 1.50,
+        "soda-20oz": 2.00,
+        "soda-2L": 5.00,
+        "orange-juice": 2.50,
+        water: 1.00
+    };
+    selectedDrinks.forEach(drink => {
+        totalCost += drinkCosts[drink.name];
     });
 
     const receipt = `
-    Size: ${selectedSize}
-    Toppings: ${selectedToppings.join(', ')}
-    Drinks: ${selectedDrinks.map(drink => `${drink.name} x ${drink.quantity}`).join(', ')}
-    Total Cost: $${totalCost.toFixed(2)}
-  `;
+        Size: ${capitalize(selectedSize)}
+        Toppings: 
+        ${selectedToppings.map(topping => `- ${topping}`).join('\n')}
+        Drinks: 
+        ${selectedDrinks.map(drink => `- ${drink.name} x ${drink.quantity}`).join('\n')}
+        Total Cost: $${totalCost.toFixed(2)}
+    `;
 
     document.getElementById('receipt').value = receipt;
     localStorage.setItem('order', JSON.stringify({ size: selectedSize, toppings: selectedToppings, drinks: selectedDrinks, totalCost }));
-    document.getElementById('total-cost').textContent = totalCost.toFixed(2);
+    document.getElementById('total-cost').textContent = `Total Cost: $${totalCost.toFixed(2)}`;
+}
+
+function capitalize(str) {
+    return str
+        .split('-')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
 }
