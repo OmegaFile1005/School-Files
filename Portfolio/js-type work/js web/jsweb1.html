@@ -28,8 +28,8 @@
     <div class="container border rounded mt-3">
         <header>
             <div class="row">
-                <div class="col border rounded">
-                    <h1>Melissa's Pizza Plus+</h1>
+                <div class="col border rounded pt-1">
+                    <h2>Melissa's Pizza Plus+</h2>
                 </div>
             </div>
         </header>
@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col">
                     <fieldset id="size">
-                        <legend>Size</legend>
+                        <h5>Size</h5>
                         <input type="radio" id="small" name="size" value="small">
                         <label for="small">Small</label><br>
                         <input type="radio" id="medium" name="size" value="medium">
@@ -50,7 +50,7 @@
                 </div>
                 <div class="col">
                     <fieldset id="toppings">
-                        <legend>Toppings</legend>
+                        <h5>Toppings</h5>
                         <input type="checkbox" id="pepperoni" name="toppings" value="pepperoni">
                         <label for="pepperoni">Pepperoni</label><br>
                         <input type="checkbox" id="sausage" name="toppings" value="sausage">
@@ -68,6 +68,7 @@
                 <div class="col">
                     <form id="drinks">
                         <h5>Drinks:</h5>
+                        <div></div>
                         <label for="soda-can">Soda Can</label>
                         <input type="number" id="soda-can"><br>
                         <label for="soda-20oz">Soda 20oz</label>
@@ -82,11 +83,11 @@
                 </div>
                 <div class="col">
                     <h5>Receipt:</h5>
-                    <input type="text" id="receipt" disabled>
+                    <textarea cols="50" rows="10" id="receipt" disabled></textarea>
                 </div>
             </div>
             <div class="row">
-                <div class="col text-center pb-3">
+                <div class="col text-center mb-3">
                     <button type="button" class="btn btn-success" onclick="sendOrder()">Send Order</button>
                     <button type="button" class="btn btn-danger" onclick="reset()">New Order</button>
                 </div>
@@ -95,7 +96,7 @@
         <footer>
             <div class="row pt-3 text-center border rounded">
                 <div class="col">
-                    <p>Melissa's Pizza Plus+ &copy; Copyright 2023</p>
+                    <p><b>Melissa's Pizza Plus+ &copy; Copyright 2023</b></p>
                 </div>
             </div>
         </footer>

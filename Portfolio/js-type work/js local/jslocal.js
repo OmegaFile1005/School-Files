@@ -1,21 +1,3 @@
-// // Get the pickup date from the "pickup" input element
-// var pickupDateInput = document.getElementById("pickup");
-// pickupDateInput.addEventListener("change", function () {
-//     var pickupDate = new Date(pickupDateInput);
-
-//     // Add a few hours to the pickup date
-//     var returnDate = new Date(pickupDate.getTime() + (60 * 60 * 1000)); // Adding 3 hours
-
-//     // Format the return date as "YYYY-MM-DD"
-//     var year = returnDate.getFullYear();
-//     var month = String(returnDate.getMonth() + 1).padStart(2, '0');
-//     var day = String(returnDate.getDate()).padStart(2, '0');
-//     var formattedDate = year + '-' + month + '-' + day;
-
-//     // Set the minimum date attribute of the "return" input element
-//     document.getElementById("return").min = formattedDate;
-// });
-
 function calculate() {
     const userObj = {
         lastName: document.getElementById("last").value,
