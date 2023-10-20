@@ -1,13 +1,13 @@
 function sendOrder() {
     const selectedSize = document.querySelector('input[name="size"]:checked').value;
     const selectedToppings = Array.from(document.querySelectorAll('input[name="toppings"]:checked'))
-        .map(topping => capitalize(topping));
-
+        .map(topping => topping.value);
     const selectedDrinks = Array.from(document.querySelectorAll('#drinks input[type="number"]'))
+        .filter(drink => parseInt(drink.value) > 0) // Exclude unused inputs
         .map(drink => ({
             name: capitalize(drink.previousElementSibling.textContent),
             quantity: parseInt(drink.value) || 0,
-            price: parseFloat(drink.getAttribute('data-price')) || 0
+            price: parseFloat(drink.value) || 0 // Update the price to use the input value
         }));
 
     const sizeCosts = {
@@ -25,6 +25,7 @@ function sendOrder() {
         olives: 0.25,
         onions: 0.25
     };
+
     selectedToppings.forEach(topping => {
         totalCost += toppingCosts[topping];
     });
@@ -37,24 +38,27 @@ function sendOrder() {
         water: 1.00
     };
     selectedDrinks.forEach(drink => {
-        totalCost += drinkCosts[drink.name];
+        totalCost += drink.price; // Use the updated price as the cost
     });
 
     const receipt = `
-        Size: ${capitalize(selectedSize)}
+        Size: ${capitalize(selectedSize)} - $${sizeCosts[selectedSize]}
         Toppings: 
-        ${selectedToppings.map(topping => `- ${topping}`).join('\n')}
+        ${selectedToppings.map(topping => `${topping}`).join('\n')}
         Drinks: 
-        ${selectedDrinks.map(drink => `- ${drink.name} x ${drink.quantity}`).join('\n')}
+        ${selectedDrinks.map(drink => `${drink.name} x ${drink.quantity} (Cost: $${drink.price.toFixed(2)})`).join('\n')}
         Total Cost: $${totalCost.toFixed(2)}
     `;
 
     document.getElementById('receipt').value = receipt;
     localStorage.setItem('order', JSON.stringify({ size: selectedSize, toppings: selectedToppings, drinks: selectedDrinks, totalCost }));
-    document.getElementById('total-cost').textContent = `Total Cost: $${totalCost.toFixed(2)}`;
+    document.getElementById('receipt').textContent = `Total Cost: $${totalCost.toFixed(2)}`;
 }
 
 function capitalize(str) {
+    if (typeof str !== 'string') {
+        return '';
+    }
     return str
         .split('-')
         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
