@@ -1,14 +1,13 @@
 function sendOrder() {
     const selectedSize = document.querySelector('input[name="size"]:checked').value;
-    const selectedToppings = Array.from(document.querySelectorAll('input[name="toppings"]:checked'))
-        .map(topping => topping.value);
-    const selectedDrinks = Array.from(document.querySelectorAll('#drinks input[type="number"]'))
-        .filter(drink => parseInt(drink.value) > 0) // Exclude unused inputs
-        .map(drink => ({
+    const selectedToppings = Array.from(document.querySelectorAll('input[name="toppings"]:checked')).map(topping => topping.value);
+    const selectedDrinks = Array.from(document.querySelectorAll('#drinks input[type="number"]')).filter(drink => parseInt(drink.value) > 0).map(drink => {
+        return {
             name: capitalize(drink.previousElementSibling.textContent),
             quantity: parseInt(drink.value) || 0,
-            price: parseFloat(drink.value) || 0 // Update the price to use the input value
-        }));
+            price: parseFloat(drink.value) || 0
+        };
+    });
 
     const sizeCosts = {
         small: 6.00,
@@ -37,8 +36,9 @@ function sendOrder() {
         "orange-juice": 2.50,
         water: 1.00
     };
+
     selectedDrinks.forEach(drink => {
-        totalCost += drink.price; // Use the updated price as the cost
+        totalCost += drinkCosts[drink.name];
     });
 
     const receipt = `
