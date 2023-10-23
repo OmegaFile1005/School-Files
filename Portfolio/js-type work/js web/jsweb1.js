@@ -13,14 +13,14 @@ function sendOrder() {
         small: 6.00,
         medium: 8.00,
         large: 10.00,
-        "extra-large": 12.00
+        extraLarge: 12.00
     };
     let totalCost = sizeCosts[selectedSize];
 
     const toppingCosts = {
         pepperoni: 0.50,
         sausage: 0.50,
-        "extra-cheese": 0.25,
+        extraCheese: 0.25,
         olives: 0.25,
         onions: 0.25
     };
@@ -30,10 +30,10 @@ function sendOrder() {
     });
 
     const drinkCosts = {
-        "soda-can": 1.50,
-        "soda-20oz": 2.00,
-        "soda-2L": 5.00,
-        "orange-juice": 2.50,
+        sodaCan: 1.50,
+        soda20oz: 2.00,
+        soda2L: 5.00,
+        orangeJuice: 2.50,
         water: 1.00
     };
 
