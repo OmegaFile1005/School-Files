@@ -18,25 +18,51 @@
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col pe-5">
                 <form>
-                    <label for="firstName"></label>
-                    <label for="lastName"></label>
-                    <label for="phoneNumber"></label>
-                    <label for="streetAddress"></label>
-                    <label for="zipCode"></label>
-                    <label for="electricity"></label>
-                    <input type="number" name="" id="">
-                    <label for="water"></label>
-                    <input type="number" name="" id="water" disabled>
+                    <label for="firstName">Name:</label>
+                    <input type="text" class="float-end" id="firstName" name="name" disabled><br><br>
+                    <label for="lastName    ">Last Name:</label>
+                    <input type="text" class="float-end" id="lastName" name="last-name" disabled><br><br>
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input type="tel" class="float-end" id="phoneNumber" name="phone-number" disabled><br><br>
+                    <label for="streetAddress">Address:</label>
+                    <input type="text" class="float-end" id="streetAddress" name="address" disabled><br><br>
+                    <label for="zipCode">Zip Code:</label>
+                    <input type="number" class="float-end" id="zipCode" name="zip-code" disabled><br><br>
+                    <label for="electricity">Electricity:</label>
+                    <input type="number" class="float-end" id="electricity" name="electricity" disabled><br><br>
+                    <label for="water">Water:</label>
+                    <input type="number" class="float-end" id="water" name="water" disabled><br><br>
+                    <label for="taxes">Taxes:</label>
+                    <input type="number" class="float-end" id="taxes" name="taxes" disabled><br><br>
                 </form>
             </div>
-            <div class="row">
-                <div class="col mb-3 text-center">
-                    <button type="button" class="btn btn-dark" onclick="goBack()">Go Back</button>
-                </div>
+            <div class="col">
+                <form>
+                    <label for="rentId">Rent ID:</label>
+                    <input type="number" class="float-end" id="rentId" name="rent-id" disabled><br><br>
+                    <label for="downPayment">Down Payment:</label>
+                    <input type="text" class="float-end" id="downPayment" name="down-payment" disabled><br><br>
+                    <label for="deposit">Deposit:</label>
+                    <input type="text" class="float-end" id="deposit" name="deposit" disabled><br><br>
+                    <label for="rentType">Type:</label>
+                    <input type="text" class="float-end" id="rentType" name="rent-type" disabled><br><br>
+                    <label for="numberOfRooms">Rooms:</label>
+                    <input type="number" class="float-end" id="numberOfRooms" name="number-of-rooms" disabled><br><br>
+                    <label for="priceLocation">Location:</label>
+                    <input type="text" class="float-end" id="priceLocation" name="price-location" disabled><br><br>
+                    <label for="taxes">Taxes:</label>
+                    <input type="number" class="float-end" id="taxes" name="taxes" disabled><br><br>
+                </form>
             </div>
         </div>
+        <div class="row">
+            <div class="col mb-3 text-center">
+                <button type="button" class="btn btn-dark" onclick="goBack()">Go Back</button>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

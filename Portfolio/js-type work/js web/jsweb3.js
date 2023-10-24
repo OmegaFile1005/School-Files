@@ -1,7 +1,7 @@
 function sendInfo() {
     const customer = {
         firstName: document.getElementById('firstName').value,
-        lastName: document.getElementById('lastName').value,
+        lastName: document.getElementById('firstName').value,
         phoneNumber: document.getElementById('phoneNumber').value,
         address: document.getElementById('streetAddress').value,
         zipCode: document.getElementById('zipCode').value
