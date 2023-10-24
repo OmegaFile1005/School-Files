@@ -26,9 +26,11 @@
                     <label for="lastName">Last Name:</label>
                     <input type="text" class="float-end" id="lastName" placeholder="Doe" required><br required><br>
                     <label for="phoneNumber">Phone:</label>
-                    <input type="tel" class="float-end" id="phoneNumber" placeholder="111-222-3333" required><br required><br>
+                    <input type="tel" class="float-end" id="phoneNumber" placeholder="111-222-3333" required><br
+                        required><br>
                     <label for="streetAddress">Address:</label>
-                    <input type="text" class="float-end" id="streetAddress" placeholder="1234 Fake St" required><br required><br>
+                    <input type="text" class="float-end" id="streetAddress" placeholder="1234 Fake St" required><br
+                        required><br>
                     <label for="zipCode">Zip:</label>
                     <input type="text" class="float-end" id="zipCode" placeholder="12345">
                 </fieldset>
@@ -37,11 +39,11 @@
                 <fieldset id="utility">
                     <legend> Utility Info:</legend>
                     <label for="electricity">Electricity:</label>
-                    <input type="text" class="float-end" id="electricity" required><br required><br>
+                    <input type="text" class="float-end text-end" id="electricity" disabled placeholder="$0.00"><br required><br>
                     <label for="water">Water:</label>
-                    <input type="text" class="float-end" id="water" required><br required><br>
+                    <input type="text" class="float-end text-end" id="water" disabled placeholder="$0.00"><br required><br>
                     <label for="taxes">Taxes:</label>
-                    <input type="text" class="float-end" id="taxes">
+                    <input type="text" class="float-end text-end" id="taxes" disabled placeholder="$0.00">
                 </fieldset>
             </div>
         </div>
@@ -49,12 +51,12 @@
             <div class="col">
                 <fieldset id="rent">
                     <label for="rentId">Rent ID:</label>
-                    <input type="number" class="float-end" id="rentId" required><br required><br>
+                    <input type="number" class="float-end text-end" id="rentId" required placeholder="26925"><br required><br>
                     <label for="downPayment">Down Payment:</label>
-                    <input type="text" class="float-end" id="downPayment" required><br required><br>
+                    <input type="text" class="float-end text-end" id="downPayment" required placeholder="0.00"><br required><br>
                     <label for="deposit">Deposit:</label>
-                    <input type="text" class="float-end" id="deposit">
-                </fieldset>
+                    <input type="text" class="float-end text-end" id="deposit" required placeholder="0.00"><br required><br>
+                    </fizeldset>
             </div>
             <div class="col">
                 <fieldset id="rentType">
@@ -63,12 +65,12 @@
                     <input type="radio" id="house" name="rentType" value="house">
                     <label for="house">House</label required><br>
                     <label for="numberOfRooms">Rooms:</label>
-                    <input type="number" class="float-end" id="numberOfRooms" required><br required><br>
+                    <input type="number" class="float-end" id="numberOfRooms" required placeholder="0"><br required><br>
                     <label for="priceLocation"> Price/Location:</label>
                     <select class="float-end" style="width: max-content;" id="priceLocation" required>
-                        <option value="location1">$2000/Bali</option>
-                        <option value="location2">$3500/Cape Town</option>
-                        <option value="location3">$500/New York City</option>
+                        <option value="">$2000/Bali</option>
+                        <option value="">$3500/Cape Town</option>
+                        <option value="">$500/New York City</option>
                     </select>
                 </fieldset>
             </div>
