@@ -3,11 +3,15 @@ function sendOrder() {
     const selectedToppings = Array.from(document.querySelectorAll('input[name="toppings"]:checked')).map(topping => topping.value);
     const selectedDrinks = Array.from(document.querySelectorAll('#drinks input[type="number"]')).filter(drink => parseInt(drink.value) > 0).map(drink => {
         return {
-            name: capitalize(drink.previousElementSibling.textContent),
-            quantity: parseInt(drink.value) || 0,
-            price: parseFloat(drink.value) || 0
+            name: drink.previousElementSibling.getAttribute('for'),
+            quantity: parseInt(drink.value),
+            price: parseFloat(drink.value) 
         };
     });
+
+    console.log(selectedSize);
+    console.log(selectedToppings);
+    console.log(selectedDrinks);
 
     const sizeCosts = {
         small: 6.00,
@@ -15,6 +19,7 @@ function sendOrder() {
         large: 10.00,
         extraLarge: 12.00
     };
+
     let totalCost = sizeCosts[selectedSize];
 
     const toppingCosts = {
@@ -41,15 +46,16 @@ function sendOrder() {
         totalCost += drinkCosts[drink.name];
     });
 
-    const receipt = `
-        Size: ${capitalize(selectedSize)} - $${sizeCosts[selectedSize]}
+    const receipt = `Melissa's Pizza Plus+
+        Size: ${capitalize(selectedSize)} - $${sizeCosts[selectedSize].toFixed(2)}
         Toppings: 
-        ${selectedToppings.map(topping => `${topping}`).join('\n')}
+        ${selectedToppings.length > 0 ? selectedToppings.map(topping => `${capitalize(topping)} (Cost: $${toppingCosts[topping]})`).join('\n\t') : 'No Toppings'}
         Drinks: 
-        ${selectedDrinks.map(drink => `${drink.name} x ${drink.quantity} (Cost: $${drink.price.toFixed(2)})`).join('\n')}
+        ${selectedDrinks.length > 0 ? selectedDrinks.map(drink => `${drink.name} (Cost: $${drink.price.toFixed(2)})`).join('\n\t') : 'No Drinks'}
         Total Cost: $${totalCost.toFixed(2)}
     `;
 
+    console.log(totalCost);
     document.getElementById('receipt').value = receipt;
     localStorage.setItem('order', JSON.stringify({ size: selectedSize, toppings: selectedToppings, drinks: selectedDrinks, totalCost }));
     document.getElementById('receipt').textContent = `Total Cost: $${totalCost.toFixed(2)}`;
@@ -63,4 +69,9 @@ function capitalize(str) {
         .split('-')
         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' ');
+}
+
+let resetForm = () => {
+    document.querySelector('form').reset();
+    document.getElementById('receipt').innerHTML = '';
 }

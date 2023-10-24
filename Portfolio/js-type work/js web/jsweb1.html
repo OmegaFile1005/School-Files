@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="stylesjsweb1.css">
     <script defer src="jsweb1.js"></script>
 </head>
@@ -22,64 +21,66 @@
             </div>
         </header>
         <main>
-            <div class="row">
-                <div class="col">
-                    <fieldset id="size">
-                        <h5>Size</h5>
-                        <input type="radio" id="small" name="size" value="small">
-                        <label for="small">Small</label><br>
-                        <input type="radio" id="medium" name="size" value="medium">
-                        <label for="medium">Medium</label><br>
-                        <input type="radio" id="large" name="size" value="large">
-                        <label for="large">Large</label><br>
-                        <input type="radio" id="extraLarge" name="size" value="extraLarge">
-                        <label for="extraLarge">Extra Large</label><br>
-                    </fieldset>
+            <form action="">
+                <div class="row">
+                    <div class="col">
+                        <fieldset id="size">
+                            <h5>Size</h5>
+                            <input type="radio" id="small" name="size" value="small" checked>
+                            <label for="small">Small</label><br>
+                            <input type="radio" id="medium" name="size" value="medium">
+                            <label for="medium">Medium</label><br>
+                            <input type="radio" id="large" name="size" value="large">
+                            <label for="large">Large</label><br>
+                            <input type="radio" id="extraLarge" name="size" value="extraLarge">
+                            <label for="extraLarge">Extra Large</label><br>
+                        </fieldset>
+                    </div>
+                    <div class="col">
+                        <fieldset id="toppings">
+                            <h5>Toppings</h5>
+                            <input type="checkbox" name="toppings" value="pepperoni">
+                            <label for="pepperoni">Pepperoni</label><br>
+                            <input type="checkbox" id="sausage" name="toppings" value="sausage">
+                            <label for="sausage">Sausage</label><br>
+                            <input type="checkbox" id="extraCheese" name="toppings" value="extraCheese">
+                            <label for="extraCheese">Extra Cheese</label><br>
+                            <input type="checkbox" id="olives" name="toppings" value="olives">
+                            <label for="olives">Olives</label><br>
+                            <input type="checkbox" id="onions" name="toppings" value="onions">
+                            <label for="onions">Onions</label><br>
+                        </fieldset>
+                    </div>
                 </div>
-                <div class="col">
-                    <fieldset id="toppings">
-                        <h5>Toppings</h5>
-                        <input type="checkbox" name="toppings" value="pepperoni">
-                        <label for="pepperoni">Pepperoni</label><br>
-                        <input type="checkbox" id="sausage" name="toppings" value="sausage">
-                        <label for="sausage">Sausage</label><br>
-                        <input type="checkbox" id="extraCheese" name="toppings" value="extraCheese">
-                        <label for="extraCheese">Extra Cheese</label><br>
-                        <input type="checkbox" id="olives" name="toppings" value="olives">
-                        <label for="olives">Olives</label><br>
-                        <input type="checkbox" id="onions" name="toppings" value="onions">
-                        <label for="onions">Onions</label><br>
-                    </fieldset>
+                <div class="row py-3">
+                    <div class="col">
+                        <fieldset id="drinks">
+                            <h5>Drinks:</h5>
+                            <div></div>
+                            <label for="sodaCan">Soda Can</label>
+                            <input type="number" id="sodaCan"><br>
+                            <label for="soda20oz">Soda 20oz</label>
+                            <input type="number" id="soda20oz"><br>
+                            <label for="soda2L">Soda 2L</label>
+                            <input type="number" id="soda2L"><br>
+                            <label for="orangeJuice">Orange Juice</label>
+                            <input type="number" id="orangeJuice"><br>
+                            <label for="water-20oz">Water 20oz</label>
+                            <input type="number" id="water-20oz"><br>
+                        </fieldset>
+                    </div>
+                    <div class="col">
+                        <h5>Receipt:</h5>
+                        <textarea id="receipt" cols="50" rows="5"></textarea>
+                    </div>
                 </div>
-            </div>
-            <div class="row py-3">
-                <div class="col">
-                    <fieldset id="drinks">
-                        <h5>Drinks:</h5>
-                        <div></div>
-                        <label for="sodaCan">Soda Can</label>
-                        <input type="number" id="sodaCan"><br>
-                        <label for="soda20oz">Soda 20oz</label>
-                        <input type="number" id="soda20oz"><br>
-                        <label for="soda2L">Soda 2L</label>
-                        <input type="number" id="soda2L"><br>
-                        <label for="orangeJuice">Orange Juice</label>
-                        <input type="number" id="orangeJuice"><br>
-                        <label for="water-20oz">Water 20oz</label>
-                        <input type="number" id="water-20oz"><br>
-                    </fieldset>
+                <div class="row">
+                    <div class="col text-center mb-3">
+                        <button type="button" class="btn btn-success" onclick="sendOrder()">Send Order</button>
+                        <button type="button" class="btn btn-danger" onclick="resetForm()">New Order</button>
+                    </div>
                 </div>
-                <div class="col">
-                    <h5>Receipt:</h5>
-                    <textarea id="receipt" cols="50" rows="5"></textarea>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col text-center mb-3">
-                    <button type="button" class="btn btn-success" onclick="sendOrder()">Send Order</button>
-                    <button type="button" class="btn btn-danger" onclick="reset()">New Order</button>
-                </div>
-            </div>
+            </form>
         </main>
         <footer>
             <div class="row pt-3 text-center border rounded">

@@ -1,25 +1,23 @@
 function sendInfo() {
-    const getInputValue = (id) => document.querySelector(id).value;
-    const getCheckedValue = (name) => document.querySelector(`input[name="${name}"]:checked`).value;
-    const parseFloatValue = (value) => parseFloat(value);
-    const parseIntValue = (value) => parseInt(value);
-
     const customer = {
-        firstName: getInputValue('#firstName'),
-        lastName: getInputValue('#lastName'),
-        phoneNumber: getInputValue('#phoneNumber'),
-        address: getInputValue('#streetAddress'),
-        zipCode: getInputValue('#zipCode')
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
+        phoneNumber: document.getElementById('phoneNumber').value,
+        address: document.getElementById('streetAddress').value,
+        zipCode: document.getElementById('zipCode').value
     };
 
     const rentDetails = {
-        rentId: getInputValue('#rentId'),
-        downPayment: parseFloatValue(getInputValue('#downPayment')),
-        deposit: parseFloatValue(getInputValue('#deposit')),
-        propertyType: getCheckedValue('propertyType'),
-        numberOfRooms: parseIntValue(getInputValue('#numberOfRooms')),
-        price: parseFloatValue(getInputValue('#price')),
-        location: getInputValue('#location')
+        rentId: document.getElementById('rentId').value,
+        downPayment: parseFloat(document.getElementById('downPayment').value).toFixed(2),
+        deposit: parseFloat(document.getElementById('deposit').value).toFixed(2),
+        propertyType: document.querySelector('propertyType'),
+        numberOfRooms: document.getElementById('numberOfRooms').value,
+        location: {
+            location1: 2000,
+            location2: 3500,
+            location3: 500
+        }
     };
 
     let totalPrice = rentDetails.downPayment + rentDetails.deposit;
@@ -29,11 +27,11 @@ function sendInfo() {
         totalPrice += rentDetails.numberOfRooms * rentDetails.price * 1.2;
     }
 
-    const utilityBills = {
-        electricityBill: parseFloatValue(getInputValue('#electricityBill')),
-        waterBill: parseFloatValue(getInputValue('#waterBill')),
-        taxes: parseFloatValue(getInputValue('#taxes'))
-    };
+const utilityBills = {
+    electricityBill: parseFloat(document.getElementById('electricity').value).toFixed(2),
+    waterBill: parseFloat(document.getElementById('water').value).toFixed(2),
+    taxes: parseFloat(document.getElementById('taxes').value).toFixed(2)
+};
 
     const totalUtilityBills = utilityBills.electricityBill + utilityBills.waterBill + utilityBills.taxes;
 
@@ -57,23 +55,4 @@ function sendInfo() {
 
 function goBack() {
     window.location.replace('jsweb3p1.html');
-
-    const rentInfo = JSON.parse(localStorage.getItem('rentInfo'));
-
-    // Update the DOM with the retrieved data
-    document.getElementById('firstName').value = rentInfo.customer.firstName;
-    document.getElementById('lastName').value = rentInfo.customer.lastName;
-    document.getElementById('phoneNumber').value = rentInfo.customer.phoneNumber;
-    document.getElementById('street-address').value = rentInfo.customer.address;
-    document.getElementById('zipCode').value = rentInfo.customer.zipCode;
-    document.getElementById('rentId').value = rentInfo.rentDetails.rentId;
-    document.getElementById('downPayment').value = rentInfo.rentDetails.downPayment;
-    document.getElementById('deposit').value = rentInfo.rentDetails.deposit;
-    document.querySelector(`input[name="propertyType"][value="${rentInfo.rentDetails.propertyType}"]`).checked = true;
-    document.getElementById('numberOfRooms').value = rentInfo.rentDetails.numberOfRooms;
-    document.getElementById('price').value = rentInfo.rentDetails.price;
-    document.getElementById('location').value = rentInfo.rentDetails.location;
-    document.getElementById('electricityBill').value = rentInfo.utilityBills.electricityBill;
-    document.getElementById('waterBill').value = rentInfo.utilityBills.waterBill;
-    document.getElementById('taxes').value = rentInfo.utilityBills.taxes;
 }
