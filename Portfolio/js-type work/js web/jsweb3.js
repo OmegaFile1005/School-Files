@@ -1,5 +1,5 @@
 function sendInfo() {
-    const firstName = document.getElementById('firstName').value;
+    const FirstName = document.getElementById('firstName').value;
     const lastName = document.getElementById('lastName').value;
     const phoneNumber = document.getElementById('phoneNumber').value;
     const streetAddress = document.getElementById('streetAddress').value;
@@ -9,13 +9,22 @@ function sendInfo() {
     const rentId = document.getElementById('rentId').value;
     const downPayment = document.getElementById('downPayment').value;
     const deposit = document.getElementById('deposit').value;
-    const rentType = document.getElementById('rentType').value;
+    const rentType = document.getElementById('rentType').checked;
     const numberOfRooms = document.getElementById('numberOfRooms').value;
     const priceLocation = document.getElementById('priceLocation').value;
     const taxes = document.getElementById('taxes').value;
 
+    const totalPrice = priceLocation.split('/');
+    const price = totalPrice[0];
+    const propertyType = totalPrice[1];
+
+    if (propertyType === 'flat') {
+        totalPrice += numberOfRooms * price;
+    } else (propertyType === 'house') 
+        totalPrice += numberOfRooms * price * 1.2;
+
     const rentInfo = {
-        firstName,
+        FirstName,
         lastName,
         phoneNumber,
         streetAddress,
@@ -43,20 +52,20 @@ function sendInfo() {
 
     console.log('Form values set');
 
-    document.getElementById('firstName').innerHTML = firstName;
-    document.getElementById('lastName').value = lastName;
-    document.getElementById('phoneNumber').value = phoneNumber;
-    document.getElementById('streetAddress').value = streetAddress;
-    document.getElementById('zipCode').value = zipCode;
-    document.getElementById('electricity').value = `${electricity.toFixed(2)}`;
-    document.getElementById('water').value = `${water.toFixed(2)}`;
-    document.getElementById('rentId').value = rentId;
-    document.getElementById('downPayment').value = `${downPayment.toFixed(2)}`;
-    document.getElementById('deposit').value = `${deposit.toFixed(2)}`;
-    document.getElementById('rentType').value = rentType;
-    document.getElementById('numberOfRooms').value = numberOfRooms;
-    document.getElementById('priceLocation').value = priceLocation;
-    document.getElementById('taxes').value = `${taxes.toFixed(2)}`;
+    document.querySelector('#firstName').innerHTML = FirstName;
+    document.querySelector('#lastName').value = lastName;
+    document.querySelector('#phoneNumber').value = phoneNumber;
+    document.querySelector('#streetAddress').value = streetAddress;
+    document.querySelector('#zipCode').value = zipCode;
+    document.querySelector('#electricity').value = `${electricity.toFixed(2)}`;
+    document.querySelector('#water').value = `${water.toFixed(2)}`;
+    document.querySelector('#rentId').value = rentId;
+    document.querySelector('#downPayment').value = `${downPayment.toFixed(2)}`;
+    document.querySelector('#deposit').value = `${deposit.toFixed(2)}`;
+    document.querySelector('#rentType').value = rentType;
+    document.querySelector('#numberOfRooms').value = numberOfRooms;
+    document.querySelector('#priceLocation').value = priceLocation;
+    document.querySelector('#taxes').value = `${taxes.toFixed(2)}`;
 
     console.log('Form values set');
 }
