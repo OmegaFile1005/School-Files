@@ -37,7 +37,13 @@ function sendInfo() {
     window.location.href = 'jsweb3p2.html';
     console.log('Redirecting to jsweb3p2.html');
 
-    document.getElementById('firstName').value = firstName;
+    console.log('Form values retrieved');
+
+    console.log(rentInfo);
+
+    console.log('Form values set');
+
+    document.getElementById('firstName').innerHTML = firstName;
     document.getElementById('lastName').value = lastName;
     document.getElementById('phoneNumber').value = phoneNumber;
     document.getElementById('streetAddress').value = streetAddress;
