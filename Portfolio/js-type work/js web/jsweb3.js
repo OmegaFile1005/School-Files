@@ -1,30 +1,37 @@
 function sendInfo() {
-    const FirstName = document.getElementById('firstName').value;
+    const firstName = document.getElementById('firstName').value;
     const lastName = document.getElementById('lastName').value;
     const phoneNumber = document.getElementById('phoneNumber').value;
     const streetAddress = document.getElementById('streetAddress').value;
     const zipCode = document.getElementById('zipCode').value;
-    const electricity = document.getElementById('electricity').value;
-    const water = document.getElementById('water').value;
+    const electricity = document.getElementById('electricity').value * 1;
+    const water = document.getElementById('water').value * 1;
     const rentId = document.getElementById('rentId').value;
-    const downPayment = document.getElementById('downPayment').value;
-    const deposit = document.getElementById('deposit').value;
-    const rentType = document.getElementById('rentType').checked;
+    const downPayment = document.getElementById('downPayment').value * 1;
+    const deposit = document.getElementById('deposit').value * 1;
+    const rentType = document.querySelector('input[name="rentType"]:checked').value;
     const numberOfRooms = document.getElementById('numberOfRooms').value;
-    const priceLocation = document.getElementById('priceLocation').value;
-    const taxes = document.getElementById('taxes').value;
+    const location = document.getElementById('priceLocation').value;
+    const taxes = document.getElementById('taxes').value * 1;
+    if (location == 'Bali') {
+        priceLocation = 2000;
+    } else if (location == 'Cape Town') {
+        priceLocation = 3500;
+    } else if (location == 'New York City') {
+        priceLocation = 500;
+    }
+    
+    const price = rentType * priceLocation;
 
-    const totalPrice = priceLocation.split('/');
-    const price = totalPrice[0];
-    const propertyType = totalPrice[1];
-
-    if (propertyType === 'flat') {
+    let totalPrice = 0;
+    if (rentType === 'flat') {
         totalPrice += numberOfRooms * price;
-    } else (propertyType === 'house') 
-        totalPrice += numberOfRooms * price * 1.2;
+    } else (rentType === 'house')
+    totalPrice += numberOfRooms * price * 1.2;
 
+    totalPrice += taxes;
     const rentInfo = {
-        FirstName,
+        firstName,
         lastName,
         phoneNumber,
         streetAddress,
@@ -36,7 +43,8 @@ function sendInfo() {
         deposit,
         rentType,
         numberOfRooms,
-        priceLocation,
+        location,
+        totalPrice,
         taxes
     };
 
@@ -45,29 +53,27 @@ function sendInfo() {
 
     window.location.href = 'jsweb3p2.html';
     console.log('Redirecting to jsweb3p2.html');
+}
 
-    console.log('Form values retrieved');
-
+function getInfo() {
+    const rentInfo = JSON.parse(localStorage.getItem('rentInfo'));
     console.log(rentInfo);
 
-    console.log('Form values set');
+    document.querySelector('#firstName').value = rentInfo.firstName;
+    document.querySelector('#lastName').value = rentInfo.lastName;
+    document.querySelector('#phoneNumber').value = rentInfo.phoneNumber;
+    document.querySelector('#streetAddress').value = rentInfo.streetAddress;
+    document.querySelector('#zipCode').value = rentInfo.zipCode;
+    document.querySelector('#electricity').value = `${rentInfo.electricity.toFixed(2)}`;
+    document.querySelector('#water').value = `${rentInfo.water.toFixed(2)}`;
+    document.querySelector('#rentId').value = rentInfo.rentId;
+    document.querySelector('#downPayment').value = `${rentInfo.downPayment.toFixed(2)}`;
+    document.querySelector('#deposit').value = `${rentInfo.deposit.toFixed(2)}`;
+    document.querySelector('#rentType').value = rentInfo.rentType;
+    document.querySelector('#numberOfRooms').value = rentInfo.numberOfRooms;
+    document.querySelector('#priceLocation').value = rentInfo.location;
+    document.querySelector('#taxes').value = `${rentInfo.taxes.toFixed(2)}`;
 
-    document.querySelector('#firstName').innerHTML = FirstName;
-    document.querySelector('#lastName').value = lastName;
-    document.querySelector('#phoneNumber').value = phoneNumber;
-    document.querySelector('#streetAddress').value = streetAddress;
-    document.querySelector('#zipCode').value = zipCode;
-    document.querySelector('#electricity').value = `${electricity.toFixed(2)}`;
-    document.querySelector('#water').value = `${water.toFixed(2)}`;
-    document.querySelector('#rentId').value = rentId;
-    document.querySelector('#downPayment').value = `${downPayment.toFixed(2)}`;
-    document.querySelector('#deposit').value = `${deposit.toFixed(2)}`;
-    document.querySelector('#rentType').value = rentType;
-    document.querySelector('#numberOfRooms').value = numberOfRooms;
-    document.querySelector('#priceLocation').value = priceLocation;
-    document.querySelector('#taxes').value = `${taxes.toFixed(2)}`;
-
-    console.log('Form values set');
 }
 
 function goBack() {
