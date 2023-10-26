@@ -24,11 +24,11 @@
                 <div class="col mb-3">
                     <fieldset>
                         <legend>Order Channel</legend>
-                        <input type="radio" id="inStore" name="orderChange" value="inStore" checked>
+                        <input type="radio" id="inStore" name="orderChange" value="in Store" checked>
                         <label for="inStore">In Store</label>
                         <input type="radio" id="online" name="orderChange" value="online">
                         <label for="online">Online</label>
-                        <input type="radio" id="byPhone" name="orderChange" value="byPhone">
+                        <input type="radio" id="byPhone" name="orderChange" value="by Phone">
                         <label for="byPhone">By Phone</label>
                     </fieldset>
                 </div>
@@ -38,10 +38,10 @@
                         <h5>Country</h5>
                         <select name="country" id="country" autocomplete="country-name">
                             <option value="">Select Country</option>
-                            <option value="US">United States</option>
-                            <option value="CA">Canada</option>`
-                            <option value="MX">Mexico</option>
-                            <option value="UK">United Kingdom</option>
+                            <option value="United States">United States</option>
+                            <option value="Canada">Canada</option>
+                            <option value="Mexico">Mexico</option>
+                            <option value="United Kingdom">United Kingdom</option>
                         </select>
                     </div>
                     <div class="col">
@@ -62,10 +62,10 @@
                             <legend>Payment Option</legend>
                             <label for="cash">Cash</label>
                             <input type="radio" id="cash" name="payment" value="Cash" checked><br>
-                            <label for="VISAcard">VISA Card</label>
-                            <input type="radio" id="VISAcard" name="payment" value="VISA Card"><br>
-                            <label for="MasterCard">Master Card</label>
-                            <input type="radio" id="MasterCard" name="payment" value="Master Card"><br>
+                            <label for="visaCard">VISA Card</label>
+                            <input type="radio" id="visaCard" name="payment" value="VISA Card"><br>
+                            <label for="masterCard">Master Card</label>
+                            <input type="radio" id="masterCard" name="payment" value="Master Card"><br>
                             <label for="debitCard">Debit Card</label>
                             <input type="radio" id="debitCard" name="payment" value="Debit Card"><br>
                         </fieldset>
@@ -76,7 +76,7 @@
             <button type="button" class="btn btn-primary" onclick="checkOut()">Send Order</button>
             <button type="button" class="btn btn-primary" onclick="window.location.reload()">New Order</button>
             <hr>
-            <textarea name="result" id="total" cols="100%" rows="10" readonly></textarea>
+            <textarea type="text" class="form-control" name="result" id="total" cols="100%" rows="10" readonly></textarea>
         </footer>
     </div>
 </body>

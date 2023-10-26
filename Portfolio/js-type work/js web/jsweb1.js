@@ -39,7 +39,7 @@ function sendOrder() {
         soda20oz: 2.00,
         soda2L: 5.00,
         orangeJuice: 2.50,
-        water: 1.00
+        water20oz: 1.00
     };
 
     selectedDrinks.forEach(drink => {
