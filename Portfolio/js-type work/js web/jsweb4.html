@@ -20,14 +20,24 @@
             </div>
         </header>
         <main>
-            <!-- this is where the catalog/items will be displayed and interacted to edit the order's total and connect it to a local storage -->
-            <div>
-                <select name="country" id="country">
-                    <option value="US">United States</option>
-                    <option value="CA">Canada</option>
-                    <option value="MX">Mexico</option>
-                    <option value="UK">United Kingdom</option>
-                </select>
+            <div class="row">
+                <!-- this is where the catalog/items will be displayed and interacted to edit the order's total and connect it to a local storage -->
+                <div class="col">
+                    
+                    <select name="country" id="country">
+                        <option value="US">United States</option>
+                        <option value="CA">Canada</option>
+                        <option value="MX">Mexico</option>
+                        <option value="UK">United Kingdom</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <fieldset>
+                        <legend>Product</legend>
+                        <label for="beans">Beans</label>
+                        <input type="number" class="float-end" id="beans" placeholder="0">
+                    </fieldset>
+                </div>
             </div>
         </main>
         <footer>
