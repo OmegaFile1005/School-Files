@@ -11,8 +11,8 @@
 </head>
 
 <body>
-    <div class="container">
-        <header>
+    <div class="container border rounded mt-3">
+        <header class="mt-2 pb-2 border-bottom">
             <div class="row">
                 <div class="col">
                     <h1>Virtual Grocery Plus+</h1>
@@ -21,27 +21,62 @@
         </header>
         <main>
             <div class="row">
-                <!-- this is where the catalog/items will be displayed and interacted to edit the order's total and connect it to a local storage -->
-                <div class="col">
-                    
-                    <select name="country" id="country">
-                        <option value="US">United States</option>
-                        <option value="CA">Canada</option>
-                        <option value="MX">Mexico</option>
-                        <option value="UK">United Kingdom</option>
-                    </select>
-                </div>
-                <div class="col">
+                <div class="col mb-3">
                     <fieldset>
-                        <legend>Product</legend>
-                        <label for="beans">Beans</label>
-                        <input type="number" class="float-end" id="beans" placeholder="0">
+                        <legend>Order Channel</legend>
+                        <input type="radio" id="inStore" name="orderChange" value="inStore" checked>
+                        <label for="inStore">In Store</label>
+                        <input type="radio" id="online" name="orderChange" value="online">
+                        <label for="online">Online</label>
+                        <input type="radio" id="byPhone" name="orderChange" value="byPhone">
+                        <label for="byPhone">By Phone</label>
                     </fieldset>
                 </div>
-            </div>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <h5>Country</h5>
+                        <select name="country" id="country" autocomplete="country-name">
+                            <option value="">Select Country</option>
+                            <option value="US">United States</option>
+                            <option value="CA">Canada</option>`
+                            <option value="MX">Mexico</option>
+                            <option value="UK">United Kingdom</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <fieldset>
+                            <legend>Product</legend>
+                            <label for="beans">Beans</label>
+                            <input type="number" class="float-end" id="beans" placeholder="0"><br><br>
+                            <label for="rice">Rice</label>
+                            <input type="number" class="float-end" id="rice" placeholder="0"><br><br>
+                            <label for="meat">Meat</label>
+                            <input type="number" class="float-end" id="meat" placeholder="0"><br><br>
+                            <label for="vegetables">Vegetables</label>
+                            <input type="number" class="float-end" id="vegetables" placeholder="0">
+                        </fieldset>
+                    </div>
+                    <div class="col">
+                        <fieldset>
+                            <legend>Payment Option</legend>
+                            <label for="cash">Cash</label>
+                            <input type="radio" id="cash" name="payment" value="Cash" checked><br>
+                            <label for="VISAcard">VISA Card</label>
+                            <input type="radio" id="VISAcard" name="payment" value="VISA Card"><br>
+                            <label for="MasterCard">Master Card</label>
+                            <input type="radio" id="MasterCard" name="payment" value="Master Card"><br>
+                            <label for="debitCard">Debit Card</label>
+                            <input type="radio" id="debitCard" name="payment" value="Debit Card"><br>
+                        </fieldset>
+                    </div>
+                </div>
         </main>
         <footer>
-            <!-- this is where the function shall display the order's final product and the buttons' location above the total -->
+            <button type="button" class="btn btn-primary" onclick="checkOut()">Send Order</button>
+            <button type="button" class="btn btn-primary" onclick="window.location.reload()">New Order</button>
+            <hr>
+            <textarea name="result" id="total" cols="100%" rows="10" readonly></textarea>
         </footer>
     </div>
 </body>

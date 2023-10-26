@@ -73,7 +73,6 @@ function getInfo() {
     document.querySelector('#numberOfRooms').value = rentInfo.numberOfRooms;
     document.querySelector('#priceLocation').value = rentInfo.location;
     document.querySelector('#taxes').value = `${rentInfo.taxes.toFixed(2)}`;
-
 }
 
 function goBack() {

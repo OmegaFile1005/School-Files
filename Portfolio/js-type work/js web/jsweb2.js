@@ -7,13 +7,11 @@ window.addEventListener('DOMContentLoaded', function () {
         var email = prompt("Please enter your email:");
         var phoneNumber = prompt("Please enter your phone number:");
 
-        // Store the entered values in localStorage
         localStorage.setItem("name", name);
         localStorage.setItem("lastName", lastName);
         localStorage.setItem("email", email);
         localStorage.setItem("phoneNumber", phoneNumber);
 
-        // Set the flag to indicate that values have been entered
         localStorage.setItem("hasEnteredValues", true);
     }
 });
@@ -45,10 +43,8 @@ function sendTicket() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Retrieve stored ticket information from localStorage
     const ticketInfo = JSON.parse(localStorage.getItem('ticket'));
 
-    // Display stored ticket information in the respective <p> elements
     document.getElementById('class').textContent = ticketInfo.class;
     document.getElementById('type').textContent = ticketInfo.type;
     document.getElementById('age').textContent = ticketInfo.age.join(', ');
@@ -56,7 +52,6 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('destination').textContent = ticketInfo.destination;
     document.getElementById('date').textContent = ticketInfo.date;
 
-    // Clear the stored ticket information from localStorage
     localStorage.removeItem('ticket');
 });
 
