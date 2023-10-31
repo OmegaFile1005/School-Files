@@ -12,17 +12,22 @@
 
 <body>
     <div class="container">
-        <div class="row">
+        <div class="row mt-3">
             <div class="col">
-                <button type="button" class="btn btn-primary" id="randomButton"
-                    onclick="randomEquation()">Randomize</button>
+                <p id="problem"></p>
             </div>
         </div>
-        <div class="row">
+        <div class="row mb-3">
             <div class="col">
-                <textarea class="form-control" name="result" id="result" cols="30" rows="10"></textarea>
+                <input type="text" id="answer">
+                <button type="button" onclick="checkAnswer(); generateNewProblem();">Check Answer</button>
             </div>
         </div>
+    </div>
+        <p id="result"></p>
+    <script>
+        generateNewProblem();
+    </script>
 </body>
 
 </html>
