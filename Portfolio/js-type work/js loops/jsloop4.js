@@ -1,10 +1,12 @@
-function calculateRise() {
-    let a = document.getElementById("yearGrow")
-    let b = 15
-    c = a * b
+window.onload = function calculateRise() {
+    var result = document.getElementById("result")
 
-    let result = ""
+    var baseHeight = 0
+    var growthRate = 1.5
+    var years = 10
 
-    document.getElementById("result")
-    
+    for (let i = 1; i <= years; i++) {
+        baseHeight += growthRate;
+        result.value += `Year: ${i} | Ocean Level: ${baseHeight}\n`
+    }
 }
