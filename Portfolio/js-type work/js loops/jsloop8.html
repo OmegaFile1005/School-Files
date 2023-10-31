@@ -5,18 +5,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="jsloop8.js"></script>
+    <script defer src="jsloop8.js"></script>
 </head>
 
 <body>
     <div class="container">
         <div class="row">
             <div class="col">
-                <form></form>
+                <form>
+                    <label for="date">Date:</label>
+                    <input type="date" id="date"><br><br>
+                    <label for="">Time:</label>
+                    <input type="time" id="time"><br><br>
+                    <label for="flavor">Flavor:</label>
+                    <select name="flavor" id="flavor">
+                        <option value="vanilla" selected>Vanilla</option>
+                        <option value="chocolate">Chocolate</option>
+                        <option value="strawberry">Strawberry</option>
+                        <option value="mint">Mint</option>
+                        <option value="caramel">Caramel</option>
+                    </select><br><br>
+                    <label for="size">Container Size:</label>
+                    <select name="size" id="size">
+                        <option value="small" selected>Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                        <option value="extra large">Extra Large</option>
+                        <option value="jumbo">Jumbo</option>
+                    </select><br><br>
+                    <label for="ingredients">Ingredients:</label>
+                    <select name="ingredients" id="ingredients">
+                        <option value="sprinkles" selected>Sprinkles</option>
+                        <option value="chocolate chips">Chocolate Chips</option>
+                        <option value="sprinkles and chocolate chips">Sprinkles and Chocolate Chips</option>
+                        <option value="sugar">Sugar</option>
+                    </select><br><br>
+                    <label for="scoopCount">Scoop Count:</label>
+                    <input type="number" id="scoopCount"><br><br>
+                    <button type="button" class="btn btn-primary" onclick="placeOrder()">Check</button>
+                </form>
             </div>
         </div>
-        <div class="row">
+        <div class="row mt-3">
             <div class="col">
+                <textarea class="form-control" name="result" id="result" cols="30" rows="10" readonly></textarea>
             </div>
         </div>
     </div>
