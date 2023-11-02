@@ -1,22 +1,33 @@
-function findAccount() {
-    const accountNumbers = [];
+// Generate a list of five charge account numbers
+const chargeAccountNumbers = [];
+for (let i = 0; i < 5; i++) {
+    const randomNumber = Math.floor(Math.random() * 9000000) + 1000000; // Generate a random 7-digit number
+    chargeAccountNumbers.push(randomNumber);
+}
 
-    for (let i = 0; i < 5; i++) {
-        const randomNumber = Math.floor(Math.random() * 9999999) + 1000000;
-        accountNumbers.push(randomNumber);
+// Display the generated charge account numbers
+const randomElement = document.getElementById("random");
+randomElement.textContent = "Account Numbers Available: " + chargeAccountNumbers.join(" | ");
+console.log(chargeAccountNumbers);
+
+function findAccount() {
+    // Get the user input
+    const userInput = parseInt(document.getElementById("account").value);
+
+    // Check if the entered number is in the array
+    let isValid = false;
+    for (let i = 0; i < chargeAccountNumbers.length; i++) {
+        if (userInput === chargeAccountNumbers[i]) {
+            isValid = true;
+            break;
+        }
     }
 
-    const account = document.getElementById('random').value;
-
-    console.log(accountNumbers);
-
-    document.getElementById('account').value = '';
-
-    account.innerHTML = `Account Numbers Available: ${accountNumbers.join(' | ')}<br>`;
-
-    if (accountNumbers.includes(account)) {
-        alert(`The account number ${account} is available!`);
+    // Display the result
+    const resultElement = document.getElementById("result");
+    if (isValid) {
+        resultElement.textContent = "Account found.";
     } else {
-        alert(`The account number ${account} is not available!`);
+        resultElement.textContent = "Account not found.";
     }
 }
