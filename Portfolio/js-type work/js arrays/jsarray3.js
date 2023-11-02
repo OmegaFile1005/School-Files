@@ -30,4 +30,15 @@ function findAccount() {
     } else {
         resultElement.textContent = "Account not found.";
     }
+
+    // Clear the input field
+    document.getElementById("account").value = "";
+    console.log(userInput);
+
+    //refresh the page after successful input
+    if (isValid) {
+        setTimeout(function () {
+            window.location.reload();
+        }, 2000);
+    }
 }
