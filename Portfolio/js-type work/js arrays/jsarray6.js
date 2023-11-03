@@ -1,16 +1,43 @@
 const fruits = [];
+
 function addFruit() {
     const inputElement = document.getElementById('fruit');
-    const fruitList = inputElement.value.trim();
-    fruits.push(input);
+    const fruitName = inputElement.value.trim();
 
-    if (input != '') {
-        fruits.push(fruitList);
+    if (fruitName !== '') {
+        fruits.push(fruitName);
         inputElement.value = '';
 
         console.log(fruits);
+        updateFruitList();
     }
+}
 
-    const fruitsElement = document.createElement('p');
-    fruitsElement.textContent = fruitList;
+function updateFruitList() {
+    const fruitsElement = document.getElementById('fruits');
+    fruitsElement.innerHTML = '';
+
+    fruits.forEach(function (fruit) {
+        const listItem = document.createElement('p');
+        listItem.textContent = fruit.charAt(0).toUpperCase() + fruit.slice(1); // Capitalize the fruit name
+        fruitsElement.appendChild(listItem);
+    });
+}
+
+function addAtBeginning() {
+}
+
+function addAtEnd() {
+}
+
+function removeFirst() {
+}
+
+function removeAtPosition() {
+}
+
+function addAtPosition() {
+}
+
+function sortFruits() {
 }
