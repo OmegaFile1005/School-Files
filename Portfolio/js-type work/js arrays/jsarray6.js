@@ -8,6 +8,9 @@ function addFruit() {
         fruits.push(fruitList);
         inputElement.value = '';
 
-        updateFruitList();
+        console.log(fruits);
     }
+
+    const fruitsElement = document.createElement('p');
+    fruitsElement.textContent = fruitList;
 }
