@@ -2,7 +2,11 @@ body {
     background-color: #f0f8ff;
 }
 
-form label {
+form label, h3 {
     color: #a11d1a;
-    align-content: center;
+    text-align: center;
+}
+
+input {
+    text-align: center;
 }
