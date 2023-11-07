@@ -36,39 +36,52 @@ function addToInventory() {
     console.log('Item added to inventory');
 }
 
-function showInventory() {
+function getInventory() {
     const inventoryList = document.getElementById('inventory');
     inventoryList.innerHTML = '';
 
     const inventory = JSON.parse(localStorage.getItem('inventory'));
 
     if (inventory.length === 0) {
-        // Display a message when the inventory is empty
         const emptyMessage = document.createElement('p');
         emptyMessage.textContent = 'Inventory is empty';
         inventoryList.appendChild(emptyMessage);
         return;
     }
 
-    const table = document.createElement('table');
-    table.innerHTML = `
-      <tr>
-        <th>ID</th>
-        <th>Price</th>
-        <th>Quantity</th>
-      </tr>
-    `;
+    const table = createTable();
 
     inventory.forEach(function (product) {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-        <td>${product.id}</td>
-        <td>$${product.price.toFixed(2)}</td>
-        <td>${product.quantity}</td>
-      `;
-
+        const row = createRow(product);
         table.appendChild(row);
     });
 
     inventoryList.appendChild(table);
+}
+
+function createTable() {
+    const table = document.createElement('table');
+    table.classList.add('table', 'table-hover', 'table-dark');
+    table.innerHTML = `
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    `;
+    return table;
+}
+
+function createRow(product) {
+    const row = document.createElement('tr');
+    row.classList.add('text-dark');
+    row.innerHTML = `
+        <td>${product.id}</td>
+        <td>$${product.price.toFixed(2)}</td>
+        <td>${product.quantity}</td>
+    `;
+    return row;
 }
