@@ -12,7 +12,38 @@
 </head>
 
 <body>
-    <div class="></div>
+    <div class="container mt-3 pb-3 border border-secondary rounded">
+        <div class="row">
+            <div class="col">
+                <img src="#" alt="student image">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <form class="row g-3 mt-3 pb-4 px-3 border border-secondary rounded pt-3">
+                    <div class="col-md-6">
+                        <legend>Class</legend>
+                        <input class="form-control" type="text" id="mathematical" placeholder="Mathematics" readonly>
+                        <input class="form-control" type="text" id="english" placeholder="English" readonly>
+                        <input class="form-control" type="text" id="biology" placeholder="Biology" readonly>
+                        <input class="form-control" type="text" id="chemistry" placeholder="Chemistry" readonly>
+                    </div>
+                    <div class="col-md-6">
+                        <legend>Score</legend>
+                        <input class="form-control" type="text" id="mathematicalGrade" placeholder="0">
+                        <input class="form-control" type="text" id="englishGrade" placeholder="0">
+                        <input class="form-control" type="text" id="biologyGrade" placeholder="0">
+                        <input class="form-control" type="text" id="chemistryGrade" placeholder="0">
+                    </div>
+                    <div class="col-12 text-center">
+                        <button type="button" class="btn btn-outline-info" onclick="addStudent()">Add Student</button>
+                        <button type="button" class="btn btn-outline-info" onclick="showStatistics()">Show
+                            Statistics</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

@@ -1,6 +1,6 @@
 function saveMovie() {
     var fields = ['title', 'director', 'year'];
-    var isMissing = fields.some(function(field) {
+    var isMissing = fields.some(function (field) {
         return document.getElementById(field).value === '';
     });
     if (isMissing) {
@@ -13,6 +13,15 @@ function saveMovie() {
         year: document.getElementById('year').value,
         borrowed: document.getElementById('borrow').checked
     };
+
+    if (movie.borrowed) {
+        movie.borrowed = true;
+    } else {
+        movie.borrowed = false;
+        movie.pop();
+    }
+
+
     var movies = JSON.parse(localStorage.getItem('movies')) || [];
     movies.push(movie);
     localStorage.setItem('movies', JSON.stringify(movies));
@@ -29,8 +38,17 @@ function showBorrowed() {
 
     const borrowedList = document.getElementById('borrowed');
 
-    const table = document.createElement('table');
-    table.classList.add('table', 'table-striped');
+    let table = borrowedList.querySelector('table');
+
+    if (!table) {
+        table = document.createElement('table');
+        table.classList.add('table', 'table-striped');
+        borrowedList.appendChild(table);
+    } else {
+        while (table.firstChild) {
+            table.firstChild.remove();
+        }
+    }
 
     const thead = document.createElement('thead');
     const tr = document.createElement('tr');
@@ -65,5 +83,4 @@ function showBorrowed() {
     });
 
     table.appendChild(tbody);
-    borrowedList.appendChild(table);
 }

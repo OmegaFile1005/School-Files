@@ -1,4 +1,5 @@
 function reserveAirplane() {
+    let planeReservations = JSON.parse(localStorage.getItem('Airplane Reservations')) || [];
     const selectedSeats = [];
     const firstClassRadio = document.getElementById('first class');
     const economicRadio = document.getElementById('economic');
@@ -8,14 +9,22 @@ function reserveAirplane() {
         if (checkbox.checked) {
             selectedSeats.push(checkbox.id);
             checkbox.disabled = true;
+            checkbox.checked = false;
         }
     });
 
     let ticketPrice = firstClassRadio.checked ? 295 :
         economicRadio.checked ? 230 : 0;
 
-    localStorage.setItem('selectedSeats', JSON.stringify(selectedSeats));
-    localStorage.setItem('ticketPrice', ticketPrice);
+    const currentPlaneReservation = {
+        selectedSeats,
+        ticketPrice: ticketPrice * selectedSeats.length
+    };
+
+    planeReservations.push(currentPlaneReservation);
+
+    localStorage.setItem('Airplane Reservations', JSON.stringify(planeReservations));
+    // localStorage.setItem('ticketPrice', ticketPrice);
 
     console.log('Airplane reserved');
 }
@@ -48,42 +57,45 @@ function getRoomPrice() {
 }
 
 function showReservations() {
-    const planeReservations = JSON.parse(localStorage.getItem('selectedSeats')) || [];
-    const hotelReservations = JSON.parse(localStorage.getItem('selectedRooms')) || [];
 
-    if (planeReservations.length > 0 && hotelReservations.length > 0) {
+
+    // const planeReservations = JSON.parse(localStorage.getItem('selectedSeats')) || [];
+    // const hotelReservations = JSON.parse(localStorage.getItem('selectedRooms')) || [];
+
+    // if (planeReservations.length > 0 && hotelReservations.length > 0) {
+    // const planeReservationsTable = createTable(planeReservations, ['table', 'table-striped']);
+    // const hotelReservationsTable = createTable(hotelReservations, ['table', 'table-striped', 'table-dark']);
+
+    // const planeReservationsContainer = document.getElementById('planeReservations');
+    // if (planeReservationsContainer) {
+    // planeReservationsContainer.innerHTML = '';
+    // planeReservationsContainer.appendChild(planeReservationsTable);
+    // }
+
+    // const hotelReservationsContainer = document.getElementById('hotelReservations');
+    // if (hotelReservationsContainer) {
+    // hotelReservationsContainer.innerHTML = '';
+    // hotelReservationsContainer.appendChild(hotelReservationsTable);
+    // }
+
+    // console.log('Showing reservations');
+    // } else {
+    // console.log('No reservations found');
+    // }
+
+    const planeReservations = JSON.parse(localStorage.getItem('Airplane Reservations'));
+
+    if (planeReservations) {
         const planeReservationsTable = createTable(planeReservations, ['table', 'table-striped']);
-        const hotelReservationsTable = createTable(hotelReservations, ['table', 'table-striped', 'table-dark']);
-
         const planeReservationsContainer = document.getElementById('planeReservations');
         if (planeReservationsContainer) {
             planeReservationsContainer.innerHTML = '';
             planeReservationsContainer.appendChild(planeReservationsTable);
         }
-
-        const hotelReservationsContainer = document.getElementById('hotelReservations');
-        if (hotelReservationsContainer) {
-            hotelReservationsContainer.innerHTML = '';
-            hotelReservationsContainer.appendChild(hotelReservationsTable);
-        }
-
-        console.log('Showing reservations');
-    } else {
-        console.log('No reservations found');
     }
 }
 
-function createTable(reservations, classes) {
-    const table = document.createElement('table');
-    table.classList.add(...classes);
-    const tbody = document.createElement('tbody');
-    reservations.forEach(function (reservation) {
-        const row = document.createElement('tr');
-        const cell = document.createElement('td');
-        cell.textContent = reservation;
-        row.appendChild(cell);
-        tbody.appendChild(row);
-    });
-    table.appendChild(tbody);
-    return table;
+function createTable(planeReservations, hotelReservations) {
+    for (planeReservations) {
+        
 }
