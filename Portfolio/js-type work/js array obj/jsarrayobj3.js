@@ -1,11 +1,10 @@
 function reserveAirplane() {
     let planeReservations = JSON.parse(localStorage.getItem('Airplane Reservations')) || [];
     const selectedSeats = [];
-    const firstClassRadio = document.getElementById('first class');
-    const economicRadio = document.getElementById('economic');
-    const checkboxes = document.querySelectorAll('#plane input[type="checkbox"]');
+    const seatClass = document.querySelector('input[name="seatClass"]:checked').value;
+    const seatCheckboxes = document.querySelectorAll('#plane input[type="checkbox"]');
 
-    checkboxes.forEach(checkbox => {
+    seatCheckboxes.forEach(checkbox => {
         if (checkbox.checked) {
             selectedSeats.push(checkbox.id);
             checkbox.disabled = true;
@@ -13,12 +12,18 @@ function reserveAirplane() {
         }
     });
 
-    let ticketPrice = firstClassRadio.checked ? 295 :
-        economicRadio.checked ? 230 : 0;
+    if (selectedSeats.length === 0) {
+        alert('Please select at least one seat.');
+        return;
+    }
+
+    let ticketPrice = seatClass === 'First Class' ? 295 :
+        seatClass === 'Economic' ? 230 : 0;
 
     const currentPlaneReservation = {
         selectedSeats,
-        ticketPrice: ticketPrice * selectedSeats.length
+        ticketPrice: ticketPrice * selectedSeats.length,
+        seatClass
     };
 
     planeReservations.push(currentPlaneReservation);
@@ -30,72 +35,96 @@ function reserveAirplane() {
 }
 
 function reserveHotel() {
-    const selectedRooms = Array.from(document.querySelectorAll('#hotel input[type="checkbox"]'))
-        .filter(checkbox => checkbox.checked)
-        .map(checkbox => checkbox.id);
+    let hotelReservations = JSON.parse(localStorage.getItem('Room Reservations')) || [];
+    const selectedRooms = [];
+    const roomClass = document.querySelector('input[name="roomType"]:checked').value;
+    const roomCheckboxes = document.querySelectorAll('#hotel input[type="checkbox"]');
 
-    document.querySelectorAll('#hotel input[type="checkbox"]')
-        .forEach(checkbox => checkbox.checked && (checkbox.disabled = true));
+    roomCheckboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+            selectedRooms.push(checkbox.id);
+            checkbox.disabled = true;
+            checkbox.checked = false;
+        }
+    });
 
-    // Add the readonly attribute to the radio inputs
-    document.querySelectorAll('#hotel input[type="radio"]')
-        .forEach(radio => radio.readOnly = true);
+    if (selectedRooms.length === 0) {
+        alert('Please select at least one room.');
+        return;
+    }
 
-    const roomPrice = getRoomPrice();
+    let roomPrice = roomClass === 'Penthouse' ? 180 :
+        roomClass === 'Regular' ? 150 : 0;
 
-    localStorage.setItem('selectedRooms', JSON.stringify(selectedRooms));
-    localStorage.setItem('roomPrice', roomPrice);
+    const currentHotelReservation = {
+        selectedRooms,
+        roomPrice: roomPrice * selectedRooms.length,
+        roomClass
+    };
+
+    hotelReservations.push(currentHotelReservation);
+
+    localStorage.setItem('Room Reservations', JSON.stringify(hotelReservations));
 
     console.log('Hotel reserved');
 }
 
-function getRoomPrice() {
-    const penthouseRadio = document.getElementById('penthouse');
-    const regularRadio = document.getElementById('regular');
-
-    return penthouseRadio.checked ? 180 : regularRadio.checked ? 120 : 0;
-}
-
 function showReservations() {
-
-
-    // const planeReservations = JSON.parse(localStorage.getItem('selectedSeats')) || [];
-    // const hotelReservations = JSON.parse(localStorage.getItem('selectedRooms')) || [];
-
-    // if (planeReservations.length > 0 && hotelReservations.length > 0) {
-    // const planeReservationsTable = createTable(planeReservations, ['table', 'table-striped']);
-    // const hotelReservationsTable = createTable(hotelReservations, ['table', 'table-striped', 'table-dark']);
-
-    // const planeReservationsContainer = document.getElementById('planeReservations');
-    // if (planeReservationsContainer) {
-    // planeReservationsContainer.innerHTML = '';
-    // planeReservationsContainer.appendChild(planeReservationsTable);
-    // }
-
-    // const hotelReservationsContainer = document.getElementById('hotelReservations');
-    // if (hotelReservationsContainer) {
-    // hotelReservationsContainer.innerHTML = '';
-    // hotelReservationsContainer.appendChild(hotelReservationsTable);
-    // }
-
-    // console.log('Showing reservations');
-    // } else {
-    // console.log('No reservations found');
-    // }
-
     const planeReservations = JSON.parse(localStorage.getItem('Airplane Reservations'));
+    const hotelReservations = JSON.parse(localStorage.getItem('Room Reservations'));
 
-    if (planeReservations) {
-        const planeReservationsTable = createTable(planeReservations, ['table', 'table-striped']);
-        const planeReservationsContainer = document.getElementById('planeReservations');
-        if (planeReservationsContainer) {
-            planeReservationsContainer.innerHTML = '';
-            planeReservationsContainer.appendChild(planeReservationsTable);
-        }
+    const planeReservationsTable = createTable(planeReservations, ['table', 'table-hover'], ['Number', 'Class', 'Seats', 'Price'], createPlaneRow);
+    const hotelReservationsTable = createTable(hotelReservations, ['table', 'table-dark', 'table-striped'], ['Number', 'Type', 'Rooms', 'Price'], createHotelRow);
+
+    const planeReservationsContainer = document.getElementById('planeReservations');
+    if (planeReservationsContainer) {
+        planeReservationsContainer.innerHTML = '';
+        planeReservationsContainer.appendChild(planeReservationsTable);
     }
-}
 
-function createTable(planeReservations, hotelReservations) {
-    for (planeReservations) {
-        
+    const hotelReservationsContainer = document.getElementById('hotelReservations');
+    if (hotelReservationsContainer) {
+        hotelReservationsContainer.innerHTML = '';
+        hotelReservationsContainer.appendChild(hotelReservationsTable);
+    }
+
+    console.log('showReservations called');
+
+    function createTable(reservations, classes, headers, createRow) {
+        const table = document.createElement('table');
+        table.classList.add(...classes);
+        const tbody = document.createElement('tbody');
+        const headerRow = createRow(headers);
+        tbody.appendChild(headerRow);
+        reservations.forEach(function (reservation, i) {
+            const row = createRow([
+                i + 1,
+                reservation.seatClass || reservation.roomClass,
+                reservation.selectedSeats?.join(', ') || reservation.selectedRooms?.join(', ') || '',
+                `$${reservation.ticketPrice || reservation.roomPrice}`
+            ]);
+            tbody.appendChild(row);
+        });
+        table.appendChild(tbody);
+        return table;
+    }
+
+    function createPlaneRow(data) {
+        return createRow(data, ['table-hover']);
+    }
+
+    function createHotelRow(data) {
+        return createRow(data, ['table-dark']);
+    }
+
+    function createRow(data, classes) {
+        const row = document.createElement('tr');
+        row.classList.add(...classes);
+        data.forEach(function (item) {
+            const cell = document.createElement('td');
+            cell.textContent = item;
+            row.appendChild(cell);
+        });
+        return row;
+    }
 }
