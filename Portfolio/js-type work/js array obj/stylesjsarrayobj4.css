@@ -5,3 +5,10 @@ body {
 label    {
     color: #a11d1a;
 }
+
+img {
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 20vh;
+}
