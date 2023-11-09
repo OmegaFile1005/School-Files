@@ -1,17 +1,58 @@
+let students = [];
+
 function addStudent() {
-    var inputElement = document.getElementById('input');
-    var studentName = inputElement.value.trim();
-    if (studentName !== '') {
-        students.push(studentName);
-        inputElement.value = '';
-        updateStudentList();
-    }
+    const name = document.getElementById('name').value;
+    const classNames = ['#class input[type="text"]'];
+    const mathematicalGrade = parseFloat(document.getElementById('mathematicalGrade').value);
+    const englishGrade = parseFloat(document.getElementById('englishGrade').value);
+    const biologyGrade = parseFloat(document.getElementById('biologyGrade').value);
+    const chemistryGrade = parseFloat(document.getElementById('chemistryGrade').value);
+    const averageGrade = (mathematicalGrade + englishGrade + biologyGrade + chemistryGrade) / 4;
+
+    const newStudent = {
+        name,
+        grades: {
+            mathematical: mathematicalGrade,
+            english: englishGrade,
+            biology: biologyGrade,
+            chemistry: chemistryGrade,
+        },
+        average: averageGrade,
+    };
+
+    const classes = classNames.map((className) => {
+        const classValue = parseFloat(document.querySelector(className).value);
+        return { className, classValue };
+    });
+
+    students.push(newStudent);
+
+    console.log(students);
+    localStorage.setItem('students', JSON.stringify(students));
 }
 
 function showStatistics() {
-    var statisticsElement = document.getElementById('statistics');
-    statisticsElement.innerHTML = 'Total students: ' + students.length;
-    if (students.length > 0) {
-        statisticsElement.innerHTML += '<br>Students: ' + students.join(', ');
-    }
+    const tbody = document.getElementById('statistics');
+    tbody.innerHTML = '';
+
+    const data = [
+        ['Name', '', 'Math', 'English', 'Biology', 'Chemistry', 'Average'],
+        ...students.map((student) => {
+            const row = [];
+
+            if (student.includes(student.name + student.average.toFixed(2))) {
+                row.push('', '', '');
+            } else {
+                student.classes.forEach((cls) => {
+                    row.push('', cls.className, cls.classValue);
+                });
+            }
+
+            row.push(student.average.toFixed(2));
+
+            return row;
+        }),
+    ];
+
+    document.getElementsByClassName('row')[0].removeAttribute('hidden');
 }
