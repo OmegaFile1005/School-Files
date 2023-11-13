@@ -40,15 +40,11 @@ function showStatistics() {
         ...students.map((student) => {
             const row = [];
 
-            if (student.includes(student.name + student.average.toFixed(2))) {
-                row.push('', '', '');
-            } else {
-                student.classes.forEach((cls) => {
-                    row.push('', cls.className, cls.classValue);
-                });
-            }
+            row.push(student.name + '' + student.average.toFixed(2));
 
-            row.push(student.average.toFixed(2));
+            for (const { className, classValue } of student.grades) {
+                row.push(classValue);
+            }
 
             return row;
         }),

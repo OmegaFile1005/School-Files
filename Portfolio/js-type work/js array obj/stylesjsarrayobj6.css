@@ -2,3 +2,15 @@ table {
     color: blue;
     align-items: center;
 }
+
+fieldset {
+    text-align: center;
+    color: blue;
+}
+
+img {
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 40vh;
+}
