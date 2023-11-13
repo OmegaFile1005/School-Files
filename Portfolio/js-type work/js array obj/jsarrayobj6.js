@@ -41,5 +41,5 @@ function submitBook() {
     }
 
     localStorage.setItem("book", JSON.stringify(tdTitle.textContent));
-    
+
 }
