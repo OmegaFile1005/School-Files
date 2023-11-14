@@ -19,7 +19,7 @@ function showAll() {
 
     if (accounts.length === 0) {
         var emptyMessage = document.createElement('p');
-        emptyMessage.textContent = 'No accounts found';
+        emptyMessageasd.textContent = 'No accounts found';
         tbody.appendChild(emptyMessage);
         return;
     }
