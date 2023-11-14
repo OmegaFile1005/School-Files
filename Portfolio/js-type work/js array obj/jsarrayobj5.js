@@ -11,6 +11,26 @@ function generateAccountNumber() {
     console.log(accountNumber + ' has been generated');
 }
 
+
+function openAccount() {
+    const balance = document.getElementById('accountPredeposit').value;
+    const holderName = document.getElementById('holderName').value;
+    const holderLastName = document.getElementById('holderLastName').value;
+
+    const accounts = JSON.parse(localStorage.getItem('accounts'));
+
+    accounts.push({
+        accountNumber: accountNumber,
+        balance: balance,
+        holderName: holderName,
+        holderLastName: holderLastName
+    })
+
+    localStorage.setItem('accounts', JSON.stringify(accounts));
+
+    console.log(accounts + ' has been created');
+}
+
 function showAll() {
     var tbody = document.getElementById('tbody');
     tbody.innerHTML = '';
@@ -31,25 +51,6 @@ function showAll() {
         row.appendChild(accountNumberCell);
     })
 
-}
-
-function openAccount() {
-    const balance = document.getElementById('accountPredeposit').value;
-    const holderName = document.getElementById('holderName').value;
-    const holderLastName = document.getElementById('holderLastName').value;
-
-
-
-    accounts.push({
-        accountNumber: accountNumber,
-        balance: balance,
-        holderName: holderName,
-        holderLastName: holderLastName
-    })
-
-    localStorage.setItem('accounts', JSON.stringify(accounts));
-
-    console.log(accounts + ' has been created');
 }
 
 function deposit() {
