@@ -1,16 +1,15 @@
 const accounts = [];
 
 function generateAccountNumber() {
-    const accountNumber = Math.floor(Math.random() * 9000) + 1000;
+    const newAccount = Math.floor(Math.random() * 9000) + 1000;
     const accountNumberInput = document.getElementById('accountNumber');
 
-    accountNumberInput.placeholder = accountNumber;
-    accountNumberInput.value = accountNumber;
+    accountNumberInput.placeholder = newAccount;
+    accountNumberInput.value.innerHTML = newAccount;
 
-    localStorage.setItem('accountNumber', accountNumber);
-    console.log(accountNumber + ' has been generated');
+    localStorage.setItem('accountNumber', newAccount);
+    console.log(newAccount + ' has been generated');
 }
-
 
 function openAccount() {
     const balance = document.getElementById('accountPredeposit').value;
@@ -19,12 +18,27 @@ function openAccount() {
 
     const accounts = JSON.parse(localStorage.getItem('accounts'));
 
+
+
     accounts.push({
-        accountNumber: accountNumber,
+        accountNumber: localStorage.getItem('accountNumber'),
         balance: balance,
         holderName: holderName,
         holderLastName: holderLastName
     })
+
+    if (balance === '' || holderName === '' || holderLastName === '') {
+        accounts.pop();
+        return;
+    } else {
+        for (var i = 0; i < accounts.length; i++) {
+            if (accounts[i].accountNumber == localStorage.getItem('accountNumber')) {
+                accounts[i].balance = balance;
+                accounts[i].holderName = holderName;
+                accounts[i].holderLastName = holderLastName;
+            }
+        }
+    }
 
     localStorage.setItem('accounts', JSON.stringify(accounts));
 
@@ -54,13 +68,9 @@ function showAll() {
 }
 
 function deposit() {
-    const accountNumber = document.getElementById('accountNumber').value;
-    const amount = document.getElementById('amount').value;
 
-    const accounts = JSON.parse(localStorage.getItem('accounts'));
 }
 
 function withdraw() {
-    return;
 
 }
