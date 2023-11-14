@@ -1,7 +1,14 @@
-function generateAccountNumber() {
-    var accountNumber = Math.floor(Math.random() * 1000000000);
-    return accountNumber;
+const accounts = [];
 
+function generateAccountNumber() {
+    const accountNumber = Math.floor(Math.random() * 9000) + 1000;
+    const accountNumberInput = document.getElementById('accountNumber');
+
+    accountNumberInput.placeholder = accountNumber;
+    accountNumberInput.value = accountNumber;
+
+    localStorage.setItem('accountNumber', accountNumber);
+    console.log(accountNumber + ' has been generated');
 }
 
 function showAll() {
@@ -27,19 +34,22 @@ function showAll() {
 }
 
 function openAccount() {
-    var accountNumber = generateAccountNumber();
-    var account = {
+    const balance = document.getElementById('accountPredeposit').value;
+    const holderName = document.getElementById('holderName').value;
+    const holderLastName = document.getElementById('holderLastName').value;
+
+
+
+    accounts.push({
         accountNumber: accountNumber,
-        balance: 0
-    };
-
-    var accounts = JSON.parse(localStorage.getItem('accounts'));
-
-    accounts.push(account);
+        balance: balance,
+        holderName: holderName,
+        holderLastName: holderLastName
+    })
 
     localStorage.setItem('accounts', JSON.stringify(accounts));
 
-    showAll();
+    console.log(accounts + ' has been created');
 }
 
 function deposit() {

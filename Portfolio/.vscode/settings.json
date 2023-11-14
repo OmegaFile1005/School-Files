@@ -3,5 +3,16 @@
     "files.autoSave": "afterDelay",
     "window.autoDetectColorScheme": false,
     "editor.smoothScrolling": true,
-    "codeium.enableSearch": true
+    "codeium.enableSearch": true,
+    "git.allowForcePush": true,
+    "git.allowNoVerifyCommit": true,
+    "git.autofetch": true,
+    "git.autoStash": true,
+    "git.enableSmartCommit": true,
+    "git.detectSubmodules": true,
+    "githubRepositories.indexing.cacheSizeLimit": 1000,
+    "git.alwaysShowStagedChangesResourceGroup": true,
+    "git.mergeEditor": true,
+    "git.postCommitCommand": "sync",
+    "git.timeline.showUncommitted": true
 }
