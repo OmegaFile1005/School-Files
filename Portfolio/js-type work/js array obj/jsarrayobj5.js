@@ -16,8 +16,6 @@ function openAccount() {
     const holderName = document.getElementById('holderName').value;
     const holderLastName = document.getElementById('holderLastName').value;
 
-    const accounts = JSON.parse(localStorage.getItem('accounts'));
-
     accounts.push({
         accountNumber: localStorage.getItem('accountNumber'),
         balance: balance,
@@ -40,29 +38,22 @@ function openAccount() {
 
     localStorage.setItem('accounts', JSON.stringify(accounts));
 
+    document.getElementById('accountPredeposit').value = '';
+    document.getElementById('holderName').value = '';
+    document.getElementById('holderLastName').value = '';
     console.log(accounts + ' has been created');
 }
 
 function showAll() {
-    var tbody = document.getElementById('tbody');
-    tbody.innerHTML = '';
+    const accountNumbers = document.getElementById('accounts');
+    accounts.innerHTML = '';
 
-    var accounts = JSON.parse(localStorage.getItem('accounts'));
+    const accounts = JSON.parse(localStorage.getItem('accounts'));
 
-    if (accounts.length === 0) {
-        var emptyMessage = document.createElement('p');
-        emptyMessageasd.textContent = 'No accounts found';
-        tbody.appendChild(emptyMessage);
+    if (accounts == null) {
         return;
     }
-
-    accounts.forEach(function (account) {
-        var row = document.createElement('tr');
-        var accountNumberCell = document.createElement('td');
-        accountNumberCell.textContent = account.accountNumber;
-        row.appendChild(accountNumberCell);
-    })
-
+    const table = document.createElement('table');
 }
 
 function deposit() {
