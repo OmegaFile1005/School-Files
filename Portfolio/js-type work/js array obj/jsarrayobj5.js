@@ -16,28 +16,29 @@ function openAccount() {
     const holderName = document.getElementById('holderName').value;
     const holderLastName = document.getElementById('holderLastName').value;
 
-    accounts.push({
-        accountNumber: localStorage.getItem('accountNumber'),
-        balance: balance,
-        holderName: holderName,
-        holderLastName: holderLastName
-    })
-
     if (balance === '' || holderName === '' || holderLastName === '') {
-        accounts.pop();
         return;
-    } else {
-        for (var i = 0; i < accounts.length; i++) {
-            if (accounts[i].accountNumber == localStorage.getItem('accountNumber')) {
-                accounts[i].balance = balance;
-                accounts[i].holderName = holderName;
-                accounts[i].holderLastName = holderLastName;
-            }
-        }
     }
 
-    localStorage.setItem('accounts', JSON.stringify(accounts));
+    const accountNumber = localStorage.getItem('accountNumber');
 
+    const account = {
+        accountNumber,
+        balance,
+        holderName,
+        holderLastName
+    };
+
+    const accountExists = accounts.some(acc => acc.accountNumber === accountNumber);
+
+    if (accountExists) {
+        alert('Account number already exists');
+        return;
+    }
+
+    accounts.push(account);
+
+    localStorage.setItem('accounts', JSON.stringify(accounts));
     document.getElementById('accountPredeposit').value = '';
     document.getElementById('holderName').value = '';
     document.getElementById('holderLastName').value = '';
@@ -45,21 +46,21 @@ function openAccount() {
 }
 
 function showAll() {
-    const accountNumbers = document.getElementById('accounts');
-    accounts.innerHTML = '';
+    const allAccounts = JSON.parse(localStorage.getItem('accounts'));
+    const ValidAccounts = allAccounts.filter(account => accountExists);
+    const allAccountsList = document.getElementById('accounts');
+ 
+    let table = allAccountsList.querySelector('table');
 
-    const accounts = JSON.parse(localStorage.getItem('accounts'));
-
-    if (accounts == null) {
-        return;
+    if (!table) {
+        table = document.createElement('table');
+        table.classList.add('table', 'table-dark');
+        allAccountsList.appendChild(table);
+    } else {
+        while (table.firstChild) {
+            table.firstChild.remove();
+        }
     }
-    const table = document.createElement('table');
-}
-
-function deposit() {
-
-}
-
-function withdraw() {
-
+    
+    const thead = document.createElement('thead');
 }

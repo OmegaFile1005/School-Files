@@ -38,6 +38,7 @@ function showBorrowed() {
 
     const borrowedList = document.getElementById('borrowed');
 
+    document.getElementById('borrowed').innerHTML = '<h3 class="text-center">Borrowed Movies</h3>';
     let table = borrowedList.querySelector('table');
 
     if (!table) {
