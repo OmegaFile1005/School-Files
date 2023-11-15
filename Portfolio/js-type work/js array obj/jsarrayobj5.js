@@ -18,8 +18,6 @@ function openAccount() {
 
     const accounts = JSON.parse(localStorage.getItem('accounts'));
 
-
-
     accounts.push({
         accountNumber: localStorage.getItem('accountNumber'),
         balance: balance,
