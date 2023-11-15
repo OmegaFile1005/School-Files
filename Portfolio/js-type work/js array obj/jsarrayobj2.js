@@ -82,6 +82,5 @@ function showBorrowed() {
         tr.appendChild(tdYear);
         tbody.appendChild(tr);
     });
-
     table.appendChild(tbody);
 }

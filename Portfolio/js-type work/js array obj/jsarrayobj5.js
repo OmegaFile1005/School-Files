@@ -36,20 +36,24 @@ function openAccount() {
         return;
     }
 
-    accounts.push(account);
+
 
     localStorage.setItem('accounts', JSON.stringify(accounts));
+    accounts.push(account);
     document.getElementById('accountPredeposit').value = '';
     document.getElementById('holderName').value = '';
     document.getElementById('holderLastName').value = '';
     console.log(accounts + ' has been created');
+
 }
 
 function showAll() {
     const allAccounts = JSON.parse(localStorage.getItem('accounts'));
-    const ValidAccounts = allAccounts.filter(account => accountExists);
+    const validAccounts = allAccounts.filter(account => account.accountExists);
     const allAccountsList = document.getElementById('accounts');
- 
+
+    allAccountsList.innerHTML = '<h1 class="text-center">All Accounts</h1>';
+
     let table = allAccountsList.querySelector('table');
 
     if (!table) {
@@ -57,10 +61,42 @@ function showAll() {
         table.classList.add('table', 'table-dark');
         allAccountsList.appendChild(table);
     } else {
-        while (table.firstChild) {
-            table.firstChild.remove();
-        }
+        table.innerHTML = '';
     }
-    
-    const thead = document.createElement('thead');
+
+    const createTableCell = (text) => {
+        const td = document.createElement('td');
+        td.textContent = text;
+        return td;
+    };
+
+    const createTableRow = (account) => {
+        const tr = document.createElement('tr');
+        tr.appendChild(createTableCell(account.accountNumber));
+        tr.appendChild(createTableCell(account.holderName));
+        tr.appendChild(createTableCell(account.holderLastName));
+        tr.appendChild(createTableCell(account.balance));
+        return tr;
+    };
+
+    const createTableHeader = () => {
+        const thead = document.createElement('thead');
+        const tr = document.createElement('tr');
+        tr.appendChild(createTableCell('Account Number'));
+        tr.appendChild(createTableCell('Holder Name'));
+        tr.appendChild(createTableCell('Holder Last Name'));
+        tr.appendChild(createTableCell('Balance'));
+        thead.appendChild(tr);
+        return thead;
+    };
+
+    const tbody = document.createElement('tbody');
+
+    validAccounts.forEach(account => {
+        const tr = createTableRow(account);
+        tbody.appendChild(tr);
+    });
+
+    table.appendChild(createTableHeader());
+    table.appendChild(tbody);
 }
