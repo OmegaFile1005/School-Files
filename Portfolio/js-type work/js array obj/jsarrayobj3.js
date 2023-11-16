@@ -79,12 +79,14 @@ function showReservations() {
     const planeReservationsContainer = document.getElementById('planeReservations');
     if (planeReservationsContainer) {
         planeReservationsContainer.innerHTML = '';
+        planeReservationsContainer.innerHTML = '<h3 class="text-center" id="planeList">List of Plane Reservations</h3>';
         planeReservationsContainer.appendChild(planeReservationsTable);
     }
 
     const hotelReservationsContainer = document.getElementById('hotelReservations');
     if (hotelReservationsContainer) {
         hotelReservationsContainer.innerHTML = '';
+        hotelReservationsContainer.innerHTML = '<h3 class="text-center" id="hotelList">List of Hotel Reservations</h3>';
         hotelReservationsContainer.appendChild(hotelReservationsTable);
     }
 

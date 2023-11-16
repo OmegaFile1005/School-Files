@@ -38,7 +38,7 @@ function openAccount() {
 
 
 
-    localStorage.setItem('accounts', JSON.stringify(accounts));
+    localStorage.setItem('Logged Account', JSON.stringify(accounts));
     accounts.push(account);
     document.getElementById('accountPredeposit').value = '';
     document.getElementById('holderName').value = '';
@@ -48,7 +48,7 @@ function openAccount() {
 }
 
 function showAll() {
-    const allAccounts = JSON.parse(localStorage.getItem('accounts'));
+    const allAccounts = JSON.parse(localStorage.getItem('Logged Account'));
     const validAccounts = allAccounts.filter(account => account.accountExists);
     const allAccountsList = document.getElementById('accounts');
 

@@ -7,6 +7,11 @@ function addStudent() {
     const englishGrade = parseFloat(document.getElementById('englishGrade').value);
     const biologyGrade = parseFloat(document.getElementById('biologyGrade').value);
     const chemistryGrade = parseFloat(document.getElementById('chemistryGrade').value);
+
+    if (mathematicalGrade > 100 || englishGrade > 100 || biologyGrade > 100 || chemistryGrade > 100) {
+        return;
+    }
+
     const averageGrade = (mathematicalGrade + englishGrade + biologyGrade + chemistryGrade) / 4;
 
     const newStudent = {
@@ -32,23 +37,58 @@ function addStudent() {
 }
 
 function showStatistics() {
-    const tbody = document.getElementById('statistics');
-    tbody.innerHTML = '';
+    const table = document.createElement('table');
+    table.classList.add('table', 'table-dark');
+    table.innerHTML = `
+  <thead>
+    <tr>
+      <th>Student Name</th>
+      <th>Class</th>
+      <th>Score</th>
+    </tr>
+  </thead>
+  <tbody id="statistics">
+  </tbody>
+`;
 
-    const data = [
-        ['Name', '', 'Math', 'English', 'Biology', 'Chemistry', 'Average'],
-        ...students.map((student) => {
-            const row = [];
+    function createNameScoreRow(student) {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+    <td>${student.name}</td>
+    ''
+    <td>${student.average}</td>
+  `;
+        return row;
+    }
 
-            row.push(student.name + '' + student.average.toFixed(2));
-
-            for (const { className, classValue } of student.grades) {
-                row.push(classValue);
-            }
-
+    function createClassScoreRow(student) {
+        const row = document.createElement('tr');
+        for (let i = 0; i < student.classes.length; i++) {
+            row.innerHTML = `
+    ''
+    <td>${student.className}</td>
+    <td>${student.class}</td>
+  `;
             return row;
-        }),
-    ];
+        }
 
-    document.getElementsByClassName('row')[0].removeAttribute('hidden');
+        statisticsElement.appendChild(table);
+    }
+
+    const statisticsElement = document.getElementById('statistics');
+    tbody = document.querySelector('#statistics');
+
+    if (statisticsElement && tbody) {
+        statisticsElement.appendChild(table);
+        students.forEach((student) => {
+            if (student.classes.length > 1) {
+                createClassScoreRow(student);
+            } else {
+                createNameScoreRow(student);
+            }
+        })
+    }
+
+    console.log('showStatistics called');
+
 }
