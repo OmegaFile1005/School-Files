@@ -2,7 +2,8 @@ body {
     background-color: #f5f5dc;
 }
 
-label    {
+form,
+h2 {
     color: #a11d1a;
 }
 

@@ -29,8 +29,10 @@ function saveMovie() {
 }
 
 function showBorrowed() {
-    const heading = document.querySelector('h3');
-    heading.removeAttribute('hidden');
+    if (!localStorage.getItem('movies')) {
+        alert('No movies found.');
+        return;
+    }
 
     const movies = JSON.parse(localStorage.getItem('movies'));
 

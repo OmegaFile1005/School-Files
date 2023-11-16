@@ -1,8 +1,12 @@
 let students = [];
+let mathematical = 0;
+let english = 0;
+let biology = 0;
+let chemistry = 0;
 
 function addStudent() {
     const name = document.getElementById('name').value;
-    const classNames = ['#class input[type="text"]'];
+    const classNames = ['#id input[type="text"]'];
     const mathematicalGrade = parseFloat(document.getElementById('mathematicalGrade').value);
     const englishGrade = parseFloat(document.getElementById('englishGrade').value);
     const biologyGrade = parseFloat(document.getElementById('biologyGrade').value);
@@ -25,18 +29,22 @@ function addStudent() {
         average: averageGrade,
     };
 
-    const classes = classNames.map((className) => {
-        const classValue = parseFloat(document.querySelector(className).value);
-        return { className, classValue };
-    });
-
     students.push(newStudent);
+
+
+    for (let i = 0; i < classNames.length; i++) {
+        const className = classNames[i].valueOf;
+        newStudent.classes.push(className);
+    };
+
 
     console.log(students);
     localStorage.setItem('students', JSON.stringify(students));
 }
 
 function showStatistics() {
+    document.getElementById('statistics').innerHTML = '';
+    document.getElementById('statistics').innerHTML = '<h2>Statistics</h2>';
     const table = document.createElement('table');
     table.classList.add('table', 'table-dark');
     table.innerHTML = `
