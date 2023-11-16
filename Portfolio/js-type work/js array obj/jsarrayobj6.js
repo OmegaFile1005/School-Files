@@ -50,7 +50,7 @@ function submitBook() {
     // localStorage.setItem("book", JSON.stringify(tdTitle.textContent));
 
     let bookInventory = document.getElementById('bookList');
-    
+
     if (localStorage.getItem("book") === null) {
         bookInventory = [];
     } else {
@@ -79,8 +79,35 @@ function submitBook() {
     } else {
         document.createAttribute("status").value = "Checked Out";
     }
-    
+
+    if (document.getElementById("checkOut").checked || document.getElementById("return").checked) {
+        alert("Book Checked Out or Returned");
+    }
+
     document.getElementById("bookList").value = "";
     document.innerHTML = "<h3>Book List</h3>";
-    const table = document.getElementById('bookList');
+    const table = document.createElement('table');
+    const thead = document.createElement('thead');
+    const tbody = document.createElement('tbody');
+
+    table.appendChild(thead);
+    table.appendChild(tbody);
+
+    const tr = document.createElement('tr');
+    const thTitle = document.createElement('th');
+    const thISBN = document.createElement('th');
+    const thPagecount = document.createElement('th');
+    const thStatus = document.createElement('th');
+
+    thTitle.textContent = "Title";
+    thISBN.textContent = "ISBN";
+    thPagecount.textContent = "Page Count";
+    thStatus.textContent = "Status";
+
+    tr.appendChild(thTitle);
+    tr.appendChild(thISBN);
+    tr.appendChild(thPagecount);
+    tr.appendChild(thStatus);
+
+    thead.appendChild(tr);
 }
