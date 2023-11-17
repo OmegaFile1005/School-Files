@@ -21,10 +21,10 @@ function addStudent() {
     const newStudent = {
         name,
         grades: {
-            mathematical: mathematicalGrade,
-            english: englishGrade,
-            biology: biologyGrade,
-            chemistry: chemistryGrade,
+            mathematical: mathematicalGrade * 1,
+            english: englishGrade * 1,
+            biology: biologyGrade * 1,
+            chemistry: chemistryGrade * 1,
         },
         average: averageGrade,
     };

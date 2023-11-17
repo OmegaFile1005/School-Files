@@ -5,8 +5,8 @@ function addBook() {
     const pages = document.getElementById("pagecount").value;
     const book = {
         title: booktitle,
-        ISBN: identifier,
-        pagecount: pages,
+        ISBN: identifier * 1,
+        pagecount: pages * 1,
         bookavailable: true
     };
     bookInventory.push(book);
@@ -18,7 +18,7 @@ function submitBook() {
     const bookInventory = JSON.parse(localStorage.getItem("book") || "[]");
     const searchBookInput = document.getElementById("searchBook").value;
     const bookavailable = document.querySelector('input[name=searchType]:checked').value;
-    const bookUpdate = document.querySelector('#searchType input[name=searchType]:checked').value;
+    const bookUpdate = document.querySelector('#searchType input[name=searchType]:checked');
 
     if (bookInventory.some(book => book.title === searchBookInput)) {
         console.log("book exists");
@@ -92,4 +92,5 @@ function submitBook() {
     });
 
     document.body.appendChild(table);
+    document.getElementById("bookList").appendChild(table);
 }
