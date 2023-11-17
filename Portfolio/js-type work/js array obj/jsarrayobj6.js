@@ -18,25 +18,25 @@ function submitBook() {
     const bookInventory = JSON.parse(localStorage.getItem("book") || "[]");
     const searchBookInput = document.getElementById("searchBook").value;
     const bookavailable = document.querySelector('input[name=searchType]:checked').value;
-    const bookUpdate = document.querySelectorAll('#searchType input[name=searchType]:checked').value;
-
+    const bookUpdate = document.querySelector('#searchType input[name=searchType]:checked').value;
 
     if (bookInventory.some(book => book.title === searchBookInput)) {
         console.log("book exists");
         document.querySelector("input[name=searchType]").checked = true;
     } else {
         console.log("book does not exist");
-        document.querySelectorAll("input[name=searchType]").checked = false;
+        document.querySelectorAll("input[name=searchType]").forEach(input => input.checked = false);
         document.getElementById("searchBook").value = "";
         return;
     }
 
-    let bookAvailability = bookavailable === 'Return' ? 'Available' :
-        bookavailable === 'Check Out' ? 'Checked Out' : '';
+    let bookAvailability =
+        bookavailable === 'Return' ? 'Available' :
+            bookavailable === 'Check Out' ? 'Checked Out' : '';
 
     const statusAttribute = document.createAttribute("status");
     statusAttribute.value = bookUpdate ? "Checked Out" : "Available";
-    if (returnChecked) {
+    if (bookavailable === 'Return') {
         statusAttribute.value = bookUpdate ? "Available" : "Checked Out";
     }
 
