@@ -104,35 +104,35 @@ function showAll() {
 }
 
 function deposit() {
-    // it must show an alert to edit the balance of an account on the list and show the new balance without refreshing the page
     const accountNumber = prompt("Enter account number:");
-    const amount = prompt("Enter amount to deposit:");
+    const depositAmount = prompt("Enter amount to deposit:");
 
-    // Find the account with the matching account number
-    const account = allAccountsList.find(acc => acc.accountNumber === accountNumber);
+    const specificAccount = accounts.find(account => account.accountNumber === accountNumber);
 
-    if (account) {
-        // Update the balance of the account
-        account.balance += parseFloat(amount);
-
-        // Save the updated account list to localStorage
-        // Show the new balance in an alert
-        alert(`New balance for account ${accountNumber}: $${account.balance.toFixed(2)}`);
-        // Edit the balance of the edited account on the list by the account number
-
-        // Find the account with the matching account number
-        const account = allAccountsList.find(acc => acc.accountNumber === accountNumber);
-
-        // Save the updated account list to localStorage
-        localStorage.setItem('accounts', JSON.stringify(allAccountsList));
-
+    if (specificAccount) {
+        specificAccount.balance += parseFloat(depositAmount);
+        const formattedBalance = specificAccount.balance.toFixed(2);
+        alert(`New balance for account ${specificAccount.accountNumber}: $${formattedBalance}`);
+        localStorage.setItem('Logged Account', JSON.stringify(accounts));
     } else {
         alert("Account not found");
     }
 }
 
 function withdraw() {
-    // it must show an alert to edit the balance of an account on the list and show the new balance without refreshing the page
     const accountNumber = prompt("Enter account number:");
-    const amount = prompt("Enter amount to withdraw:");
+    const withdrawAmount = prompt("Enter amount to withdraw:");
+
+    const specificAccount = accounts.find(account => account.accountNumber === accountNumber);
+
+    if (specificAccount) {
+        if (specificAccount.balance >= withdrawAmount) {
+            specificAccount.balance -= parseFloat(withdrawAmount);
+            const formattedBalance = specificAccount.balance.toFixed(2);
+            alert(`New balance for account ${specificAccount.accountNumber}: $${formattedBalance}`);
+            localStorage.setItem('Logged Account', JSON.stringify(accounts));
+        } else {
+            alert("Insufficient funds");
+        }
+    }
 }

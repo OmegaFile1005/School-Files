@@ -33,7 +33,7 @@ function submitBook() {
     let bookAvailability =
         bookavailable === 'Return' ? 'Available' :
             bookavailable === 'Check Out' ? 'Checked Out' : '';
-
+``
     const statusAttribute = document.createAttribute("status");
     statusAttribute.value = bookUpdate ? "Checked Out" : "Available";
     if (bookavailable === 'Return') {
@@ -41,7 +41,9 @@ function submitBook() {
     }
 
     if (bookUpdate || bookAvailability === 'Available') {
-        alert("Book Checked Out or Returned");
+        alert("Book is available");
+    } else {
+        alert("Book is checked out");
     }
 
     document.getElementById("bookList").value = "";
