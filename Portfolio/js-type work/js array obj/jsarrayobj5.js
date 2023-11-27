@@ -11,7 +11,7 @@ function generateAccountNumber() {
 
 function openAccount() {
     let accounts = JSON.parse(localStorage.getItem('Logged Account')) || []; // This line was added
-    const balance = document.getElementById('accountPredeposit').value;
+    const balance = document.getElementById('accountPredeposit').value
     const holderName = document.getElementById('holderName').value;
     const holderLastName = document.getElementById('holderLastName').value;
 
@@ -86,7 +86,7 @@ function showAll() {
         tr.appendChild(createTableCell(account.accountNumber));
         tr.appendChild(createTableCell(account.holderName));
         tr.appendChild(createTableCell(account.holderLastName));
-        tr.appendChild(createTableCell(account.balance));
+        tr.appendChild(createTableCell(account.balance.toFixed(2)));
         return tr;
     };
 

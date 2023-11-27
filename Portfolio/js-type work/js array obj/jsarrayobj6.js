@@ -20,16 +20,6 @@ function submitBook() {
     const bookavailable = document.querySelector('input[name=searchType]:checked').value;
     const bookUpdate = document.querySelector('#searchType input[name=searchType]:checked');
 
-    if (bookInventory.some(book => book.title === searchBookInput)) {
-        console.log("book exists");
-        document.querySelector("input[name=searchType]").checked = true;
-    } else {
-        console.log("book does not exist");
-        document.querySelectorAll("input[name=searchType]").forEach(input => input.checked = false);
-        document.getElementById("searchBook").value = "";
-        return;
-    }
-
     let bookAvailability =
         bookavailable === 'Return' ? 'Available' :
         bookavailable === 'Check Out' ? 'Checked Out' : '';

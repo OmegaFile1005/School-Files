@@ -12,12 +12,14 @@ body {
     background-color: #dcdcdc;
 }
 
-#title {
-    color: wheat;
+h3 {
+    color: #ff6346;
     background-image: url("business-planning.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
     height: 30vh;
-    vertical-align: text-bottom 50%;
+    text-align: center;
+    align-content: center;
+    padding-top: 100px;
 }
