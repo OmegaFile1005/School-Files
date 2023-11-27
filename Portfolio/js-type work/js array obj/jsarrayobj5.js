@@ -46,7 +46,7 @@ function openAccount() {
 
 function showAll() {
     const allAccounts = JSON.parse(localStorage.getItem('Logged Account'));
-    const filteredAccounts = allAccounts.filter(account => account.accountExists); // Don't need this line
+    // const filteredAccounts = allAccounts.filter(account => account.accountExists); // Don't need this line
     const allAccountsList = document.getElementById('accounts');
 
     console.log('Creating "All Accounts" header');
@@ -104,6 +104,7 @@ function showAll() {
 }
 
 function deposit() {
+    const accounts = JSON.parse(localStorage.getItem('Logged Account')); // This line was added
     const accountNumber = prompt("Enter account number:");
     const depositAmount = prompt("Enter amount to deposit:");
 
@@ -114,12 +115,14 @@ function deposit() {
         const formattedBalance = specificAccount.balance.toFixed(2);
         alert(`New balance for account ${specificAccount.accountNumber}: $${formattedBalance}`);
         localStorage.setItem('Logged Account', JSON.stringify(accounts));
+        showAll(); // This line was added
     } else {
         alert("Account not found");
     }
 }
 
 function withdraw() {
+    const accounts = JSON.parse(localStorage.getItem('Logged Account')); // This line was added
     const accountNumber = prompt("Enter account number:");
     const withdrawAmount = prompt("Enter amount to withdraw:");
 
@@ -131,6 +134,7 @@ function withdraw() {
             const formattedBalance = specificAccount.balance.toFixed(2);
             alert(`New balance for account ${specificAccount.accountNumber}: $${formattedBalance}`);
             localStorage.setItem('Logged Account', JSON.stringify(accounts));
+            showAll(); // This line was added
         } else {
             alert("Insufficient funds");
         }

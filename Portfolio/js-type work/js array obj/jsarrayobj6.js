@@ -7,7 +7,7 @@ function addBook() {
         title: booktitle,
         ISBN: identifier * 1,
         pagecount: pages * 1,
-        bookavailable: true
+        bookavailable: "Available",
     };
     bookInventory.push(book);
     localStorage.setItem("book", JSON.stringify(bookInventory));
@@ -32,15 +32,16 @@ function submitBook() {
 
     let bookAvailability =
         bookavailable === 'Return' ? 'Available' :
-            bookavailable === 'Check Out' ? 'Checked Out' : '';
-``
+        bookavailable === 'Check Out' ? 'Checked Out' : '';
+
     const statusAttribute = document.createAttribute("status");
     statusAttribute.value = bookUpdate ? "Checked Out" : "Available";
     if (bookavailable === 'Return') {
         statusAttribute.value = bookUpdate ? "Available" : "Checked Out";
     }
 
-    if (bookUpdate || bookAvailability === 'Available') {
+    const bookAvailabilityIsAvailable = bookUpdate || bookAvailability === 'Available';
+    if (bookAvailabilityIsAvailable) {
         alert("Book is available");
     } else {
         alert("Book is checked out");

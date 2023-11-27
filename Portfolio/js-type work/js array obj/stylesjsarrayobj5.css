@@ -11,3 +11,13 @@ form {
 body {
     background-color: #dcdcdc;
 }
+
+#title {
+    color: wheat;
+    background-image: url("business-planning.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 30vh;
+    vertical-align: text-bottom 50%;
+}
