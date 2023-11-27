@@ -20,15 +20,10 @@ function submitBook() {
     const bookavailable = document.querySelector('input[name=searchType]:checked').value;
     const bookUpdate = document.querySelector('#searchType input[name=searchType]:checked');
 
-    let bookAvailability =
-        bookavailable === 'Return' ? 'Available' :
-        bookavailable === 'Check Out' ? 'Checked Out' : '';
+    const bookAvailability = bookavailable === 'Return' ? 'Available' : bookavailable === 'Check Out' ? 'Checked Out' : '';
 
     const statusAttribute = document.createAttribute("status");
-    statusAttribute.value = bookUpdate ? "Checked Out" : "Available";
-    if (bookavailable === 'Return') {
-        statusAttribute.value = bookUpdate ? "Available" : "Checked Out";
-    }
+    statusAttribute.value = bookUpdate ? (bookavailable === 'Return' ? "Available" : "Checked Out") : (bookavailable === 'Return' ? "Checked Out" : "Available");
 
     const bookAvailabilityIsAvailable = bookUpdate || bookAvailability === 'Available';
     if (bookAvailabilityIsAvailable) {
@@ -37,53 +32,60 @@ function submitBook() {
         alert("Book is checked out");
     }
 
-    document.getElementById("bookList").value = "";
-    document.getElementById("bookList").innerHTML = "<h3>Book List</h3>";
-    const table = document.createElement('table');
-    const thead = document.createElement('thead');
-    const tbody = document.createElement('tbody');
+    const bookList = document.getElementById("bookList");
+    bookList.innerHTML = "<h3>List of Checked Out Books</h3>";
 
-    table.appendChild(thead);
-    table.appendChild(tbody);
+    let table = document.getElementById("bookList");
+    if (!table) {
+        table = document.createElement('table');
+        table.classList.add('table', 'table-striped');
+        bookList.appendChild(table);
+    } else {
+        table.innerHTML = '';
+    }
 
-    const tr = document.createElement('tr');
-    const thTitle = document.createElement('th');
-    const thISBN = document.createElement('th');
-    const thPagecount = document.createElement('th');
-    const thStatus = document.createElement('th');
+    const createTableCell = (text) => {
+        const td = document.createElement('td');
+        td.textContent = text;
+        return td;
+    };
 
-    thTitle.textContent = "Title";
-    thISBN.textContent = "ISBN";
-    thPagecount.textContent = "Page Count";
-    thStatus.textContent = "Status";
+    const createTableHeader = () => {
+        const thead = document.createElement('thead');
+        const tr = document.createElement('tr');
+        tr.appendChild(createTableCell('Title'));
+        tr.appendChild(createTableCell('ISBN'));
+        tr.appendChild(createTableCell('Page Count'));
+        tr.appendChild(createTableCell('Status'));
+        thead.appendChild(tr);
+        table.appendChild(thead);
+        return thead;
+    };
 
-    tr.appendChild(thTitle);
-    tr.appendChild(thISBN);
-    tr.appendChild(thPagecount);
-    tr.appendChild(thStatus);
+    const createTableBody = () => {
+        const tbody = document.createElement('tbody');
+        table.appendChild(tbody);
+        return tbody;
+    };
 
-    thead.appendChild(tr);
+    const createTable = () => {
+        const thead = createTableHeader();
+        const tbody = createTableBody();
+        return { thead, tbody };
+    };
+
+    const { thead, tbody } = createTable();
 
     bookInventory.forEach(book => {
         const tr = document.createElement('tr');
-        const tdTitle = document.createElement('td');
-        const tdISBN = document.createElement('td');
-        const tdPagecount = document.createElement('td');
-        const tdStatus = document.createElement('td');
-
-        tdTitle.textContent = book.title;
-        tdISBN.textContent = book.ISBN;
-        tdPagecount.textContent = book.pagecount;
-        tdStatus.textContent = book.status;
-
+        const tdTitle = createTableCell(book.title);
+        const tdISBN = createTableCell(book.ISBN);
+        const tdPagecount = createTableCell(book.pageCount);
+        const tdStatus = createTableCell(book.status);
         tr.appendChild(tdTitle);
         tr.appendChild(tdISBN);
         tr.appendChild(tdPagecount);
         tr.appendChild(tdStatus);
-
         tbody.appendChild(tr);
     });
-
-    document.body.appendChild(table);
-    document.getElementById("bookList").appendChild(table);
 }

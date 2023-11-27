@@ -50,59 +50,9 @@ function addStudent() {
 }
 
 function showStatistics() {
+    const gradeReport = JSON.parse(localStorage.getItem('students'));
   const statisticsElement = document.getElementById('statistics');
   statisticsElement.innerHTML = '<h2>Statistics</h2>';
 
-  const table = document.createElement('table');
-  table.classList.add('table', 'table-dark');
-
-  const thead = document.createElement('thead');
-  const tr = document.createElement('tr');
-  tr.innerHTML = `
-    <th>Student Name</th>
-    <th>Class</th>
-    <th>Score</th>
-  `;
-  thead.appendChild(tr);
-  table.appendChild(thead);
-
-  const tbody = document.createElement('tbody');
-  tbody.id = 'grades';
-  table.appendChild(tbody);
-
-  function createNameScoreRow(student) {
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      <td>${student.name}</td>
-      <td></td>
-      <td>${student.average}</td>
-    `;
-    return row;
-  }
-
-  function createClassScoreRow(student) {
-    const row = document.createElement('tr');
-    for (let i = 0; i < student.classes.length; i++) {
-      row.innerHTML = `
-        <td></td>
-        <td>${student.className}</td>
-        <td>${student.class}</td>
-      `;
-      return row;
-    }
-  }
-
-  const gradesElement = table.parentNode;
-  if (gradesElement) {
-    gradesElement.appendChild(table);
-    students.forEach((student) => {
-      if (student.classes.length > 1) {
-        gradesElement.appendChild(createClassScoreRow(student));
-      } else {
-        gradesElement.appendChild(createNameScoreRow(student));
-      }
-    });
-  }
-
-  console.log('showStatistics called');
+    
 }
