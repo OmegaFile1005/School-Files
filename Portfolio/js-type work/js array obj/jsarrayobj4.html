@@ -26,17 +26,21 @@
                     <input class="form-control" type="text" id="name" placeholder="John Smith">
                     <div class="col-md-6" id="class">
                         <legend>Class</legend>
-                        <input class="form-control" type="text" id="mathematical" placeholder="Mathematics" readonly>
-                        <input class="form-control" type="text" id="english" placeholder="English" readonly>
-                        <input class="form-control" type="text" id="biology" placeholder="Biology" readonly>
-                        <input class="form-control" type="text" id="chemistry" placeholder="Chemistry" readonly>
+                        <input class="form-control" type="text" id="mathematical" name="Mathematics" placeholder="Mathematics" disabled
+                            readonly> <br>
+                        <input class="form-control" type="text" id="english" name="English" placeholder="English" disabled
+                            readonly><br>
+                        <input class="form-control" type="text" id="biology" name="Biology" placeholder="Biology" disabled
+                            readonly><br>
+                        <input class="form-control" type="text" id="chemistry" name="Chemistry" placeholder="Chemistry" disabled
+                            readonly><br>
                     </div>
                     <div class="col-md-6">
                         <legend>Score</legend>
-                        <input class="form-control" type="number" id="mathematicalGrade" placeholder="0">
-                        <input class="form-control" type="number" id="englishGrade" placeholder="0">
-                        <input class="form-control" type="number" id="biologyGrade" placeholder="0">
-                        <input class="form-control" type="number" id="chemistryGrade" placeholder="0">
+                        <input class="form-control" type="number" id="mathematicalGrade" placeholder="0"><br>
+                        <input class="form-control" type="number" id="englishGrade" placeholder="0"><br>
+                        <input class="form-control" type="number" id="biologyGrade" placeholder="0"><br>
+                        <input class="form-control" type="number" id="chemistryGrade" placeholder="0"><br>
                     </div>
                     <div class="col-12 text-center">
                         <button type="button" class="btn btn-outline-info" onclick="addStudent()">Add Student</button>

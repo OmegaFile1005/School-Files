@@ -11,7 +11,7 @@ function generateAccountNumber() {
 
 function openAccount() {
     let accounts = JSON.parse(localStorage.getItem('Logged Account')) || []; // This line was added
-    const balance = document.getElementById('accountPredeposit').value
+    const balance = document.getElementById('accountPredeposit').value;
     const holderName = document.getElementById('holderName').value;
     const holderLastName = document.getElementById('holderLastName').value;
 
@@ -46,7 +46,6 @@ function openAccount() {
 
 function showAll() {
     const allAccounts = JSON.parse(localStorage.getItem('Logged Account'));
-    // const filteredAccounts = allAccounts.filter(account => account.accountExists); // Don't need this line
     const allAccountsList = document.getElementById('accounts');
 
     console.log('Creating "All Accounts" header');

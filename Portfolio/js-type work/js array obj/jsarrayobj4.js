@@ -1,8 +1,4 @@
-let students = [];
-let mathematical = 0;
-let english = 0;
-let biology = 0;
-let chemistry = 0;
+const students = [];
 
 function addStudent() {
   const name = document.getElementById('name').value;
@@ -10,13 +6,12 @@ function addStudent() {
   const englishGrade = parseFloat(document.getElementById('englishGrade').value);
   const biologyGrade = parseFloat(document.getElementById('biologyGrade').value);
   const chemistryGrade = parseFloat(document.getElementById('chemistryGrade').value);
-
   if (mathematicalGrade > 100 || englishGrade > 100 || biologyGrade > 100 || chemistryGrade > 100) {
+    students.pop();
     return;
   }
 
   const averageGrade = (mathematicalGrade + englishGrade + biologyGrade + chemistryGrade) / 4;
-
   const newStudent = {
     name,
     grades: {
@@ -29,30 +24,81 @@ function addStudent() {
   };
 
   students.push(newStudent);
-
-  for (let i = 0; i < students.length; i++) {
-    if (students[i].grades.mathematical > 0) {
-      mathematical++;
-    }
-    if (students[i].grades.english > 0) {
-      english++;
-    }
-    if (students[i].grades.biology > 0) {
-      biology++;
-    }
-    if (students[i].grades.chemistry > 0) {
-      chemistry++;
-    }
-  }
-
+  console.log(students);
   console.log(newStudent);
-  localStorage.setItem('students', JSON.stringify(newStudent));
+  localStorage.setItem('Grade Report', JSON.stringify(students));
 }
 
 function showStatistics() {
-    const gradeReport = JSON.parse(localStorage.getItem('students'));
+  let gradeReports = JSON.parse(localStorage.getItem('Grade Report')) || [];
   const statisticsElement = document.getElementById('statistics');
-  statisticsElement.innerHTML = '<h2>Statistics</h2>';
 
-    
+  gradeReports = gradeReports.filter(students => students.grades !== null);
+  console.log('Generating statistics...');
+  statisticsElement.innerHTML = '<h2>Statistics</h2>';
+  let table = document.querySelector('table');
+
+  if (!table) {
+    console.log('Creating new table...');
+    table = document.createElement('table');
+    table.classList.add('table', 'table-dark');
+    statisticsElement.appendChild(table);
+  } else {
+    console.log('Clearing existing table...');
+    table.innerHTML = '';
+    return;
+  }
+
+    function createTableCell(text) {
+    const td = document.createElement('td');
+    td.textContent = text;
+    return td;
+  }
+
+  const createTableHeader = () => {
+    const thead = document.createElement('thead');
+    const tr = document.createElement('tr');
+    tr.appendChild(createTableCell('Student Name'));
+    tr.appendChild(createTableCell('Class'));
+    tr.appendChild(createTableCell('Score'));
+    thead.appendChild(tr);
+    table.appendChild(thead);
+    return thead;
+  };
+
+
+  const tbody = document.createElement('tbody');
+  tbody.innerHTML = `
+    <tr>
+      <td>${students.name}</td>
+      <td></td>
+      <td>${students.averageGrade}</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Mathematics</td>
+      <td>${students.mathematicalGrade}</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>English</td>
+      <td>${students.englishGrade}</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Biology</td>
+      <td>${students.biologyGrade}</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Chemistry</td>
+      <td>${students.chemistryGrade}</td>
+    </tr>
+  
+  `;
+
+  table.appendChild(createTableHeader());
+  table.appendChild(tbody);
+
+  console.log('Statistics generated!');
 }

@@ -12,9 +12,7 @@ function addBook() {
     bookInventory.push(book);
     localStorage.setItem("book", JSON.stringify(bookInventory));
     console.log(bookInventory);
-}
 
-function submitBook() {
     const bookInventory = JSON.parse(localStorage.getItem("book") || "[]");
     const searchBookInput = document.getElementById("searchBook").value;
     const bookavailable = document.querySelector('input[name=searchType]:checked').value;
@@ -88,4 +86,8 @@ function submitBook() {
         tr.appendChild(tdStatus);
         tbody.appendChild(tr);
     });
+}
+
+function submitBook() {
+    addBook();
 }
