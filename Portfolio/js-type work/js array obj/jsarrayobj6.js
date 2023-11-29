@@ -1,38 +1,46 @@
-const bookInventory = [];
 function addBook() {
-    const booktitle = document.getElementById("title").value;
+    const bookInventory = JSON.parse(localStorage.getItem("book") || "[]");
+    const bookTitle = document.getElementById("title").value;
     const identifier = document.getElementById("ISBN").value;
     const pages = document.getElementById("pagecount").value;
-    const book = {
-        title: booktitle,
-        ISBN: identifier * 1,
-        pagecount: pages * 1,
-        bookavailable: "Available",
-    };
-    bookInventory.push(book);
-    localStorage.setItem("book", JSON.stringify(bookInventory));
-    console.log(bookInventory);
 
-    const bookInventory = JSON.parse(localStorage.getItem("book") || "[]");
-    const searchBookInput = document.getElementById("searchBook").value;
-    const bookavailable = document.querySelector('input[name=searchType]:checked').value;
-    const bookUpdate = document.querySelector('#searchType input[name=searchType]:checked');
-
-    const bookAvailability = bookavailable === 'Return' ? 'Available' : bookavailable === 'Check Out' ? 'Checked Out' : '';
-
-    const statusAttribute = document.createAttribute("status");
-    statusAttribute.value = bookUpdate ? (bookavailable === 'Return' ? "Available" : "Checked Out") : (bookavailable === 'Return' ? "Checked Out" : "Available");
-
-    const bookAvailabilityIsAvailable = bookUpdate || bookAvailability === 'Available';
-    if (bookAvailabilityIsAvailable) {
-        alert("Book is available");
-    } else {
-        alert("Book is checked out");
+    if (bookTitle === '' || identifier === '' || pages === '') {
+        console.log('Invalid input');
+        return;
     }
 
-    const bookList = document.getElementById("bookList");
-    bookList.innerHTML = "<h3>List of Checked Out Books</h3>";
+    const bookExists = bookInventory.some(book => book.SerialNumber === Number(identifier));
+    if (bookExists) {
+        console.log('Book already exists');
+        return;
+    }
 
+    const book = {
+        title: bookTitle,
+        SerialNumber: Number(identifier),
+        pagecount: Number(pages),
+        bookavailable: false === 'Checked Out',
+    };
+
+    if (book.bookavailable !== true) {
+        console.log('Book is available');
+        book.bookavailable = true;
+    } else {
+        console.log('Book is checked out');
+    }
+
+    bookInventory.push(book);
+    console.log(bookInventory);
+    localStorage.setItem("Book", JSON.stringify(bookInventory));
+    showAll();
+}
+
+let table = document.querySelector("table");
+function showAll() {
+    const allBooks = JSON.parse(localStorage.getItem("Book") || "[]");
+    const bookList = document.getElementById("bookList");
+
+    bookList.innerHTML = "<h3>List of Checked Out Books</h3>";
     let table = document.getElementById("bookList");
     if (!table) {
         table = document.createElement('table');
@@ -40,54 +48,66 @@ function addBook() {
         bookList.appendChild(table);
     } else {
         table.innerHTML = '';
+        return;
     }
 
-    const createTableCell = (text) => {
-        const td = document.createElement('td');
-        td.textContent = text;
-        return td;
-    };
+    console.log("Creating table header");
+    table.appendChild(createTableHeader());
+    console.log("Creating table body");
+    table.appendChild(createTableBody(allBooks));
+    console.log(allBooks);
+}
 
-    const createTableHeader = () => {
-        const thead = document.createElement('thead');
-        const tr = document.createElement('tr');
-        tr.appendChild(createTableCell('Title'));
-        tr.appendChild(createTableCell('ISBN'));
-        tr.appendChild(createTableCell('Page Count'));
-        tr.appendChild(createTableCell('Status'));
-        thead.appendChild(tr);
-        table.appendChild(thead);
-        return thead;
-    };
+function createTableCell(text) {
+    const td = document.createElement('td');
+    td.textContent = text;
+    return td;
+}
 
-    const createTableBody = () => {
-        const tbody = document.createElement('tbody');
-        table.appendChild(tbody);
-        return tbody;
-    };
+function createTableHeader() {
+    const thead = document.createElement('thead');
+    const tr = document.createElement('tr');
+    tr.appendChild(createTableCell('Title'));
+    tr.appendChild(createTableCell('ISBN'));
+    tr.appendChild(createTableCell('Pages'));
+    tr.appendChild(createTableCell('Status'));
+    thead.appendChild(tr);
+    return thead;
+}
 
-    const createTable = () => {
-        const thead = createTableHeader();
-        const tbody = createTableBody();
-        return { thead, tbody };
-    };
-
-    const { thead, tbody } = createTable();
-
-    bookInventory.forEach(book => {
-        const tr = document.createElement('tr');
-        const tdTitle = createTableCell(book.title);
-        const tdISBN = createTableCell(book.ISBN);
-        const tdPagecount = createTableCell(book.pageCount);
-        const tdStatus = createTableCell(book.status);
-        tr.appendChild(tdTitle);
-        tr.appendChild(tdISBN);
-        tr.appendChild(tdPagecount);
-        tr.appendChild(tdStatus);
-        tbody.appendChild(tr);
-    });
+function createTableRow(book) {
+    const tr = document.createElement('tr');
+    tr.appendChild(createTableCell(book.title));
+    tr.appendChild(createTableCell(book.SerialNumber));
+    tr.appendChild(createTableCell(book.pagecount));
+    tr.appendChild(createTableCell("Checked Out"));
+    return tr;
 }
 
 function submitBook() {
-    addBook();
+    const searchedBook = JSON.parse(localStorage.getItem("Book") || "[]");
+    const ISBNTitle = document.getElementById("searchBook").value;
+    const bookUpdate = document.querySelector('#searchType input[name=searchType]:checked');
+    const bookExists = searchedBook.some(book => book.SerialNumber === Number(ISBNTitle));
+
+    const bookAvailablity = bookUpdate.value;
+    if (bookAvailablity === 'available') {
+        bookUpdate.value = 'checked out';
+    } else if (bookAvailablity === 'checked out') {
+        bookUpdate.value = 'available';
+    }
+
+    if (ISBNTitle === '') {
+        console.log('Invalid input');
+        return;
+    }
+
+    if (bookExists) {
+        bookExists.bookavailable = bookUpdate.value;
+        localStorage.setItem("Book", JSON.stringify(searchedBook));
+        showAll();
+    } else {
+        console.log('Book not found');
+        return;
+    }
 }

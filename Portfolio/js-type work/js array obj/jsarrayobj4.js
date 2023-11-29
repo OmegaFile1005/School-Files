@@ -1,6 +1,5 @@
-const students = [];
-
 function addStudent() {
+  let students = JSON.parse(localStorage.getItem('Grade Report')) || [];
   const name = document.getElementById('name').value;
   const mathematicalGrade = parseFloat(document.getElementById('mathematicalGrade').value);
   const englishGrade = parseFloat(document.getElementById('englishGrade').value);
@@ -29,14 +28,14 @@ function addStudent() {
   localStorage.setItem('Grade Report', JSON.stringify(students));
 }
 
+let table = document.querySelector('table');
 function showStatistics() {
-  let gradeReports = JSON.parse(localStorage.getItem('Grade Report')) || [];
+  let gradeReports = JSON.parse(localStorage.getItem('Grade Report'));
   const statisticsElement = document.getElementById('statistics');
 
   gradeReports = gradeReports.filter(students => students.grades !== null);
   console.log('Generating statistics...');
   statisticsElement.innerHTML = '<h2>Statistics</h2>';
-  let table = document.querySelector('table');
 
   if (!table) {
     console.log('Creating new table...');
@@ -48,57 +47,63 @@ function showStatistics() {
     table.innerHTML = '';
     return;
   }
-
-    function createTableCell(text) {
-    const td = document.createElement('td');
-    td.textContent = text;
-    return td;
-  }
-
-  const createTableHeader = () => {
-    const thead = document.createElement('thead');
-    const tr = document.createElement('tr');
-    tr.appendChild(createTableCell('Student Name'));
-    tr.appendChild(createTableCell('Class'));
-    tr.appendChild(createTableCell('Score'));
-    thead.appendChild(tr);
-    table.appendChild(thead);
-    return thead;
-  };
-
-
-  const tbody = document.createElement('tbody');
-  tbody.innerHTML = `
-    <tr>
-      <td>${students.name}</td>
-      <td></td>
-      <td>${students.averageGrade}</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>Mathematics</td>
-      <td>${students.mathematicalGrade}</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>English</td>
-      <td>${students.englishGrade}</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>Biology</td>
-      <td>${students.biologyGrade}</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>Chemistry</td>
-      <td>${students.chemistryGrade}</td>
-    </tr>
-  
-  `;
-
   table.appendChild(createTableHeader());
-  table.appendChild(tbody);
+  table.appendChild(createTableBody(gradeReports));
 
   console.log('Statistics generated!');
+}
+
+function createTableCell(text) {
+  const td = document.createElement('td');
+  td.textContent = text;
+  return td;
+}
+
+const createTableHeader = () => {
+  const thead = document.createElement('thead');
+  const tr = document.createElement('tr');
+  tr.appendChild(createTableCell('Student Name'));
+  tr.appendChild(createTableCell('Class'));
+  tr.appendChild(createTableCell('Score'));
+  thead.appendChild(tr);
+  table.appendChild(thead);
+  return thead;
+}
+
+
+const createTableBody = (students) => {
+  const tbody = document.createElement('tbody');
+  // Mofify this code to use the data from the students array
+  for (let i = 0; i < students.length; i++) {
+    // The plus sign was added to display all rows in the table
+    // Students is an array of objects so we need to use bracket notation to access the properties
+    tbody.innerHTML += ` 
+                          <tr>
+                            <td>${students[i].name}</td>
+                            <td></td>
+                            <td>${students[i].average}</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>Mathematics</td>
+                            <td>${students[i].grades.mathematical}</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>English</td>
+                            <td>${students[i].grades.english}</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>Biology</td>
+                            <td>${students[i].grades.biology}</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>Chemistry</td>
+                            <td>${students[i].grades.chemistry}</td>
+                          </tr>
+                        `;
+  }
+  return tbody;
 }
