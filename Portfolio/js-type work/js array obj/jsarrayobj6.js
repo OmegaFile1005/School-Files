@@ -39,14 +39,14 @@ function addBook() {
 let table = document.querySelector("table");
 function showAll() {
     const allBooks = JSON.parse(localStorage.getItem("Book") || "[]");
-    const bookList = document.getElementById("bookList");
+    const bookInventoryList = document.getElementById("bookList");
 
-    bookList.innerHTML = "<h3>List of Checked Out Books</h3>";
+    bookInventoryList.innerHTML = "<h3>List of Checked Out Books</h3>";
     let table = document.getElementById("bookList");
     if (!table) {
         table = document.createElement('table');
         table.classList.add('table', 'table-striped');
-        bookList.appendChild(table);
+        bookInventoryList.appendChild(table);
     } else {
         table.innerHTML = '';
         return;
@@ -80,8 +80,8 @@ function createTableRow(book) {
     console.log("Creating table header");
     table.appendChild(createTableHeader());
     console.log("Creating table body");
-    table.appendChild(createTableBody(allBooks));
-    console.log(allBooks);
+    table.appendChild(createTableRow(book));
+    console.log("Table created");
 }
 
 function submitBook() {
