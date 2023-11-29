@@ -1,11 +1,11 @@
-table {
-    color: #0000ff;
+#bookList {
+    color: darkblue;
     align-items: center;
 }
 
 fieldset {
     text-align: center;
-    color: #0000ff;
+    color: darkblue;
 }
 
 img {
@@ -21,4 +21,8 @@ fieldset {
 
 label {
     padding-bottom: 10px;
+}
+
+#bookList tr, td, th ,thead, tbody, table {
+    color: darkblue !important;
 }
