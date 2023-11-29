@@ -52,13 +52,6 @@ function showAll() {
         return;
     }
 
-    console.log("Creating table header");
-    table.appendChild(createTableHeader());
-    console.log("Creating table body");
-    table.appendChild(createTableBody(allBooks));
-    console.log(allBooks);
-}
-
 function createTableCell(text) {
     const td = document.createElement('td');
     td.textContent = text;
@@ -84,6 +77,12 @@ function createTableRow(book) {
     tr.appendChild(createTableCell("Checked Out"));
     return tr;
 }
+    console.log("Creating table header");
+    table.appendChild(createTableHeader());
+    console.log("Creating table body");
+    table.appendChild(createTableBody(allBooks));
+    console.log(allBooks);
+}
 
 function submitBook() {
     const searchedBook = JSON.parse(localStorage.getItem("Book") || "[]");
@@ -91,7 +90,7 @@ function submitBook() {
     const bookUpdate = document.querySelector('#searchType input[name=searchType]:checked');
     const bookExists = searchedBook.some(book => book.SerialNumber === Number(ISBNTitle));
 
-    const bookAvailablity = bookUpdate.value;
+    const bookAvailablity = bookUpdate.value; 
     if (bookAvailablity === 'available') {
         bookUpdate.value = 'checked out';
     } else if (bookAvailablity === 'checked out') {
