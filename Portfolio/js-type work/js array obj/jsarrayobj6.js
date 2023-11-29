@@ -23,10 +23,11 @@ function addBook() {
     };
 
     if (book.bookavailable !== true) {
+        console.log('Book is not available');
+    } else {
         console.log('Book is available');
         book.bookavailable = true;
-    } else {
-        console.log('Book is checked out');
+        return;
     }
 
     bookInventory.push(book);
@@ -110,5 +111,5 @@ function submitBook() {
     } else {
         console.log('Book not found');
         return;
-    }   ``
+    }
 }
