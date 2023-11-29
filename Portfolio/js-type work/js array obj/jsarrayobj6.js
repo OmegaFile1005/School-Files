@@ -104,10 +104,11 @@ function submitBook() {
 
     if (bookExists) {
         bookExists.bookavailable = bookUpdate.value;
+        alert('Book updated successfully');
         localStorage.setItem("Book", JSON.stringify(searchedBook));
         showAll();
     } else {
         console.log('Book not found');
         return;
-    }
+    }   ``
 }
