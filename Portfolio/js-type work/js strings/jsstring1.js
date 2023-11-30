@@ -1,6 +1,15 @@
+const output = document.getElementById('output');
+
 function javaString() {
-    let name = "John Doe";
-    let age = 25;
+    output.innerHTML = '';
+
+    output.innerHTML = `<h2>String Length</h2>`;
+
+    function processString(string) {
+        return string.length;
+    }
+
+    processString();
 }
 
 function separateCharacters() {
