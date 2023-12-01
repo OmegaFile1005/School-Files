@@ -5,63 +5,58 @@ function javaString() {
 
     output.innerHTML = `<h2>String Length</h2>
     <hr>
-    <input type="text" class="form-control mb-2" id="input"><button type="button" id="process" class="btn btn-secondary" onclick="processString()">Process</button>
+    <input type="text" class="form-control mb-2" id="input" placeholder="Enter a string"><button type="button" id="process" class="btn btn-secondary" onclick="processString()">Process</button>
     `;
 
     function processString() {
         const input = document.getElementById('input');
+        const output = document.getElementById('output');
+        //Write a program to find the length of a string without using a library function.
 
-        if (!input.value) {
-            output.innerHTML = 'Please enter a string';
-            return;
-        }
 
-        
+        //Read the input value and convert it to a string
+        const text = input.value;
 
-        output.innerHTML += input.value.length;
+        //Add the input value to the array
+        array.push(input.value);    
+
+        //Display the array's contents on the web page
+        output.innerHTML += `<hr>Length of the string is ${text.length}`;
     }
 
     processString();
 }
 
 function separateCharacters() {
-    let name = "John Doe";
-    let age = 25;
+
 }
 
 function wordCount() {
-    let name = "John Doe";
-    let age = 25;
+
 }
 
 function alphabetDigitsSpecial() {
-    let name = "John Doe";
-    let age = 25;
+
 }
 
 function VowelsConsonants() {
-    let name = "John Doe";
-    let age = 25;
+
 }
 
 function asterisks() {
-    let name = "John Doe";
-    let age = 25;
+
 }
 
 function stringReverse() {
-    let name = "John Doe";
-    let age = 25;
+
 }
 
 function checkParenthesis() {
-    let name = "John Doe";
-    let age = 25;
+
 }
 
 function countOccurences() {
-    let name = "John Doe";
-    let age = 25;
+
 }
 
 function extractSubstring() {
