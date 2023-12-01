@@ -3,10 +3,22 @@ const output = document.getElementById('output');
 function javaString() {
     output.innerHTML = '';
 
-    output.innerHTML = `<h2>String Length</h2>`;
+    output.innerHTML = `<h2>String Length</h2>
+    <hr>
+    <input type="text" class="form-control mb-2" id="input"><button type="button" id="process" class="btn btn-secondary" onclick="processString()">Process</button>
+    `;
 
-    function processString(string) {
-        return string.length;
+    function processString() {
+        const input = document.getElementById('input');
+
+        if (!input.value) {
+            output.innerHTML = 'Please enter a string';
+            return;
+        }
+
+        
+
+        output.innerHTML += input.value.length;
     }
 
     processString();
