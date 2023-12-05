@@ -12,7 +12,47 @@
 </head>
 
 <body>
-    <div class="container"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col text-center mb-3">
+                <img src="checklist.png" id="img" alt="checklist">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-end mb-3">
+                <p>Welcome: <span id="name" style="font-style: italic;"></span></p>
+                <a href="index.html" class="text text-primary" onclick="logout()">Logout</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>My list of tasks</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="col-auto">
+                            <input type="text" id="task" class="form-control" placeholder="Task title...">
+                        </div>
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-primary" onclick="addTask()">Add</button>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <p class="bg bg-info text-center">Click on a task to set as completed</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-center mt-3">
+                <button type="button" class="btn btn-success" onclick="showAllTasks()">All</button>
+                <button type="button" class="btn btn-success" onclick="showCompletedTasks()">Complete</button>
+                <button type="button" class="btn btn-success" onclick="showIncompleteTasks()">Incomplete</button>
+                <button type="button" class="btn btn-danger" onclick="clearCompletedTasks()">Remove
+                    Completed</button>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
