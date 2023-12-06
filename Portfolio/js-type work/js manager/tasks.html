@@ -20,7 +20,7 @@
         </div>
         <div class="row">
             <div class="col text-end mb-3">
-                <p>Welcome: <span id="name" style="font-style: italic;"></span></p>
+                <p>Welcome: <span id="activeUser" style="font-style: italic;"></span></p>
                 <a href="index.html" class="text text-primary" onclick="logout()">Logout</a>
             </div>
         </div>
@@ -30,13 +30,15 @@
                     <div class="card-header">
                         <h5>My list of tasks</h5>
                     </div>
-                    <div class="card-body">
-                        <div class="col-auto">
+                    <div class="card-body row">
+                        <div class="col-md-11">
                             <input type="text" id="task" class="form-control" placeholder="Task title...">
                         </div>
-                        <div class="col-auto">
+                        <div class="col">
                             <button type="button" class="btn btn-primary" onclick="addTask()">Add</button>
                         </div>
+                    <table id="tasks">
+                    </table>
                     </div>
                     <div class="card-footer">
                         <p class="bg bg-info text-center">Click on a task to set as completed</p>

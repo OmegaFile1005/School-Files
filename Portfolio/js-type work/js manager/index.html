@@ -19,8 +19,18 @@
             </div>
         </div>
         <div class="row">
-            <div class="col">
-                <form id="form"></form>
+            <div class="col-6 offset-3">
+                <form id="login">
+                    <label for="username">User Name</label>
+                    <input type="text" class="form-control" id="username" autocomplete="username"
+                        placeholder="Enter your name..."><br>
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" autocomplete="current-password"
+                        placeholder="Your password..."><br>
+                    <button type="button" class="btn btn-success text-center" id="login" style="align-content: flex-end !important;" onclick="logIn()">Login</button>
+                </form>
+                <p><b>Or</b></p>
+                <button type="button" class="btn btn-primary form-control" onclick="createAccount()">Create an account</button>
             </div>
         </div>
     </div>
