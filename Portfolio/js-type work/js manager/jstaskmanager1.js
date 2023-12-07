@@ -15,9 +15,10 @@ function register() {
 
     // Create a user object
     var user = {
-        fullName: fullName,
-        username: username,
-        password: password
+        fullName,
+        username,
+        password,
+        loggedIn: 'Inactive',
     };
 
     // Save the user data to local storage
@@ -43,69 +44,75 @@ function getUserData() {
 }
 
 function logIn() {
-    var storedUser = localStorage.getItem("user");
+    const storedUser = localStorage.getItem("user");
+
     if (!storedUser) {
         alert("No user found. Please register first.");
         return;
     }
 
-    var loginUsername = document.getElementById("username").value;
-    var loginPassword = document.getElementById("password").value;
+    const loginUsername = document.getElementById("userName").value;
+    const loginPassword = document.getElementById("pass").value;
 
-    var user = JSON.parse(storedUser);
+    const user = JSON.parse(storedUser);
 
     if (loginUsername === user.username && loginPassword === user.password) {
-        // Successful login
         alert("Logged in successfully!");
 
-        // Save login inputs for autocomplete
-        document.getElementById("username").value = "";
-        document.getElementById("password").value = "";
+        const loggedUser = JSON.parse(localStorage.getItem('user'));
 
-        // Redirect to another page
+        loggedUser.loggedIn = 'Active';
+
+        localStorage.setItem('user', JSON.stringify(loggedUser));
 
         window.location.href = "tasks.html";
-        let loggeduser = document.getElementById('activeUser');
-        loggeduser.textContent = user.fullName;
+
+        const activeUser = document.getElementById('activeUser');
+        activeUser.textContent = loggedUser.fullName;
     } else {
-        // Invalid login
         alert("Invalid username or password.");
+        return;
     }
 }
 
 function logOut() {
-    //when logging out, the logged-in user will turn back into a user that is not logged in
+    // Remove the logged-in user's status and remove it from loggedInUsers array
 
-    localStorage.removeItem('user');
+    const loggedUser = JSON.parse(localStorage.getItem('user'));
 
-    document.getElementById('username').value = '';
-    document.getElementById('password').value = '';
+    // Update the logged-in user's status
+    loggedUser.loggedIn = 'Inactive';
 
-    document.getElementById('username').focus();
+    // Save the updated user data to local storage
+    localStorage.setItem('user', JSON.stringify(loggedUser));
+
+    window.location.href = "index.html";
 }
 
 function addTask() {
     const taskInput = document.getElementById('task');
     const task = taskInput.value;
 
-    if (!task || task.trim() === '') {
-        alert('Please enter a task.');
+    if (!task || task === '') {
+        alert('Please enter a task');
         return;
     }
 
-    const tasksContainer = document.getElementById('tasks');
+    // Add the task to a table's tbody as rows
+    const tableBody = document.getElementById('tasks');
+    const row = document.createElement('tr');
+    const taskCell = document.createElement('td');
+    taskCell.textContent = task;
+    row.appendChild(taskCell);
+    tableBody.appendChild(row);
 
-    let table = document.createElement('table');
-    let tr = document.createElement('tr');
-    let td = document.createElement('td');
+    // Add the task to local storage
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    tasks.push(task);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    localStorage.setItem('task', task);
 
-    td.textContent = task;
-    tr.appendChild(td);
-    table.appendChild(tr);
-    tasksContainer.appendChild(table);
-
-    tasksContainer.classList.add('task');
-
+    // Clear the input
     taskInput.value = '';
 }
 
@@ -115,6 +122,8 @@ function updateTask() {
 }
 
 function showAllTasks() {
+    //displays all tasks
+
     const tasks = document.getElementsByClassName('task');
     for (let i = 0; i < tasks.length; i++) {
         tasks[i].classList.add('selected');
