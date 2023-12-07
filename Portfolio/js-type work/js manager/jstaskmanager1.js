@@ -21,8 +21,23 @@ function register() {
         loggedIn: 'Inactive',
     };
 
-    // Save the user data to local storage
-    localStorage.setItem("user", JSON.stringify(user));
+    // Check if the user already exists
+    var storedUser = localStorage.getItem("user");
+
+    if (storedUser) {
+        var existingUser = JSON.parse(storedUser);
+
+        if (existingUser.username === user.username) {
+            alert("User already exists. Please log in.");
+            return;
+
+        } else {
+            // Add the new user to the existing users
+            var users = JSON.parse(localStorage.getItem("users")) || [];
+            users.push(user);
+            localStorage.setItem("users", JSON.stringify(users));
+        }
+    }
 
     // Display a success message or redirect to another page
     alert("User registered successfully!");
@@ -94,31 +109,53 @@ function addTask() {
     const task = taskInput.value;
 
     if (!task || task === '') {
-        alert('Please enter a task');
+        taskInput.classList.add('is-invalid');
         return;
+    } else {
+        taskInput.classList.remove('is-invalid');
     }
 
-    // Add the task to a table's tbody as rows
-    const tableBody = document.getElementById('tasks');
-    const row = document.createElement('tr');
-    const taskCell = document.createElement('td');
-    taskCell.textContent = task;
-    row.appendChild(taskCell);
-    tableBody.appendChild(row);
-
-    // Add the task to local storage
+    // Task must be added to local storage as a string
     const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     tasks.push(task);
     localStorage.setItem('tasks', JSON.stringify(tasks));
-    localStorage.setItem('task', task);
 
-    // Clear the input
+    // Task must be added to the DOM as a tbody element to be selectable and as striped table rows
+    const taskTable = document.getElementById('taskList');
+    const taskRow = document.createElement('tr');
+    taskRow.classList.add('table-striped');
+    taskRow.innerHTML = `
+        <td>${task}</td>
+    `;
+    taskTable.appendChild(taskRow);
+
+
     taskInput.value = '';
+
+    showAllTasks();
 }
 
 function updateTask() {
     const task = document.getElementById('task').value;
     //when element is selected, replace button with a selectable icon and vice versa
+
+    if (!task || task === '') {
+        alert('Please enter a task');
+        return;
+    }
+
+    const tasks = JSON.parse(localStorage.getItem('tasks'));
+
+    for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i] === task) {
+            tasks[i] = task;
+            break;
+        }
+    }
+
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+
+    showAllTasks();
 }
 
 function showAllTasks() {
