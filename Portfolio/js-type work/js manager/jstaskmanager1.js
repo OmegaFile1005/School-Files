@@ -200,6 +200,11 @@ function showCompletedTasks() {
         }
     }
 
+    // it must show only the completed tasks
+
+    // it must highlight the tasks that are completed
+    // it must update the tbody to only show completed tasks from the array
+    // it must filter the tasks and create a new array specifically for completed tasks
 }
 
 function showIncompleteTasks() {
