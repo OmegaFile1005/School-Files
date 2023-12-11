@@ -63,7 +63,11 @@
             showAllTasks();
             const activeUser = document.getElementById('activeUser');
             const user = JSON.parse(localStorage.getItem('user'));
-            activeUser.textContent = user.fullName;
+            if (user && user.fullName) {
+                activeUser.textContent = user.fullName;
+            } else {
+                activeUser.textContent = 'Guest';
+            }
         }
     </script>
 </body>
