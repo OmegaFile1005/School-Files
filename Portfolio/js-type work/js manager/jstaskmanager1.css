@@ -1,10 +1,9 @@
-.card-footer {
+#taskCount {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding-top: 10px;
-    padding-bottom: 0%;
+    margin-bottom: -3px;
 }
 
 i {

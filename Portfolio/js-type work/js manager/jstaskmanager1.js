@@ -131,58 +131,19 @@ function addTask() {
     showAllTasks();
 }
 
-function updateTask() {
-    const task = document.getElementById('task').value;
-    const tasks = JSON.parse(localStorage.getItem('tasks'));
-
-    // when a task has been selected via mouse or checkmark icon, the icon must be changed to this icon <i class="bi bi-trash"></i>
-
-    if (!task || task === '') {
-        alert('Please enter a task.');
-        return;
-    }
-
-    const user = JSON.parse(localStorage.getItem('user'));
-
-    if (user.loggedIn === 'Inactive') {
-        alert('Please log in to update tasks.');
-        return;
-    }
-
-    // Check if the user already has tasks
-    if (!tasks[user.username]) {
-        tasks[user.username] = []; // Create an empty array for the user if it doesn't exist
-    }
-    
-
-
-    for (let i = 0; i < tasks.length; i++) {
-        if (tasks[i] === task) {
-            tasks[i] = task;
-            break;
-        }
-    }
-    // when task is completed this icon must be changed to this icon <i class="bi bi-trash"></i>
-    // when task is still incomplete this icon must be changed to this icon <i class="bi bi-check"></i>
-
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-
-    showAllTasks();
-}
-
 function showAllTasks() {
     let tasks = JSON.parse(localStorage.getItem('tasks'));
     let user = JSON.parse(localStorage.getItem('user'));
     let taskList = document.getElementById('taskList');
     taskList.innerHTML = '';
     if (tasks && tasks[user.username]) {
-        tasks[user.username].forEach((task) => {
+        tasks[user.username].forEach((task, index) => {
             const taskRow = document.createElement('tr');
             taskRow.classList.add('task');
             taskList.classList.add('table-striped');
             taskRow.innerHTML = `
             <td class="text-center"><i class="bi bi-journal-bookmark"></i></td>
-                <td>${task.title}</td>
+                <td>${index + 1}.&nbsp;${task.title}</td>
                 <td class="text-center"><i class="bi bi-check" onclick="updateTask('${task.title}')"></i></td>
             `;
             taskList.appendChild(taskRow);
@@ -190,21 +151,66 @@ function showAllTasks() {
     }
 }
 
+function updateTask() {
+    const tasks = JSON.parse(localStorage.getItem('tasks'));
+    const taskInput = document.getElementById('task');
+    const task = {
+        title: taskInput.value,
+        completed: false,
+    };
+
+    let user = JSON.parse(localStorage.getItem('user'));
+
+    if (user.loggedIn === 'Inactive') {
+        alert('Please log in to update tasks.');
+        return;
+    }
+
+    if (!tasks[user.username]) {
+        tasks[user.username] = [];
+    } else {
+        let existingTask = tasks[user.username].find((t) => t.title === task.title);
+        if (!existingTask) {
+            alert('Task does not exist.');
+            return;
+        } else {
+            existingTask.completed = !existingTask.completed;
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
+    }
+
+    const selectedTaskRow = document.querySelector('.task.selected');
+    if (selectedTaskRow) {
+        selectedTaskRow.classList.remove('selected');
+    }
+
+    const taskRows = document.querySelectorAll('.task');
+    for (let i = 0; i < taskRows.length; i++) {
+        const rowTitle = taskRows[i].getElementsByTagName('td')[1].textContent;
+        if (rowTitle === task.title) {
+            taskRows[i].classList.add('selected');
+        }
+    }
+
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+
+    showAllTasks();
+}
+
 function showCompletedTasks() {
     const tasks = document.getElementsByClassName('task');
-    // it must filter the tasks that are completed
-    
+    // It must filter the tasks that are not completed
+
     for (let i = 0; i < tasks.length; i++) {
         if (tasks[i].classList.contains('completed')) {
             tasks[i].classList.add('selected');
         }
     }
 
-    // it must show only the completed tasks
+    const selectedTask = document.getElementById('selectedTask');
+    selectedTask.innerHTML = '<i class="bi bi-trash"></i>';
 
-    // it must highlight the tasks that are completed
-    // it must update the tbody to only show completed tasks from the array
-    // it must filter the tasks and create a new array specifically for completed tasks
+    showAllTasks();
 }
 
 function showIncompleteTasks() {
