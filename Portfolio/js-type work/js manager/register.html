@@ -23,17 +23,18 @@
             <div class="col-6 offset-3">
                 <form id="form">
                     <div class="mb-3">
-                        <label for="fullname" class="form-label">User Full Name</label>
-                        <input type="text" class="form-control" id="fullname" placeholder="Write your full name...">
+                        <label for="name" class="form-label">User Full Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Write your full name..." autocomplete="name">
                         <label for="username" class="form-label">User Name</label>
-                        <input type="text" class="form-control" id="username" autocomplete="username"
-                            placeholder="Write your user name...">
+                        <input type="text" class="form-control" id="username" 
+                            placeholder="Write your user name..." autocomplete="username">
                         <label for="password" class="form-label">Password</label>
                         <input type="password" class="form-control" id="password" autocomplete="current-password"
                             placeholder="Write your password...">
                     </div>
                     <button type="button" class="btn btn-success w-50 offset-3"
                         onclick="register()">Register</button>
+                </form>
             </div>
         </div>
     </div>

@@ -136,65 +136,98 @@ function showAllTasks() {
     let user = JSON.parse(localStorage.getItem('user'));
     let taskList = document.getElementById('taskList');
     taskList.innerHTML = '';
+
     if (tasks && tasks[user.username]) {
         tasks[user.username].forEach((task, index) => {
             const taskRow = document.createElement('tr');
             taskRow.classList.add('task');
             taskList.classList.add('table-striped');
-            taskRow.innerHTML = `
-            <td class="text-center"><i class="bi bi-journal-bookmark"></i></td>
-                <td>${index + 1}.&nbsp;${task.title}</td>
-                <td class="text-center"><i class="bi bi-check" onclick="updateTask('${task.title}')"></i></td>
-            `;
+
+            const taskNumber = index + 1;
+            const taskTitle = task.title;
+
+            const taskIcon = document.createElement('td');
+            taskIcon.classList.add('text-center');
+            taskIcon.innerHTML = '<i class="bi bi-journal-bookmark"></i>';
+
+            const taskDescription = document.createElement('td');
+            taskDescription.innerHTML = `${taskNumber}.&nbsp;${taskTitle}`;
+            taskDescription.onclick = () => updateTask(index); // Update the task when the description is clicked 
+            taskDescription.onmouseover = () => taskDescription.style.cursor = 'pointer'; // Change the cursor to a pointer when the mouse is over the description
+
+            const taskCheckIcon = document.createElement('td');
+            taskCheckIcon.classList.add('text-center');
+            taskCheckIcon.innerHTML = `<i class="${task.completed ? 'bi bi-check' : 'bi bi-trash'}"></i>`; // Show a check icon if the task is completed, otherwise show a trash icon
+
+            taskRow.appendChild(taskIcon);
+            taskRow.appendChild(taskDescription);
+            taskRow.appendChild(taskCheckIcon);
+
+            // taskRow.addEventListener('click', () => {
+            //     taskList.querySelectorAll('.task.selected').forEach((selectedTask) => {
+            //         selectedTask.classList.remove('selected');
+            //     });
+
+            //     taskRow.classList.add('selected');
+            //     taskInput.value = taskDescription.textContent;
+            //     taskInput.classList.remove('is-invalid');
+            //     taskInput.focus();
+            //     taskInput.setSelectionRange(0, taskInput.value.length);
+            // });
+
             taskList.appendChild(taskRow);
         });
     }
 }
 
-function updateTask() {
+function updateTask(index) {
     const tasks = JSON.parse(localStorage.getItem('tasks'));
-    const taskInput = document.getElementById('task');
-    const task = {
-        title: taskInput.value,
-        completed: false,
-    };
-
-    let user = JSON.parse(localStorage.getItem('user'));
-
-    if (user.loggedIn === 'Inactive') {
-        alert('Please log in to update tasks.');
-        return;
-    }
-
-    if (!tasks[user.username]) {
-        tasks[user.username] = [];
-    } else {
-        let existingTask = tasks[user.username].find((t) => t.title === task.title);
-        if (!existingTask) {
-            alert('Task does not exist.');
-            return;
-        } else {
-            existingTask.completed = !existingTask.completed;
-            localStorage.setItem('tasks', JSON.stringify(tasks));
-        }
-    }
-
-    const selectedTaskRow = document.querySelector('.task.selected');
-    if (selectedTaskRow) {
-        selectedTaskRow.classList.remove('selected');
-    }
-
-    const taskRows = document.querySelectorAll('.task');
-    for (let i = 0; i < taskRows.length; i++) {
-        const rowTitle = taskRows[i].getElementsByTagName('td')[1].textContent;
-        if (rowTitle === task.title) {
-            taskRows[i].classList.add('selected');
-        }
-    }
-
+    const user = JSON.parse(localStorage.getItem('user'));
+    const task = tasks[user.username][index];
+    task.completed = !task.completed;
     localStorage.setItem('tasks', JSON.stringify(tasks));
-
     showAllTasks();
+    // const taskInput = document.getElementById('task');
+    // const task = {
+    //     title: taskInput.value,
+    //     completed: false,
+    // };
+
+    // let user = JSON.parse(localStorage.getItem('user'));
+
+    // if (user.loggedIn === 'Inactive') {
+    //     alert('Please log in to update tasks.');
+    //     return;
+    // }
+
+    // if (!tasks[user.username]) {
+    //     tasks[user.username] = [];
+    // } else {
+    //     let existingTask = tasks[user.username].find((t) => t.title === task.title);
+    //     if (!existingTask) {
+    //         alert('Task does not exist.');
+    //         return;
+    //     } else {
+    //         existingTask.completed = !existingTask.completed;
+    //         localStorage.setItem('tasks', JSON.stringify(tasks));
+    //     }
+    // }
+
+    // const selectedTaskRow = document.querySelector('.task.selected');
+    // if (selectedTaskRow) {
+    //     selectedTaskRow.classList.remove('selected');
+    // }
+
+    // const taskRows = document.querySelectorAll('.task');
+    // for (let i = 0; i < taskRows.length; i++) {
+    //     const rowTitle = taskRows[i].getElementsByTagName('td')[1].textContent;
+    //     if (rowTitle === task.title) {
+    //         taskRows[i].classList.add('selected');
+    //     }
+    // }
+
+    // localStorage.setItem('tasks', JSON.stringify(tasks));
+
 }
 
 function showCompletedTasks() {
