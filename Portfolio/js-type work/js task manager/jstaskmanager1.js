@@ -53,8 +53,8 @@ function getUserData() {
 function logIn() {
     let users = JSON.parse(localStorage.getItem("users"));
 
-    const loginUsername = document.getElementById("userName").value;
-    const loginPassword = document.getElementById("pass").value;
+    const loginUsername = document.getElementById("userName").value.trim();
+    const loginPassword = document.getElementById("pass").value.trim();
 
     const user = users.find((u) => u.username === loginUsername && u.password === loginPassword);
 
@@ -134,50 +134,42 @@ function addTask() {
 function showAllTasks() {
     let tasks = JSON.parse(localStorage.getItem('tasks'));
     let user = JSON.parse(localStorage.getItem('user'));
+    const allTasks = tasks[user.username];
+    displayTasks(allTasks);
+
+}
+
+const displayTasks = (tasks) => {
     let taskList = document.getElementById('taskList');
     taskList.innerHTML = '';
+    tasks.forEach((task, index) => {
+        const taskRow = document.createElement('tr');
+        taskRow.classList.add('task');
+        taskList.classList.add('table-striped');
 
-    if (tasks && tasks[user.username]) {
-        tasks[user.username].forEach((task, index) => {
-            const taskRow = document.createElement('tr');
-            taskRow.classList.add('task');
-            taskList.classList.add('table-striped');
+        const taskNumber = index + 1;
+        const taskTitle = task.title;
 
-            const taskNumber = index + 1;
-            const taskTitle = task.title;
+        const taskIcon = document.createElement('td');
+        taskIcon.classList.add('text-center');
+        taskIcon.innerHTML = '<i class="bi bi-journal-bookmark"></i>';
 
-            const taskIcon = document.createElement('td');
-            taskIcon.classList.add('text-center');
-            taskIcon.innerHTML = '<i class="bi bi-journal-bookmark"></i>';
+        const taskDescription = document.createElement('td');
+        taskDescription.innerHTML = `${taskNumber}.&nbsp;${taskTitle}`;
+        taskDescription.onclick = () => updateTask(index); // Update the task when the description is clicked 
+        taskDescription.onmouseover = () => taskDescription.style.cursor = 'pointer'; // Change the cursor to a pointer when the mouse is over the description
 
-            const taskDescription = document.createElement('td');
-            taskDescription.innerHTML = `${taskNumber}.&nbsp;${taskTitle}`;
-            taskDescription.onclick = () => updateTask(index); // Update the task when the description is clicked 
-            taskDescription.onmouseover = () => taskDescription.style.cursor = 'pointer'; // Change the cursor to a pointer when the mouse is over the description
+        const taskCheckIcon = document.createElement('td');
+        taskCheckIcon.classList.add('text-center');
+        taskCheckIcon.innerHTML = `<i class="${task.completed ? 'bi bi-check' : 'bi bi-trash'}"></i>`; // Show a check icon if the task is completed, otherwise show a trash icon
 
-            const taskCheckIcon = document.createElement('td');
-            taskCheckIcon.classList.add('text-center');
-            taskCheckIcon.innerHTML = `<i class="${task.completed ? 'bi bi-check' : 'bi bi-trash'}"></i>`; // Show a check icon if the task is completed, otherwise show a trash icon
+        taskRow.appendChild(taskIcon);
+        taskRow.appendChild(taskDescription);
+        taskRow.appendChild(taskCheckIcon);
 
-            taskRow.appendChild(taskIcon);
-            taskRow.appendChild(taskDescription);
-            taskRow.appendChild(taskCheckIcon);
 
-            // taskRow.addEventListener('click', () => {
-            //     taskList.querySelectorAll('.task.selected').forEach((selectedTask) => {
-            //         selectedTask.classList.remove('selected');
-            //     });
-
-            //     taskRow.classList.add('selected');
-            //     taskInput.value = taskDescription.textContent;
-            //     taskInput.classList.remove('is-invalid');
-            //     taskInput.focus();
-            //     taskInput.setSelectionRange(0, taskInput.value.length);
-            // });
-
-            taskList.appendChild(taskRow);
-        });
-    }
+        taskList.appendChild(taskRow);
+    });
 }
 
 function updateTask(index) {
@@ -187,71 +179,38 @@ function updateTask(index) {
     task.completed = !task.completed;
     localStorage.setItem('tasks', JSON.stringify(tasks));
     showAllTasks();
-    // const taskInput = document.getElementById('task');
-    // const task = {
-    //     title: taskInput.value,
-    //     completed: false,
-    // };
-
-    // let user = JSON.parse(localStorage.getItem('user'));
-
-    // if (user.loggedIn === 'Inactive') {
-    //     alert('Please log in to update tasks.');
-    //     return;
-    // }
-
-    // if (!tasks[user.username]) {
-    //     tasks[user.username] = [];
-    // } else {
-    //     let existingTask = tasks[user.username].find((t) => t.title === task.title);
-    //     if (!existingTask) {
-    //         alert('Task does not exist.');
-    //         return;
-    //     } else {
-    //         existingTask.completed = !existingTask.completed;
-    //         localStorage.setItem('tasks', JSON.stringify(tasks));
-    //     }
-    // }
-
-    // const selectedTaskRow = document.querySelector('.task.selected');
-    // if (selectedTaskRow) {
-    //     selectedTaskRow.classList.remove('selected');
-    // }
-
-    // const taskRows = document.querySelectorAll('.task');
-    // for (let i = 0; i < taskRows.length; i++) {
-    //     const rowTitle = taskRows[i].getElementsByTagName('td')[1].textContent;
-    //     if (rowTitle === task.title) {
-    //         taskRows[i].classList.add('selected');
-    //     }
-    // }
-
-    // localStorage.setItem('tasks', JSON.stringify(tasks));
-
 }
 
 function showCompletedTasks() {
-    const tasks = document.getElementsByClassName('task');
-    // It must filter the tasks that are not completed
+    let tasks = JSON.parse(localStorage.getItem('tasks'));
+    let user = JSON.parse(localStorage.getItem('user'));
+    const completedTasks = tasks[user.username].filter((task) => task.completed);
+    displayTasks(completedTasks);
 
-    for (let i = 0; i < tasks.length; i++) {
-        if (tasks[i].classList.contains('completed')) {
-            tasks[i].classList.add('selected');
-        }
-    }
-
-    const selectedTask = document.getElementById('selectedTask');
-    selectedTask.innerHTML = '<i class="bi bi-trash"></i>';
-
-    showAllTasks();
 }
 
 function showIncompleteTasks() {
-    const tasks = document.getElementsByClassName('task');
-    // it must filter the tasks that are not completed
+    let tasks = JSON.parse(localStorage.getItem('tasks'));
+    let user = JSON.parse(localStorage.getItem('user'));
+    const incompleteTasks = tasks[user.username].filter((task) => !task.completed);
+    displayTasks(incompleteTasks);
+
 }
 
 function clearCompletedTasks() {
-    const tasks = document.getElementsByClassName('task');
-    // it must remove all the completed tasks
+
+    const tasks = JSON.parse(localStorage.getItem('tasks'));
+    const user = JSON.parse(localStorage.getItem('user'));
+    tasks[user.username] = tasks[user.username].filter((task) => !task.completed);
+
+    // Update the tasks in local storage with the leftover incompleted tasks
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+
+    // Clear the completed tasks from the DOM
+    const completedTasks = document.getElementsByClassName('task');
+    while (completedTasks.length > 0) {
+        completedTasks[0].remove();
+    }
+
+    showAllTasks();
 }
