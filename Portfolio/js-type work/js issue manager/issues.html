@@ -13,57 +13,45 @@
 <body>
   <div class="container">
     <div class="row">
-        <div class="col text-center mb-3">
-            <img src="checklist.png" id="img" alt="checklist">
-        </div>
+      <div class="col text-center mb-3">
+        <img src="checklist.png" id="img" alt="checklist">
+      </div>
     </div>
     <div class="row">
-        <div class="col text-end mb-3">
-            <p>Welcome: <span id="activeUser" style="font-style: italic;"></span></p>
-            <a href="index.html" class="text text-primary" onclick="logout()">Logout</a>
-        </div>
+      <div class="col text-end mb-3">
+        <p>Welcome: <span id="activeUser" style="font-style: italic;"></span></p>
+        <a href="index.html" class="text text-primary" onclick="logout()">Logout</a>
+      </div>
     </div>
     <div class="row">
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    <h5>My list of tasks</h5>
-                </div>
-                <div class="card-body row">
-                    <div class="col-md-11">
-                        <input type="text" id="task" class="form-control mb-3" placeholder="Task title...">
-                    </div>
-                    <div class="col">
-                        <button type="button" class="btn btn-primary" onclick="addTask()">Add</button>
-                    </div>
-                    <table class="table table-striped">
-                        <tbody id="taskList"></tbody>
-                    </table>
-                </div>
-                <div class="card-footer bg bg-info-subtle">
-                    <p id="taskCount" class="text-center">Click on a task to set as completed</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col text-center mt-3">
+      <div class="col">
+        <form>
+          <h5>My list of tasks</h5>
+          <div class="col-md-11">
+            <input type="text" id="task" class="form-control mb-3" placeholder="Task title...">
+          </div>
+          <div class="col">
             <button type="button" class="btn btn-primary" onclick="addIssue()">Add</button>
-        </div>
+          </div>
+          <div class="card-footer bg bg-info-subtle">
+            <p id="taskCount" class="text-center">Click on a task to set as completed</p>
+          </div>
+        </form>
+      </div>
     </div>
-</div>
-<script>
+  </div>
+  <script>
     window.onload = function () {
-        showAllTasks();
-        const activeUser = document.getElementById('activeUser');
-        const user = JSON.parse(localStorage.getItem('user'));
-        if (user && user.fullName) {
-            activeUser.textContent = user.fullName;
-        } else {
-            activeUser.textContent = 'Guest';
-        }
+      displayIssues();
+      const activeUser = document.getElementById('activeUser');
+      const user = JSON.parse(localStorage.getItem('user'));
+      if (user && user.fullName) {
+        activeUser.textContent = user.fullName;
+      } else {
+        activeUser.textContent = 'Guest';
+      }
     }
-</script>
+  </script>
 </body>
 
 </html>

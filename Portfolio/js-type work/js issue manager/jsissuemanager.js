@@ -94,11 +94,10 @@ function logOut() {
 }
 
 function displayIssues() {
-    // Update the code below to be compatible with your issue tracker system
-    const tasks = JSON.parse(localStorage.getItem('tasks'));
-    const user = JSON.parse(localStorage.getItem('user'));
-    const issueList = tasks[user.username];
-    displayTasks(issueList);
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || {};
+    const user = JSON.parse(localStorage.getItem('user')) || {};
+    const issueList = tasks[user.username] || [];
+    displayIssuecard(issueList);
 }
 
 function addIssue() {
@@ -116,7 +115,7 @@ function closeIssue(index) {
     const task = tasks[user.username][index];
     task.completed = !task.completed;
     localStorage.setItem('tasks', JSON.stringify(tasks));
-    showAllTasks();
+    displayIssues();
 }
 
 function deleteIssue(index) {
