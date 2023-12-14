@@ -11,7 +11,74 @@
 </head>
 
 <body>
-    <!-- <button type="button" class="btn btn-info form-control" onclick="register()">Register</button> -->
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <img src="usericon.png" alt="user">
+                <h2>User Registration Form</h2>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-6 offset-3">
+                <form id="form">
+                    <div class="mb-3">
+                        <div class="form-floating mb-3">
+                            <input list="fullNames" type="text" class="form-control" id="fullname"
+                                placeholder="Full Name" autocomplete="name">
+                            <label for="fullname">User Full Name</label><br>
+                            <datalist id="fullNames">
+                            </datalist>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input list="userNames" type="text" class="form-control" id="username"
+                                autocomplete="username" placeholder="User Name">
+                            <label for="username">User Name</label><br>
+                            <datalist id="userNames">
+                            </datalist>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" name="email" id="email" autocomplete="email"
+                                placeholder="Email Address">
+                            <label for="email">Your Email Address</label><br>
+                            <datalist id="emails">
+                            </datalist>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="password" autocomplete="current-password"
+                                placeholder="Password">
+                            <label for="password">Enter Password</label>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-info form-control w-50 offset-3"
+                        onclick="register()">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let userNames = document.getElementById('userNames');
+            let fullNames = document.getElementById('fullNames');
+            let emails = document.getElementById('emails');
+            let users = JSON.parse(localStorage.getItem('users'));
+            if (users) {
+                users.forEach(user => {
+                    let userNameOption = document.createElement('option');
+                    userNameOption.value = user.username;
+                    userNameOption.textContent = user.username;
+                    userNames.appendChild(userNameOption);
+                    let fullNameOption = document.createElement('option');
+                    fullNameOption.value = user.fullName;
+                    fullNameOption.textContent = user.fullName;
+                    fullNames.appendChild(fullNameOption);
+                    let emailOption = document.createElement('option');
+                    emailOption.value = user.email;
+                    emailOption.textContent = user.email;
+                    emails.appendChild(emailOption);
+                });
+            }
+        })
+    </script>
 </body>
 
 </html>

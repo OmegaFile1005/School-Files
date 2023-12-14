@@ -1,6 +1,7 @@
 function register() {
     var fullName = document.getElementById("fullname").value;
     var username = document.getElementById("username").value;
+    var useremail = document.getElementById("email").value;
     var password = document.getElementById("password").value;
 
     // Capitalize all words in the full name
@@ -8,7 +9,7 @@ function register() {
         return match.toUpperCase();
     });
 
-    if (fullName === "" || username === "" || password === "") {
+    if (fullName === "" || username === "" || password === "" || useremail === "") {
         alert("Please fill in all fields.");
         return;
     }
@@ -17,6 +18,7 @@ function register() {
     var user = {
         fullName,
         username,
+        useremail,
         password,
         loggedIn: 'Inactive',
     };
@@ -51,12 +53,12 @@ function getUserData() {
 }
 
 function logIn() {
-    let users = JSON.parse(localStorage.getItem("users"));
+    const users = JSON.parse(localStorage.getItem("users"));
 
-    const loginUsername = document.getElementById("userName").value.trim();
-    const loginPassword = document.getElementById("pass").value.trim();
+    const loginUsername = document.getElementById("username").value.trim();
+    const loginPassword = document.getElementById("password").value.trim();
 
-    const user = users.find((u) => u.username === loginUsername && u.password === loginPassword);
+    const user = users.find(u => u.username === loginUsername && u.password === loginPassword);
 
     if (!user) {
         alert("Invalid username or password.");
@@ -68,12 +70,12 @@ function logIn() {
         return;
     }
 
-    user.loggedIn = 'Active';
-    localStorage.setItem("user", JSON.stringify(user));
+    user.loggedIn = "Active";
+    localStorage.setItem("Active User", JSON.stringify(user));
 
     alert("Logged in successfully!");
 
-    window.location.href = "tasks.html";
+    window.location.href = "issues.html";
 }
 
 function logOut() {
@@ -91,8 +93,20 @@ function logOut() {
     window.location.href = "index.html";
 }
 
+function displayIssues() {
+    // Update the code below to be compatible with your issue tracker system
+    const tasks = JSON.parse(localStorage.getItem('tasks'));
+    const user = JSON.parse(localStorage.getItem('user'));
+    const issueList = tasks[user.username];
+    displayTasks(issueList);
+}
+
 function addIssue() {
-    
+
+}
+
+const displayIssuecard = function(issue) {
+
 }
 
 function closeIssue(index) {

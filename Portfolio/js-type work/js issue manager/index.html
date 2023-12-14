@@ -21,13 +21,19 @@
         <div class="row">
             <div class="col-6 offset-3">
                 <form id="login">
-                    <input type="text" class="form-control" id="username" placeholder="Your Username" required
-                        autocomplete="username"><br>
-                    <datalist id="userNames">
-                    </datalist>
-                    <input type="password" class="form-control" id="password" placeholder="Your Password" required
-                        autocomplete="current-password"><br>
-                    <button type="submit" class="btn btn-info form-control text-white" onclick="login()"><i
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="username" placeholder="Username" required
+                            autocomplete="username">
+                        <label for="username">Your Username</label><br>
+                        <datalist id="userNames">
+                        </datalist>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="password" placeholder="Password" required
+                            autocomplete="current-password">
+                        <label for="password">Enter Password</label><br>
+                    </div>
+                    <button type="submit" class="btn btn-info form-control text-white" onclick="logIn()"><i
                             class="bi bi-unlock-fill"></i> Login</button>
                 </form>
             </div>
