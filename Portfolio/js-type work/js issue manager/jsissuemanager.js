@@ -79,7 +79,6 @@ function logOut() {
 
     const loggedUser = JSON.parse(localStorage.getItem('user'));
     console.log(loggedUser);
-
     // Update the logged-in user's status
     loggedUser.loggedIn = 'Inactive';
 
@@ -97,47 +96,54 @@ function displayIssues() {
 }
 
 function addIssue() {
-    const issues = JSON.parse(localStorage.getItem('issues')) || {};
+    let i = 0;
+    var issueId = i + 1;
+    const issueStatus = "Open";
+    const statedIssue = document.getElementById('issueDescription').value;
+    const issueSeverity = document.getElementById('severity').value;
+    const issueSolver = document.getElementById('assignedTo').value;
+
+    if (statedIssue === "" || issueSeverity === "" || issueSolver === "") {
+        alert("Please fill in all fields.");
+        return;
+    }
+
+    const issues = document.getElementById('issues');
     const user = JSON.parse(localStorage.getItem('user')) || {};
     const issueList = issues[user.username] || [];
     issueList.push({ issueId, issueStatus, statedIssue, issueSeverity, issueSolver });
-    tasks[user.username] = issueList;
+    issues[user.username] = issueList;
+    localStorage.setItem('tasks', JSON.stringify(issues));
 
-
-    let i = 0;
-    const issueId = i + 1;
-    const issueStatus = document.getElementById('issueStatus').value;
-    const statedIssue = document.getElementById('statedIssue').value;
-    const issueSeverity = document.getElementById('severity').value;
-    const issueSolver = document.getElementById('issueSolver').value;
-    localStorage.setItem('tasks', JSON.stringify(tasks));
     issues.innerHTML = `<div class="card">
     <div class="card-header">
-      <p><b>Issue ID: <span id="issueId"></span></b></p><br>
-      <p id="issueStatus"></p>
+      <p><b>Issue ID: ${issueId}</b></p>
+      <p>${issueStatus}</p>
     </div>
       <div class="card-body">
-        <h5 class="card-title"><span id="issueDescription"></span></h5><br>
-        <p><i></i> <span id="issueSeverity"></span></p><br>
-        <p><i></i> <span id="issueSolver"></span></p> 
+        <h3 class="card-title">${statedIssue}</h3>
+        <p><i class="bi bi-clock"></i> ${issueSeverity}</p>
+        <p><i class="bi bi-person-fill"></i> ${issueSolver}</p> 
       </div>
       <div class="card-footer text-muted">
         <button type="button" class="btn btn-warning" onclick="closeIssue()">Close</button>
         <button type="button" class="btn btn-danger" onclick="deleteIssue()">Delete</button>
       </div>`;
+
+    // displayIssuecard(issueList);
 }
 
 const displayIssuecard = (issues) => {
-        let issuesList = document.getElementById('issues');
-        issuesList.innerHTML = '';
-            
-        issues.forEach((issue) => {
-                
-        })
+    let issuesList = document.getElementById('issues');
+    issuesList.innerHTML = '';
+
+    issues.forEach((issue) => {
+
+    })
 }
 
 function closeIssue(index) {
- const issues = JSON.parse(localStorage.getItem('issues')) || {};
+    // When closing
 }
 
 function deleteIssue(index) {
