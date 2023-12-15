@@ -38,10 +38,6 @@ function register() {
     }
 }
 
-function createAccount() {
-    window.location.href = "register.html";
-}
-
 function getUserData() {
     var storedUser = localStorage.getItem("user");
 
@@ -101,23 +97,52 @@ function displayIssues() {
 }
 
 function addIssue() {
+    const issues = JSON.parse(localStorage.getItem('issues')) || {};
+    const user = JSON.parse(localStorage.getItem('user')) || {};
+    const issueList = issues[user.username] || [];
+    issueList.push({ issueId, issueStatus, statedIssue, issueSeverity, issueSolver });
+    tasks[user.username] = issueList;
 
+
+    let i = 0;
+    const issueId = i + 1;
+    const issueStatus = document.getElementById('issueStatus').value;
+    const statedIssue = document.getElementById('statedIssue').value;
+    const issueSeverity = document.getElementById('severity').value;
+    const issueSolver = document.getElementById('issueSolver').value;
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    issues.innerHTML = `<div class="card">
+    <div class="card-header">
+      <p><b>Issue ID: <span id="issueId"></span></b></p><br>
+      <p id="issueStatus"></p>
+    </div>
+      <div class="card-body">
+        <h5 class="card-title"><span id="issueDescription"></span></h5><br>
+        <p><i></i> <span id="issueSeverity"></span></p><br>
+        <p><i></i> <span id="issueSolver"></span></p> 
+      </div>
+      <div class="card-footer text-muted">
+        <button type="button" class="btn btn-warning" onclick="closeIssue()">Close</button>
+        <button type="button" class="btn btn-danger" onclick="deleteIssue()">Delete</button>
+      </div>`;
 }
 
-const displayIssuecard = function(issue) {
-
+const displayIssuecard = (issues) => {
+        let issuesList = document.getElementById('issues');
+        issuesList.innerHTML = '';
+            
+        issues.forEach((issue) => {
+                
+        })
 }
 
 function closeIssue(index) {
-    // Update the code below to be compatible with your issue tracker system
-    const tasks = JSON.parse(localStorage.getItem('tasks'));
-    const user = JSON.parse(localStorage.getItem('user'));
-    const task = tasks[user.username][index];
-    task.completed = !task.completed;
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-    displayIssues();
+ const issues = JSON.parse(localStorage.getItem('issues')) || {};
 }
 
 function deleteIssue(index) {
     // When deleting an issue, it first needs to be closed in order to be deleted
+    // Update the code below to be compatible with your issue tracker system
+
+
 }
