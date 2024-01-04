@@ -136,7 +136,6 @@ function showAllTasks() {
     let user = JSON.parse(localStorage.getItem('user'));
     const allTasks = tasks[user.username];
     displayTasks(allTasks);
-
 }
 
 const displayTasks = (tasks) => {

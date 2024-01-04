@@ -54,20 +54,20 @@ function logIn() {
     const loginUsername = document.getElementById("username").value.trim();
     const loginPassword = document.getElementById("password").value.trim();
 
-    const user = users.find(u => u.username === loginUsername && u.password === loginPassword);
+    const loggingInUser = users.find(u => u.username === loginUsername && u.password === loginPassword);
 
-    if (!user) {
+    if (!loggingInUser) {
         alert("Invalid username or password.");
         return;
     }
 
-    if (user.loggedIn === "Active") {
+    if (loggingInUser.loggedIn === 'Active') {
         alert("You are already logged in.");
         return;
     }
 
-    user.loggedIn = "Active";
-    localStorage.setItem("Active User", JSON.stringify(user));
+    loggingInUser.loggedIn = 'Active';
+    localStorage.setItem("Active User", JSON.stringify(loggingInUser));
 
     alert("Logged in successfully!");
 
@@ -83,7 +83,7 @@ function logOut() {
     loggedUser.loggedIn = 'Inactive';
 
     // Save the updated user data to local storage
-    localStorage.setItem('user', JSON.stringify(loggedUser));
+    localStorage.setItem('Inactive Users', JSON.stringify(users));
 
     window.location.href = "index.html";
 }
@@ -92,12 +92,13 @@ function displayIssues() {
     const tasks = JSON.parse(localStorage.getItem('tasks')) || {};
     const user = JSON.parse(localStorage.getItem('user')) || {};
     const issueList = tasks[user.username] || [];
-    displayIssuecard(issueList);
+     
+        
 }
 
 function addIssue() {
-    let i = 0;
-    var issueId = i + 1;
+    let i = 1;
+    var issueId = i++;
     const issueStatus = "Open";
     const statedIssue = document.getElementById('issueDescription').value;
     const issueSeverity = document.getElementById('severity').value;
@@ -111,43 +112,48 @@ function addIssue() {
     const issues = document.getElementById('issues');
     const user = JSON.parse(localStorage.getItem('user')) || {};
     const issueList = issues[user.username] || [];
+    let preexistingIssue = issues[user.username].find((i) => i.statedIssue === statedIssue);
+    if  (preexistingIssue) {
+        issues.innerHTML = "Issue already exists. Please try again."
+        issueList.pop();
+        return;
+    }
+    
     issueList.push({ issueId, issueStatus, statedIssue, issueSeverity, issueSolver });
     issues[user.username] = issueList;
-    localStorage.setItem('tasks', JSON.stringify(issues));
 
-    issues.innerHTML = `<div class="card">
-    <div class="card-header">
-      <p><b>Issue ID: ${issueId}</b></p>
-      <p>${issueStatus}</p>
-    </div>
-      <div class="card-body">
-        <h3 class="card-title">${statedIssue}</h3>
-        <p><i class="bi bi-clock"></i> ${issueSeverity}</p>
-        <p><i class="bi bi-person-fill"></i> ${issueSolver}</p> 
-      </div>
-      <div class="card-footer text-muted">
-        <button type="button" class="btn btn-warning" onclick="closeIssue()">Close</button>
-        <button type="button" class="btn btn-danger" onclick="deleteIssue()">Delete</button>
-      </div>
+
+    localStorage.setItem('issues', JSON.stringify(issues));
+
+    issues.innerHTML = `
+    <div class="card m-3">
+        <div class="card-header pt-5">
+            <p><b>Issue ID: ${issueId}</b></p>
+            <p>${issueStatus}</p>
+        </div>
+        <div class="card-body">
+            <h3 class="card-title">${statedIssue}</h3>
+            <p><i class="bi bi-clock"></i> ${issueSeverity}</p>
+            <p><i class="bi bi-person-fill"></i> ${issueSolver}</p>
+        </div>
+        <div class="card-footer text-muted">
+            <button type="button" class="btn btn-warning" onclick="closeIssue()">Close</button>
+            <button type="button" class="btn btn-danger" onclick="deleteIssue()">Delete</button>
+        </div>
     </div>`;
 
-    // displayIssuecard(issueList);
+    issueList.push()
 }
 
-const displayIssuecard = (issues) => {
-    let issuesList = document.getElementById('issues');
-    issuesList.innerHTML = '';
 
-    issues.forEach((issue) => {
+function closeIssue() {
+    // When closing an issue, it needs to be updated in the issue tracker system
+    // Update the code below to be compatible with your issue tracker system
 
-    })
+
 }
 
-function closeIssue(index) {
-    // When closing
-}
-
-function deleteIssue(index) {
+function deleteIssue() {
     // When deleting an issue, it first needs to be closed in order to be deleted
     // Update the code below to be compatible with your issue tracker system
 

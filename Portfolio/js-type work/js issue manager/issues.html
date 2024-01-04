@@ -31,7 +31,8 @@
           <div class="col-md-11 pt-3">
             <h2>Add New Issue:</h2>
             <label for="issueDescription">Description</label><br>
-            <input type="text" id="issueDescription" class="form-control mb-3" placeholder="Describe the issue ..."><br>
+            <input type="text" id="issueDescription" class="form-control mb-3" placeholder="Describe the issue ..."
+              autocomplete="on"><br>
             <label for="severity">Severity</label><br>
             <select id="severity" class="form-select mb-3" aria-label="Severity">
               <option value="Low" selected>Low</option>
@@ -39,7 +40,8 @@
               <option value="High">High</option>
             </select><br>
             <label for="assignedTo">Assigned To</label><br>
-            <input type="text" id="assignedTo" class="form-control mb-3" placeholder="Enter responsible ..."><br>
+            <input type="text" id="assignedTo" class="form-control mb-3" placeholder="Enter responsible ..."
+              autocomplete="on"><br>
           </div>
           <div class="col">
             <button type="button" class="btn btn-primary" onclick="addIssue()">Add</button>
@@ -50,7 +52,6 @@
     <div class="row mt-3">
       <div class="col">
         <div id="issues">
-
         </div>
       </div>
     </div>
