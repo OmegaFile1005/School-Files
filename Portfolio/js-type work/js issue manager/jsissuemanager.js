@@ -92,8 +92,7 @@ function displayIssues() {
     const tasks = JSON.parse(localStorage.getItem('tasks')) || {};
     const user = JSON.parse(localStorage.getItem('user')) || {};
     const issueList = tasks[user.username] || [];
-     
-        
+    addIssue(issueList);
 }
 
 function addIssue() {
@@ -103,16 +102,16 @@ function addIssue() {
     const statedIssue = document.getElementById('issueDescription').value;
     const issueSeverity = document.getElementById('severity').value;
     const issueSolver = document.getElementById('assignedTo').value;
+    const issues = document.getElementById('issues');
 
     if (statedIssue === "" || issueSeverity === "" || issueSolver === "") {
-        alert("Please fill in all fields.");
+        issues.innerHTML = "Please fill in all fields."
         return;
     }
 
-    const issues = document.getElementById('issues');
     const user = JSON.parse(localStorage.getItem('user')) || {};
     const issueList = issues[user.username] || [];
-    let preexistingIssue = issues[user.username].find((i) => i.statedIssue === statedIssue);
+    let preexistingIssue = issues[user.username].find((s) => s.statedIssue === statedIssue);
     if  (preexistingIssue) {
         issues.innerHTML = "Issue already exists. Please try again."
         issueList.pop();
@@ -143,6 +142,8 @@ function addIssue() {
     </div>`;
 
     issueList.push()
+
+    displayIssues();
 }
 
 
