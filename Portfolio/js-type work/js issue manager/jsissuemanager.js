@@ -1,8 +1,8 @@
 function register() {
-    var fullName = document.getElementById("fullname").value;
-    var username = document.getElementById("username").value;
-    var useremail = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
+    var fullName = document.getElementById("fullname").value.trim();
+    var username = document.getElementById("username").value.trim();
+    var useremail = document.getElementById("email").value.trim();
+    var password = document.getElementById("password").value.trim();
 
     // Capitalize all words in the full name
     fullName = fullName.toLowerCase().replace(/(?:^|\s|-)\S/g, function (match) {
@@ -88,70 +88,96 @@ function logOut() {
     window.location.href = "index.html";
 }
 
-function displayIssues() {
-    const tasks = JSON.parse(localStorage.getItem('tasks')) || {};
-    const user = JSON.parse(localStorage.getItem('user')) || {};
-    const issueList = tasks[user.username] || [];
-    addIssue(issueList);
-}
-
+let issueId = 0;
 function addIssue() {
-    let i = 1;
-    var issueId = i++;
+    function generateIssueId() {
+        issueId++;
+        return Math.floor(issueId);
+    }
+    issueId = generateIssueId();
     const issueStatus = "Open";
-    const statedIssue = document.getElementById('issueDescription').value;
+    let statedIssue = document.getElementById('issueDescription').value.trim();
     const issueSeverity = document.getElementById('severity').value;
-    const issueSolver = document.getElementById('assignedTo').value;
-    const issues = document.getElementById('issues');
+    let issueSolver = document.getElementById('assignedTo').value.trim();
+
+    statedIssue = statedIssue.toLowerCase().replace(/(?:^|\s|-)\S/g, function (match) {
+        return match.toUpperCase();
+    })
+
+    issueSolver = issueSolver.toLowerCase().replace(/(?:^|\s|-)\S/g, function (match) {
+        return match.toUpperCase();
+    })
 
     if (statedIssue === "" || issueSeverity === "" || issueSolver === "") {
         issues.innerHTML = "Please fill in all fields."
         return;
     }
 
-    const user = JSON.parse(localStorage.getItem('user')) || {};
-    const issueList = issues[user.username] || [];
-    let preexistingIssue = issues[user.username].find((s) => s.statedIssue === statedIssue);
-    if  (preexistingIssue) {
-        issues.innerHTML = "Issue already exists. Please try again."
-        issueList.pop();
+    // const user = JSON.parse(localStorage.getItem('user')) || {};
+    const activeUser = JSON.parse(localStorage.getItem('Active User'))
+    let issuesList = JSON.parse(localStorage.getItem('Issues')) || {};
+    const currentIssues = issuesList[activeUser.username] || [];
+    let preexistingIssue = currentIssues.find((s) => s.statedIssue === statedIssue);
+    if (preexistingIssue) {
+        alert("Issue already exists. Please try again.");
         return;
     }
-    
-    issueList.push({ issueId, issueStatus, statedIssue, issueSeverity, issueSolver });
-    issues[user.username] = issueList;
 
+    newIssue = {
+        issueId,
+        statedIssue,
+        issueSeverity,
+        issueSolver,
+        issueStatus
+    }
 
-    localStorage.setItem('issues', JSON.stringify(issues));
+    currentIssues.push(newIssue);
+    // issues[user.username] = issueList;
+    issuesList[activeUser.username] = currentIssues;
+    localStorage.setItem('Issues', JSON.stringify(issuesList));
 
-    issues.innerHTML = `
+    statedIssue.value = '';
+    issueSolver.value = '';
+    // issueList.push();
+    displayIssues();
+}
+
+const issues = document.getElementById('issues');
+function displayIssues() {
+    const activeUser = JSON.parse(localStorage.getItem('Active User'))
+    let issuesList = JSON.parse(localStorage.getItem('Issues'));
+    const currentIssues = issuesList[activeUser.username];
+    issues.innerHTML = "";
+    currentIssues.forEach((newIssue) => {
+        issues.innerHTML += `
     <div class="card m-3">
-        <div class="card-header pt-5">
-            <p><b>Issue ID: ${issueId}</b></p>
-            <p>${issueStatus}</p>
+        <div class="card-header pt-5 pb-0">
+            <p><b>Issue ID: ${newIssue.issueId}</b></p>
+            <p>${newIssue.issueStatus}</p>
         </div>
         <div class="card-body">
-            <h3 class="card-title">${statedIssue}</h3>
-            <p><i class="bi bi-clock"></i> ${issueSeverity}</p>
-            <p><i class="bi bi-person-fill"></i> ${issueSolver}</p>
+            <h3 class="card-title">${newIssue.statedIssue}</h3>
+            <p><i class="bi bi-clock"></i> ${newIssue.issueSeverity}</p>
+            <p><i class="bi bi-person-fill"></i> ${newIssue.issueSolver}</p>
         </div>
         <div class="card-footer text-muted">
             <button type="button" class="btn btn-warning" onclick="closeIssue()">Close</button>
             <button type="button" class="btn btn-danger" onclick="deleteIssue()">Delete</button>
         </div>
     </div>`;
-
-    issueList.push()
-
-    displayIssues();
+    });
 }
 
 
 function closeIssue() {
-    // When closing an issue, it needs to be updated in the issue tracker system
-    // Update the code below to be compatible with your issue tracker system
+    const newIssues = JSON.parse(localStorage.getItem('Issues'));
+    const activeUser = JSON.parse(localStorage.getItem('Active User'));
+    const currentIssue = newIssues[activeUser.username];
 
+    currentIssue.issueStatus = 'Closed';
+    localStorage.setItem('Fixed Issues', JSON.stringify(issues));
 
+    displayIssues();
 }
 
 function deleteIssue() {
