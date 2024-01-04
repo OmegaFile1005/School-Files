@@ -128,7 +128,8 @@ function addIssue() {
       <div class="card-footer text-muted">
         <button type="button" class="btn btn-warning" onclick="closeIssue()">Close</button>
         <button type="button" class="btn btn-danger" onclick="deleteIssue()">Delete</button>
-      </div>`;
+      </div>
+    </div>`;
 
     // displayIssuecard(issueList);
 }
