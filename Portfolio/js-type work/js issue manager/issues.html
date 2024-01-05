@@ -59,33 +59,30 @@
     </div>
   </div>
   <script>
+document.addEventListener('DOMContentLoaded', function () {
+  let issueDescriptions = document.getElementById('issueDescriptions');
+  let assignedUsers = document.getElementById('assignedUsers');
+  let issues = JSON.parse(localStorage.getItem('Issues'));
+  console.log(typeof issues); // Add this console log to check the type of issues
+  if (Array.isArray(issues)) {
+    issues.forEach(issue => {
+      let issueDescriptionOption = document.createElement('option');
+      issueDescriptionOption.value = issue.statedIssue;
+      issueDescriptionOption.textContent = issue.statedIssue;
+      issueDescriptions.appendChild(issueDescriptionOption);
+      let assignedUserOption = document.createElement('option');
+      assignedUserOption.value = issue.assignedTo;
+      assignedUserOption.textContent = issue.assignedTo;
+      assignedUsers.appendChild(assignedUserOption);
+    });
+  }
+});
     window.onload = function () {
       displayIssues();
       const activeUser = document.getElementById('activeUser');
-      const user = JSON.parse(localStorage.getItem('user'));
-      if (user && user.fullName) {
-        activeUser.textContent = user.fullName;
-      } else {
-        activeUser.textContent = 'Guest';
-      }
+      const user = JSON.parse(localStorage.getItem('Active User'));
+      activeUser.textContent = user && user.fullName ? user.fullName : 'Guest';
     }
-    document.addEventListener('DOMContentLoaded', function () {
-      let issueDescriptions = document.getElementById('issueDescriptions');
-      let assignedUsers = document.getElementById('assignedUsers');
-      let issues = JSON.parse(localStorage.getItem('Issues'));
-      if (issues) {
-        issues.forEach(issue => {
-          let issueDescriptionOption = document.createElement('option');
-          issueDescriptionOption.value = issue.statedIssue;
-          issueDescriptionOption.textContent = issue.statedIssue;
-          issueDescriptions.appendChild(issueDescriptionOption);
-          let assignedUserOption = document.createElement('option');
-          assignedUserOption.value = issue.assignedTo;
-          assignedUserOption.textContent = issue.assignedTo;
-          assignedUsers.appendChild(assignedUserOption);
-        })
-      }
-    })
   </script>
 </body>
 

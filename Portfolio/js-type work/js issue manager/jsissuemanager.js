@@ -88,57 +88,64 @@ function logOut() {
     window.location.href = "index.html";
 }
 
-let issueId = 0;
+let issueId = parseInt(localStorage.getItem('issueId')) || 0 || 1;
+function generateIssueId() {
+    issueId++;
+    currentIssues = JSON.parse(localStorage.getItem('Issues'));
+
+    if (issueId <= 0) {
+        issueId = 1;
+    }
+    if (issueId > currentIssues.length) {
+        issueId = currentIssues.length + 1;
+    }
+
+    return Math.floor(issueId);
+}
+
 function addIssue() {
-    function generateIssueId() {
-        issueId++;
-        return Math.floor(issueId);
-    }
-    issueId = generateIssueId();
     const issueStatus = "Open";
-    let statedIssue = document.getElementById('issueDescription').value.trim();
+    const issueDescription = document.getElementById('issueDescription').value.trim();
     const issueSeverity = document.getElementById('severity').value;
-    let issueSolver = document.getElementById('assignedTo').value.trim();
-
-    statedIssue = statedIssue.toLowerCase().replace(/(?:^|\s|-)\S/g, function (match) {
-        return match.toUpperCase();
-    })
-
-    issueSolver = issueSolver.toLowerCase().replace(/(?:^|\s|-)\S/g, function (match) {
-        return match.toUpperCase();
-    })
-
-    if (statedIssue === "" || issueSeverity === "" || issueSolver === "") {
-        issues.innerHTML = "Please fill in all fields."
-        return;
-    }
-
-    // const user = JSON.parse(localStorage.getItem('user')) || {};
-    const activeUser = JSON.parse(localStorage.getItem('Active User'))
+    const assignedTo = document.getElementById('assignedTo').value.trim();
+    
+    const activeUser = JSON.parse(localStorage.getItem('Active User'));
     let issuesList = JSON.parse(localStorage.getItem('Issues')) || {};
     const currentIssues = issuesList[activeUser.username] || [];
-    let preexistingIssue = currentIssues.find((s) => s.statedIssue === statedIssue);
+
+    const preexistingIssue = currentIssues.find((s) => s.statedIssue === issueDescription);
     if (preexistingIssue) {
-        alert("Issue already exists. Please try again.");
         return;
     }
+    
+    const issueId = generateIssueId();
 
-    newIssue = {
-        issueId,
-        statedIssue,
-        issueSeverity,
-        issueSolver,
-        issueStatus
+    const formattedIssueDescription = issueDescription.toLowerCase().replace(/(?:^|\s|-)\S/g, function (match) {
+        return match.toUpperCase();
+    });
+    const formattedAssignedTo = assignedTo.toLowerCase().replace(/(?:^|\s|-)\S/g, function (match) {
+        return match.toUpperCase();
+    });
+    
+    if (issueDescription === "" || issueSeverity === "" || assignedTo === "") {
+        issues.innerHTML = "Please fill in all fields.";
+        return;
     }
+    
+    const newIssue = {
+        issueId,
+        statedIssue: formattedIssueDescription,
+        issueSeverity,
+        issueSolver: formattedAssignedTo,
+        issueStatus
+    };
 
     currentIssues.push(newIssue);
-    // issues[user.username] = issueList;
     issuesList[activeUser.username] = currentIssues;
     localStorage.setItem('Issues', JSON.stringify(issuesList));
 
-    statedIssue.value = '';
-    issueSolver.value = '';
-    // issueList.push();
+    document.getElementById('issueDescription').value = '';
+    document.getElementById('assignedTo').value = '';
     displayIssues();
 }
 
@@ -184,5 +191,13 @@ function deleteIssue() {
     // When deleting an issue, it first needs to be closed in order to be deleted
     // Update the code below to be compatible with your issue tracker system
 
+    const newIssues = JSON.parse(localStorage.getItem('Issues'));
+    const activeUser = JSON.parse(localStorage.getItem('Active User'));
+    const currentIssue = newIssues[activeUser.username];
 
+    if (currentIssue.issueStatus === 'Closed') {
+        currentIssue.splice(currentIssue.indexOf(currentIssue), 1);
+        localStorage.setItem('Issues', JSON.stringify(newIssues));
+        displayIssues();
+    }
 }
