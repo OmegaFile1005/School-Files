@@ -8,12 +8,10 @@ function register() {
     fullName = fullName.toLowerCase().replace(/(?:^|\s|-)\S/g, function (match) {
         return match.toUpperCase();
     });
-
     if (fullName === "" || username === "" || password === "" || useremail === "") {
         alert("Please fill in all fields.");
         return;
     }
-
     // Create a user object
     var user = {
         fullName,
@@ -40,27 +38,22 @@ function register() {
 
 function getUserData() {
     var storedUser = localStorage.getItem("user");
-
     if (storedUser) {
         return JSON.parse(storedUser);
     }
-
     return null;
 }
 
 function logIn() {
     const users = JSON.parse(localStorage.getItem("users"));
-
     const loginUsername = document.getElementById("username").value.trim();
     const loginPassword = document.getElementById("password").value.trim();
-
     const loggingInUser = users.find(u => u.username === loginUsername && u.password === loginPassword);
 
     if (!loggingInUser) {
         alert("Invalid username or password.");
         return;
     }
-
     if (loggingInUser.loggedIn === 'Active') {
         alert("You are already logged in.");
         return;
@@ -68,9 +61,7 @@ function logIn() {
 
     loggingInUser.loggedIn = 'Active';
     localStorage.setItem("Active User", JSON.stringify(loggingInUser));
-
     alert("Logged in successfully!");
-
     window.location.href = "issues.html";
 }
 
@@ -84,7 +75,6 @@ function logOut() {
 
     // Save the updated user data to local storage
     localStorage.setItem('Inactive Users', JSON.stringify(users));
-
     window.location.href = "index.html";
 }
 
@@ -99,7 +89,6 @@ function generateIssueId() {
     if (issueId > currentIssues.length) {
         issueId = currentIssues.length + 1;
     }
-
     return Math.floor(issueId);
 }
 
@@ -108,16 +97,15 @@ function addIssue() {
     const issueDescription = document.getElementById('issueDescription').value.trim();
     const issueSeverity = document.getElementById('severity').value;
     const assignedTo = document.getElementById('assignedTo').value.trim();
-    
+
     const activeUser = JSON.parse(localStorage.getItem('Active User'));
     let issuesList = JSON.parse(localStorage.getItem('Issues')) || {};
     const currentIssues = issuesList[activeUser.username] || [];
-
     const preexistingIssue = currentIssues.find((s) => s.statedIssue === issueDescription);
     if (preexistingIssue) {
         return;
     }
-    
+
     const issueId = generateIssueId();
 
     const formattedIssueDescription = issueDescription.toLowerCase().replace(/(?:^|\s|-)\S/g, function (match) {
@@ -126,12 +114,11 @@ function addIssue() {
     const formattedAssignedTo = assignedTo.toLowerCase().replace(/(?:^|\s|-)\S/g, function (match) {
         return match.toUpperCase();
     });
-    
     if (issueDescription === "" || issueSeverity === "" || assignedTo === "") {
         issues.innerHTML = "Please fill in all fields.";
         return;
     }
-    
+
     const newIssue = {
         issueId,
         statedIssue: formattedIssueDescription,
@@ -139,11 +126,9 @@ function addIssue() {
         issueSolver: formattedAssignedTo,
         issueStatus
     };
-
     currentIssues.push(newIssue);
     issuesList[activeUser.username] = currentIssues;
     localStorage.setItem('Issues', JSON.stringify(issuesList));
-
     document.getElementById('issueDescription').value = '';
     document.getElementById('assignedTo').value = '';
     displayIssues();
@@ -190,7 +175,6 @@ function closeIssue() {
 function deleteIssue() {
     // When deleting an issue, it first needs to be closed in order to be deleted
     // Update the code below to be compatible with your issue tracker system
-
     const newIssues = JSON.parse(localStorage.getItem('Issues'));
     const activeUser = JSON.parse(localStorage.getItem('Active User'));
     const currentIssue = newIssues[activeUser.username];
