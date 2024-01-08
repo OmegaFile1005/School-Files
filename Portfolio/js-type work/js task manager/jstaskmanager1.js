@@ -165,8 +165,6 @@ const displayTasks = (tasks) => {
         taskRow.appendChild(taskIcon);
         taskRow.appendChild(taskDescription);
         taskRow.appendChild(taskCheckIcon);
-
-
         taskList.appendChild(taskRow);
     });
 }
@@ -197,7 +195,6 @@ function showIncompleteTasks() {
 }
 
 function clearCompletedTasks() {
-
     const tasks = JSON.parse(localStorage.getItem('tasks'));
     const user = JSON.parse(localStorage.getItem('user'));
     tasks[user.username] = tasks[user.username].filter((task) => !task.completed);
