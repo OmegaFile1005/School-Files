@@ -22,7 +22,7 @@
     <div class="row">
       <div class="col text-end mb-3">
         <p>Welcome: <span id="activeUser" style="font-style: italic;"></span></p>
-        <a href="index.html" class="text text-primary" onclick="logout()">Logout</a>
+        <p id="logout" class="text text-primary" onclick="logOut()">Logout</p>
       </div>
     </div>
     <div class="row bg-secondary-subtle  rounded p-3">
@@ -59,24 +59,23 @@
     </div>
   </div>
   <script>
-document.addEventListener('DOMContentLoaded', function () {
-  let issueDescriptions = document.getElementById('issueDescriptions');
-  let assignedUsers = document.getElementById('assignedUsers');
-  let issues = JSON.parse(localStorage.getItem('Issues'));
-  console.log(typeof issues); // Add this console log to check the type of issues
-  if (Array.isArray(issues)) {
-    issues.forEach(issue => {
-      let issueDescriptionOption = document.createElement('option');
-      issueDescriptionOption.value = issue.statedIssue;
-      issueDescriptionOption.textContent = issue.statedIssue;
-      issueDescriptions.appendChild(issueDescriptionOption);
-      let assignedUserOption = document.createElement('option');
-      assignedUserOption.value = issue.assignedTo;
-      assignedUserOption.textContent = issue.assignedTo;
-      assignedUsers.appendChild(assignedUserOption);
+    document.addEventListener('DOMContentLoaded', function () {
+      let issueDescriptions = document.getElementById('issueDescriptions');
+      let assignedUsers = document.getElementById('assignedUsers');
+      let users = JSON.parse(localStorage.getItem('users'));
+      if (users) {
+        users.forEach(user => {
+          let issueDescriptionOption = document.createElement('option');
+          issueDescriptionOption.value = user.username;
+          issueDescriptionOption.textContent = user.username;
+          issueDescriptions.appendChild(issueDescriptionOption);
+          let assignedUserOption = document.createElement('option');
+          assignedUserOption.value = user.username;
+          assignedUserOption.textContent = user.username;
+          assignedUsers.appendChild(assignedUserOption);
+        });
+      }
     });
-  }
-});
     window.onload = function () {
       displayIssues();
       const activeUser = document.getElementById('activeUser');
