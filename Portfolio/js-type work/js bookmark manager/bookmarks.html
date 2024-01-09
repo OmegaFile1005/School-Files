@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script defer src="jsbookmarkmanager.js"></script>
+</head>
+
+<body>
+    <div class="container mt-3 m-3">
+        <div class="row">
+            <div class="col-md-8">
+                <h2 class="text-secondary">Bookmarks</h2>
+            </div>
+            <div class="col-md-4">
+                <p>Welcome: <span id="activeUser" style="font-style: italic;"></span></p>
+                <p id="logout" class="text text-primary" onclick="logOut()">Logout</p>
+            </div>
+        </div>
+        <div class="row my-3 text-center bg-secondary-subtle offset-3">
+            <div class="col p-3">
+                <h4>Bookmark Your Favorite Sites</h4>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="webSite" class="form-label">Site Name</label>
+                            <input type="text" class="form-control" id="webSite" placeholder="Website Name">
+                            <label for="webSiteURL" class="form-label">Site URL</label>
+                            <input type="text" class="form-control" id="webSiteURL" placeholder="Website URL">
+                            <button type="button" class="btn btn-primary mt-3 p-3"
+                                onclick="addBookmark()">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let webSites = document.getElementById('webSites');
+            let webSiteURLs = document.getElementById('webSiteURLs');
+            let users = JSON.parse(localStorage.getItem('users'));
+            if (users) {
+                users.forEach(user => {
+                    let webSiteOption = document.createElement('option');
+                    webSiteOption.value = user.username;
+                    webSiteOption.textContent = user.username;
+                    webSites.appendChild(webSiteOption);
+                    let webSiteURL = document.createElement('option');
+                    webSiteURL.value = user.username;
+                    webSiteURL.textContent = user.username;
+                    webSiteURLs.appendChild();
+                });
+            }
+        });
+        window.onload = function () {
+            displayBookmarks();
+            const activeUser = document.getElementById('activeUser');
+            const user = JSON.parse(localStorage.getItem('Active User'));
+            activeUser.textContent = user && user.fullName ? user.fullName : 'Guest';
+        }
+    </script>
+</body>
+
+</html>

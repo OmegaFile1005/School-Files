@@ -23,18 +23,25 @@
             <div class="col-6 offset-3">
                 <form id="form">
                     <div class="mb-3">
-                        <label for="fullname" class="form-label">User Full Name</label>
-                        <input list="fullNames" type="text" class="form-control" id="fullname"
-                            placeholder="Write your full name..." autocomplete="fullname">
-                        <datalist id="fullNames">
-                        </datalist>
-                        <label for="username" class="form-label">User Name</label>
-                        <input list="userNames" type="text" class="form-control" id="username" autocomplete="username"
-                            placeholder="Write your user name...">
-                        <datalist id="userNames"></datalist>
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" autocomplete="current-password"
-                            placeholder="Write your password...">
+                        <div class="form-floating mb-3">
+                            <input list="fullNames" type="text" class="form-control" id="fullname"
+                                placeholder="Full Name" autocomplete="name">
+                            <label for="fullname">User Full Name</label><br>
+                            <datalist id="fullNames">
+                            </datalist>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input list="userNames" type="text" class="form-control" id="username"
+                                autocomplete="username" placeholder="User Name">
+                            <label for="username">User Name</label><br>
+                            <datalist id="userNames">
+                            </datalist>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="password" autocomplete="current-password"
+                                placeholder="Password">
+                            <label for="password">Enter Password</label>
+                        </div>
                     </div>
                     <button type="button" class="btn btn-success w-50 offset-3" onclick="register()">Register</button>
                 </form>
