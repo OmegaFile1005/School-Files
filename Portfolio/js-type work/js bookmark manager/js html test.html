@@ -8,31 +8,28 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-        crossorigin="anonymous"></script>
     	<link rel="stylesheet" href="stylesbookmark.css">
 	<script defer src="jsbookmarkmanager.js"></script>
 </head>
 
 <body>
     <div class="container mt-4">
-        <div class="row border rounded bg-secondary-subtle straighten">
+        <div class="row straighten w-75">
             <div class="col">
                 <h3>Your Bookmarks</h3>
                 <div id="bookmarks">
-                    <div id="background" class="row border border-secondary-subtle rounded straighten">
+                    <div id="background" class="row border border-secondary-subtle rounded straighten p-3" style="background-color: #f5f5f5 !important;">
                         <div class="col">
                             <h4>${newBookmark.name}</h4>
                         </div>
                         <div class="col">
-                            <button class="btn btn-primary-subtle" onclick="visitBookmark()">Visit</button>
+                            <button id="whitebutton" type="button" class="btn" onclick="visitBookmark()">Visit</button>
                         </div>
                         <div class="col">
-                            <button class="btn btn-danger" onclick="deleteBookmark()">Delete</button>
+                            <button id="bigbutton" type="button" class="btn btn-danger" onclick="deleteBookmark()">Delete</button>
                         </div>
                         <div class="col">
-                            <button class="btn btn-success" onclick="editBookmark()">Edit URL</button>
+                            <button id="bigbutton" type="button" class="btn btn-success" onclick="editBookmark()">Edit URL</button>
                         </div>
                     </div>
                 </div>
