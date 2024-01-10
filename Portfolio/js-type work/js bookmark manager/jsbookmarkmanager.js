@@ -84,8 +84,8 @@ function logOut() {
 
 const bookmarks = localStorage.getItem('bookmarks');
 function addBookmark() {
-    const name = document.getElementById('webSite').value.trim();
-    const url = document.getElementById('webSiteURL').value.trim();
+    const name = document.getElementById('siteName').value.trim();
+    const url = document.getElementById('URL').value.trim();
 
     const activeUser = JSON.parse(localStorage.getItem('Active User'));
     const bookmarkList = JSON.parse(localStorage.getItem('bookmarks')) || {};
@@ -106,12 +106,34 @@ function addBookmark() {
     bookmarkList[activeUser.username] = currentBookmarks;
     localStorage.setItem('bookmarks', JSON.stringify(bookmarkList));
     displayBookmarks();
-    document.getElementById('webSite').value = '';
-    document.getElementById('webSiteURL').value = '';
+    document.getElementById('siteName').value = '';
+    document.getElementById('URL').value = '';
 }
 
 function displayBookmarks() {
+    const activeUser = JSON.parse(localStorage.getItem('Active User'));
+    const bookmarkList = JSON.parse(localStorage.getItem('bookmarks'));
+    const currentBookmarks = bookmarkList[activeUser.username] || [];
 
+    bookmarks.innerHTML = "";
+    currentBookmarks.forEach((newBookmark) => {
+        bookmarks.innerHTML += `
+            <div class="row border rounded bg-secondary-subtle straighten">
+                  <div class="col">
+                      <h4>${newBookmark.name}</h4>
+                  </div>
+                  <div class="col">
+                     <button class="btn btn-light" onclick="visitBookmark()">Visit</button>
+                 </div>
+                  <div class="col">
+                     <button class="btn btn-light" onclick="deleteBookmark()">Delete</button>
+                 </div>
+                  <div class="col">
+                      <button class="btn btn-light" onclick="editBookmark()">Edit URL</button>
+                  </div>
+              </div>
+            `
+    });
 }
 
 function visitBookmark() {

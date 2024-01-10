@@ -27,23 +27,23 @@
 			<div class="col p-3">
 				<h3>Bookmark Your Favorite Sites</h3>
 				<div class="row">
-					<div class="col">
-						<div class="pb-3">
-							<form id="bookmarkForm">
-								<label for="webSite" class="form-label"><b>Site Name</b></label>
-								<input list="webSites" type="text" class="form-control" id="webSite"
+					<div class="col pb-3">
+						<form id="bookmarkForm">
+							<div class="form-check">
+								<label for="siteName" class="form-label"><b>Site Name</b></label>
+								<input list="webSites" type="text" class="form-control" id="siteName"
 									placeholder="Website Name">
 								<datalist id="webSites">
-								</datalist>
-								<label for="webSiteURL" class="form-label"><b>Site URL</b></label>
-								<input list="webSiteURLs" type="text" class="form-control" id="webSiteURL"
+								</datalist><br>
+								<label for="URL" class="form-label"><b>Site URL</b></label>
+								<input list="webSiteURLs" type="text" class="form-control" id="URL"
 									placeholder="Website URL">
 								<datalist id="webSiteURLs">
 								</datalist>
-								<button type="button" class="btn btn-primary mt-3 p-3 px-4" style="font-size: 1.5rem;"
-									onclick="addBookmark()">Submit</button>
-							</form>
-						</div>
+							</div>
+							<button type="button" class="btn btn-primary mt-3 p-3 px-4" style="font-size: 1.5rem;"
+								onclick="addBookmark()">Submit</button>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -66,12 +66,14 @@
 			let bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
 			if (bookmarks) {
 				bookmarks.forEach(bookmark => {
-					let option = document.createElement('option');
-					option.value = bookmark.name;
-					webSites.appendChild(option);
-					option = document.createElement('option');
-					option.value = bookmark.url;
-					webSiteURLs.appendChild(option);
+					let webSiteOption = document.createElement('option');
+					webSiteOption.value = bookmark.name;
+					webSiteOption.textContent = bookmark.name;
+					webSites.appendChild(webSiteOption);
+					let webSiteURLOption = document.createElement('option');
+					webSiteURLOption.value = bookmark.url;
+					webSiteURLOption.textContent = bookmark.url;
+					webSiteURLs.appendChild(webSiteURLOption);
 				});
 			}
 		});
