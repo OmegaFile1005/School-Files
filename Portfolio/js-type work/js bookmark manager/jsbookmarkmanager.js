@@ -20,7 +20,7 @@ function register() {
         alert("User already exists. Please log in.");
         return;
     }
-    
+
     const user = {
         fullName: capitalize(fullName),
         username,
@@ -34,7 +34,7 @@ function register() {
     window.location.href = "index.html";
 }
 
-function createAccount  () {
+function createAccount() {
     window.location.href = "register.html";
 }
 function getUserData() {
@@ -88,5 +88,17 @@ function addBookmark() {
 }
 
 function displayBookmarks() {
+
+}
+
+function visitBookmark() {
+
+}
+
+function deleteBookmark() {
+
+}
+
+function editBookmark() {
 
 }
