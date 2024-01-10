@@ -7,6 +7,11 @@
     padding: 20px;
 }
 
+.col {
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
 #header {
     margin-bottom: -12px;
 }

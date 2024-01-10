@@ -29,13 +29,13 @@
 				<div class="row">
 					<div class="col">
 						<div class="pb-3">
-							<form>
-								<label for="webSite" class="form-label">Site Name</label>
+							<form id="bookmarkForm">
+								<label for="webSite" class="form-label"><b>Site Name</b></label>
 								<input list="webSites" type="text" class="form-control" id="webSite"
 									placeholder="Website Name">
 								<datalist id="webSites">
 								</datalist>
-								<label for="webSiteURL" class="form-label">Site URL</label>
+								<label for="webSiteURL" class="form-label"><b>Site URL</b></label>
 								<input list="webSiteURLs" type="text" class="form-control" id="webSiteURL"
 									placeholder="Website URL">
 								<datalist id="webSiteURLs">
@@ -65,18 +65,16 @@
 			let webSiteURLs = document.getElementById('webSiteURLs');
 			let bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
 			if (bookmarks) {
-				bookmarks.forEach(newBookmark => {
-						let webSiteOption = document.createElement('option');
-						webSiteOption.value = newBookmark.name;
-						webSiteOption.textContent = newBookmark.name;
-						webSites.appendChild(webSiteOption);
-						let webSiteURL = document.createElement('option');
-						webSiteURL.value = newBookmark.url;
-						webSiteURL.textContent = newBookmark.url;
-						webSiteURLs.appendChild(webSiteURL);
-					});
-				}
-			});
+				bookmarks.forEach(bookmark => {
+					let option = document.createElement('option');
+					option.value = bookmark.name;
+					webSites.appendChild(option);
+					option = document.createElement('option');
+					option.value = bookmark.url;
+					webSiteURLs.appendChild(option);
+				});
+			}
+		});
 		window.onload = function () {
 			displayBookmarks();
 			const activeUser = document.getElementById('activeUser');
