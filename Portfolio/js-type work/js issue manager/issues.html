@@ -31,7 +31,7 @@
           <div class="col-md-11 pt-3">
             <h2>Add New Issue:</h2>
             <label for="issueDescription">Description</label><br>
-            <input type="text" id="issueDescription" class="form-control mb-3" placeholder="Describe the issue ..."><br>
+            <input list="issueDescriptions" type="text" id="issueDescription" class="form-control mb-3" placeholder="Describe the issue ..."><br>
             <datalist id="issueDescriptions">
             </datalist>
             <label for="severity">Severity</label><br>
@@ -41,7 +41,7 @@
               <option value="High">High</option>
             </select><br>
             <label for="assignedTo">Assigned To</label><br>
-            <input type="text" id="assignedTo" class="form-control mb-3" placeholder="Enter responsible ..."><br>
+            <input list="assignedUsers" type="text" id="assignedTo" class="form-control mb-3" placeholder="Enter responsible ..."><br>
             <datalist id="assignedUsers">
             </datalist>
           </div>

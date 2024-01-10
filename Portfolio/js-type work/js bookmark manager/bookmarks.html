@@ -29,16 +29,20 @@
 				<div class="row">
 					<div class="col">
 						<div class="pb-3">
-							<label for="webSite" class="form-label">Site Name</label>
-							<input type="text" class="form-control" id="webSite" placeholder="Website Name">
-							<datalist id="webSites">
-							</datalist>
-							<label for="webSiteURL" class="form-label">Site URL</label>
-							<input type="text" class="form-control" id="webSiteURL" placeholder="Website URL">
-							<datalist id="webSiteURLs">
-							</datalist>
-							<button type="button" class="btn btn-primary mt-3 p-3 px-4" style="font-size: 1.5rem;"
-								onclick="addBookmark()">Submit</button>
+							<form>
+								<label for="webSite" class="form-label">Site Name</label>
+								<input list="webSites" type="text" class="form-control" id="webSite"
+									placeholder="Website Name">
+								<datalist id="webSites">
+								</datalist>
+								<label for="webSiteURL" class="form-label">Site URL</label>
+								<input list="webSiteURLs" type="text" class="form-control" id="webSiteURL"
+									placeholder="Website URL">
+								<datalist id="webSiteURLs">
+								</datalist>
+								<button type="button" class="btn btn-primary mt-3 p-3 px-4" style="font-size: 1.5rem;"
+									onclick="addBookmark()">Submit</button>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -59,20 +63,20 @@
 		document.addEventListener('DOMContentLoaded', function () {
 			let webSites = document.getElementById('webSites');
 			let webSiteURLs = document.getElementById('webSiteURLs');
-			let users = JSON.parse(localStorage.getItem('users'));
-			if (users) {
-				users.forEach(user => {
-					let webSiteOption = document.createElement('option');
-					webSiteOption.value = user.username;
-					webSiteOption.textContent = user.username;
-					webSites.appendChild(webSiteOption);
-					let webSiteURL = document.createElement('option');
-					webSiteURL.value = user.username;
-					webSiteURL.textContent = user.username;
-					webSiteURLs.appendChild();
-				});
-			}
-		});
+			let bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
+			if (bookmarks) {
+				bookmarks.forEach(newBookmark => {
+						let webSiteOption = document.createElement('option');
+						webSiteOption.value = newBookmark.name;
+						webSiteOption.textContent = newBookmark.name;
+						webSites.appendChild(webSiteOption);
+						let webSiteURL = document.createElement('option');
+						webSiteURL.value = newBookmark.url;
+						webSiteURL.textContent = newBookmark.url;
+						webSiteURLs.appendChild(webSiteURL);
+					});
+				}
+			});
 		window.onload = function () {
 			displayBookmarks();
 			const activeUser = document.getElementById('activeUser');

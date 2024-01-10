@@ -71,7 +71,6 @@ if (window.location.pathname === '/index.html') {
 function logOut() {
     const users = JSON.parse(localStorage.getItem('users'));
     const activeUser = JSON.parse(localStorage.getItem('Active User'));
-
     const currentUser = users.find(user => user.username === activeUser.username);
 
     if (currentUser) {
@@ -83,8 +82,32 @@ function logOut() {
     window.location.href = "index.html";
 }
 
+const bookmarks = localStorage.getItem('bookmarks');
 function addBookmark() {
+    const name = document.getElementById('webSite').value.trim();
+    const url = document.getElementById('webSiteURL').value.trim();
 
+    const activeUser = JSON.parse(localStorage.getItem('Active User'));
+    const bookmarkList = JSON.parse(localStorage.getItem('bookmarks')) || {};
+    const currentBookmarks = bookmarkList[activeUser.username] || [];
+
+    const existingBookmark = currentBookmarks.find(b => b.name === name || b.url === url);
+    if (existingBookmark) {
+        alert('Bookmark already exists.');
+        return;
+    }
+    if (name === '' || url === '') {
+        alert('Please fill in all fields.');
+        return;
+    }
+
+    const newBookmark = { name, url };
+    currentBookmarks.push(newBookmark);
+    bookmarkList[activeUser.username] = currentBookmarks;
+    localStorage.setItem('bookmarks', JSON.stringify(bookmarkList));
+    displayBookmarks();
+    document.getElementById('webSite').value = '';
+    document.getElementById('webSiteURL').value = '';
 }
 
 function displayBookmarks() {
