@@ -84,37 +84,9 @@ function logOut() {
 }
 
 function addBookmark() {
-    const webSites = document.getElementById('webSites');
-    const webSiteURLs = document.getElementById('webSiteURLs');
-    const users = JSON.parse(localStorage.getItem('users'));
-    if (users) {
-        users.forEach(user => {
-            const webSiteOption = document.createElement('option');
-            webSiteOption.value = user.username;
-            webSiteOption.textContent = user.username;
-            webSites.appendChild(webSiteOption);
-            const webSiteURL = document.createElement('option');
-            webSiteURL.value = user.username;
-            webSiteURL.textContent = user.username;
-            webSiteURLs.appendChild(webSiteURL);
-        });
-    }
+
 }
 
 function displayBookmarks() {
-    const webSites = document.getElementById('webSites');
-    const webSiteURLs = document.getElementById('webSiteURLs');
-    const users = JSON.parse(localStorage.getItem('users'));
-    if (users) {
-        users.forEach(user => {
-            const webSiteOption = document.createElement('option');
-            webSiteOption.value = user.username;
-            webSiteOption.textContent = user.username;
-            webSites.appendChild(webSiteOption);
-            const webSiteURL = document.createElement('option');
-            webSiteURL.value = user.username;
-            webSiteURL.textContent = user.username;
-            webSiteURLs.appendChild(webSiteURL);
-        });
-    }
+
 }

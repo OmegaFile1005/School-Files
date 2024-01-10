@@ -1,0 +1,13 @@
+body {
+    align-items: center !important;
+    text-align: center !important;
+    align-self: center !important;
+}
+
+#placeholder {
+    align-self: center !important;
+    text-align: center !important;
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: #f8d7da;
+}
