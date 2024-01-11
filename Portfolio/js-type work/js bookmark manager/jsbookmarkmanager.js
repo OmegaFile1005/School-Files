@@ -85,12 +85,20 @@ function logOut() {
 const bookmarks = document.getElementById('bookmarks');
 function addBookmark() {
     const name = document.getElementById('siteName').value.trim();
-    const url = document.getElementById('URL').value.trim();
+    let url = document.getElementById('URL').value.trim();
+
+    // If url is not valid, make the url valid
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        url = 'http://' + url;
+        document.getElementById('URL').value = url;
+        document.getElementById('URL').select();
+        alert('URL copied to clipboard.');
+        return;
+    }
 
     const activeUser = JSON.parse(localStorage.getItem('Active User'));
     const bookmarkList = JSON.parse(localStorage.getItem('bookmarks')) || {};
     const currentBookmarks = bookmarkList[activeUser.username] || [];
-
     const existingBookmark = currentBookmarks.find(b => b.name === name || b.url === url);
     if (existingBookmark) {
         alert('Bookmark already exists.');
@@ -113,66 +121,58 @@ function addBookmark() {
 function displayBookmarks() {
     const activeUser = JSON.parse(localStorage.getItem('Active User'));
     const bookmarkList = JSON.parse(localStorage.getItem('bookmarks'));
-    const currentBookmarks = bookmarkList[activeUser.username] || [];
-
+    if (bookmarkList === null) { // Check if bookmarkList is null
+        return;
+    }
+    const currentBookmarks = bookmarkList[activeUser.username];
     bookmarks.innerHTML = "";
-    currentBookmarks.forEach((newBookmark) => {
-        bookmarks.innerHTML += `
+    if (currentBookmarks !== null || currentBookmarks.length > 0) {
+        currentBookmarks.forEach((newBookmark, i) => { // Index was missing here
+            bookmarks.innerHTML += `
             <div class="row border border-secondary-subtle rounded straighten exact justify-content-center mx-auto p-3"
                 style="background-color: #f5f5f5;">
-                <div class="col-auto">
+                <div class="col">
                   <h4>${newBookmark.name}</h4>
                 </div>
-                <div class="col-auto">
+                <div class="col">
                     <button id="visitBookmarkBtn" type="button" class="btn whitebutton" onclick="visitBookmark()">Visit</button>
-                    <button id="deleteBookmarkBtn" type="button" class="btn btn-danger bigbutton"
-                        onclick="deleteBookmark()">Delete</button>
-                    <button id="editBookmarkBtn" type="button" class="btn btn-success bigbutton" onclick="editBookmark()">Edit
+                    <button id="deleteBookmarkBtn" type="button" class="btn btn-danger"
+                        onclick="deleteBookmark(${i})">Delete</button> 
+                    <button id="editBookmarkBtn" type="button" class="btn btn-success" onclick="editBookmark()">Edit
                         URL</button>
                 </div>
             </div>
             `
-    });
-}
-
-function visitBookmark() {
-    const visitBookmarkBtn = document.querySelectorAll('#visitBookmarkBtn');
-    visitBookmarkBtn.forEach((button) => {
-        button.addEventListener('click', () => {
-            const activeUser = JSON.parse(localStorage.getItem('Active User'));
-            const bookmarkList = JSON.parse(localStorage.getItem('bookmarks'));
-            const currentBookmarks = bookmarkList[activeUser.username];
-            const bookmarkTitle = button.parentElement.parentElement.querySelector('h4').textContent;
-            const bookmarkUrl = currentBookmarks.find((bookmark) => bookmark.name === bookmarkTitle).url;
-            window.open(bookmarkUrl, '_blank');
         });
-    })
+    }
 }
 
-function deleteBookmark() {
-    const deleteBookmarkBtn = document.querySelectorAll('#deleteBookmarkBtn');
-    deleteBookmarkBtn.forEach((button) => {
-        button.addEventListener('click', () => {
-            const activeUser = JSON.parse(localStorage.getItem('Active User'));
-            const bookmarkList = JSON.parse(localStorage.getItem('bookmarks'));
-            const currentBookmarks = bookmarkList[activeUser.username];
-            const confirmDeletion = window.prompt('Are you sure you want to delete this bookmark? (Y/N)');
-            if (confirmDeletion && confirmDeletion.toLowerCase() === 'y') {
-                alert('Bookmark deleted successfully!');
-                button.parentElement.parentElement.remove();
-                const bookmarkTitle = button.parentElement.parentElement.querySelector('h4').textContent;
-                const index = currentBookmarks.findIndex((bookmark) => bookmark.url === bookmarkTitle);
-                if (index !== -1) {
-                    currentBookmarks.splice(index, 1);
-                    bookmarkList[activeUser.username] = currentBookmarks;
-                    localStorage.setItem('bookmarks', JSON.stringify(bookmarkList));
-                    displayBookmarks();
-                }
-            }
-        });
-    });
+function visitBookmark(i) {
+    const activeUser = JSON.parse(localStorage.getItem('Active User'));
+    const bookmarkList = JSON.parse(localStorage.getItem('bookmarks'));
+    const name = document.getElementById('siteName').value.trim();
+    const url = document.getElementById('URL').value.trim();
+    const currentBookmarks = bookmarkList[activeUser.username];
+    const selectedBookmark = currentBookmarks.find(b => b.name === name || b.url === url);
+    if (selectedBookmark) {
+        window.open(selectedBookmark.url, '_blank');
+    }
 }
 
-function editBookmark() {
-    // Use a window prompt to open up a form to edit the bookmark
+function deleteBookmark(i) {
+    const activeUser = JSON.parse(localStorage.getItem('Active User'));
+    const bookmarkList = JSON.parse(localStorage.getItem('bookmarks'));
+    const currentBookmarks = bookmarkList[activeUser.username];
+    const confirmDeletion = window.prompt('Are you sure you want to delete this bookmark? (Y/N)');
+    if (confirmDeletion && confirmDeletion.toLowerCase() === 'y') {
+        currentBookmarks.splice(i, 1);
+        bookmarkList[activeUser.username] = currentBookmarks;
+        localStorage.setItem('bookmarks', JSON.stringify(bookmarkList));
+        displayBookmarks();
+        alert('Bookmark deleted successfully!');
+    }
+}
+
+function editBookmark(i) {
+    
 }

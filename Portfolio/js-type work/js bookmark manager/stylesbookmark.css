@@ -24,11 +24,8 @@
     background-color: white !important;
     border: 1px solid #dbdbdb !important;
     border-radius: 5px;
-    padding: 1.25rem;
-    width: 115px;
     margin-top: 5px;
     margin-bottom: 5px;
-    font-size: calc(1.275rem + 0.3vw);
 }
 
 #footer {

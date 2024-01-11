@@ -62,11 +62,12 @@
   </div>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
+      const activeUser = JSON.parse(localStorage.getItem('Active User'));
       let issueDescriptions = document.getElementById('issueDescriptions');
       let assignedUsers = document.getElementById('assignedUsers');
       let issues = JSON.parse(localStorage.getItem('Issues'));
       if (issues) {
-        issues.forEach(issue => {
+        issues[activeUser.username].forEach(issue => {
           let issueDescriptionOption = document.createElement('option');
           issueDescriptionOption.value = issue.issueDescription;
           issueDescriptionOption.textContent = issue.issueDescription;
