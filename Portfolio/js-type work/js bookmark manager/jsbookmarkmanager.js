@@ -82,7 +82,7 @@ function logOut() {
     window.location.href = "index.html";
 }
 
-const bookmarks = localStorage.getItem('bookmarks');
+const bookmarks = document.getElementById('bookmarks');
 function addBookmark() {
     const name = document.getElementById('siteName').value.trim();
     const url = document.getElementById('URL').value.trim();
@@ -118,20 +118,20 @@ function displayBookmarks() {
     bookmarks.innerHTML = "";
     currentBookmarks.forEach((newBookmark) => {
         bookmarks.innerHTML += `
-            <div class="row border rounded bg-secondary-subtle straighten">
-                  <div class="col">
-                      <h4>${newBookmark.name}</h4>
-                  </div>
-                  <div class="col">
-                     <button class="btn btn-light" onclick="visitBookmark()">Visit</button>
-                 </div>
-                  <div class="col">
-                     <button class="btn btn-light" onclick="deleteBookmark()">Delete</button>
-                 </div>
-                  <div class="col">
-                      <button class="btn btn-light" onclick="editBookmark()">Edit URL</button>
-                  </div>
-              </div>
+            <div class="row border border-secondary-subtle rounded straighten exact justify-content-center mx-auto p-3"
+        style="background-color: #f5f5f5;">
+        <div class="col-auto">
+            <h4>${newBookmark.name}</h4>
+        </div>
+        <div class="col-auto">
+            <button type="button" class="btn whitebutton" onclick="visitBookmark()">Visit</button>
+            <button type="button" class="btn btn-danger bigbutton"
+                onclick="deleteBookmark()">Delete</button>
+            <button type="button" class="btn btn-success bigbutton" onclick="editBookmark()">Edit
+                URL</button>
+        </div>
+    </div>
+
             `
     });
 }
@@ -145,5 +145,7 @@ function deleteBookmark() {
 }
 
 function editBookmark() {
+
+    window.prompt("Enter URL to edit:");
 
 }
