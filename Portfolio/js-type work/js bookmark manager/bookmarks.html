@@ -83,6 +83,9 @@
 			const activeUser = document.getElementById('activeUser');
 			const user = JSON.parse(localStorage.getItem('Active User'));
 			activeUser.textContent = user && user.fullName ? user.fullName : 'Guest';
+			if (user === null) {
+				window.location.href = 'index.html';
+			}
 		}
 	</script>
 </body>

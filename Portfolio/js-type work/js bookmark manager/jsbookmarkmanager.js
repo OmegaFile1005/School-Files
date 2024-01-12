@@ -88,8 +88,8 @@ function addBookmark() {
     let url = document.getElementById('URL').value.trim();
 
     // If url is not valid, make the url valid
-    if (!url.startsWith('http://') && !url.startsWith('https://')) {
-        url = 'http://' + url;
+    if (!url.startsWith('http://www.') && !url.startsWith('https://www.')) {
+        url = 'https://www.' + url;
         document.getElementById('URL').value = url;
         document.getElementById('URL').select();
         alert('URL copied to clipboard.');
@@ -174,5 +174,19 @@ function deleteBookmark(i) {
 }
 
 function editBookmark(i) {
-    
+    const activeUser = JSON.parse(localStorage.getItem('Active User'));
+    const bookmarkList = JSON.parse(localStorage.getItem('bookmarks'));
+    const currentBookmarks = bookmarkList[activeUser.username];
+    const selectedBookmark = currentBookmarks[i];
+    const confirmEdit = window.prompt(`Are you sure you want to edit this bookmark? (Y/N)`);
+    if (confirmEdit && confirmEdit.toLowerCase() === 'y') {
+        const newName = window.prompt('Enter new name:');
+        const newURL = window.prompt('Enter new URL:');
+        selectedBookmark.name = newName || selectedBookmark.name;
+        selectedBookmark.url = newURL || selectedBookmark.url;
+        bookmarkList[activeUser.username] = currentBookmarks;
+        localStorage.setItem('bookmarks', JSON.stringify(bookmarkList));
+        displayBookmarks();
+        alert('Bookmark edited successfully!');
+    }
 }
