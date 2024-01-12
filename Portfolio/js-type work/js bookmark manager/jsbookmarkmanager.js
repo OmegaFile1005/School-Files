@@ -187,8 +187,8 @@ function editBookmark(i) {
         const newName = window.prompt('Enter new name:');
         const newURL = window.prompt('Enter new URL:');
 
-        selectedBookmark.name = newName || selectedBookmark.name;
-        selectedBookmark.url = newURL || selectedBookmark.url;
+        selectedBookmark.name = newName;
+        selectedBookmark.url = newURL;
 
         bookmarkList[activeUser.username] = currentBookmarks;
         localStorage.setItem('bookmarks', JSON.stringify(bookmarkList));
