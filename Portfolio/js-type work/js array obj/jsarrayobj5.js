@@ -126,7 +126,6 @@ function withdraw() {
     const withdrawAmount = prompt("Enter amount to withdraw:");
 
     const specificAccount = accounts.find(account => account.accountNumber === accountNumber);
-
     if (specificAccount) {
         if (specificAccount.balance >= withdrawAmount) {
             specificAccount.balance -= parseFloat(withdrawAmount);
