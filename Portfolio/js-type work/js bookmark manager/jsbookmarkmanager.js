@@ -163,11 +163,14 @@ function deleteBookmark(i) {
     const activeUser = JSON.parse(localStorage.getItem('Active User'));
     const bookmarkList = JSON.parse(localStorage.getItem('bookmarks'));
     const currentBookmarks = bookmarkList[activeUser.username];
+    
     const confirmDeletion = window.prompt('Are you sure you want to delete this bookmark? (Y/N)');
+    
     if (confirmDeletion && confirmDeletion.toLowerCase() === 'y') {
         currentBookmarks.splice(i, 1);
         bookmarkList[activeUser.username] = currentBookmarks;
         localStorage.setItem('bookmarks', JSON.stringify(bookmarkList));
+        
         displayBookmarks();
         alert('Bookmark deleted successfully!');
     }
@@ -178,14 +181,18 @@ function editBookmark(i) {
     const bookmarkList = JSON.parse(localStorage.getItem('bookmarks'));
     const currentBookmarks = bookmarkList[activeUser.username];
     const selectedBookmark = currentBookmarks[i];
+
     const confirmEdit = window.prompt(`Are you sure you want to edit this bookmark? (Y/N)`);
     if (confirmEdit && confirmEdit.toLowerCase() === 'y') {
         const newName = window.prompt('Enter new name:');
         const newURL = window.prompt('Enter new URL:');
+
         selectedBookmark.name = newName || selectedBookmark.name;
         selectedBookmark.url = newURL || selectedBookmark.url;
+
         bookmarkList[activeUser.username] = currentBookmarks;
         localStorage.setItem('bookmarks', JSON.stringify(bookmarkList));
+
         displayBookmarks();
         alert('Bookmark edited successfully!');
     }
