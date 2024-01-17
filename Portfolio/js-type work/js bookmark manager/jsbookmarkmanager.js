@@ -123,13 +123,16 @@ function displayBookmarks() {
 	if (bookmarkList === null) { // Check if bookmarkList is null
 		return;
 	}
-
-
+	let n = 0;
 
 	const currentBookmarks = bookmarkList[activeUser.username];
 	bookmarks.innerHTML = "";
 	if (currentBookmarks !== null || currentBookmarks.length > 0) {
 		currentBookmarks.forEach((newBookmark, i) => { // Index was missing here
+			n++;
+			if (n > 3) {
+				n = 1;
+			}
 			bookmarks.innerHTML += `
             <div class="row border border-secondary-subtle rounded straighten exact justify-content-center mx-auto p-3"
                 style="background-color: #f5f5f5;" id="bookmark${n}">
@@ -147,18 +150,6 @@ function displayBookmarks() {
             `
 		});
 	}
-}
-
-function displayBookmarksPerPage() {
-	const activeUser = JSON.parse(localStorage.getItem('Active User'));
-	const bookmarkList = JSON.parse(localStorage.getItem('bookmarks'));
-	const currentBookmarks = bookmarkList[activeUser.username];
-
-	let bookmarksPerPage = 3;
-	let startIndex = 0;
-
-	bookmarks.innerHTML = "";
-
 }
 
 function visitBookmark(i) {
