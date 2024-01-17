@@ -203,7 +203,8 @@ $('#bookmarkPagination').twbsPagination({
 	next: 'Next',
 	last: 'Last',
 
-	onPageClick: function (event, page) {
+	onPageClick: function (event, page) {\
+		// Last objective
 		if (document.getElementById('bookmarkPagination')) {
 			document.getElementById('bookmarkPagination').style.display = 'none';
 		}
