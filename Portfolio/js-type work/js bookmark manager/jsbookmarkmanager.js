@@ -204,7 +204,8 @@ $('#bookmarkPagination').twbsPagination({
 	last: 'Last',
 
 	onPageClick: function (event, page) {
-		$('.d-block').removeClass('d-block');
-		$('#bookmark' + page).addClass('d-block');
+		if (document.getElementById('bookmarkPagination')) {
+			document.getElementById('bookmarkPagination').style.display = 'none';
+		}
 	}
 });
