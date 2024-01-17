@@ -184,6 +184,13 @@ function editBookmark(i) {
 	const confirmEdit = window.prompt('Are you sure you want to edit this bookmark? (Y/N)');
 	if (confirmEdit && confirmEdit.toLowerCase() === 'y') {
 		// Creates a new prompt as a card with an input field and a submit button
-
+		const editBookmark = window.prompt('Enter the new URL for this bookmark:');
+		if (editBookmark) {
+			currentBookmarks[i].url = editBookmark;
+			bookmarkList[activeUser.username] = currentBookmarks;
+			localStorage.setItem('bookmarks', JSON.stringify(bookmarkList));
+			displayBookmarks();
+			alert('Bookmark updated successfully!');
+		}
 	}
 }
