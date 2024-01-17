@@ -92,7 +92,6 @@ function addBookmark() {
 		url = 'https://www.' + url;
 		document.getElementById('URL').value = url;
 		document.getElementById('URL').select();
-		alert('URL copied to clipboard.');
 		return;
 	}
 
@@ -124,21 +123,24 @@ function displayBookmarks() {
 	if (bookmarkList === null) { // Check if bookmarkList is null
 		return;
 	}
+
+
+
 	const currentBookmarks = bookmarkList[activeUser.username];
 	bookmarks.innerHTML = "";
 	if (currentBookmarks !== null || currentBookmarks.length > 0) {
 		currentBookmarks.forEach((newBookmark, i) => { // Index was missing here
 			bookmarks.innerHTML += `
             <div class="row border border-secondary-subtle rounded straighten exact justify-content-center mx-auto p-3"
-                style="background-color: #f5f5f5;">
+                style="background-color: #f5f5f5;" id="bookmark${n}">
                 <div class="col">
                   <h4>${newBookmark.name}</h4>
                 </div>
                 <div class="col">
-                    <button id="visitBookmarkBtn" type="button" class="btn whitebutton" onclick="visitBookmark()">Visit</button>
+                    <button id="visitBookmarkBtn" type="button" class="btn whitebutton" onclick="visitBookmark(${i})">Visit</button>
                     <button id="deleteBookmarkBtn" type="button" class="btn btn-danger"
                         onclick="deleteBookmark(${i})">Delete</button> 
-                    <button id="editBookmarkBtn" type="button" class="btn btn-success" onclick="editBookmark()">Edit
+                    <button id="editBookmarkBtn" type="button" class="btn btn-success" onclick="editURL(${i})">Edit
                         URL</button>
                 </div>
             </div>
@@ -147,16 +149,25 @@ function displayBookmarks() {
 	}
 }
 
+function displayBookmarksPerPage() {
+	const activeUser = JSON.parse(localStorage.getItem('Active User'));
+	const bookmarkList = JSON.parse(localStorage.getItem('bookmarks'));
+	const currentBookmarks = bookmarkList[activeUser.username];
+
+	let bookmarksPerPage = 3;
+	let startIndex = 0;
+
+	bookmarks.innerHTML = "";
+
+}
+
 function visitBookmark(i) {
 	const activeUser = JSON.parse(localStorage.getItem('Active User'));
 	const bookmarkList = JSON.parse(localStorage.getItem('bookmarks'));
-	const name = document.getElementById('siteName').value.trim();
-	const url = document.getElementById('URL').value.trim();
 	const currentBookmarks = bookmarkList[activeUser.username];
-	const selectedBookmark = currentBookmarks.find(b => b.name === name || b.url === url);
-	if (selectedBookmark) {
-		window.open(selectedBookmark.url, '_blank');
-	}
+
+	const newTab = window.open();
+	newTab.location = currentBookmarks[i].url;
 }
 
 function deleteBookmark(i) {
@@ -165,7 +176,6 @@ function deleteBookmark(i) {
 	const currentBookmarks = bookmarkList[activeUser.username];
 
 	const confirmDeletion = window.prompt('Are you sure you want to delete this bookmark? (Y/N)');
-
 	if (confirmDeletion && confirmDeletion.toLowerCase() === 'y') {
 		currentBookmarks.splice(i, 1);
 		bookmarkList[activeUser.username] = currentBookmarks;
@@ -176,21 +186,34 @@ function deleteBookmark(i) {
 	}
 }
 
-function editBookmark(i) {
+function editURL(i) {
 	const activeUser = JSON.parse(localStorage.getItem('Active User'));
 	const bookmarkList = JSON.parse(localStorage.getItem('bookmarks'));
 	const currentBookmarks = bookmarkList[activeUser.username];
 
-	const confirmEdit = window.prompt('Are you sure you want to edit this bookmark? (Y/N)');
-	if (confirmEdit && confirmEdit.toLowerCase() === 'y') {
-		// Creates a new prompt as a card with an input field and a submit button
-		const editBookmark = window.prompt('Enter the new URL for this bookmark:');
-		if (editBookmark) {
-			currentBookmarks[i].url = editBookmark;
-			bookmarkList[activeUser.username] = currentBookmarks;
-			localStorage.setItem('bookmarks', JSON.stringify(bookmarkList));
-			displayBookmarks();
-			alert('Bookmark updated successfully!');
-		}
+	let newURL = window.prompt('Enter the new URL:');
+	if (!newURL.startsWith('http://www.') && !newURL.startsWith('https://www.')) {
+		newURL = 'https://www.' + newURL;
+		currentBookmarks[i].url = newURL;
+		bookmarkList[activeUser.username] = currentBookmarks;
+		localStorage.setItem('bookmarks', JSON.stringify(bookmarkList));
 	}
+	displayBookmarks();
 }
+
+$('#bookmarkPagination').twbsPagination('destroy');
+$('#bookmarkPagination').twbsPagination({
+	totalPages: 10,
+	startPage: 1,
+	visiblePages: 5,
+	initiateStartPageClick: true,
+	first: 'First',
+	prev: 'Previous',
+	next: 'Next',
+	last: 'Last',
+
+	onPageClick: function (event, page) {
+		$('.d-block').removeClass('d-block');
+		$('#bookmark' + page).addClass('d-block');
+	}
+});
