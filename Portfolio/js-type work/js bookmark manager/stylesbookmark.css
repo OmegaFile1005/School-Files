@@ -41,3 +41,11 @@
 .exact {
     max-width: 70%;
 }
+
+.page-not-active {
+    display: none;
+}
+
+.page-active {
+    display: block;
+}

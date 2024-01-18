@@ -123,19 +123,13 @@ function displayBookmarks() {
 	if (bookmarkList === null) { // Check if bookmarkList is null
 		return;
 	}
-	let n = 0;
-
 	const currentBookmarks = bookmarkList[activeUser.username];
 	bookmarks.innerHTML = "";
 	if (currentBookmarks !== null || currentBookmarks.length > 0) {
 		currentBookmarks.forEach((newBookmark, i) => { // Index was missing here
-			n++;
-			if (n > 3) {
-				n = 1;
-			}
 			bookmarks.innerHTML += `
-            <div class="row border border-secondary-subtle rounded straighten exact justify-content-center mx-auto p-3"
-                style="background-color: #f5f5f5;" id="bookmark${n}">
+            <div class="row border border-secondary-subtle rounded straighten exact justify-content-center mx-auto p-3 page-not-active"
+                style="background-color: #f5f5f5;" id="bookmark${i * 1 + 1}">
                 <div class="col">
                   <h4>${newBookmark.name}</h4>
                 </div>
@@ -150,6 +144,23 @@ function displayBookmarks() {
             `
 		});
 	}
+
+	$('#bookmarkPagination').twbsPagination('destroy');
+	$('#bookmarkPagination').twbsPagination({
+		totalPages: currentBookmarks.length,
+		startPage: 1,
+		visiblePages: 5,
+		initiateStartPageClick: true,
+		first: 'First',
+		prev: 'Previous',
+		next: 'Next',
+		last: 'Last',
+
+		onPageClick: function (event, page) {
+			$('.page-active').removeClass('page-active');
+                $('#bookmark' + page).addClass('page-active');
+		}
+	});
 }
 
 function visitBookmark(i) {
@@ -191,22 +202,3 @@ function editURL(i) {
 	}
 	displayBookmarks();
 }
-
-$('#bookmarkPagination').twbsPagination('destroy');
-$('#bookmarkPagination').twbsPagination({
-	totalPages: 10,
-	startPage: 1,
-	visiblePages: 5,
-	initiateStartPageClick: true,
-	first: 'First',
-	prev: 'Previous',
-	next: 'Next',
-	last: 'Last',
-
-	onPageClick: function (event, page) {
-		// Last objective
-		if (document.getElementById('bookmarkPagination')) {
-			document.getElementById('bookmarkPagination').style.display = 'none';
-		}
-	}
-});
