@@ -1,5 +1,5 @@
 label {
-    color: green;
+    color: #28a745;
 }
 
 img {
@@ -7,4 +7,8 @@ img {
     background-size: cover;
     width: 100%;
     height: 20vh;
+}
+
+#recipeList {
+    color: #28a745;
 }
