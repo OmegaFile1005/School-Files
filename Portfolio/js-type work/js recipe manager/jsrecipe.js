@@ -30,12 +30,15 @@ function submitRecipe() {
                 input.style.boxShadow = '0 0 10px red';
             } else {
                 if (input.id === 'recipePhoto') {
-                    if (input.files.length === 0) {
+                    if (input.value === '') {
                         ignore = true;
+                    } else {
+                        input.disabled = false;
+                        input.style.border = '1px solid green';
+                    }
                     }
                 }
-            }
-        });
+            })
         return;
     }
 
