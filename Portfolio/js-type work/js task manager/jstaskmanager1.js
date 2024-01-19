@@ -155,7 +155,7 @@ const displayTasks = (tasks) => {
 
         const taskDescription = document.createElement('td');
         taskDescription.innerHTML = `${taskNumber}.&nbsp;${taskTitle}`;
-        taskDescription.onclick = () => updateTask(index); // Update the task when the description is clicked 
+        taskDescription.onclick = () => updateTask(index); // Update the task when the description is clicked
         taskDescription.onmouseover = () => taskDescription.style.cursor = 'pointer'; // Change the cursor to a pointer when the mouse is over the description
 
         const taskCheckIcon = document.createElement('td');

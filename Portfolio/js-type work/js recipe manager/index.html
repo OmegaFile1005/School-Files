@@ -34,7 +34,7 @@
 				</div>
 				<div class="col">
 					<label for="recipePicture" class="pb-2">Recipe Picture</label>
-					<textarea name="recipePicture" id="recipePicture" cols="30" rows="10" class="form-control"
+					<textarea name="recipePicture" id="recipePicture" cols="30" rows="10" class="form-control placeholder"
 						disabled></textarea>
 				</div>
 			</div>
@@ -71,7 +71,11 @@
 						<th>Actions</th>
 					</tr>
 				</thead>
-				<tbody id="recipeTable"></tbody>
+				<tbody id="recipeTable">
+					<tr>
+						<td colspan="5" class="text-center">No recipes found</td>
+					</tr>
+				</tbody>
 			</table>
 		</div>
 	</div>
