@@ -14,12 +14,12 @@
 
 <body>
 	<div class="container">
-		<div class="row mt-3 mx-0 border border-secondary rounded">
+		<div class="row mt-3 mx-0 border border-secondary rounded" id="banner">
 			<div class="col p-0">
 				<img src="Recipe-Banner.jpeg" alt="recipe">
 			</div>
 		</div>
-		<div class="p-3 mt-3 border border-secondary rounded">
+		<form class="p-3 mt-3 border border-secondary rounded" id="recipeForm">
 			<div class="row">
 				<div class="col">
 					<label for="recipeName" class="pb-2">Recipe Name</label>
@@ -34,8 +34,9 @@
 				</div>
 				<div class="col">
 					<label for="recipePicture" class="pb-2">Recipe Picture</label>
-					<textarea name="recipePicture" id="recipePicture" cols="30" rows="10" class="form-control placeholder"
-						disabled></textarea>
+					<div class="">
+						<img src="flourslaphands.jpeg" alt="placeholder" id="recipePicture">
+					</div>
 				</div>
 			</div>
 			<div class="row	mt-3">
@@ -45,7 +46,7 @@
 				</div>
 				<div class="col">
 					<label for="recipePhoto" class="pb-2">Recipe picture</label>
-					<input type="file" id="recipePhoto" class="form-control">
+					<input type="file" id="recipePhoto" class="form-control" onchange="importRecipe()">
 				</div>
 			</div>
 			<div class="row mt-3">
@@ -57,11 +58,11 @@
 					<button class="btn btn-outline-success" onclick="showRecipes()">Show Recipes</button>
 				</div>
 			</div>
-		</div>
+		</form>
 		<div id="recipeList" class="p-3 mt-3 border border-secondary rounded" style="display: none">
 			<h3 class="text-center">List of all recipes</h3>
 			<hr>
-			<table class="table table-striped">
+			<table class="table table-striped text-center">
 				<thead>
 					<tr>
 						<th>Name</th>

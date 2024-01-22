@@ -1,27 +1,35 @@
+const recipename = document.getElementById('recipeName').value;
+const instructions = document.getElementById('recipeInstructions').value;
+const picture = document.getElementById('recipePicture').value;
+const cookTime = document.getElementById('cookTime').value;
+
+const recipe = {
+    recipename,
+    instructions,
+    cookTime,
+    picture,
+}
+
 function importRecipe() {
     const fileInput = document.getElementById('recipePhoto');
     const file = fileInput.files[0];
 
     if (file) {
         const reader = new FileReader();
-        reader.onload = function (e) {
-            const textArea = document.getElementById('recipePicture');
-            textArea.value = e.target.result;
+        reader.onload = (e) => {
+            const image = document.getElementById('recipePicture');
+            image.src = e.target.result;
+            recipe.picture = e.target.result;
         };
-        reader.readAsText(file);
+        reader.readAsDataURL(file);
     }
 
+    document.getElementById('recipePhoto').setAttribute('disabled', 'true');
     fileInput.value = '';
-    document.getElementById('recipePhoto').disabled = true;
 }
 
 function submitRecipe() {
-    const name = document.getElementById('recipeName').value;
-    const instructions = document.getElementById('recipeInstructions').value;
-    const picture = document.getElementById('recipePicture').value;
-    const cookTime = document.getElementById('cookTime').value;
-
-    if (name === '' || instructions === '' || picture === '' || cookTime === '') {
+    if (recipename === '' || instructions === '' || picture === '' || cookTime === '') {
         alert('Please fill in all fields');
         const inputs = document.querySelectorAll('input, textarea');
         inputs.forEach(input => {
@@ -42,14 +50,6 @@ function submitRecipe() {
         return;
     }
 
-    const recipe = {
-        name,
-        instructions,
-        picture,
-        cookTime,
-        recipePhoto
-    }
-
     const recipes = JSON.parse(localStorage.getItem('recipes')) || [];
     recipes.push(recipe);
     localStorage.setItem('recipes', JSON.stringify(recipes));
@@ -64,7 +64,7 @@ function newRecipe() {
         input.value = '';
     })
 
-    document.getElementById('recipePhoto').disabled = true;
+    document.getElementById('recipePicture').disabled = true;
 }
 
 function showRecipes(recipes) {
@@ -73,12 +73,12 @@ function showRecipes(recipes) {
     recipeTable.innerHTML = '';
 
     recipes.forEach((recipe, index) => {
-        const { name, instructions, cookTime, picture } = recipe;
+        const { recipename, instructions, cookTime, picture } = recipe;
         const row = document.createElement('tr');
         row.classList.add('recipe');
 
         row.innerHTML = `
-            <td>${name}</td>
+            <td>${recipename}</td>
             <td>${instructions}</td>
             <td>${cookTime}</td>
             <td>${picture}</td>

@@ -9,6 +9,12 @@ img {
     height: 20vh;
 }
 
-#recipeList {
-    color: #28a745;
+#recipeList tr, td, th ,thead, tbody, table {
+    color: #28a745 !important;
+}
+
+#recipePictureContainer img {
+    height: 240px;
+    width: 500px;
+    
 }
