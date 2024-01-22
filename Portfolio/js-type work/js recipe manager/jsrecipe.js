@@ -36,9 +36,9 @@ function submitRecipe() {
                         input.disabled = false;
                         input.style.border = '1px solid green';
                     }
-                    }
                 }
-            })
+            }
+        })
         return;
     }
 
@@ -56,7 +56,7 @@ function submitRecipe() {
 }
 
 function newRecipe() {
-    document.getElementById('recipeList').style.display = 'none';
+    document.getElementById('recipeTable').style.display = 'none';
     document.getElementById('newRecipe').style.display = 'block';
 
     const inputs = document.querySelectorAll('input, textarea');
@@ -67,30 +67,30 @@ function newRecipe() {
     document.getElementById('recipePhoto').disabled = true;
 }
 
-function showRecipes(recipies) {
-    const recipeList = document.getElementById('recipeList');
-    recipeList.style.display = 'block';
+function showRecipes(recipes) {
+    const recipeTable = document.getElementById('recipeTable');
+    recipeTable.style.display = 'block';
+    recipeTable.innerHTML = '';
 
-    recipies.forEach((recipe, index) => {
+    recipes.forEach((recipe, index) => {
+        const { name, instructions, cookTime, picture } = recipe;
         const row = document.createElement('tr');
         row.classList.add('recipe');
 
-        const name = document.createElement('td');
-        name.innerHTML = recipe.name;
-        const instructions = document.createElement('td');
-        instructions.innerHTML = recipe.instructions;
-        const cookTime = document.createElement('td');
-        cookTime.innerHTML = recipe.cookTime;
-        const picture = document.createElement('td');
-        picture.innerHTML = recipe.picture;
-        const action = document.createElement('td');
-        action.innerHTML = `<i class="bi bi-trash"></i>`
+        row.innerHTML = `
+            <td>${name}</td>
+            <td>${instructions}</td>
+            <td>${cookTime}</td>
+            <td>${picture}</td>
+            <td><i class="bi bi-trash" style="color: blue" onclick="deleteRecipe(${index})"></i></td>
+        `;
 
+        recipeTable.appendChild(row);
+    });
+}
 
-        row.appendChild(name);
-        row.appendChild(instructions);
-        row.appendChild(cookTime);
-
-
-    })
+function deleteRecipe(index) {
+    const recipes = JSON.parse(localStorage.getItem('recipes'));
+    recipes.splice(index, 1);
+    localStorage.setItem('recipes', JSON.stringify(recipes));
 }
