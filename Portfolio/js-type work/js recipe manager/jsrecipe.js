@@ -1,7 +1,7 @@
 const recipename = document.getElementById('recipeName').value;
 const instructions = document.getElementById('recipeInstructions').value;
 const picture = document.getElementById('recipePicture').value;
-const cookTime = document.getElementById('cookTime').value;
+const cookTime = document.getElementById('cookTime').value * 1;
 
 const recipe = {
     recipename,
@@ -20,37 +20,22 @@ function importRecipe() {
             const image = document.getElementById('recipePicture');
             image.src = e.target.result;
             recipe.picture = e.target.result;
+            image.style.fontSizeAdjust = '100%';
         };
         reader.readAsDataURL(file);
     }
 
-    document.getElementById('recipePhoto').setAttribute('disabled', 'true');
+    document.getElementById('recipePhoto').setAttribute('disabled', true);
     fileInput.value = '';
 }
 
 function submitRecipe() {
     if (recipename === '' || instructions === '' || picture === '' || cookTime === '') {
         alert('Please fill in all fields');
-        const inputs = document.querySelectorAll('input, textarea');
-        inputs.forEach(input => {
-            if (input.value === '') {
-                input.style.border = '1px solid red';
-                input.style.boxShadow = '0 0 10px red';
-            } else {
-                if (input.id === 'recipePhoto') {
-                    if (input.value === '') {
-                        ignore = true;
-                    } else {
-                        input.disabled = false;
-                        input.style.border = '1px solid green';
-                    }
-                }
-            }
-        })
         return;
     }
 
-    const recipes = JSON.parse(localStorage.getItem('recipes')) || [];
+    const recipes = JSON.parse(localStorage.getItem('recipes'));
     recipes.push(recipe);
     localStorage.setItem('recipes', JSON.stringify(recipes));
 }
