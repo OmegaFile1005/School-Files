@@ -1,13 +1,8 @@
-const recipename = document.getElementById('recipeName').value;
-const instructions = document.getElementById('recipeInstructions').value;
-const picture = document.getElementById('recipePicture').value;
-const cookTime = document.getElementById('cookTime').value * 1;
-
 const recipe = {
-    recipename,
-    instructions,
-    cookTime,
-    picture,
+    recipename: '',
+    instructions: '',
+    cookTime: 0,
+    picture: '',
 }
 
 function importRecipe() {
@@ -30,19 +25,27 @@ function importRecipe() {
 }
 
 function submitRecipe() {
-    if (recipename === '' || instructions === '' || picture === '' || cookTime === '') {
+    const recipename = document.getElementById('recipeName').value;
+    const instructions = document.getElementById('recipeInstructions').value;
+    const cookTime = document.getElementById('cookTime').value * 1;
+
+    if (recipename === '' || instructions === '' || cookTime === '') {
         alert('Please fill in all fields');
         return;
     }
 
-    const recipes = JSON.parse(localStorage.getItem('recipes'));
+    recipe.recipename = recipename;
+    recipe.instructions = instructions;
+    recipe.cookTime = cookTime;
+
+    const recipes = JSON.parse(localStorage.getItem('recipes')) || [];
     recipes.push(recipe);
     localStorage.setItem('recipes', JSON.stringify(recipes));
 }
 
 function newRecipe() {
     document.getElementById('recipeTable').style.display = 'none';
-    document.getElementById('newRecipe').style.display = 'block';
+    document.getElementById('recipeList').style.display = 'block';
 
     const inputs = document.querySelectorAll('input, textarea');
     inputs.forEach(input => {
@@ -52,30 +55,32 @@ function newRecipe() {
     document.getElementById('recipePicture').disabled = true;
 }
 
-function showRecipes(recipes) {
+function showRecipes() {
     const recipeTable = document.getElementById('recipeTable');
-    recipeTable.style.display = 'block';
     recipeTable.innerHTML = '';
+    const recipes = JSON.parse(localStorage.getItem('recipes'));
+    const recipeRow = document.createElement('tr');
 
     recipes.forEach((recipe, index) => {
-        const { recipename, instructions, cookTime, picture } = recipe;
-        const row = document.createElement('tr');
-        row.classList.add('recipe');
-
-        row.innerHTML = `
-            <td>${recipename}</td>
-            <td>${instructions}</td>
-            <td>${cookTime}</td>
-            <td>${picture}</td>
+        recipeRow.classList.add('recipe');
+        recipeRow.innerHTML = `
+            <td>${recipe.recipename}</td>
+            <td>${recipe.instructions}</td>
+            <td>${recipe.cookTime}</td>
+            <td><img src="${recipe.picture}" alt="recipe" id="recipePicture"></td>
             <td><i class="bi bi-trash" style="color: blue" onclick="deleteRecipe(${index})"></i></td>
         `;
 
-        recipeTable.appendChild(row);
+        const recipeTable = document.getElementById('recipeTable');
+        recipeTable.appendChild(recipeRow);
+        document.getElementById('recipeList').style.display = 'block';
     });
 }
 
 function deleteRecipe(index) {
+    console.log(index);
     const recipes = JSON.parse(localStorage.getItem('recipes'));
     recipes.splice(index, 1);
     localStorage.setItem('recipes', JSON.stringify(recipes));
+    showRecipes();
 }

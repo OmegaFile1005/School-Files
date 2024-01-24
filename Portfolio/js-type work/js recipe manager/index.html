@@ -51,11 +51,11 @@
 			</div>
 			<div class="row mt-3">
 				<div class="col">
-					<button class="btn btn-success" onclick="submitRecipe()">Submit Recipe</button>
-					<button class="btn btn-primary" onclick="newRecipe()">New Recipe</button>
+					<button 	type="button" class="btn btn-success" onclick="submitRecipe()">Submit Recipe</button>
+					<button type="button" class="btn btn-primary" onclick="newRecipe()">New Recipe</button>
 				</div>
 				<div class="col text-end">
-					<button class="btn btn-outline-success" onclick="showRecipes()">Show Recipes</button>
+					<button type="button" class="btn btn-outline-success" onclick="showRecipes()">Show Recipes</button>
 				</div>
 			</div>
 		</form>
@@ -73,9 +73,6 @@
 					</tr>
 				</thead>
 				<tbody id="recipeTable">
-					<tr>
-						<td colspan="5" class="text-center">No recipes found</td>
-					</tr>
 				</tbody>
 			</table>
 		</div>
