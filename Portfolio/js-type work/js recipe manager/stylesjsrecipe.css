@@ -9,7 +9,12 @@ label {
     height: 20vh;
 }
 
-#recipeList tr, td, th ,thead, tbody, table {
+#recipeList tr,
+td,
+th,
+thead,
+tbody,
+table {
     color: #28a745 !important;
 }
 
@@ -18,4 +23,8 @@ label {
     height: 254px;
     border: 1px solid black;
     border-radius: 5px;
+}
+
+i {
+    font-size: 24px;
 }
