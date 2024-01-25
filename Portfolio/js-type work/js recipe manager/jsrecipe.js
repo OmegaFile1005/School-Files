@@ -14,8 +14,8 @@ function importRecipe() {
         reader.onload = (e) => {
             const image = document.getElementById('recipePicture');
             image.src = e.target.result;
-            recipe.picture = e.target.result;
             image.style.fontSizeAdjust = '100%';
+            image.alt = file.name;
         };
         reader.readAsDataURL(file);
     }
@@ -25,55 +25,72 @@ function importRecipe() {
 }
 
 function submitRecipe() {
-    const recipename = document.getElementById('recipeName').value;
+    const recipeName = document.getElementById('recipeName').value;
     const instructions = document.getElementById('recipeInstructions').value;
     const cookTime = document.getElementById('cookTime').value * 1;
+    const image = document.getElementById('recipePicture');
 
-    if (recipename === '' || instructions === '' || cookTime === '') {
+    if (!recipeName || !instructions || !cookTime) {
         alert('Please fill in all fields');
         return;
     }
 
-    recipe.recipename = recipename;
+    const recipes = JSON.parse(localStorage.getItem('recipes')) || [];
+    if (recipes.find(recipe => recipe.recipeName === recipeName)) {
+        alert('Recipe already exists');
+        return;
+    }
+
+    if (!image.src || image.src.endsWith('flourslaphands.jpeg')) {
+        alert('Please add a picture');
+        return;
+    }
+
+    recipe.recipename = recipeName;
     recipe.instructions = instructions;
     recipe.cookTime = cookTime;
+    recipe.picture = image.src;
 
-    const recipes = JSON.parse(localStorage.getItem('recipes')) || [];
     recipes.push(recipe);
     localStorage.setItem('recipes', JSON.stringify(recipes));
+
+    document.getElementById('recipeForm').reset();
+    image.src = 'flourslaphands.jpeg';
 }
 
 function newRecipe() {
-    document.getElementById('recipeTable').style.display = 'none';
-    document.getElementById('recipeList').style.display = 'block';
-
     const inputs = document.querySelectorAll('input, textarea');
     inputs.forEach(input => {
         input.value = '';
-    })
+    });
 
-    document.getElementById('recipePicture').disabled = true;
+    document.getElementById('recipeList').style.display = 'none';
+    document.getElementById('recipePicture').src = 'flourslaphands.jpeg';
+    document.getElementById('recipePhoto').removeAttribute('disabled');
 }
 
 function showRecipes() {
-    const recipeTable = document.getElementById('recipeTable');
-    recipeTable.innerHTML = '';
+    document.getElementById('recipeList').removeAttribute('style');
     const recipes = JSON.parse(localStorage.getItem('recipes'));
-    const recipeRow = document.createElement('tr');
+    let recipeTableBody = document.getElementById('recipeTbody');
+    recipeTableBody.innerHTML = "";
+
+    if (!recipes) {
+        document.getElementById('recipeList').style.display = 'none';
+        return;
+    }
 
     recipes.forEach((recipe, index) => {
-        recipeRow.classList.add('recipe');
-        recipeRow.innerHTML = `
+        const recipeRow = document.createElement('tr');
+        recipeRow.innerHTML += `
             <td>${recipe.recipename}</td>
             <td>${recipe.instructions}</td>
             <td>${recipe.cookTime}</td>
-            <td><img src="${recipe.picture}" alt="recipe" id="recipePicture"></td>
-            <td><i class="bi bi-trash" style="color: blue" onclick="deleteRecipe(${index})"></i></td>
+            <td><img src="${recipe.picture}" alt="recipe${index + 1}" style="width: 100px; height: 100px"></td>
+            <td><i class="bi bi-trash lg" style="color: blue" onclick="deleteRecipe(${index})"></i></td>
         `;
 
-        const recipeTable = document.getElementById('recipeTable');
-        recipeTable.appendChild(recipeRow);
-        document.getElementById('recipeList').style.display = 'block';
+        recipeTableBody.appendChild(recipeRow);
     });
 }
 
