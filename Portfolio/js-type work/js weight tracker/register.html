@@ -16,26 +16,26 @@
     <div class="container">
         <header>
             <div class="row">
-                <div class="col">
-                    <h3 id="title">WEIGHT TRACKER</h3>
+                <div class="col text-uppercase">
+                    <h3 id="title">weight tracker</h3>
                     <ul class="nav nav-underline justify-content-end">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">HOME</a>
+                            <a class="nav-link" href="index.html">home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active disabled" aria-current="page" aria-disabled="true"
-                                href="register.html">REGISTER WEIGHT</a>
+                                href="register.html">register weight</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="display.html">SHOW</a>
+                            <a class="nav-link" href="display.html">show</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">CONTACT US</a>
+                            <a class="nav-link" href="contact.html">contact us</a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <hr>
+            <hr class="my-4 mt-0 pt-0">
         </header>
         <div class="inner-container">
             <div class="row">
@@ -49,20 +49,40 @@
                         sit amet eros.</p>
                 </div>
             </div>
-            <div class="row">
+            <div class="row gap-3">
                 <div class="col">
                     <h3>Enter your information</h3>
                     <hr>
                     <p class="text-muted">Our friendly customer service representatives are committed to answering all
                         your questions and meeting any need you may have. We would love to hear from you! Please fill
                         out the form below so we may assist you.</p>
-                    <form id="weightForm">
-                        <div class="form-group">
-                            <label for="weight">Weight:</label>
+                    <form id="registerForm">
+                        <div class="form-group row g-3">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName" class="form-label">First Name: *</label>
+                                <input type="text" class="form-control" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName" class="form-label">Last Name: *</label>
+                                <input type="text" class="form-control" id="lastName" name="lastName" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="phone" class="form-label">Phone Number: *</label>
+                                <input type="number" class="form-control" id="phone" name="phone"
+                                    oninput="validatePhone()" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="weight" class="form-label">Weight: *</label>
+                                <input type="number" class="form-control" id="weight" name="weight" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="date" class="form-label">Date of Measurement: *</label>
+                                <input type="date" class="form-control" id="date" name="date" required>
+                            </div>
                         </div>
                     </form>
                 </div>
-                <div class="col-4 g-3">
+                <div class="col-4">
                     <h3>Your data is important</h3>
                     <hr>
                     <p class="text-muted">Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse
@@ -72,30 +92,60 @@
                 </div>
             </div>
         </div>
-        <footer>
-            <div class="row" id="otherInfo">
-                    <div class="col mt-3 text-center">
-                        <h3>About</h3>
-                        <p class="text-muted">We strive to deliver a level of service that exceeds the expectations of
-                            our customers.</p>
-                        <p class="text-muted">If you have any questions about our products or services, please do not
-                            hesitate to contact us. We have friendly, knowledgeable representative available seven days
-                            a week to assist you.</p>
+        <footer class="mt-5 py-4">
+            <div class="row bg-dark text-white">
+                <div class="col mt-3">
+                    <h4>About</h4>
+                    <p class="text-white-50">We strive to deliver a level of service that exceeds the expectations of
+                        our customers.</p>
+                    <p class="text-white-50">If you have any questions about our products or services, please do not
+                        hesitate to contact us. We have friendly, knowledgeable representative available seven days
+                        a week to assist you.</p>
+                </div>
+                <div class="col mt-3">
+                    <h3>Tweets</h3>
+                    <div class="row">
+                        <p style="margin-bottom: -4px;">Tweet <span><a class="text-decoration-none"
+                                    href="#">@You</a></span></p>
+                        <p class="text-white-50">Etiam egestas, ipsum posuere accumsan sollicitudin, nulla mauris
+                            volutpat
+                            sem, sit amet rutrum risus.</p>
                     </div>
-                    <div class="col mt-3 text-center">
-                        <h3>Tweets</h3>
-                        <div class="row">
-                            <p>Tweet <span><a href="#">@You</a></span></p>
-                            <p class="text-muted"></p>
-                        </div>
-                        <div class="row">
-                            <p>Tweet <span><a href="#">@You</a></span></p>
-                            <p class="text-muted"></p>
-                        </div>
+                    <div class="row">
+                        <p style="margin-bottom: -4px;">Tweet <span><a class="text-decoration-none"
+                                    href="#">@You</a></span></p>
+                        <p class="text-white-50">Quisque porta tellus vitae adipiscing molestie. Mauris et lacus
+                            blandit,
+                            malesuada.</p>
                     </div>
+                </div>
+                <div class="col mt-3">
+                    <h3>Mailing list</h3>
+                    <p class="text-white-50">Subscribe to our mailing list for offers, news updates and more!</p>
+                    <form id="mailForm">
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="email" placeholder="your email">
+                        </div>
+                        <button type="button" class="btn btn-info mt-2 w-50">Submit</button>
+                    </form>
+                </div>
+                <div class="col mt-3 pb-5">
+                    <h3>Social</h3><br>
+                    <p class="text-white-50">123 Business Way<br>San Francisco, CA 94108<br>USA</p>
+                    <br>
+                    <p class="text-white-50 lh-sm">Phone: (888) 123-4567<br>Fax: (888) 123-4567</p>
+                    <br>
+                    <div class="text-center gap-3" style="margin-top: -12px;">
+                        <i class="bi bi-twitter social" href="#"></i>&nbsp;<i class="bi bi-facebook social"
+                            href="#"></i>&nbsp;<i class="bi bi-google social" href="#"></i>&nbsp;<i
+                            class="bi bi-envelope social" href="#"></i>
+                    </div>
+                </div>
             </div>
-            <div class="row">
-                <p>&copy; COPYRIGHT ABC COMPANY. ALL RIGHTS RESERVED.</p>
+            <div class="row bg-secondary-subtle">
+                <div class="col mt-3 text-center">
+                    <p>&copy; COPYRIGHT ABC COMPANY. ALL RIGHTS RESERVED.</p>
+                </div>
             </div>
         </footer>
     </div>
