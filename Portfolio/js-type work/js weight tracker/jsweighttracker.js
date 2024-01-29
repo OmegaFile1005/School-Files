@@ -7,15 +7,53 @@ function getUserData() {
     return storedUser ? JSON.parse(storedUser) : null;
 }
 
-function validatePhone() {
-    const phone = document.getElementById("phone") * 1;
-    if (phone.length < 10) {
-        alert("Phone number must be at least 10 digits long.")
-        return false;
+function previewFile() {
+    const fileInput = document.getElementById('photoPreview');
+    const file = fileInput.files[0];
+
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const image = document.getElementById('previewImage');
+            image.src = e.target.result;
+            image.style.fontSizeAdjust = '100%';
+            image.alt = file.name;
+        };
+        reader.readAsDataURL(file);
     }
-    if (phone.length > 10) {
-        alert("Phone number must be at most 10 digits long.")
-        return false;
+
+    document.getElementById('photoPreview').setAttribute('disabled', true);
+    fileInput.value = '';
+}
+
+function addEmail() {
+    const email = document.getElementById('email').value.trim();
+    const mailList = JSON.parse(localStorage.getItem('mailList')) || [];
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!email) {
+        alert('Please enter an email address');
+        return;
     }
-    return true;
+    if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address');
+        return;
+    }
+    if (mailList.some((e) => e.toLowerCase() === email.toLowerCase())) {
+        alert('Email already exists in the list');
+        return;
+    }
+    alert('Your email address has now been added to our mailing list!');
+
+    mailList.push(email);
+    console.log(mailList);
+    localStorage.setItem('mailList', JSON.stringify(mailList));
+    document.getElementById('email').value = '';
+}
+function submitInfo() {
+
+}
+
+function submitContact() {
+
 }

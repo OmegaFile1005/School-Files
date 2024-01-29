@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="stylesjsweighttracker.css">
     <script defer src="jsweighttracker.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
 </head>
 
 <body>
@@ -42,21 +45,104 @@
                 <div class="col">
                     <h1>contact us</h1>
                     <p class="text-muted">Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio, gravida at, cursus
-                        nec,
-                        luctus a, lorem.
-                        Maecenas tristique orci ac sem. Duis ultricies pharetra magna. Donec accumsan malesuada orci.
-                        Donec
-                        sit amet eros.</p>
+                        nec, luctus a, lorem. Maecenas tristique orci ac sem. Duis ultricies pharetra magna. Donec
+                        accumsan malesuada orci. Donec sit amet eros.</p>
+                </div>
+            </div>
+            <iframe width="600" height="450" frameborder="0" style="border:0"
+                src="https://www.google.com/maps/embed/v1/view?key=YOUR_API_KEY&center=40.714728,-73.998672&zoom=12"
+                allowfullscreen></iframe>
+            <div class="row">
+                <div class="col">
+                    <h3>Send a message</h3>
+                    <hr>
+                    <p class="text-muted">Our friendly customer service representatives are committed to answering all
+                        your questions and meeting any need you may have. We would love to hear from you! Please fill
+                        out the form below so we may assist you.</p>
+                    <form id="contactForm">
+                        <div class="form-group row g-3">
+                            <div class="col-md-6">
+
+                    </form>
                 </div>
             </div>
         </div>
-        <footer>
-            <div class="row"></div>
+    </div>
+    <div class="container-fluid bg-dark">
+        <div class="container mt-5 text-white">
             <div class="row">
+                <div class="col" id="extraInfo">
+                    <h4>About</h4>
+                    <p class="text-white-50">We strive to deliver a level of service that exceeds the expectations
+                        of
+                        our customers.</p>
+                    <p class="text-white-50">If you have any questions about our products or services, please do not
+                        hesitate to contact us. We have friendly, knowledgeable representative available seven days
+                        a week to assist you.</p>
+                </div>
+                <div class="col" id="extraInfo">
+                    <h3>Tweets</h3>
+                    <div class="row">
+                        <p style="margin-bottom: -4px;">Tweet <span><a class="text-decoration-none"
+                                    href="#">@You</a></span>
+                        </p>
+                        <p class="text-white-50">Etiam egestas, ipsum posuere accumsan sollicitudin, nulla mauris
+                            volutpat
+                            sem, sit amet rutrum risus.</p>
+                    </div>
+                    <div class="row">
+                        <p style="margin-bottom: -4px;">Tweet <span><a class="text-decoration-none"
+                                    href="#">@You</a></span>
+                        </p>
+                        <p class="text-white-50">Quisque porta tellus vitae adipiscing molestie. Mauris et lacus
+                            blandit,
+                            malesuada.</p>
+                    </div>
+                </div>
+                <div class="col" id="extraInfo">
+                    <h3>Mailing list</h3>
+                    <p class="text-white-50">Subscribe to our mailing list for offers, news updates and more!</p>
+                    <br>
+                    <form id="mailForm">
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="email" placeholder="your email">
+                        </div>
+                        <button type="button" class="btn mt-2 w-50" onclick="addEmail()">Subscribe</button>
+                    </form>
+                </div>
+                <div class="col" id="extraInfo">
+                    <h3>Social</h3><br>
+                    <p class="text-white-50 lh-sm">123 Business Way<br>San Francisco, CA 94108<br>USA</p>
+                    <br>
+                    <p class="text-white-50">Phone: (888) 123-4567<br>Fax: (888) 123-4567</p>
+                    <br><br>
+                    <div class="gap-3">
+                        <i class="bi bi-twitter social" href="https://twitter.com"
+                            onclick="window.open('https://www.twitter.com', '_blank');"></i>&nbsp;<i
+                            class="bi bi-facebook social"
+                            onclick="window.open('https://www.facebook.com', '_blank');"></i>&nbsp;<i
+                            class="bi bi-google social"
+                            onclick="window.open('https://www.google.com', '_blank');"></i>&nbsp;<i
+                            class="bi bi-envelope social" onclick="window.open('https://www.gmail.com', '_blank');"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row bg-secondary-subtle">
+            <div class="col mt-3 text-center">
                 <p>&copy; COPYRIGHT ABC COMPANY. ALL RIGHTS RESERVED.</p>
             </div>
-        </footer>
+        </div>
     </div>
+    <script>
+        var mymap = L.map("map").setView([51.505, -0.09], 13);
+
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            maxZoom: 19,
+        }).addTo(mymap);
+
+        L.marker([51.5, -0.09]).addTo(mymap).bindPopup("I am a marker.");
+    </script>
 </body>
 
 </html>
