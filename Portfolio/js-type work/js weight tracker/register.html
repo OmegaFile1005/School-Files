@@ -58,30 +58,32 @@
                             <div class="col-md-6 mb-2">
                                 <label for="firstName" class="form-label">First Name: *</label>
                                 <input type="text" list="firstNames" class="form-control" id="firstName"
-                                    name="firstName" required>
+                                    name="firstName" placeholder="Your First Name: *" required>
                                 <datalist id="firstNames"></datalist>
                             </div>
                             <div class="col-md-6 mb-2">
                                 <label for="lastName" class="form-label">Last Name: *</label>
                                 <input type="text" list="lastNames" class="form-control" id="lastName" name="lastName"
-                                    required>
+                                    placeholder="Your Last Name: *" required>
                                 <datalist id="lastNames"></datalist>
                             </div>
                             <div class="col-md-4 mb-2">
                                 <label for="phone" class="form-label">Phone Number: *</label>
-                                <input type="number" class="form-control" id="phone" name="phone" minlength="10"
-                                    maxlength="10" required>
+                                <input type="number" list="phoneBook" class="form-control" id="phone" name="phone"
+                                    placeholder="Your Phone Number: *" autocomplete="tel" required>
                                 <datalist id="phoneBook"></datalist>
                             </div>
                             <div class="col-md-4 mb-2">
                                 <label for="weight" class="form-label">Weight: *</label>
-                                <input type="number" class="form-control" id="weight" name="weight" required>
+                                <input type="number" list="weightList" class="form-control" id="weight" name="weight"
+                                    placeholder="Your Weight: *" autocomplete="on" required>
+                                <datalist id="weightList"></datalist>
                             </div>
                             <div class="col-md-4 mb-2">
                                 <label for="date" class="form-label">Date of Measurement: *</label>
                                 <input type="date" class="form-control" id="date" name="date" required>
                             </div>
-                            <div class="col-md-12 mb-1">
+                            <div class="col-md-12 mb-3">
                                 <label for="photoPreview" class="form-label">Picture: *</label>
                                 <div class="mb-3">
                                     <img src="https://via.placeholder.com/150" alt="Placeholder Image" id="previewImage"
@@ -140,7 +142,8 @@
                     <p class="text-white-50">Subscribe to our mailing list for offers, news updates and more!</p><br>
                     <form id="mailForm">
                         <div class="form-group">
-                            <input type="email" class="form-control" id="email" placeholder="your email">
+                            <input type="email" class="form-control" id="email" placeholder="your email"
+                                autocomplete="email" required>
                         </div>
                         <button type="button" class="btn mt-2 w-50" onclick="addEmail()">Subscribe</button>
                     </form>
@@ -169,6 +172,18 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let userFirstNames = document.getElementById('userFirstNames');
+            let userLastNames = document.getElementById('userLastNames');
+            let userPhones = document.getElementById('phoneBook');
+            let weightList = document.getElementById('weightList');
+            let userInfo = JSON.parse(localStorage.getItem('userInfo'));
+            if (userInfo) {
+
+            }
+        });
+    </script>
 </body>
 
 </html>

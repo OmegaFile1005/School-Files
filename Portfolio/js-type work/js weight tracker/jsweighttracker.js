@@ -1,3 +1,12 @@
+const userInfo = {
+    firstName: '',
+    lastName: '',
+    phone: 0,
+    weight: 0,
+    date: '',
+    image: '',
+};
+
 function registerWeight() {
     window.location.href = "register.html";
 }
@@ -50,34 +59,21 @@ function addEmail() {
     localStorage.setItem('mailList', JSON.stringify(mailList));
     document.getElementById('email').value = '';
 }
-function submitInfo() {
-    const getInputValue = id => document.getElementById(id).value.trim();
-    const getNumericInputValue = id => +getInputValue(id);
 
-    const firstName = getInputValue('firstName');
-    const lastName = getInputValue('lastName');
-    const phone = getNumericInputValue('phone');
-    const weight = getNumericInputValue('weight');
-    const date = getInputValue('date');
+function submitInfo() {
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const phone = document.getElementById('phone').value * 1;
+    const weight = document.getElementById('weight').value * 1;
+    const date = document.getElementById('date').value * 1;
     const image = document.getElementById('previewImage');
 
-    if (![firstName, lastName, phone, weight, date].every(Boolean)) {
-        alert('Please fill in all fields');
+    if (!firstName || !lastName || !phone || !weight || !date || !image) {
+        alert('Please fill in all required fields');
         return;
     }
     if (!image.src || image.src.endsWith('https://via.placeholder.com/150')) {
         alert('Please add a picture');
-        return;
-    }
-    if (phone.length < 10 || phone.length > 10) {
-        // Create a random number generation to add after the given input if it does not meet the length requirement. If it does meet the length requirement, then remove the extra digits.
-        const randomNumber = Math.floor(Math.random() * 10000);
-        if (phone.length < 10) {
-            phone += randomNumber.toString().padStart(10 - phone.length, '0');
-        } else {
-            phone = phone.slice(0, 10);
-        }
-        alert('Phone number must be 10 digits. Your phone number has been changed to ' + phone);
         return;
     }
     if (weight < 0 || weight > 500) {
@@ -89,21 +85,27 @@ function submitInfo() {
         return;
     }
 
-    const userInfo = {
-        firstName,
-        lastName,
-        phone,
-        weight,
-        date,
-        image
-    };
+    const infoList = JSON.parse(localStorage.getItem('userInfo')) || [];
+    if (infoList.some((u) => u.firstName === firstName || u.lastName === lastName || u.phone === phone)) {
+        alert('This info already exists');
+        return;
+    }
 
-    console.log(userInfo);
-    localStorage.setItem('userInfo', JSON.stringify(userInfo));
+    userInfo.firstName = firstName;
+    userInfo.lastName = lastName;
+    userInfo.phone = phone;
+    userInfo.weight = weight;
+    userInfo.date = date;
+    userInfo.image = image.src;
+
+    infoList.push(userInfo);
+    localStorage.setItem('userInfo', JSON.stringify(infoList));
     alert('Your info has been submitted');
 
     document.getElementById('registerForm').reset();
+    generatedNumber.addEventListener('click', generateNumber);
     image.src = 'https://via.placeholder.com/150';
+    image.alt = 'placeholder';
 }
 
 function submitContact() {
@@ -111,10 +113,13 @@ function submitContact() {
     const cEmail = document.getElementById('contactEmail').value.trim();
     const subject = document.getElementById('subject').value.trim();
     const message = document.getElementById('message').value.trim();
-
-
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+
+    if (!name || !cEmail || !subject || !message) {
+        alert('Please fill in all fields');
+        return;
+    }
     if (!cEmail) {
         alert('Please enter an email address');
         return;
@@ -128,16 +133,33 @@ function submitContact() {
         return;
     }
 
-    const contactInfo = {
+    const messageInfo = {
         name,
         cEmail,
         subject,
         message
     };
 
-    console.log(contactInfo);
-    localStorage.setItem('contactInfo', JSON.stringify(contactInfo));
+    console.log(messageInfo);
+    localStorage.setItem('contactInfo', JSON.stringify(messageInfo));
     alert('Your message has been submitted');
 
     document.getElementById('contactForm').reset();
 }
+
+// function generateNumber() {
+//     const phoneNumber = Math.floor(Math.random() * 9000000000) + 1000000000; // Generate a random 10-digit number
+//     const phoneNumberInput = document.getElementById('phone');
+
+
+//     if (localStorage.getItem('phoneNumber') === phoneNumber) {
+//         generateNumber();
+//         return;
+//     }
+
+//         phoneNumberInput.placeholder = phoneNumber;
+//     phoneNumberInput.value = phoneNumber;
+
+//     localStorage.setItem('phoneNumber', phoneNumber);
+//     console.log(phoneNumber + ' has been generated');
+// }
