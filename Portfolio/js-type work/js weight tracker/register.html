@@ -42,11 +42,8 @@
                 <div class="col text-center">
                     <h1>register your weight</h1>
                     <p class="text-muted">Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio, gravida at, cursus
-                        nec,
-                        luctus a, lorem.
-                        Maecenas tristique orci ac sem. Duis ultricies pharetra magna. Donec accumsan malesuada orci.
-                        Donec
-                        sit amet eros.</p>
+                        nec, luctus a, lorem. Maecenas tristique orci ac sem. Duis ultricies pharetra magna. Donec
+                        accumsan malesuada orci. Donec sit amet eros.</p>
                 </div>
             </div>
             <div class="row gap-3">
@@ -58,28 +55,43 @@
                         out the form below so we may assist you.</p>
                     <form id="registerForm">
                         <div class="form-group row g-3">
-                            <div class="col-md-6 mb-3">
+                            <div class="col-md-6 mb-2">
                                 <label for="firstName" class="form-label">First Name: *</label>
-                                <input type="text" class="form-control" id="firstName" name="firstName" required>
+                                <input type="text" list="firstNames" class="form-control" id="firstName"
+                                    name="firstName" required>
+                                <datalist id="firstNames"></datalist>
                             </div>
-                            <div class="col-md-6 mb-3">
+                            <div class="col-md-6 mb-2">
                                 <label for="lastName" class="form-label">Last Name: *</label>
-                                <input type="text" class="form-control" id="lastName" name="lastName" required>
+                                <input type="text" list="lastNames" class="form-control" id="lastName" name="lastName"
+                                    required>
+                                <datalist id="lastNames"></datalist>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-4 mb-2">
                                 <label for="phone" class="form-label">Phone Number: *</label>
-                                <input type="number" class="form-control" id="phone" name="phone"
-                                    oninput="validatePhone()" required>
+                                <input type="number" class="form-control" id="phone" name="phone" minlength="10"
+                                    maxlength="10" required>
+                                <datalist id="phoneBook"></datalist>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-4 mb-2">
                                 <label for="weight" class="form-label">Weight: *</label>
                                 <input type="number" class="form-control" id="weight" name="weight" required>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-4 mb-2">
                                 <label for="date" class="form-label">Date of Measurement: *</label>
                                 <input type="date" class="form-control" id="date" name="date" required>
                             </div>
+                            <div class="col-md-12 mb-1">
+                                <label for="photoPreview" class="form-label">Picture: *</label>
+                                <div class="mb-3">
+                                    <img src="https://via.placeholder.com/150" alt="Placeholder Image" id="previewImage"
+                                        class="img-thumbnail p-0">
+                                </div>
+                                <input type="file" class="form-control w-50" id="photoPreview" onchange="previewFile()"
+                                    required>
+                            </div>
                         </div>
+                        <button type="button" class="btn w-25 p-3" id="infoBtn" onclick="submitInfo()">Submit</button>
                     </form>
                 </div>
                 <div class="col-4">
@@ -92,9 +104,11 @@
                 </div>
             </div>
         </div>
-        <footer class="mt-5 py-4">
-            <div class="row bg-dark text-white">
-                <div class="col mt-3">
+    </div>
+    <div class="container-fluid bg-dark">
+        <div class="container mt-5 text-white">
+            <div class="row">
+                <div class="col" id="extraInfo">
                     <h4>About</h4>
                     <p class="text-white-50">We strive to deliver a level of service that exceeds the expectations of
                         our customers.</p>
@@ -102,52 +116,58 @@
                         hesitate to contact us. We have friendly, knowledgeable representative available seven days
                         a week to assist you.</p>
                 </div>
-                <div class="col mt-3">
+                <div class="col" id="extraInfo">
                     <h3>Tweets</h3>
                     <div class="row">
                         <p style="margin-bottom: -4px;">Tweet <span><a class="text-decoration-none"
-                                    href="#">@You</a></span></p>
+                                    href="#">@You</a></span>
+                        </p>
                         <p class="text-white-50">Etiam egestas, ipsum posuere accumsan sollicitudin, nulla mauris
                             volutpat
                             sem, sit amet rutrum risus.</p>
                     </div>
                     <div class="row">
                         <p style="margin-bottom: -4px;">Tweet <span><a class="text-decoration-none"
-                                    href="#">@You</a></span></p>
+                                    href="#">@You</a></span>
+                        </p>
                         <p class="text-white-50">Quisque porta tellus vitae adipiscing molestie. Mauris et lacus
                             blandit,
                             malesuada.</p>
                     </div>
                 </div>
-                <div class="col mt-3">
+                <div class="col" id="extraInfo">
                     <h3>Mailing list</h3>
-                    <p class="text-white-50">Subscribe to our mailing list for offers, news updates and more!</p>
+                    <p class="text-white-50">Subscribe to our mailing list for offers, news updates and more!</p><br>
                     <form id="mailForm">
                         <div class="form-group">
                             <input type="email" class="form-control" id="email" placeholder="your email">
                         </div>
-                        <button type="button" class="btn btn-info mt-2 w-50">Submit</button>
+                        <button type="button" class="btn mt-2 w-50" onclick="addEmail()">Subscribe</button>
                     </form>
                 </div>
-                <div class="col mt-3 pb-5">
+                <div class="col" id="extraInfo">
                     <h3>Social</h3><br>
-                    <p class="text-white-50">123 Business Way<br>San Francisco, CA 94108<br>USA</p>
+                    <p class="text-white-50 lh-sm">123 Business Way<br>San Francisco, CA 94108<br>USA</p>
                     <br>
-                    <p class="text-white-50 lh-sm">Phone: (888) 123-4567<br>Fax: (888) 123-4567</p>
-                    <br>
-                    <div class="text-center gap-3" style="margin-top: -12px;">
-                        <i class="bi bi-twitter social" href="#"></i>&nbsp;<i class="bi bi-facebook social"
-                            href="#"></i>&nbsp;<i class="bi bi-google social" href="#"></i>&nbsp;<i
-                            class="bi bi-envelope social" href="#"></i>
+                    <p class="text-white-50">Phone: (888) 123-4567<br>Fax: (888) 123-4567</p>
+                    <br><br>
+                    <div class="gap-3">
+                        <i class="bi bi-twitter social" href="https://twitter.com"
+                            onclick="window.open('https://www.twitter.com', '_blank');"></i>&nbsp;<i
+                            class="bi bi-facebook social"
+                            onclick="window.open('https://www.facebook.com', '_blank');"></i>&nbsp;<i
+                            class="bi bi-google social"
+                            onclick="window.open('https://www.google.com', '_blank');"></i>&nbsp;<i
+                            class="bi bi-envelope social" onclick="window.open('https://www.gmail.com', '_blank');"></i>
                     </div>
                 </div>
             </div>
-            <div class="row bg-secondary-subtle">
-                <div class="col mt-3 text-center">
-                    <p>&copy; COPYRIGHT ABC COMPANY. ALL RIGHTS RESERVED.</p>
-                </div>
+        </div>
+        <div class="row bg-secondary-subtle">
+            <div class="col mt-3 text-center">
+                <p>&copy; COPYRIGHT ABC COMPANY. ALL RIGHTS RESERVED.</p>
             </div>
-        </footer>
+        </div>
     </div>
 </body>
 

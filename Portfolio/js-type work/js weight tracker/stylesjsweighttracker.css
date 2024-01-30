@@ -3,10 +3,35 @@
 }
 
 .social {
-    font-size: 20px;
-    border: 3px solid white;
     border-radius: 100%;
     border-style: solid;
-    padding: 15px;
-    
+    border-width: 3px;
+    padding: calc(0.5rem + 2px);
+}
+
+#extraInfo {
+    padding: 20px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    justify-self: center;
+}
+
+button {
+    background-color: #36d7b7 !important;
+    color: white !important;
+}
+
+a, b {
+    color: #36d7b7;
+}
+
+#map {
+    height: 100%;
+}
+
+#previewImage {
+    max-width: 150px;
+    max-height: 150px;
+    min-width: 150px;
+    min-height: 150px;
 }
