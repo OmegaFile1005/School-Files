@@ -65,7 +65,7 @@ function submitInfo() {
     const lastName = document.getElementById('lastName').value;
     const phone = document.getElementById('phone').value * 1;
     const weight = document.getElementById('weight').value * 1;
-    const date = document.getElementById('date').value * 1;
+    const date = document.getElementById('date').value;
     const image = document.getElementById('previewImage');
 
     if (!firstName || !lastName || !phone || !weight || !date || !image) {
@@ -86,11 +86,6 @@ function submitInfo() {
     }
 
     const infoList = JSON.parse(localStorage.getItem('userInfo')) || [];
-    if (infoList.some((u) => u.firstName === firstName || u.lastName === lastName || u.phone === phone)) {
-        alert('This info already exists');
-        return;
-    }
-
     userInfo.firstName = firstName;
     userInfo.lastName = lastName;
     userInfo.phone = phone;
@@ -103,9 +98,9 @@ function submitInfo() {
     alert('Your info has been submitted');
 
     document.getElementById('registerForm').reset();
-    generatedNumber.addEventListener('click', generateNumber);
     image.src = 'https://via.placeholder.com/150';
     image.alt = 'placeholder';
+    document.getElementById('photoPreview').removeAttribute('disabled')
 }
 
 function submitContact() {
@@ -147,19 +142,62 @@ function submitContact() {
     document.getElementById('contactForm').reset();
 }
 
-// function generateNumber() {
-//     const phoneNumber = Math.floor(Math.random() * 9000000000) + 1000000000; // Generate a random 10-digit number
-//     const phoneNumberInput = document.getElementById('phone');
+function showData() {
+    const infoList = JSON.parse(localStorage.getItem('userInfo'));
+    const infoTable = document.getElementById('weightData');
+    infoTable.innerHTML = '';
+
+    if (!infoList || !infoList.length) {
+        infoTable.innerHTML = '<tr><td colspan="5">No data found</td></tr>';
+        return;
+    }
+
+    if (infoList.length === 0) {
+        infoTable.innerHTML = '<tr><td colspan="5">No data found</td></tr>';
+        return;
+    }
+
+    // Make an if statement if first name, last name, and phone number are the same but with different heights, weight, and dates
+    // it will display in a collapsed list in details only displaying the date and weight
+    // if the user clicks on the same text again, hide the details
 
 
-//     if (localStorage.getItem('phoneNumber') === phoneNumber) {
-//         generateNumber();
-//         return;
-//     }
+    infoList.forEach((info, i) => {
+        const infoRow = document.createElement('tr');
+        infoRow.innerHTML = `
+            <td class="ps-3">${info.firstName}</td>
+            <td>${info.lastName}</td>
+            <td>${info.phone}</td>
+            <td><img src="${info.image}" alt="user${i + 1}" style="width: 75px; height: 75px"></td>
+            <td class="col-4"><p onclick="displayDetails(${i})">Details..</p><p onclick="displayModalDetails(${i})">Details With Modal...</p></td>
+            <td  class="col-sm-1"><i class="bi bi-trash lg" style="color: blue" onclick="deleteInfo(${i})"></i></td>
+        `;
+        infoTable.appendChild(infoRow);
+    });
+}
 
-//         phoneNumberInput.placeholder = phoneNumber;
-//     phoneNumberInput.value = phoneNumber;
+function deleteInfo(i) {
+    const infoList = JSON.parse(localStorage.getItem('userInfo'));
+    const confirmDeletion = window.prompt('Are you sure you want to delete this info? (Y/N)');
+    if (confirmDeletion && confirmDeletion.toLowerCase() !== 'y') {
+        return;
+    } else {
+        if (confirmDeletion && confirmDeletion.toLowerCase() === 'y') {
+            infoList.splice(i, 1);
+            localStorage.setItem('userInfo', JSON.stringify(infoList));
+            window.location.reload();
+        }
+    }
 
-//     localStorage.setItem('phoneNumber', phoneNumber);
-//     console.log(phoneNumber + ' has been generated');
-// }
+}
+
+function displayDetails() {
+    // When the user clicks on the associated text, display the details as a collapsed list
+    // If the user clicks on the same text again, hide the details
+
+}
+
+function displayModalDetails() {
+    // When the user clicks on the associated text, display the details as a modal
+
+}

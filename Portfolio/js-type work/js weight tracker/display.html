@@ -2,124 +2,137 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="stylesjsweighttracker.css">
-    <script defer src="jsweighttracker.js"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+	<link rel="stylesheet" href="stylesjsweighttracker.css">
+	<script defer src="jsweighttracker.js"></script>
 </head>
 
-<body>
-    <div class="container">
-        <header>
-            <div class="row">
-                <div class="col text-uppercase">
-                    <h3 id="title">weight tracker</h3>
-                    <ul class="nav nav-underline justify-content-end">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="register.html">register weight</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active disabled" aria-current="page" aria-disabled="true"
-                                href="display.html">show</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact.html">contact us</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <hr class="my-4 mt-0 pt-0">
-        </header>
-        <div class="inner-container">
-            <div class="row text-center">
-                <div class="col">
-                    <h1>all your data here</h1>
-                    <p class="text-muted">Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio, gravida at, cursus
-                        nec, luctus a, lorem. Maecenas tristique orci ac sem. Duis ultricies pharetra magna. Donec
-                        accumsan malesuada orci. Donec sit amet eros.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <h3>Weight Measurements</h3>
-                    <hr>
-                    <p class="text-muted">Here you can check all the data you have saved</p>
-
-                    <table class="table table-hover">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid bg-dark">
-        <div class="container mt-5 text-white">
-            <div class="row">
-                <div class="col" id="extraInfo">
-                    <h4>About</h4>
-                    <p class="text-white-50">We strive to deliver a level of service that exceeds the expectations of
-                        our customers.</p>
-                    <p class="text-white-50">If you have any questions about our products or services, please do not
-                        hesitate to contact us. We have friendly, knowledgeable representative available seven days
-                        a week to assist you.</p>
-                </div>
-                <div class="col" id="extraInfo">
-                    <h3>Tweets</h3>
-                    <div class="row">
-                        <p style="margin-bottom: -4px;">Tweet <span><a class="text-decoration-none"
-                                    href="#">@You</a></span>
-                        </p>
-                        <p class="text-white-50">Etiam egestas, ipsum posuere accumsan sollicitudin, nulla mauris
-                            volutpat sem, sit amet rutrum risus.</p>
-                    </div>
-                    <div class="row">
-                        <p style="margin-bottom: -4px;">Tweet <span><a class="text-decoration-none"
-                                    href="#">@You</a></span>
-                        </p>
-                        <p class="text-white-50">Quisque porta tellus vitae adipiscing molestie. Mauris et lacus
-                            blandit, malesuada.</p>
-                    </div>
-                </div>
-                <div class="col" id="extraInfo">
-                    <h3>Mailing list</h3>
-                    <p class="text-white-50">Subscribe to our mailing list for offers, news updates and more!</p><br>
-                    <form id="mailForm">
-                        <div class="form-group">
-                            <input type="email" class="form-control" id="email" placeholder="your email"
-                                autocomplete="email" required>
-                        </div>
-                        <button type="button" class="btn mt-2 w-50" onclick="addEmail()">Subscribe</button>
-                    </form>
-                </div>
-                <div class="col" id="extraInfo">
-                    <h3>Social</h3><br>
-                    <p class="text-white-50 lh-sm">123 Business Way<br>San Francisco, CA 94108<br>USA</p>
-                    <br>
-                    <p class="text-white-50">Phone: (888) 123-4567<br>Fax: (888) 123-4567</p>
-                    <br><br>
-                    <div class="gap-3">
-                        <i class="bi bi-twitter social" href="https://twitter.com"
-                            onclick="window.open('https://www.twitter.com', '_blank');"></i>&nbsp;<i
-                            class="bi bi-facebook social"
-                            onclick="window.open('https://www.facebook.com', '_blank');"></i>&nbsp;<i
-                            class="bi bi-google social"
-                            onclick="window.open('https://www.google.com', '_blank');"></i>&nbsp;<i
-                            class="bi bi-envelope social" onclick="window.open('https://www.gmail.com', '_blank');"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row bg-secondary-subtle">
-            <div class="col mt-3 text-center">
-                <p>&copy; COPYRIGHT ABC COMPANY. ALL RIGHTS RESERVED.</p>
-            </div>
-        </div>
-    </div>
+<body onload="showData()">
+	<div class="container">
+		<header>
+			<div class="row">
+				<div class="col text-uppercase">
+					<h3 id="title">weight tracker</h3>
+					<ul class="nav nav-underline justify-content-end">
+						<li class="nav-item">
+							<a class="nav-link" href="index.html">home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="register.html">register weight</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active disabled" aria-current="page" aria-disabled="true"
+								href="display.html">show</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="contact.html">contact us</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<hr class="my-4 mt-0 pt-0">
+		</header>
+		<div class="inner-container">
+			<div class="row text-center">
+				<div class="col">
+					<h1>all your data here</h1>
+					<p class="text-muted">Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio, gravida at, cursus
+						nec, luctus a, lorem. Maecenas tristique orci ac sem. Duis ultricies pharetra magna. Donec
+						accumsan malesuada orci. Donec sit amet eros.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<h3>Weight Measurements</h3>
+					<hr>
+					<p class="text-muted">Here you can check all the data you have saved</p><br>
+					<h4 class="text-uppercase">stored data</h4>
+					<table class="table table-hover">
+						<thead class="table-dark">
+							<tr>
+								<th scope="col" class="ps-3">First Name</th>
+								<th scope="col">Last Name</th>
+								<th scope="col">Phone Number</th>
+								<th scope="col">Picture</th>
+								<th scope="col" class="col-4">Weight</th>
+								<th scope="col" class="col-sm-1">Action</th>
+							</tr>
+						</thead>
+						<tbody id="weightData" class="table-secondary">
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid bg-dark">
+		<div class="container mt-5 text-white">
+			<div class="row">
+				<div class="col" id="extraInfo">
+					<h4>About</h4>
+					<p class="text-white-50">We strive to deliver a level of service that exceeds the expectations of
+						our customers.</p>
+					<p class="text-white-50">If you have any questions about our products or services, please do not
+						hesitate to contact us. We have friendly, knowledgeable representative available seven days
+						a week to assist you.</p>
+				</div>
+				<div class="col" id="extraInfo">
+					<h3>Tweets</h3>
+					<div class="row">
+						<p style="margin-bottom: -4px;">Tweet <span><a class="text-decoration-none"
+									href="#">@You</a></span>
+						</p>
+						<p class="text-white-50">Etiam egestas, ipsum posuere accumsan sollicitudin, nulla mauris
+							volutpat sem, sit amet rutrum risus.</p>
+					</div>
+					<div class="row">
+						<p style="margin-bottom: -4px;">Tweet <span><a class="text-decoration-none"
+									href="#">@You</a></span>
+						</p>
+						<p class="text-white-50">Quisque porta tellus vitae adipiscing molestie. Mauris et lacus
+							blandit, malesuada.</p>
+					</div>
+				</div>
+				<div class="col" id="extraInfo">
+					<h3>Mailing list</h3>
+					<p class="text-white-50">Subscribe to our mailing list for offers, news updates and more!</p><br>
+					<form id="mailForm">
+						<div class="form-group">
+							<input type="email" class="form-control" id="email" placeholder="your email"
+								autocomplete="email" required>
+						</div>
+						<button type="button" class="btn mt-2 w-50" onclick="addEmail()">Subscribe</button>
+					</form>
+				</div>
+				<div class="col" id="extraInfo">
+					<h3>Social</h3><br>
+					<p class="text-white-50 lh-sm">123 Business Way<br>San Francisco, CA 94108<br>USA</p>
+					<br>
+					<p class="text-white-50">Phone: (888) 123-4567<br>Fax: (888) 123-4567</p>
+					<br><br>
+					<div class="gap-3">
+						<i class="bi bi-twitter social" href="https://twitter.com"
+							onclick="window.open('https://www.twitter.com', '_blank');"></i>&nbsp;<i
+							class="bi bi-facebook social"
+							onclick="window.open('https://www.facebook.com', '_blank');"></i>&nbsp;<i
+							class="bi bi-google social"
+							onclick="window.open('https://www.google.com', '_blank');"></i>&nbsp;<i
+							class="bi bi-envelope social" onclick="window.open('https://www.gmail.com', '_blank');"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row bg-secondary-subtle">
+			<div class="col mt-3 text-center">
+				<p>&copy; COPYRIGHT ABC COMPANY. ALL RIGHTS RESERVED.</p>
+			</div>
+		</div>
+	</div>
 </body>
 
 </html>
