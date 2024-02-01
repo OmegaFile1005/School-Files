@@ -7,6 +7,13 @@ const userInfo = {
     image: '',
 };
 
+const messageInfo = {
+    name: '',
+    cEmail: '',
+    subject: '',
+    message: '',
+};
+
 function registerWeight() {
     window.location.href = "register.html";
 }
@@ -84,8 +91,12 @@ function submitInfo() {
         alert('Date cannot be in the future');
         return;
     }
+    if (userInfo.weight === weight && userInfo.date === date) {
+        alert('No changes made');
+        return;
+    }
 
-    const infoList = JSON.parse(localStorage.getItem('userInfo')) || [];
+    const infoList = JSON.parse(localStorage.getItem('InfoList')) || [];
     userInfo.firstName = firstName;
     userInfo.lastName = lastName;
     userInfo.phone = phone;
@@ -94,7 +105,7 @@ function submitInfo() {
     userInfo.image = image.src;
 
     infoList.push(userInfo);
-    localStorage.setItem('userInfo', JSON.stringify(infoList));
+    localStorage.setItem('InfoList', JSON.stringify(infoList));
     alert('Your info has been submitted');
 
     document.getElementById('registerForm').reset();
@@ -128,27 +139,26 @@ function submitContact() {
         return;
     }
 
-    const messageInfo = {
-        name,
-        cEmail,
-        subject,
-        message
-    };
+    const messageInfo = JSON.parse(localStorage.getItem('messageList')) || [];
+    messageInfo.name = name;
+    messageInfo.cEmail = cEmail;
+    messageInfo.subject = subject;
+    messageInfo.message = message;
 
     console.log(messageInfo);
-    localStorage.setItem('contactInfo', JSON.stringify(messageInfo));
+    localStorage.setItem('messageList', JSON.stringify(messageInfo));
     alert('Your message has been submitted');
 
     document.getElementById('contactForm').reset();
 }
 
 function showData() {
-    const infoList = JSON.parse(localStorage.getItem('userInfo'));
+    const infoList = JSON.parse(localStorage.getItem('InfoList'));
     const infoTable = document.getElementById('weightData');
     infoTable.innerHTML = '';
 
     if (!infoList || !infoList.length) {
-        infoTable.innerHTML = '<tr><td colspan="5">No data found</td></tr>';
+        infoTable.innerHTML = '<tr><td colspan="6" class="text-center">No data found</td></tr>';
         return;
     }
 
@@ -157,19 +167,14 @@ function showData() {
         return;
     }
 
-    // Make an if statement if first name, last name, and phone number are the same but with different heights, weight, and dates
-    // it will display in a collapsed list in details only displaying the date and weight
-    // if the user clicks on the same text again, hide the details
-
-
     infoList.forEach((info, i) => {
         const infoRow = document.createElement('tr');
         infoRow.innerHTML = `
             <td class="ps-3">${info.firstName}</td>
             <td>${info.lastName}</td>
             <td>${info.phone}</td>
-            <td><img src="${info.image}" alt="user${i + 1}" style="width: 75px; height: 75px"></td>
-            <td class="col-4"><p onclick="displayDetails(${i})">Details..</p><p onclick="displayModalDetails(${i})">Details With Modal...</p></td>
+            <td class><img src="${info.image}" alt="user${i + 1}" style="width: 75px; height: 75px"></td>
+            <td class="col-4"><a href="#" onclick="displayDetails(${i})">Details..</a><br><a href="#" class="text-decoration-none" onclick="displayModalDetails(${i})">Details With Modal...</a></td>
             <td  class="col-sm-1"><i class="bi bi-trash lg" style="color: blue" onclick="deleteInfo(${i})"></i></td>
         `;
         infoTable.appendChild(infoRow);
@@ -191,13 +196,14 @@ function deleteInfo(i) {
 
 }
 
-function displayDetails() {
+function displayDetails(i) {
     // When the user clicks on the associated text, display the details as a collapsed list
     // If the user clicks on the same text again, hide the details
-
+    
 }
 
-function displayModalDetails() {
+function displayModalDetails(i) {
     // When the user clicks on the associated text, display the details as a modal
+    // If the user clicks on the same text again, hide the details
 
 }
