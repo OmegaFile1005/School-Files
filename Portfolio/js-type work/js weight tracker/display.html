@@ -12,7 +12,7 @@
     <script defer src="jsweighttracker.js"></script>
 </head>
 
-<body>
+<body onload="showData()">
     <div class="container">
         <header>
             <div class="row">
@@ -50,9 +50,22 @@
                 <div class="col">
                     <h3>Weight Measurements</h3>
                     <hr>
-                    <p class="text-muted">Here you can check all the data you have saved</p>
-                    
+                    <p class="text-muted">Here you can check all the data you have saved</p><br>
+                    <h4 class="text-uppercase">stored data</h4>
                     <table class="table table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col" class="ps-3">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Phone Number</th>
+                                <th scope="col">Picture</th>
+                                <th scope="col" class="col-4">Weight</th>
+                                <th scope="col" class="col-sm-1">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="weightData" class="table-secondary">
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -75,16 +88,14 @@
                                     href="#">@You</a></span>
                         </p>
                         <p class="text-white-50">Etiam egestas, ipsum posuere accumsan sollicitudin, nulla mauris
-                            volutpat
-                            sem, sit amet rutrum risus.</p>
+                            volutpat sem, sit amet rutrum risus.</p>
                     </div>
                     <div class="row">
                         <p style="margin-bottom: -4px;">Tweet <span><a class="text-decoration-none"
                                     href="#">@You</a></span>
                         </p>
                         <p class="text-white-50">Quisque porta tellus vitae adipiscing molestie. Mauris et lacus
-                            blandit,
-                            malesuada.</p>
+                            blandit, malesuada.</p>
                     </div>
                 </div>
                 <div class="col" id="extraInfo">
