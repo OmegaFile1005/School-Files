@@ -161,12 +161,6 @@ function showData() {
         infoTable.innerHTML = '<tr><td colspan="6" class="text-center">No data found</td></tr>';
         return;
     }
-
-    if (infoList.length === 0) {
-        infoTable.innerHTML = '<tr><td colspan="5">No data found</td></tr>';
-        return;
-    }
-
     infoList.forEach((info, i) => {
         const infoRow = document.createElement('tr');
         infoRow.innerHTML = `
@@ -174,7 +168,7 @@ function showData() {
             <td>${info.lastName}</td>
             <td>${info.phone}</td>
             <td class><img src="${info.image}" alt="user${i + 1}" style="width: 75px; height: 75px"></td>
-            <td class="col-4"><a href="#" onclick="displayDetails(${i})">Details..</a><br><a href="#" class="text-decoration-none" onclick="displayModalDetails(${i})">Details With Modal...</a></td>
+            <td class="col-4"><a href="#" class="text-decoration-none text-dark" onclick="displayDetails(${i})">Details..</a><br><a href="#" class="text-decoration-none text-dark" onclick="displayModalDetails(${i})">Details With Modal...</a></td>
             <td  class="col-sm-1"><i class="bi bi-trash lg" style="color: blue" onclick="deleteInfo(${i})"></i></td>
         `;
         infoTable.appendChild(infoRow);

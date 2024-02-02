@@ -16,12 +16,16 @@
     justify-self: center;
 }
 
+#extraInfo a {
+    color: #36d7b7;
+}
+
 button {
     background-color: #36d7b7 !important;
     color: white !important;
 }
 
-a, b {
+b {
     color: #36d7b7;
 }
 
