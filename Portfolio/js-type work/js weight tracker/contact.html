@@ -60,18 +60,24 @@
                     <form id="contactForm">
                         <div class="form-group row g-3">
                             <div class="col-md-6">
-                                <input type="text" class="form-control" id="name" placeholder="Your Name: *" required>
+                                <input type="text" list="names" class="form-control" id="name"
+                                    placeholder="Your Name: *" required>
+                                <datalist id="names"></datalist>
                             </div>
                             <div class="col-md-6">
-                                <input type="email" class="form-control" id="contactEmail" placeholder="Email: *"
-                                    required>
+                                <input type="email" list="emails" class="form-control" id="contactEmail"
+                                    placeholder="Email: *" required>
+                                <datalist id="emails"></datalist>
                             </div>
                             <div class="col-md-12">
-                                <input type="text" class="form-control" id="subject" placeholder="Subject: *" required>
+                                <input type="text" list="subjects" class="form-control" id="subject"
+                                    placeholder="Subject: *" required>
+                                <datalist id="subjects"></datalist>
                             </div>
                             <div class="col-md-12 mb-2">
-                                <textarea class="form-control" id="message" rows="5" placeholder="Message: *"
-                                    required></textarea>
+                                <textarea type="text" list="messages" class="form-control" id="message" rows="5"
+                                    placeholder="Message: *" required></textarea>
+                                <datalist id="messages"></datalist>
                             </div>
                             <div class="col-md-6">
                                 <button type="button" class="btn w-50 p-3" id="contactBtn"
@@ -158,6 +164,30 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let userNames = document.getElementById('names');
+            let userEmails = document.getElementById('emails');
+            let userSubjects = document.getElementById('subjects');
+            let messageList = JSON.parse(localStorage.getItem('messageList'));
+            if (messageList) {
+                messageList.forEach(info => {
+                    let userNameOption = document.createElement('option');
+                    let userEmailOption = document.createElement('option');
+                    let userSubjectOption = document.createElement('option');
+                    userNameOption.value = info.name;
+                    userNameOption.textContent = info.name;
+                    userNames.appendChild(userNameOption);
+                    userEmailOption.value = info.email;
+                    userEmailOption.textContent = info.email;
+                    userEmails.appendChild(userEmailOption);
+                    userSubjectOption.value = info.subject;
+                    userSubjectOption.textContent = info.subject;
+                    userSubjects.appendChild(userSubjectOption);
+                })
+            }
+        })
+    </script>
 </body>
 
 </html>

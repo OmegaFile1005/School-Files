@@ -172,13 +172,30 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            let userFirstNames = document.getElementById('userFirstNames');
-            let userLastNames = document.getElementById('userLastNames');
-            let userPhones = document.getElementById('phoneBook');
-            let weightList = document.getElementById('weightList');
-            let userInfo = JSON.parse(localStorage.getItem('userInfo'));
-            if (userInfo) {
-
+            let userFirstNames = document.getElementById('firstNames');
+            let userLastNames = document.getElementById('lastNames');
+            let userphoneBook = document.getElementById('phoneBook');
+            let userweightList = document.getElementById('weightList');
+            let InfoList = JSON.parse(localStorage.getItem('InfoList'));
+            if (InfoList) {
+                InfoList.forEach(info => {
+                    let userFirstNameOption = document.createElement('option');
+                    let userLastNameOption = document.createElement('option');
+                    let userPhoneOption = document.createElement('option');
+                    let userWeightOption = document.createElement('option');
+                    userFirstNameOption.value = info.firstName;
+                    userFirstNameOption.textContent = info.firstName;
+                    userFirstNames.appendChild(userFirstNameOption);
+                    userLastNameOption.value = info.lastName;
+                    userLastNameOption.textContent = info.lastName;
+                    userLastNames.appendChild(userLastNameOption);
+                    userPhoneOption.value = info.phone;
+                    userPhoneOption.textContent = info.phone;
+                    userphoneBook.appendChild(userPhoneOption);
+                    userWeightOption.value = info.weight;
+                    userWeightOption.textContent = info.weight;
+                    userweightList.appendChild(userWeightOption);
+                });
             }
         });
     </script>

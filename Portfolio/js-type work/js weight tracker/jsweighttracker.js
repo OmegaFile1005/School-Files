@@ -7,6 +7,13 @@ const userInfo = {
     image: '',
 };
 
+const messageInfo = {
+    name: '',
+    cEmail: '',
+    subject: '',
+    message: '',
+};
+
 function registerWeight() {
     window.location.href = "register.html";
 }
@@ -85,7 +92,7 @@ function submitInfo() {
         return;
     }
 
-    const infoList = JSON.parse(localStorage.getItem('userInfo')) || [];
+    const infoList = JSON.parse(localStorage.getItem('InfoList')) || [];
     userInfo.firstName = firstName;
     userInfo.lastName = lastName;
     userInfo.phone = phone;
@@ -94,7 +101,7 @@ function submitInfo() {
     userInfo.image = image.src;
 
     infoList.push(userInfo);
-    localStorage.setItem('userInfo', JSON.stringify(infoList));
+    localStorage.setItem('InfoList', JSON.stringify(infoList));
     alert('Your info has been submitted');
 
     document.getElementById('registerForm').reset();
@@ -128,15 +135,14 @@ function submitContact() {
         return;
     }
 
-    const messageInfo = {
-        name,
-        cEmail,
-        subject,
-        message
-    };
+    const messageInfo = JSON.parse(localStorage.getItem('messageList')) || [];
+    messageInfo.name = name;
+    messageInfo.cEmail = cEmail;
+    messageInfo.subject = subject;
+    messageInfo.message = message;
 
     console.log(messageInfo);
-    localStorage.setItem('contactInfo', JSON.stringify(messageInfo));
+    localStorage.setItem('messageList', JSON.stringify(messageInfo));
     alert('Your message has been submitted');
 
     document.getElementById('contactForm').reset();
@@ -148,7 +154,7 @@ function showData() {
     infoTable.innerHTML = '';
 
     if (!infoList || !infoList.length) {
-        infoTable.innerHTML = '<tr><td colspan="5">No data found</td></tr>';
+        infoTable.innerHTML = '<tr><td colspan="6" class="text-center">No data found</td></tr>';
         return;
     }
 
