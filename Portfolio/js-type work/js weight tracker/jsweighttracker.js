@@ -68,13 +68,19 @@ function addEmail() {
 }
 
 function submitInfo() {
-    const firstName = document.getElementById('firstName').value;
-    const lastName = document.getElementById('lastName').value;
+    let firstName = document.getElementById('firstName').value;
+    let lastName = document.getElementById('lastName').value;
     const phone = document.getElementById('phone').value * 1;
     const weight = document.getElementById('weight').value * 1;
     const date = document.getElementById('date').value;
     const image = document.getElementById('previewImage');
 
+    firstName = firstName.toLowerCase().replace(/(?:^|\s|-)\S/g, function (match) {
+        return match.toUpperCase();
+    });
+    lastName = lastName.toLowerCase().replace(/(?:^|\s|-)\S/g, function (match) {
+        return match.toUpperCase();
+    });
     if (!firstName || !lastName || !phone || !weight || !date || !image) {
         alert('Please fill in all required fields');
         return;
@@ -83,35 +89,50 @@ function submitInfo() {
         alert('Please add a picture');
         return;
     }
-    if (weight < 0 || weight > 500) {
-        alert('Weight must be between 0 and 500');
-        return;
-    }
     if (date > new Date().toISOString().split('T')[0]) {
         alert('Date cannot be in the future');
         return;
     }
-    if (userInfo.weight === weight && userInfo.date === date) {
-        alert('No changes made');
+const validateInfo = () => {
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const phone = parseInt(document.getElementById('phone').value);
+    const weight = parseInt(document.getElementById('weight').value);
+    const date = document.getElementById('date').value;
+
+    if (!firstName || !lastName || isNaN(phone) || isNaN(weight) || !date) {
+        alert('Please fill in all the fields with valid information');
         return;
     }
 
-    const infoList = JSON.parse(localStorage.getItem('InfoList')) || [];
-    userInfo.firstName = firstName;
-    userInfo.lastName = lastName;
-    userInfo.phone = phone;
-    userInfo.weight = weight;
-    userInfo.date = date;
-    userInfo.image = image.src;
+    const userInfo = {
+        firstName,
+        lastName,
+        phone,
+        weight,
+        date,
+        image: image.src
+    };
 
-    infoList.push(userInfo);
-    localStorage.setItem('InfoList', JSON.stringify(infoList));
+    const infoList = JSON.parse(localStorage.getItem('InfoList')) || [];
+    const duplicateInfo = infoList.find(info => info.firstName === firstName && info.lastName === lastName && info.phone === phone);
+z
+    if (duplicateInfo && (duplicateInfo.weight !== weight || duplicateInfo.date !== date)) {
+        
+    } else {
+        const personalInfo = [infoList.indexOf(duplicateInfo), ...userInfo];
+        localStorage.setItem(`${firstName} ${lastName}`, JSON.stringify(personalInfo));
+    }
+
     alert('Your info has been submitted');
+    localStorage.setItem('InfoList', JSON.stringify(infoList.concat(userInfo)));
 
     document.getElementById('registerForm').reset();
     image.src = 'https://via.placeholder.com/150';
     image.alt = 'placeholder';
-    document.getElementById('photoPreview').removeAttribute('disabled')
+    document.getElementById('photoPreview').removeAttribute('disabled');
+};
+    validateInfo();
 }
 
 function submitContact() {
@@ -124,10 +145,6 @@ function submitContact() {
 
     if (!name || !cEmail || !subject || !message) {
         alert('Please fill in all fields');
-        return;
-    }
-    if (!cEmail) {
-        alert('Please enter an email address');
         return;
     }
     if (!emailRegex.test(cEmail)) {
@@ -163,15 +180,45 @@ function showData() {
     }
     infoList.forEach((info, i) => {
         const infoRow = document.createElement('tr');
-        infoRow.innerHTML = `
-            <td class="ps-3">${info.firstName}</td>
-            <td>${info.lastName}</td>
-            <td>${info.phone}</td>
-            <td class><img src="${info.image}" alt="user${i + 1}" style="width: 75px; height: 75px"></td>
-            <td class="col-4"><a href="#" class="text-decoration-none text-dark" onclick="displayDetails(${i})">Details..</a><br><a href="#" class="text-decoration-none text-dark" onclick="displayModalDetails(${i})">Details With Modal...</a></td>
-            <td  class="col-sm-1"><i class="bi bi-trash lg" style="color: blue" onclick="deleteInfo(${i})"></i></td>
-        `;
+        const deleteButton = document.createElement('i');
+        deleteButton.classList.add('bi', 'bi-trash', 'lg', 'text-primary', 'col-sm-1');
+        deleteButton.setAttribute('onclick', `deleteInfo(${i})`);
+
+        const infoFirstName = document.createElement('td');
+        infoFirstName.classList.add('ps-3');
+        infoFirstName.textContent = info.firstName;
+        const infoLastName = document.createElement('td');
+        infoLastName.textContent = info.lastName;
+        const infoPhone = document.createElement('td');
+        infoPhone.textContent = info.phone;
+        const infoImage = document.createElement('td');
+        infoImage.innerHTML = `<img src="${info.image}" alt="user${i + 1}" style="width: 75px; height: 75px">`;
+        const infoDetails = document.createElement('td');
+        infoDetails.classList.add('col-4');
+        infoDetails.innerHTML = ``;
+        const infoDelete = document.createElement('td');
+        infoDelete.classList.add('col-sm-1');
+        infoDelete.appendChild(deleteButton);
+
+        infoRow.appendChild(infoFirstName);
+        infoRow.appendChild(infoLastName);
+        infoRow.appendChild(infoPhone);
+        infoRow.appendChild(infoImage);
+        infoRow.appendChild(infoDetails);
+        infoRow.appendChild(infoDelete);
         infoTable.appendChild(infoRow);
+
+
+
+        //     <td class="col-4"><div><a class="text-decoration-none text-dark collapsed" data-bs-toggle="collapse"role="button" href="#info1"
+        //      aria-expanded="false" aria-controls="info1" onclick="displayDetails(${i})">Details..</a>
+        //     <br>
+        //     <a class="text-decoration-none text-dark collapsed" data-bs-toggle="modal" href="#info2"
+        //      aria-expanded="false" aria-controls="info2" onclick="displayModalDetails(${i})">Details With Modal...</a></td>
+        //      <div id="info1" class="collapse" data-bs-parent="#weightData"></div>
+
+
+
     });
 }
 
@@ -193,7 +240,7 @@ function deleteInfo(i) {
 function displayDetails(i) {
     // When the user clicks on the associated text, display the details as a collapsed list
     // If the user clicks on the same text again, hide the details
-    
+
 }
 
 function displayModalDetails(i) {
