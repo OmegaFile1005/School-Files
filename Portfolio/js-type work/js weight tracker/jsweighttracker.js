@@ -116,12 +116,12 @@ const validateInfo = () => {
 
     const infoList = JSON.parse(localStorage.getItem('InfoList')) || [];
     const duplicateInfo = infoList.find(info => info.firstName === firstName && info.lastName === lastName && info.phone === phone);
-z
+
     if (duplicateInfo && (duplicateInfo.weight !== weight || duplicateInfo.date !== date)) {
-        
-    } else {
         const personalInfo = [infoList.indexOf(duplicateInfo), ...userInfo];
         localStorage.setItem(`${firstName} ${lastName}`, JSON.stringify(personalInfo));
+        alert('Your info has been updated');
+        return;
     }
 
     alert('Your info has been submitted');
@@ -195,8 +195,37 @@ function showData() {
         infoImage.innerHTML = `<img src="${info.image}" alt="user${i + 1}" style="width: 75px; height: 75px">`;
         const infoDetails = document.createElement('td');
         infoDetails.classList.add('col-4');
-        infoDetails.innerHTML = ``;
-        const infoDelete = document.createElement('td');
+        infoDetails.innerHTML = `<p class="d-inline-flex gap-1">
+                                    <div>
+                                        <a href="#info1" data-bs-toggle="collapse" role="button" aria-expanded="false"
+                                        class="link-secondary link-offset-3 link-offset-0-hover text-dark collapsed"
+                                        aria-controls="info1">Details...</a>
+                                        <div class="collapse" id="info1">
+                                            <ul class="list-group" id="infoList${i}"></ul>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                <div>
+            <a href="#info2" class="link-secondary link-offset-3 link-offset-0-hover text-dark collapsed" data-bs-toggle="modal" aria-expanded="false"
+                aria-controls="info2">Details With Modal...</a>
+            <div class="modal" id="info2">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>1</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </p>
+`;
+const infoDelete = document.createElement('td');
         infoDelete.classList.add('col-sm-1');
         infoDelete.appendChild(deleteButton);
 
@@ -207,23 +236,12 @@ function showData() {
         infoRow.appendChild(infoDetails);
         infoRow.appendChild(infoDelete);
         infoTable.appendChild(infoRow);
-
-
-
-        //     <td class="col-4"><div><a class="text-decoration-none text-dark collapsed" data-bs-toggle="collapse"role="button" href="#info1"
-        //      aria-expanded="false" aria-controls="info1" onclick="displayDetails(${i})">Details..</a>
-        //     <br>
-        //     <a class="text-decoration-none text-dark collapsed" data-bs-toggle="modal" href="#info2"
-        //      aria-expanded="false" aria-controls="info2" onclick="displayModalDetails(${i})">Details With Modal...</a></td>
-        //      <div id="info1" class="collapse" data-bs-parent="#weightData"></div>
-
-
-
     });
 }
 
 function deleteInfo(i) {
     const infoList = JSON.parse(localStorage.getItem('userInfo'));
+    const personalInfo = JSON.parse(localStorage.getItem(`${infoList[i].firstName} ${infoList[i].lastName}`));
     const confirmDeletion = window.prompt('Are you sure you want to delete this info? (Y/N)');
     if (confirmDeletion && confirmDeletion.toLowerCase() !== 'y') {
         return;
@@ -237,14 +255,14 @@ function deleteInfo(i) {
 
 }
 
-function displayDetails(i) {
-    // When the user clicks on the associated text, display the details as a collapsed list
-    // If the user clicks on the same text again, hide the details
+// function displayDetails(i) {
+//     // When the user clicks on the associated text, display the details as a collapsed list
+//     // If the user clicks on the same text again, hide the details
+    
+// }
 
-}
+// function displayModalDetails(i) {
+//     // When the user clicks on the associated text, display the details as a modal
+//     // If the user clicks on the same text again, hide the details
 
-function displayModalDetails(i) {
-    // When the user clicks on the associated text, display the details as a modal
-    // If the user clicks on the same text again, hide the details
-
-}
+// }
