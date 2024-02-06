@@ -81,12 +81,8 @@ function submitInfo() {
     lastName = lastName.toLowerCase().replace(/(?:^|\s|-)\S/g, function (match) {
         return match.toUpperCase();
     });
-    if (!firstName || !lastName || !phone || !weight || !date || !image) {
-        alert('Please fill in all required fields');
-        return;
-    }
-    if (!image.src || image.src.endsWith('https://via.placeholder.com/150')) {
-        alert('Please add a picture');
+    if (!firstName || !lastName || !phone || !weight || !date || !image || image.src === 'https://via.placeholder.com/75') {
+        alert('Please fill in all the fields with valid information');
         return;
     }
     if (date > new Date().toISOString().split('T')[0]) {
@@ -105,15 +101,7 @@ const validateInfo = () => {
         return;
     }
 
-    const userInfo = {
-        firstName,
-        lastName,
-        phone,
-        weight,
-        date,
-        image: image.src
-    };
-
+    const userInfo = { firstName, lastName, phone, weight, date, image };
     const infoList = JSON.parse(localStorage.getItem('InfoList')) || [];
     const duplicateInfo = infoList.find(info => info.firstName === firstName && info.lastName === lastName && info.phone === phone);
 
@@ -136,12 +124,11 @@ const validateInfo = () => {
 }
 
 function submitContact() {
-    const name = document.getElementById('name').value.trim();
-    const cEmail = document.getElementById('contactEmail').value.trim();
-    const subject = document.getElementById('subject').value.trim();
-    const message = document.getElementById('message').value.trim();
+    const name = document.getElementById('name')?.value?.trim();
+    const cEmail = document.getElementById('contactEmail')?.value?.trim();
+    const subject = document.getElementById('subject')?.value?.trim();
+    const message = document.getElementById('message')?.value?.trim();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
 
     if (!name || !cEmail || !subject || !message) {
         alert('Please fill in all fields');
@@ -151,12 +138,8 @@ function submitContact() {
         alert('Please enter a valid email address');
         return;
     }
-    if (!name || !cEmail || !subject || !message) {
-        alert('Please fill in all fields');
-        return;
-    }
 
-    const messageInfo = JSON.parse(localStorage.getItem('messageList')) || [];
+    const messageInfo = JSON.parse(localStorage.getItem('messageList')) || {};
     messageInfo.name = name;
     messageInfo.cEmail = cEmail;
     messageInfo.subject = subject;
@@ -165,8 +148,7 @@ function submitContact() {
     console.log(messageInfo);
     localStorage.setItem('messageList', JSON.stringify(messageInfo));
     alert('Your message has been submitted');
-
-    document.getElementById('contactForm').reset();
+    document.getElementById('contactForm')?.reset();
 }
 
 function showData() {
@@ -178,12 +160,12 @@ function showData() {
         infoTable.innerHTML = '<tr><td colspan="6" class="text-center">No data found</td></tr>';
         return;
     }
+
     infoList.forEach((info, i) => {
         const infoRow = document.createElement('tr');
         const deleteButton = document.createElement('i');
         deleteButton.classList.add('bi', 'bi-trash', 'lg', 'text-primary', 'col-sm-1');
         deleteButton.setAttribute('onclick', `deleteInfo(${i})`);
-
         const infoFirstName = document.createElement('td');
         infoFirstName.classList.add('ps-3');
         infoFirstName.textContent = info.firstName;
@@ -195,40 +177,35 @@ function showData() {
         infoImage.innerHTML = `<img src="${info.image}" alt="user${i + 1}" style="width: 75px; height: 75px">`;
         const infoDetails = document.createElement('td');
         infoDetails.classList.add('col-4');
-        infoDetails.innerHTML = `<p class="d-inline-flex gap-1">
-                                    <div>
-                                        <a href="#info1" data-bs-toggle="collapse" role="button" aria-expanded="false"
-                                        class="link-secondary link-offset-3 link-offset-0-hover text-dark collapsed"
-                                        aria-controls="info1">Details...</a>
-                                        <div class="collapse" id="info1">
-                                            <ul class="list-group" id="infoList${i}"></ul>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                <div>
-            <a href="#info2" class="link-secondary link-offset-3 link-offset-0-hover text-dark collapsed" data-bs-toggle="modal" aria-expanded="false"
-                aria-controls="info2">Details With Modal...</a>
-            <div class="modal" id="info2">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Details</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <p>1</p>
+        
+        infoDetails.innerHTML = `
+            <div class="d-inline-flex gap-1">
+                <a href="#info${i}" data-bs-toggle="collapse" aria-expanded="false" role="button"
+                    class="text-reset link-offset-3 link-offset-0-hover collapsed"
+                    aria-controls="info${i}">Details...</a>
+                <div class="collapse" id="info${i}">
+                    <ul class="list-group" id="infoList${i}"></ul>
+                </div>
+                <a href="#infoModal${i}" data-bs-toggle="modal" aria-expanded="false"
+                    class="text-reset link-offset-3 link-offset-0-hover collapsed"
+                    aria-controls="infoModal${i}">Details With Modal...</a>
+                <div class="modal" id="infoModal${i}">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Details</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body"></div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        </p>
-`;
-const infoDelete = document.createElement('td');
+            </div>`;
+
+        const infoDelete = document.createElement('td');
         infoDelete.classList.add('col-sm-1');
         infoDelete.appendChild(deleteButton);
-
+    
         infoRow.appendChild(infoFirstName);
         infoRow.appendChild(infoLastName);
         infoRow.appendChild(infoPhone);
