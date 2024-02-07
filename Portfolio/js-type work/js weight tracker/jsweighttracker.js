@@ -19,9 +19,18 @@ function registerWeight() {
 }
 
 function getUserData() {
-    const storedUser = localStorage.getItem("user");
+    const storedUser = localStorage.getItem("userInfo");
     return storedUser ? JSON.parse(storedUser) : null;
 }
+
+const pageLinks = document.querySelectorAll('.page-link');
+pageLinks.forEach(link => {
+  link.addEventListener('click', function(event) {
+    event.preventDefault();
+    const target = link.getAttribute('href');
+    
+});
+});
 
 function previewFile() {
     const fileInput = document.getElementById('photoPreview');
