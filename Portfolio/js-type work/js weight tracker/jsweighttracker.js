@@ -89,35 +89,35 @@ function submitInfo() {
         alert('Date cannot be in the future');
         return;
     }
-    // Check if there is a duplicate info with the same name, phone number, and weight with the same date as the user's personal array
-    const validateInfo = () => {
-        const firstName = document.getElementById('firstName').value;
-        const lastName = document.getElementById('lastName').value;
-        const phone = parseInt(document.getElementById('phone').value);
-        const weight = parseInt(document.getElementById('weight').value);
-        const date = document.getElementById('date').value;
+const validateInfo = () => {
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const phone = parseInt(document.getElementById('phone').value);
+    const weight = parseInt(document.getElementById('weight').value);
+    const date = document.getElementById('date').value;
 
-        if (!firstName || !lastName || isNaN(phone) || isNaN(weight) || !date) {
-            alert('Please fill in all the fields with valid information');
-            return;
-        }
+    if (!firstName || !lastName || isNaN(phone) || isNaN(weight) || !date) {
+        alert('Please fill in all the fields with valid information');
+        return;
+    }
 
-        const userInfo = { firstName, lastName, phone, weight, date, image };
-        const infoList = JSON.parse(localStorage.getItem('InfoList')) || [];
-        const duplicateInfo = infoList.find(info => info.firstName === firstName && info.lastName === lastName && info.phone === phone && info.weight === weight && info.date === date);
+    const userInfo = { firstName, lastName, phone, weight, date, image };
+    const infoList = JSON.parse(localStorage.getItem('InfoList')) || [];
+    const duplicateInfo = infoList.find(info => info.firstName === firstName && info.lastName === lastName && info.phone === phone);
 
-        if (duplicateInfo) {
-            alert('Duplicate info found');
-            return;
-        }
-
-        // Rest of the code...
+    // If duplicateInfo matches with a certain info in infoList, create a personalInfo array with the index of the duplicateInfo in infoList and the new userInfo
+    // InfoList objects should only have first and last names, phone number, and picture URL as keys to display in a table
+    // Otherwise, create a new personalInfo array with the new userInfo, userInfo is the placeholder for the new personalInfo if new info is not a duplicate
+    // Store the personalInfo array in localStorage under the key of the new info.firstName and info.lastName
     if (duplicateInfo && (duplicateInfo.weight !== weight || duplicateInfo.date !== date)) {
-        const personalInfo = [infoList.indexOf(duplicateInfo), ...userInfo];
+        const personalInfo = [infoList.indexOf(duplicateInfo), userInfo];
         localStorage.setItem(`${firstName} ${lastName}`, JSON.stringify(personalInfo));
         alert('Your info has been updated');
         return;
-    };  
+    }
+
+    const personalInfo = [userInfo];
+    localStorage.setItem(`${firstName} ${lastName}`, JSON.stringify(personalInfo));
 
     alert('Your info has been submitted');
     localStorage.setItem('InfoList', JSON.stringify(infoList.concat(userInfo)));
