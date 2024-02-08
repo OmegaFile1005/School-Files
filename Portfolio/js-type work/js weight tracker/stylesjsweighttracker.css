@@ -1,13 +1,5 @@
-b {
-    color: #36d7b7;
-}
-
 #title {
     margin-top: 30px;
-}
-
-#title h3 {
-    color: #36d7b7;
 }
 
 #title a {
@@ -16,12 +8,11 @@ b {
 }
 
 #title a:hover {
-    color: #36d7b7;
+    color: #3cd8b9 !important;
 }
-#title a:disabled,
+
 #title a:active {
-    color: #36d7b7 !important;
-    pointer-events: fill;
+    color: #3cd8b9 !important;
 }
 
 svg {
@@ -42,18 +33,21 @@ svg {
     justify-self: center;
 }
 
-#extraInfo a {
-    color: #36d7b7;
+b,
+#extraInfo a,
+#title h3 {
+    color: #3cd8b9;
 }
 
 #extraInfo button,
 #contactForm button,
 #registerForm button {
-    background-color: #36d7b7;
+    background-color: #3cd8b9;
     color: white;
 }
 
 #p1 {
+    margin-top: 1rem;
     font-size: 14px;
 }
 
@@ -62,15 +56,15 @@ svg {
     cursor: default;
 }
 
-.underlineHeading::after {
-    border-bottom: 4px solid #36d7b7;
-    padding-bottom: 1.5rem;
-    width: 100%;
+.customBreak {
+    border: 2px solid #3cd8b9;
+    opacity: 1;
+    width: 50px;
+    margin: 0 2px 16px 2px;
 }
 
-#services,
-#services table {
-    background: #f8f9fa !important;
+#services {
+    background-color: #f8f9fa !important;
     padding-bottom: 2.5rem;
 }
 

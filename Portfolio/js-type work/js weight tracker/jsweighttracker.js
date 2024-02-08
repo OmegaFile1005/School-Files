@@ -23,15 +23,6 @@ function getUserData() {
     return storedUser ? JSON.parse(storedUser) : null;
 }
 
-const pageLinks = document.querySelectorAll('.page-link');
-pageLinks.forEach(link => {
-  link.addEventListener('click', function(event) {
-    event.preventDefault();
-    const target = link.getAttribute('href');
-    
-});
-});
-
 function previewFile() {
     const fileInput = document.getElementById('photoPreview');
     const file = fileInput.files[0];
@@ -98,28 +89,35 @@ function submitInfo() {
         alert('Date cannot be in the future');
         return;
     }
-const validateInfo = () => {
-    const firstName = document.getElementById('firstName').value;
-    const lastName = document.getElementById('lastName').value;
-    const phone = parseInt(document.getElementById('phone').value);
-    const weight = parseInt(document.getElementById('weight').value);
-    const date = document.getElementById('date').value;
+    // Check if there is a duplicate info with the same name, phone number, and weight with the same date as the user's personal array
+    const validateInfo = () => {
+        const firstName = document.getElementById('firstName').value;
+        const lastName = document.getElementById('lastName').value;
+        const phone = parseInt(document.getElementById('phone').value);
+        const weight = parseInt(document.getElementById('weight').value);
+        const date = document.getElementById('date').value;
 
-    if (!firstName || !lastName || isNaN(phone) || isNaN(weight) || !date) {
-        alert('Please fill in all the fields with valid information');
-        return;
-    }
+        if (!firstName || !lastName || isNaN(phone) || isNaN(weight) || !date) {
+            alert('Please fill in all the fields with valid information');
+            return;
+        }
 
-    const userInfo = { firstName, lastName, phone, weight, date, image };
-    const infoList = JSON.parse(localStorage.getItem('InfoList')) || [];
-    const duplicateInfo = infoList.find(info => info.firstName === firstName && info.lastName === lastName && info.phone === phone);
+        const userInfo = { firstName, lastName, phone, weight, date, image };
+        const infoList = JSON.parse(localStorage.getItem('InfoList')) || [];
+        const duplicateInfo = infoList.find(info => info.firstName === firstName && info.lastName === lastName && info.phone === phone && info.weight === weight && info.date === date);
 
+        if (duplicateInfo) {
+            alert('Duplicate info found');
+            return;
+        }
+
+        // Rest of the code...
     if (duplicateInfo && (duplicateInfo.weight !== weight || duplicateInfo.date !== date)) {
         const personalInfo = [infoList.indexOf(duplicateInfo), ...userInfo];
         localStorage.setItem(`${firstName} ${lastName}`, JSON.stringify(personalInfo));
         alert('Your info has been updated');
         return;
-    }
+    };  
 
     alert('Your info has been submitted');
     localStorage.setItem('InfoList', JSON.stringify(infoList.concat(userInfo)));
