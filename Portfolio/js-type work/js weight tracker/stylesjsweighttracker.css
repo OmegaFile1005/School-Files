@@ -59,8 +59,8 @@ b,
 .customBreak {
     border: 2px solid #3cd8b9;
     opacity: 1;
-    width: 50px;
-    margin: 0 2px 16px 2px;
+    width: 70px;
+    margin: 10px auto;
 }
 
 #services {
