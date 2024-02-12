@@ -2,9 +2,12 @@ const userInfo = {
     firstName: '',
     lastName: '',
     phone: 0,
+    image: '',
+};
+
+const weightDate = {
     weight: 0,
     date: '',
-    image: '',
 };
 
 const messageInfo = {
@@ -81,7 +84,7 @@ function submitInfo() {
     lastName = lastName.toLowerCase().replace(/(?:^|\s|-)\S/g, function (match) {
         return match.toUpperCase();
     });
-    if (!firstName || !lastName || !phone || !weight || !date || !image || image.src === 'https://via.placeholder.com/75') {
+    if (!firstName || !lastName || !phone || !weight || !date || !image || image.src === 'https://via.placeholder.com/250') {
         alert('Please fill in all the fields with valid information');
         return;
     }
@@ -89,27 +92,14 @@ function submitInfo() {
         alert('Date cannot be in the future');
         return;
     }
-const validateInfo = () => {
-    const firstName = document.getElementById('firstName').value;
-    const lastName = document.getElementById('lastName').value;
-    const phone = parseInt(document.getElementById('phone').value);
-    const weight = parseInt(document.getElementById('weight').value);
-    const date = document.getElementById('date').value;
 
-    if (!firstName || !lastName || isNaN(phone) || isNaN(weight) || !date) {
-        alert('Please fill in all the fields with valid information');
-        return;
-    }
-
-    const userInfo = { firstName, lastName, phone, weight, date, image };
-    const infoList = JSON.parse(localStorage.getItem('InfoList')) || [];
     const duplicateInfo = infoList.find(info => info.firstName === firstName && info.lastName === lastName && info.phone === phone);
+    const infoList = JSON.parse(localStorage.getItem('InfoList')) || [];
+    infoList.image = image.src;
+    weightDate.weight = weight;
+    weightDate.date = date
 
-    // If duplicateInfo matches with a certain info in infoList, create a personalInfo array with the index of the duplicateInfo in infoList and the new userInfo
-    // InfoList objects should only have first and last names, phone number, and picture URL as keys to display in a table
-    // Otherwise, create a new personalInfo array with the new userInfo, userInfo is the placeholder for the new personalInfo if new info is not a duplicate
-    // Store the personalInfo array in localStorage under the key of the new info.firstName and info.lastName
-    if (duplicateInfo && (duplicateInfo.weight !== weight || duplicateInfo.date !== date)) {
+        if (duplicateInfo && (duplicateInfo.weight !== weight || duplicateInfo.date !== date)) {
         const personalInfo = [infoList.indexOf(duplicateInfo), userInfo];
         localStorage.setItem(`${firstName} ${lastName}`, JSON.stringify(personalInfo));
         alert('Your info has been updated');
@@ -123,10 +113,9 @@ const validateInfo = () => {
     localStorage.setItem('InfoList', JSON.stringify(infoList.concat(userInfo)));
 
     document.getElementById('registerForm').reset();
-    image.src = 'https://via.placeholder.com/150';
+    image.src = 'https://via.placeholder.com/250';
     image.alt = 'placeholder';
     document.getElementById('photoPreview').removeAttribute('disabled');
-};
     validateInfo();
 }
 
