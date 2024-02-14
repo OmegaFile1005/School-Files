@@ -1,11 +1,4 @@
-const userInfo = {
-    firstName: '',
-    lastName: '',
-    phone: 0,
-    weight: 0,
-    date: '',
-    image: '',
-};
+
 
 const messageInfo = {
     name: '',
@@ -68,66 +61,44 @@ function addEmail() {
 }
 
 function submitInfo() {
-    let firstName = document.getElementById('firstName').value;
-    let lastName = document.getElementById('lastName').value;
-    const phone = document.getElementById('phone').value * 1;
-    const weight = document.getElementById('weight').value * 1;
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName = document.getElementById('lastName').value.trim();
+    const phone = +document.getElementById('phone').value;
+    const weight = +document.getElementById('weight').value;
     const date = document.getElementById('date').value;
     const image = document.getElementById('previewImage');
 
-    firstName = firstName.toLowerCase().replace(/(?:^|\s|-)\S/g, function (match) {
-        return match.toUpperCase();
-    });
-    lastName = lastName.toLowerCase().replace(/(?:^|\s|-)\S/g, function (match) {
-        return match.toUpperCase();
-    });
-    if (!firstName || !lastName || !phone || !weight || !date || !image || image.src === 'https://via.placeholder.com/75') {
+    if (!firstName || !lastName || !phone || !weight || !date || !image || image.src === 'https://via.placeholder.com/250') {
         alert('Please fill in all the fields with valid information');
         return;
     }
-    if (date > new Date().toISOString().split('T')[0]) {
+    if (new Date(date) > new Date()) {
         alert('Date cannot be in the future');
         return;
     }
-const validateInfo = () => {
-    const firstName = document.getElementById('firstName').value;
-    const lastName = document.getElementById('lastName').value;
-    const phone = parseInt(document.getElementById('phone').value);
-    const weight = parseInt(document.getElementById('weight').value);
-    const date = document.getElementById('date').value;
 
-    if (!firstName || !lastName || isNaN(phone) || isNaN(weight) || !date) {
-        alert('Please fill in all the fields with valid information');
-        return;
-    }
-
-    const userInfo = { firstName, lastName, phone, weight, date, image };
     const infoList = JSON.parse(localStorage.getItem('InfoList')) || [];
     const duplicateInfo = infoList.find(info => info.firstName === firstName && info.lastName === lastName && info.phone === phone);
 
-    // If duplicateInfo matches with a certain info in infoList, create a personalInfo array with the index of the duplicateInfo in infoList and the new userInfo
-    // InfoList objects should only have first and last names, phone number, and picture URL as keys to display in a table
-    // Otherwise, create a new personalInfo array with the new userInfo, userInfo is the placeholder for the new personalInfo if new info is not a duplicate
-    // Store the personalInfo array in localStorage under the key of the new info.firstName and info.lastName
-    if (duplicateInfo && (duplicateInfo.weight !== weight || duplicateInfo.date !== date)) {
-        const personalInfo = [infoList.indexOf(duplicateInfo), userInfo];
-        localStorage.setItem(`${firstName} ${lastName}`, JSON.stringify(personalInfo));
-        alert('Your info has been updated');
-        return;
+    if (duplicateInfo) {
+        duplicateInfo.weightDate.push({ weight, date });
+        localStorage.setItem('InfoList', JSON.stringify(infoList));
+        alert('Your weight and date have been updated');
+    } else {
+        const personalInfo = {
+            fullName: `${firstName} ${lastName}`,
+            phone,
+            weightDate: [{ weight, date }]
+        };
+        localStorage.setItem(`${firstName} ${lastName}`, JSON.stringify([personalInfo]));
+        localStorage.setItem('InfoList', JSON.stringify(infoList.concat(personalInfo)));
+        alert('Your info has been registered');
     }
 
-    const personalInfo = [userInfo];
-    localStorage.setItem(`${firstName} ${lastName}`, JSON.stringify(personalInfo));
-
-    alert('Your info has been submitted');
-    localStorage.setItem('InfoList', JSON.stringify(infoList.concat(userInfo)));
-
     document.getElementById('registerForm').reset();
-    image.src = 'https://via.placeholder.com/150';
+    image.src = 'https://via.placeholder.com/250';
     image.alt = 'placeholder';
     document.getElementById('photoPreview').removeAttribute('disabled');
-};
-    validateInfo();
 }
 
 function submitContact() {
@@ -159,7 +130,7 @@ function submitContact() {
 }
 
 function showData() {
-    const infoList = JSON.parse(localStorage.getItem('InfoList'));
+    const infoList = JSON.parse(localStorage.getItem('InfoList')) || [];
     const infoTable = document.getElementById('weightData');
     infoTable.innerHTML = '';
 
