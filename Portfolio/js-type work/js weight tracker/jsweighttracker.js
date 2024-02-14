@@ -81,14 +81,13 @@ function submitInfo() {
     const duplicateInfo = infoList.find(info => info.firstName === firstName && info.lastName === lastName && info.phone === phone);
 
     if (duplicateInfo) {
-        duplicateInfo.weightDate.push({ weight, date });
+        duplicateInfo.weightDate.push({ weight, date, image: image.src });
         localStorage.setItem('InfoList', JSON.stringify(infoList));
         alert('Your weight and date have been updated');
     } else {
         const personalInfo = {
             fullName: `${firstName} ${lastName}`,
             phone,
-            weightDate: [{ weight, date }]
         };
         localStorage.setItem(`${firstName} ${lastName}`, JSON.stringify([personalInfo]));
         localStorage.setItem('InfoList', JSON.stringify(infoList.concat(personalInfo)));
