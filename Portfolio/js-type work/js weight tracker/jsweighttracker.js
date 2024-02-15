@@ -81,13 +81,15 @@ function submitInfo() {
     const duplicateInfo = infoList.find(info => info.firstName === firstName && info.lastName === lastName && info.phone === phone);
 
     if (duplicateInfo) {
-        duplicateInfo.weightDate.push({ weight, date, image: image.src });
+        duplicateInfo.weightDate.push({ weight, date});
         localStorage.setItem('InfoList', JSON.stringify(infoList));
         alert('Your weight and date have been updated');
     } else {
         const personalInfo = {
-            fullName: `${firstName} ${lastName}`,
+            firstName,
+            lastName,
             phone,
+            image: image.src 
         };
         localStorage.setItem(`${firstName} ${lastName}`, JSON.stringify([personalInfo]));
         localStorage.setItem('InfoList', JSON.stringify(infoList.concat(personalInfo)));
@@ -157,12 +159,8 @@ function showData() {
         
         infoDetails.innerHTML = `
             <div class="d-inline-flex gap-1">
-                <a href="#info${i}" data-bs-toggle="collapse" aria-expanded="false" role="button"
-                    class="text-reset link-offset-3 link-offset-0-hover collapsed"
-                    aria-controls="info${i}">Details...</a>
-                <div class="collapse" id="info${i}">
-                    <ul class="list-group" id="infoList${i}"></ul>
-                </div>
+                <a onclick="toggleList()" class="collapse-link">Details...</a>
+                <ul id="myList"></ul>
                 <a href="#infoModal${i}" data-bs-toggle="modal" aria-expanded="false"
                     class="text-reset link-offset-3 link-offset-0-hover collapsed"
                     aria-controls="infoModal${i}">Details With Modal...</a>
@@ -173,7 +171,7 @@ function showData() {
                                 <h5 class="modal-title">Details</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-body"></div>
+                            <div class="modal-body" id="modalBody${i}"></div>
                         </div>
                     </div>
                 </div>
@@ -193,30 +191,42 @@ function showData() {
     });
 }
 
-function deleteInfo(i) {
-    const infoList = JSON.parse(localStorage.getItem('userInfo'));
-    const personalInfo = JSON.parse(localStorage.getItem(`${infoList[i].firstName} ${infoList[i].lastName}`));
-    const confirmDeletion = window.prompt('Are you sure you want to delete this info? (Y/N)');
-    if (confirmDeletion && confirmDeletion.toLowerCase() !== 'y') {
-        return;
-    } else {
-        if (confirmDeletion && confirmDeletion.toLowerCase() === 'y') {
-            infoList.splice(i, 1);
-            localStorage.setItem('userInfo', JSON.stringify(infoList));
-            window.location.reload();
-        }
-    }
-
+function showDetails(i) {
+    const infoList = JSON.parse(localStorage.getItem('InfoList')) || [];
+    const personalInfo = JSON.parse(localStorage.getItem(`${infoList[i].firstName} ${infoList[i].lastName}`)) || [];
+    const modalBody = document.getElementById(`modalBody${i}`);
+    modalBody.innerHTML = '';
+    personalInfo.forEach((info, j) => {
+        const infoRow = document.createElement('tr');
+        const infoKey = document.createElement('td');
+        infoKey.classList.add('ps-3');
+        infoKey.textContent = info.key;
+        const infoValue = document.createElement('td');
+        infoValue.textContent = info.value;
+        infoRow.appendChild(infoKey);
+        infoRow.appendChild(infoValue);
+        modalBody.appendChild(infoRow);
+    });
 }
 
-// function displayDetails(i) {
-//     // When the user clicks on the associated text, display the details as a collapsed list
-//     // If the user clicks on the same text again, hide the details
-    
-// }
+function showInfo() {
+    const infoList = JSON.parse(localStorage.getItem('InfoList')) || [];
+    const infoTable = document.getElementById('infoTable');
+    infoTable.innerHTML = '';
+}
 
-// function displayModalDetails(i) {
-//     // When the user clicks on the associated text, display the details as a modal
-//     // If the user clicks on the same text again, hide the details
+function toggleList() {
+    var list = document.getElementById('myList');
+    if (list.style.display === 'none') {
+        list.style.display = 'block';
+    } else {
+        list.style.display = 'none';
+    }
+}
 
-// }
+function deleteInfo(i) {
+    const infoList = JSON.parse(localStorage.getItem('InfoList')) || [];
+    infoList.splice(i, 1);
+    localStorage.setItem('InfoList', JSON.stringify(infoList));
+    showData();
+}

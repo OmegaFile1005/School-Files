@@ -68,6 +68,15 @@ b,
     padding-bottom: 2.5rem;
 }
 
+#myList {
+    display: none;
+  }
+  .collapse-link {
+    text-decoration: underline;
+    margin-bottom: 10px; /* Offset the link below a bit */
+    cursor: pointer; /* Show the hand cursor on hover */
+  }
+
 .btn-tertiary {
     --bs-btn-color: #97979c;
     --bs-btn-bg: #f0f0f0;
