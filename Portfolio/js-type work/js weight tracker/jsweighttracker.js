@@ -81,7 +81,7 @@ function submitInfo() {
     const duplicateInfo = infoList.find(info => info.firstName === firstName && info.lastName === lastName && info.phone === phone);
 
     if (duplicateInfo) {
-        duplicateInfo.weightDate.push({ weight, date});
+        duplicateInfo.weightDate.push({ weight, date });
         localStorage.setItem('InfoList', JSON.stringify(infoList));
         alert('Your weight and date have been updated');
     } else {
@@ -89,7 +89,7 @@ function submitInfo() {
             firstName,
             lastName,
             phone,
-            image: image.src 
+            image: image.src
         };
         localStorage.setItem(`${firstName} ${lastName}`, JSON.stringify([personalInfo]));
         localStorage.setItem('InfoList', JSON.stringify(infoList.concat(personalInfo)));
@@ -156,31 +156,33 @@ function showData() {
         infoImage.innerHTML = `<img src="${info.image}" alt="user${i + 1}" style="width: 75px; height: 75px">`;
         const infoDetails = document.createElement('td');
         infoDetails.classList.add('col-4');
-        
+
         infoDetails.innerHTML = `
-            <div class="d-inline-flex gap-1">
-                <a onclick="toggleList()" class="collapse-link">Details...</a>
-                <ul id="myList"></ul>
-                <a href="#infoModal${i}" data-bs-toggle="modal" aria-expanded="false"
-                    class="text-reset link-offset-3 link-offset-0-hover collapsed"
-                    aria-controls="infoModal${i}">Details With Modal...</a>
-                <div class="modal" id="infoModal${i}">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Details</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body" id="modalBody${i}"></div>
+                <div class="d-inline-flex gap-1">
+                    <a onclick="toggleList()" class="collapse-link">Details...</a>
+                        <div class="col">
+                            <ul id="myList"></ul>
                         </div>
-                    </div>
+                    <a data-bs-target="#infoModal${i}" data-bs-toggle="modal" role="button" aria-expanded="false" aria-controls="infoModal${i}"
+                         class="link-secondary link-offset-3 link-offset-0-hover text-dark collapsed">Details With Modal...</a>
+                                 <div class="modal-content">
+                     <div class="modal" id="infoModal${i}">
+                        <div class="modal-dialog">
+                           <div class="modal-header">
+                           <h5 class="modal-title">Details</h5>
+                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                         </div>
+                        <div class="modal-body" id="modalBody${i}"></div>
+                   </div>
+            </div>
+          </div>
                 </div>
-            </div>`;
+            `;
 
         const infoDelete = document.createElement('td');
         infoDelete.classList.add('col-sm-1');
         infoDelete.appendChild(deleteButton);
-    
+
         infoRow.appendChild(infoFirstName);
         infoRow.appendChild(infoLastName);
         infoRow.appendChild(infoPhone);
