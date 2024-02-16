@@ -173,26 +173,11 @@ function showData() {
         infoDetails.classList.add('col-4');
 
         infoDetails.innerHTML = `
-                                <p>
+                                <p onclick="showDetails(${i})">
                                     <a role="button" data-bs-toggle="modal" data-bs-target="#detailModal"
                                         class="link-secondary link-offset-3 link-offset-0-hover text-dark collapsed"
                                         aria-expanded="false" aria-controls="info1">Details...</a>
-                                </p>
-                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="detailModal"
-                                    aria-hidden="true" onshow="showDetails(${i})">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="detailModal">Details</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body" id="modalBody">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                `;
+                                </p>`;
 
         const infoDelete = document.createElement('td');
         infoDelete.classList.add('col-sm-1');
@@ -210,16 +195,19 @@ function showData() {
 
 function showDetails(i) {
     // Create a p element for each weightDate object relative to the index and append it to the modal body
-    const infoList = JSON.parse(localStorage.getItem('InfoList')) || [];
-    const modalBody = document.getElementById('modalBody');
+    const modal = new bootstrap.Modal('#detailsModal');
+
+    const infoList = JSON.parse(localStorage.getItem('InfoList'));
+    const weightData = infoList[i].weightDate;
 
     modalBody.innerHTML = '';
 
-    infoList.forEach((info) => {
+    weightData.forEach((info) => {
         const p = document.createElement('p');
-        p.textContent = `${info.weight}kg on ${info.weightDate}`;
+        p.textContent = `${info.weight}kg on ${info.date}`;
         modalBody.appendChild(p);
     });
+    modal.show();
 }
 
 function showInfo() {
