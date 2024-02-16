@@ -1,5 +1,3 @@
-
-
 const messageInfo = {
     name: '',
     cEmail: '',
@@ -61,11 +59,11 @@ function addEmail() {
 }
 
 function submitInfo() {
-    const firstName = document.getElementById('firstName').value.trim();
-    const lastName = document.getElementById('lastName').value.trim();
-    const phone = +document.getElementById('phone').value;
-    const weight = +document.getElementById('weight').value;
-    const date = document.getElementById('date').value;
+    const firstName = document.getElementById('firstName')?.value?.trim();
+    const lastName = document.getElementById('lastName')?.value?.trim();
+    const phone = +document.getElementById('phone')?.value;
+    const weight = +document.getElementById('weight')?.value;
+    const date = document.getElementById('date')?.value;
     const image = document.getElementById('previewImage');
 
     if (!firstName || !lastName || !phone || !weight || !date || !image || image.src === 'https://via.placeholder.com/250') {
@@ -81,21 +79,38 @@ function submitInfo() {
     const duplicateInfo = infoList.find(info => info.firstName === firstName && info.lastName === lastName && info.phone === phone);
 
     if (duplicateInfo) {
-        duplicateInfo.weightDate.push({ weight, date });
+        if (!duplicateInfo.weightDate) {
+            duplicateInfo.weightDate = []; // Initialize the weightDate array if it's not present
+        }
+        const weightDate = {
+            weight,
+            date
+        };
+
+        duplicateInfo.weightDate.push(weightDate);
+        duplicateInfo.weightDate.sort((a, b) => new Date(a.date) - new Date(b.date));
         localStorage.setItem('InfoList', JSON.stringify(infoList));
+        localStorage.setItem(`${firstName} ${lastName}`, JSON.stringify(duplicateInfo.weightDate));
         alert('Your weight and date have been updated');
     } else {
         const personalInfo = {
             firstName,
             lastName,
             phone,
-            image: image.src
+            image: image.src,
         };
-        localStorage.setItem(`${firstName} ${lastName}`, JSON.stringify([personalInfo]));
+        if (!personalInfo.weightDate) {
+            personalInfo.weightDate = []; // Initialize the weightDate array if it's not present
+        }
+        const weightDate = {
+            weight,
+            date
+        };
+
+        personalInfo.weightDate.push(weightDate);
         localStorage.setItem('InfoList', JSON.stringify(infoList.concat(personalInfo)));
         alert('Your info has been registered');
     }
-
     document.getElementById('registerForm').reset();
     image.src = 'https://via.placeholder.com/250';
     image.alt = 'placeholder';
@@ -158,26 +173,26 @@ function showData() {
         infoDetails.classList.add('col-4');
 
         infoDetails.innerHTML = `
-                <div class="d-inline-flex gap-1">
-                    <a onclick="toggleList()" class="collapse-link">Details...</a>
-                        <div class="col">
-                            <ul id="myList"></ul>
-                        </div>
-                    <a data-bs-target="#infoModal${i}" data-bs-toggle="modal" role="button" aria-expanded="false" aria-controls="infoModal${i}"
-                         class="link-secondary link-offset-3 link-offset-0-hover text-dark collapsed">Details With Modal...</a>
-                                 <div class="modal-content">
-                     <div class="modal" id="infoModal${i}">
-                        <div class="modal-dialog">
-                           <div class="modal-header">
-                           <h5 class="modal-title">Details</h5>
-                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                         </div>
-                        <div class="modal-body" id="modalBody${i}"></div>
-                   </div>
-            </div>
-          </div>
-                </div>
-            `;
+                                <p>
+                                    <a role="button" data-bs-toggle="modal" data-bs-target="#detailModal"
+                                        class="link-secondary link-offset-3 link-offset-0-hover text-dark collapsed"
+                                        aria-expanded="false" aria-controls="info1">Details...</a>
+                                </p>
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="detailModal"
+                                    aria-hidden="true" onshow="showDetails(${i})">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="detailModal">Details</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body" id="modalBody">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                `;
 
         const infoDelete = document.createElement('td');
         infoDelete.classList.add('col-sm-1');
@@ -194,20 +209,16 @@ function showData() {
 }
 
 function showDetails(i) {
+    // Create a p element for each weightDate object relative to the index and append it to the modal body
     const infoList = JSON.parse(localStorage.getItem('InfoList')) || [];
-    const personalInfo = JSON.parse(localStorage.getItem(`${infoList[i].firstName} ${infoList[i].lastName}`)) || [];
-    const modalBody = document.getElementById(`modalBody${i}`);
+    const modalBody = document.getElementById('modalBody');
+
     modalBody.innerHTML = '';
-    personalInfo.forEach((info, j) => {
-        const infoRow = document.createElement('tr');
-        const infoKey = document.createElement('td');
-        infoKey.classList.add('ps-3');
-        infoKey.textContent = info.key;
-        const infoValue = document.createElement('td');
-        infoValue.textContent = info.value;
-        infoRow.appendChild(infoKey);
-        infoRow.appendChild(infoValue);
-        modalBody.appendChild(infoRow);
+
+    infoList.forEach((info) => {
+        const p = document.createElement('p');
+        p.textContent = `${info.weight}kg on ${info.weightDate}`;
+        modalBody.appendChild(p);
     });
 }
 

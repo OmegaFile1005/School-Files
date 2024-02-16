@@ -27,33 +27,22 @@
                         <img src="https://via.placeholder.com/75" alt="user${i + 1}" style="width: 75px; height: 75px">
                     </td>
                     <td class="col-4">
-                        <div class="d-inline-flex gap-1">
-                            <div>
-                                <a data-bs-target="#info${i}" data-bs-toggle="collapse" role="button"
-                                    aria-expanded="false" aria-controls="info${i}"
-                                    class="link-secondary link-offset-3 link-offset-0-hover text-dark collapsed">Details...</a>
-                                <div class="collapse" id="info${i}">
-                                    <ul class="list-group" id="infoList${i}">
-                                    </ul>
-                                </div>
-                            </div>
-                            <div>
-                                <a href="#info2" data-bs-toggle="modal" role="button"
-                                    class="link-secondary link-offset-3 link-offset-0-hover text-dark collapsed"
-                                    data-bs-toggle="modal" aria-expanded="false" aria-controls="info2">Details With
-                                    Modal...</a>
-                                <div class="modal" id="info2">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Details</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>1</p>
-                                            </div>
-                                        </div>
+                        <p>
+                            <a role="button"
+                                class="link-secondary link-offset-3 link-offset-0-hover text-dark collapsed"
+                                data-bs-toggle="modal" data-bs-target="#detailModal" aria-expanded="false"
+                                aria-controls="info1">Details...</a>
+                        </p>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="detailModal"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="detailModal">Details</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body" id="modalBody" ons>
                                     </div>
                                 </div>
                             </div>
@@ -65,7 +54,7 @@
             </tbody>
         </table>
         <div role="tabpanel" id="tabpanel1" aria-labelledby="tab1">
-          <p>This is the content for tab 1.</p>
+            <p>This is the content for tab 1.</p>
         </div>
     </div>
 </body>
