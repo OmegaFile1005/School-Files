@@ -175,7 +175,7 @@ function showData() {
         infoDetails.innerHTML = `
                                 <p onclick="showDetails(${i})">
                                     <a role="button" data-bs-toggle="modal" data-bs-target="#detailModal"
-                                        class="link-secondary link-offset-3 link-offset-0-hover text-dark collapsed"
+                                        class="link-secondary text-dark collapsed"
                                         aria-expanded="false" aria-controls="info1">Details...</a>
                                 </p>`;
 
@@ -204,18 +204,11 @@ function showDetails(i) {
 
     weightData.forEach((info) => {
         const p = document.createElement('p');
-        p.textContent = `${info.weight}kg on ${info.date}`;
+        p.textContent = `${info.date}: ${info.weight} lbs`;
         modalBody.appendChild(p);
     });
     modal.show();
 }
-
-function showInfo() {
-    const infoList = JSON.parse(localStorage.getItem('InfoList')) || [];
-    const infoTable = document.getElementById('infoTable');
-    infoTable.innerHTML = '';
-}
-
 function toggleList() {
     var list = document.getElementById('myList');
     if (list.style.display === 'none') {
