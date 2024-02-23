@@ -18,3 +18,20 @@
 .btn {
     color: white;
 }
+
+#services h2 {
+    color: #00989a;
+}
+
+#services h5 {
+    text-decoration: underline;
+}
+
+#services {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+#servicesSpace {
+    padding-bottom: 30px;
+}
