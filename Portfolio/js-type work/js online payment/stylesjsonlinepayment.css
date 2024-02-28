@@ -19,12 +19,14 @@
     color: white;
 }
 
-#services h2 {
+#services h2,
+#abouttitle {
     color: #00989a;
 }
 
 #services h5 {
     text-decoration: underline;
+    padding-top: 30px;
 }
 
 #service {
@@ -34,4 +36,22 @@
 
 #servicesSpace {
     padding-bottom: 30px;
+}
+
+#faq a {
+    color: #00989a;
+}
+
+#faq a,
+#faq li {
+    font-size: calc(10px + 0.7vw) !important;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#faq .collapse,
+#faq .collapsing,
+#faq .collapse.show {
+    font-size: 16px !important;
+    padding-top: 10px;
 }
