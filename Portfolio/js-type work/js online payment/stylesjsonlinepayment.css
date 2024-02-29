@@ -38,13 +38,18 @@
     padding-bottom: 30px;
 }
 
+.abouttext {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
 #faq a {
     color: #00989a;
 }
 
 #faq a,
 #faq li {
-    font-size: calc(10px + 0.7vw) !important;
+    font-size: calc(8px + 0.6vw) !important;
     padding-top: 5px;
     padding-bottom: 5px;
 }
@@ -54,4 +59,16 @@
 #faq .collapse.show {
     font-size: 16px !important;
     padding-top: 10px;
+}
+
+#breadcrumb {
+    background-color: #01bdb4;
+    color: white;
+}
+
+#breadcrumbText {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 0px;
+    font-size: 15px;
 }
