@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support</title>
+    <title>Contact</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -70,28 +70,34 @@
                     <h3 class="text-capitalize">support</h3>
                 </div>
             </div>
+            <div class="row">
+                <div class="col">
                     <form id="contactForm">
-            <div class="row">
-                <div class="col">
-                    <select name="options" id="options" class="mb-3" style="width: calc(20% - 20px);">
-                        <option value="contact">contact</option>
-                        <option value="support">support</option>
-                    </select>
-            <div class="row">
-                <div class="col">
-                        <input type="text" class="form-control mb-3" id="name" placeholder="Enter your Name"
-                            autocomplete="name">
-                        <input type="email" class="form-control mb-3" id="email" placeholder="Enter your Email ID"
-                            autocomplete="email">
-                        <input type="number" class="form-control mb-3" id="number" placeholder="Enter mobile Number"
-                            autocomplete="tel">
-                        <textarea class="form-control" id="message" placeholder="Please write here"
-                            rows="10"></textarea><br>
-                        <button type="button" id="contactButton" class="btn btn-info rounded-0 w-25 py-2"
-                            onclick="contactSubmit()">Create Ticket</button>
+                        <div class="row">
+                            <div class="col">
+                                <select name="options" id="options" class="mb-3 p-1" style="width: calc(20% - 20px);">
+                                    <option value="support">Payment</option>
+                                    <option value="contact">Contact</option>
+                                    <option value="support">Support</option>
+                                    <option value="faq">FAQ</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control mb-3" id="name" placeholder="Enter your Name"
+                                    autocomplete="name">
+                                <input type="email" class="form-control mb-3" id="email"
+                                    placeholder="Enter your Email ID" autocomplete="email">
+                                <input type="number" class="form-control mb-3" id="number"
+                                    placeholder="Enter mobile Number" autocomplete="tel">
+                                <textarea class="form-control" id="message" placeholder="Please write here"
+                                    rows="10"></textarea><br>
+                                <button type="button" id="contactButton" class="btn btn-info rounded-0 py-2"
+                                    onclick="contactSubmit()">Create Ticket</button>
                     </form>
                 </div>
-                <div class="col-4">
+                <div class="col-4" id="contactText">
                     <p><b>Call to:</b> 239 601 1234</p>
                     <p><b>Mail to:</b> support@gmail.com</p>
                     <h4>FAQ</h4>
