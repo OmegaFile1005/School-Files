@@ -49,3 +49,6 @@ function getStoredUser() {
 function loggingRegisterModal() {
 
 }
+
+function showOnlinePayment() {
+}
