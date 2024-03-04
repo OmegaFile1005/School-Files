@@ -60,14 +60,12 @@ function payRent() {
 }
 
 function payLoan() {
-    
 }
 
 function payElectricity() {
 }
 
 function payInsurance() {
-    
 }
 
 function payWater() {

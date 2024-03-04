@@ -73,43 +73,43 @@
                 <button class="tablinks" onclick="openTab(event, 'insurance')">Car Insurance</button>
                 <button class="tablinks" onclick="openTab(event, 'water')">Water</button>
             </div>
-            <div id=" mobile" class="tabcontent">
-                    <div class="container">
-                        <div class="row">
-                            <i class="bi bi-phone offset-1" style="font-size: 50px;"></i>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <form id="mobileForm">
-                                    <div class="mb-3">
-                                        <label for="mobileNumber" class="form-label">Enter your mobile number</label>
-                                        <input type="number" class="form-control rounded-0" id="mobileNumber"
-                                            placeholder="Enter your ten-digits phone number">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="operator" class="form-label">Choose your operator</label>
-                                        <select class="form-select rounded-0" id="operator">
-                                            <option selected>Choose...</option>
-                                            <option value="Airtel">Airtel</option>
-                                            <option value="Jio">Jio</option>
-                                            <option value="Vodafone">Vodafone</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="amount" class="form-label">How Much To Pay</label>
-                                        <input type="number" class="form-control rounded-0 w-50" id="amount"
-                                            placeholder="Enter amount">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="date" class="form-label">Select a date</label>
-                                        <input type="date" class="form-control rounded-0 w-50" id="date">
-                                    </div>
-                                    <button type="button" class="btn btn-info rounded-0"
-                                        onclick="payMobile()">Submit</button>
-                                </form>
-                            </div>
+            <div id="mobile" class="tabcontent">
+                <div class="container">
+                    <div class="row">
+                        <i class="bi bi-phone offset-1" style="font-size: 50px;"></i>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <form id="mobileForm">
+                                <div class="mb-3">
+                                    <label for="mobileNumber" class="form-label">Enter your mobile number</label>
+                                    <input type="number" class="form-control rounded-0" id="mobileNumber"
+                                        placeholder="Enter your ten-digits phone number">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="operator" class="form-label">Choose your operator</label>
+                                    <select class="form-select rounded-0" id="operator">
+                                        <option selected>Choose...</option>
+                                        <option value="Airtel">Airtel</option>
+                                        <option value="Jio">Jio</option>
+                                        <option value="Vodafone">Vodafone</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="amount" class="form-label">How Much To Pay</label>
+                                    <input type="number" class="form-control rounded-0 w-50" id="amount"
+                                        placeholder="Enter amount">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="date" class="form-label">Select a date</label>
+                                    <input type="date" class="form-control rounded-0 w-50" id="date">
+                                </div>
+                                <button type="button" class="btn btn-info rounded-0"
+                                    onclick="payMobile()">Submit</button>
+                            </form>
                         </div>
                     </div>
+                </div>
             </div>
             <div id="rent" class="tabcontent">
                 <div class="container">
@@ -186,9 +186,11 @@
                                     <label for="operator" class="form-label">Choose your operator</label>
                                     <select class="form-select rounded-0" id="operator">
                                         <option selected>Choose...</option>
+                                        <option value="MTN">MTN</option>
+                                        <option value="Glo">Glo</option>
                                         <option value="Airtel">Airtel</option>
-                                        <option value="Jio">Jio</option>
-                                        <option value="Vodafone">Vodafone</option>
+                                        <option value="9Mobile">9Mobile</option>
+                                        <option value="Etisalat">Etisalat</option>
                                     </select>
                                 </div>
                                 <div class="mb-3">
@@ -253,9 +255,11 @@
                                     <label for="operator" class="form-label">Choose your operator</label>
                                     <select class="form-select rounded-0" id="operator">
                                         <option selected>Choose...</option>
+                                        <option value="DSTV">DSTV</option>
+                                        <option value="Water">Water</option>
                                         <option value="Airtel">Airtel</option>
-                                        <option value="Jio">Jio</option>
-                                        <option value="Vodafone">Vodafone</option>
+                                        <option value="MTN">MTN</option>
+                                        <option value="Etisalat">Etisalat</option>
                                     </select>
                                 </div>
                                 <div class="mb-3">
@@ -352,23 +356,22 @@
                             us</a></p>
                 </div>
                 <div class="col">
-                    <p class="lh-base">
-                        <a href="javascript:void(0)" onclick="openTab(event, 'water')"
+                    <p class="lh-base"><a href="javascript:void(0)" onclick="openTab(event, 'water')"
                             class="text-decoration-none text-secondary text-capitalize">water</a>
                     </p>
                     <p class="lh-base"><a href="javascript:void(0)" onclick="openTab(event, 'electricity')"
                             class="text-decoration-none text-secondary text-capitalize">electricity</a>
                     </p>
-                    <p class="lh-base"><a href="javascript:void(0)" onclick="openTab(event, 'phone')"
+                    <p class="lh-base"><a href="javascript:void(0)" onclick="openTab(event, 'mobile')"
                             class="text-decoration-none text-secondary text-capitalize">phone</a></p>
-                    <p class="lh-base"><a href="javascript:void(0)" onclick="openTab(event, 'rent / morgage')"
+                    <p class="lh-base"><a href="javascript:void(0)" onclick="openTab(event, 'rent')"
                             class="text-decoration-none text-secondary text-capitalize">rent /
                             morgage</a>
                     </p>
-                    <p class="lh-base"><a href="javascript:void(0)" onclick="openTab(event, 'car insurance')"
+                    <p class="lh-base"><a href="javascript:void(0)" onclick="openTab(event, 'insurance')"
                             class="text-decoration-none text-secondary text-capitalize">car
                             insurance</a></p>
-                    <p class="lh-base"><a href="javascript:void(0)" onclick="openTab(event, 'car loan')"
+                    <p class="lh-base"><a href="javascript:void(0)" onclick="openTab(event, 'loan')"
                             class="text-decoration-none text-secondary text-capitalize">car loan</a></p>
                 </div>
                 <div class="col">
@@ -403,19 +406,19 @@
     </div>
     <script>
         function openTab(evt, context) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
+            const tabcontent = document.getElementsByClassName("tabcontent");
+            Array.from(tabcontent).forEach(function (element) {
+                element.style.display = "none";
+            });
+
+            const tablinks = document.getElementsByClassName("tablinks");
+            Array.from(tablinks).forEach(function (element) {
+                element.className = element.className.replace(" active", "");
+            });
+
             document.getElementById(context).style.display = "block";
             evt.currentTarget.className += " active";
         }
-
         document.getElementById("defaultOpen").click();
     </script>
 </body>
