@@ -52,3 +52,23 @@ function loggingRegisterModal() {
 
 function showOnlinePayment() {
 }
+
+function payMobile() {
+}
+
+function payRent() {
+}
+
+function payLoan() {
+    
+}
+
+function payElectricity() {
+}
+
+function payInsurance() {
+    
+}
+
+function payWater() {
+}

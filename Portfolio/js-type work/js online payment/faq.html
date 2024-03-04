@@ -251,18 +251,23 @@
                             us</a></p>
                 </div>
                 <div class="col">
-                    <p class="lh-base"><a href="payments6.html"
-                            class="text-decoration-none text-secondary text-capitalize">water</a></p>
-                    <p class="lh-base"><a href="payments4.html"
-                            class="text-decoration-none text-secondary text-capitalize">electricity</a></p>
-                    <p class="lh-base"><a href="payments1.html"
+                    <p class="lh-base">
+                        <a href="javascript:void(0)" onclick="openTab(event, 'water')"
+                            class="text-decoration-none text-secondary text-capitalize">water</a>
+                    </p>
+                    <p class="lh-base"><a href="javascript:void(0)" onclick="openTab(event, 'electricity')"
+                            class="text-decoration-none text-secondary text-capitalize">electricity</a>
+                    </p>
+                    <p class="lh-base"><a href="javascript:void(0)" onclick="openTab(event, 'phone')"
                             class="text-decoration-none text-secondary text-capitalize">phone</a></p>
-                    <p class="lh-base"><a href="payments2.html"
-                            class="text-decoration-none text-secondary text-capitalize">rent / morgage</a></p>
-                    <p class="lh-base"><a href="payments5.html"
+                    <p class="lh-base"><a href="javascript:void(0)" onclick="openTab(event, 'rent / morgage')"
+                            class="text-decoration-none text-secondary text-capitalize">rent /
+                            morgage</a>
+                    </p>
+                    <p class="lh-base"><a href="javascript:void(0)" onclick="openTab(event, 'car insurance')"
                             class="text-decoration-none text-secondary text-capitalize">car
                             insurance</a></p>
-                    <p class="lh-base"><a href="payments3.html"
+                    <p class="lh-base"><a href="javascript:void(0)" onclick="openTab(event, 'car loan')"
                             class="text-decoration-none text-secondary text-capitalize">car loan</a></p>
                 </div>
                 <div class="col">
@@ -292,6 +297,23 @@
             </div>
         </div>
     </div>
+    <script>
+        function openTab(evt, context) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(context).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.getElementById("defaultOpen").click();
+    </script>
 </body>
 
 </html>
