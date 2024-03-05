@@ -1,5 +1,6 @@
 // Get the input field
 // Create an empty array
+// untyped language
 const numbers = [];
 
 function read() {
@@ -15,6 +16,7 @@ function read() {
         numbers.pop();
         return;
     }
+   
 
     if (numbers.length === 10) {
         // Display an error message if the array is full

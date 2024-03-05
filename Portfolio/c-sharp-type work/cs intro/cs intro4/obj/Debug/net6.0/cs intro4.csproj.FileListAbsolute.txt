@@ -1,0 +1,15 @@
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs intro\cs intro4\bin\Debug\net6.0\cs intro4.exe
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs intro\cs intro4\bin\Debug\net6.0\cs intro4.deps.json
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs intro\cs intro4\bin\Debug\net6.0\cs intro4.runtimeconfig.json
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs intro\cs intro4\bin\Debug\net6.0\cs intro4.dll
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs intro\cs intro4\bin\Debug\net6.0\cs intro4.pdb
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs intro\cs intro4\obj\Debug\net6.0\cs intro4.csproj.AssemblyReference.cache
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs intro\cs intro4\obj\Debug\net6.0\cs intro4.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs intro\cs intro4\obj\Debug\net6.0\cs intro4.AssemblyInfoInputs.cache
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs intro\cs intro4\obj\Debug\net6.0\cs intro4.AssemblyInfo.cs
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs intro\cs intro4\obj\Debug\net6.0\cs intro4.csproj.CoreCompileInputs.cache
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs intro\cs intro4\obj\Debug\net6.0\cs intro4.dll
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs intro\cs intro4\obj\Debug\net6.0\refint\cs intro4.dll
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs intro\cs intro4\obj\Debug\net6.0\cs intro4.pdb
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs intro\cs intro4\obj\Debug\net6.0\cs intro4.genruntimeconfig.cache
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs intro\cs intro4\obj\Debug\net6.0\ref\cs intro4.dll
