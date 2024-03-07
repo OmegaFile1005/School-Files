@@ -1,0 +1,15 @@
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs condition\cs condition8\bin\Debug\net6.0\cs condition8.exe
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs condition\cs condition8\bin\Debug\net6.0\cs condition8.deps.json
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs condition\cs condition8\bin\Debug\net6.0\cs condition8.runtimeconfig.json
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs condition\cs condition8\bin\Debug\net6.0\cs condition8.dll
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs condition\cs condition8\bin\Debug\net6.0\cs condition8.pdb
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs condition\cs condition8\obj\Debug\net6.0\cs condition8.csproj.AssemblyReference.cache
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs condition\cs condition8\obj\Debug\net6.0\cs condition8.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs condition\cs condition8\obj\Debug\net6.0\cs condition8.AssemblyInfoInputs.cache
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs condition\cs condition8\obj\Debug\net6.0\cs condition8.AssemblyInfo.cs
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs condition\cs condition8\obj\Debug\net6.0\cs condition8.csproj.CoreCompileInputs.cache
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs condition\cs condition8\obj\Debug\net6.0\cs condition8.dll
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs condition\cs condition8\obj\Debug\net6.0\refint\cs condition8.dll
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs condition\cs condition8\obj\Debug\net6.0\cs condition8.pdb
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs condition\cs condition8\obj\Debug\net6.0\cs condition8.genruntimeconfig.cache
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs condition\cs condition8\obj\Debug\net6.0\ref\cs condition8.dll
