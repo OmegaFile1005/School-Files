@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿Console.WriteLine("Enter first number: ");
 int value1 = int.Parse(Console.ReadLine());
 Console.WriteLine("Enter second number: ");
@@ -29,3 +30,7 @@ else
     }
 }
 Console.WriteLine("Biggest value is " + biggestValue);
+=======
+﻿// See https://aka.ms/new-console-template for more information
+Console.WriteLine("Hello, World!");
+>>>>>>> 8a4180d7f59ca1ccd4a094a67e60ff31ce3d7e29
