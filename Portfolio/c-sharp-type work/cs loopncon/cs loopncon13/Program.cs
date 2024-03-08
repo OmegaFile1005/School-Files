@@ -11,7 +11,7 @@ for (int i = 1; i <= values; i++)
         string input = Console.ReadLine().ToUpper();
         if (input != "Y")
         {
-            break;
+            break;  
         }
     }
 }
