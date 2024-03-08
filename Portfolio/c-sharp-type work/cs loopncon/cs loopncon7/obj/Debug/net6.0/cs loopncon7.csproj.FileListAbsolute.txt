@@ -1,0 +1,15 @@
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loopncon\cs loopncon7\bin\Debug\net6.0\cs loopncon7.exe
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loopncon\cs loopncon7\bin\Debug\net6.0\cs loopncon7.deps.json
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loopncon\cs loopncon7\bin\Debug\net6.0\cs loopncon7.runtimeconfig.json
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loopncon\cs loopncon7\bin\Debug\net6.0\cs loopncon7.dll
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loopncon\cs loopncon7\bin\Debug\net6.0\cs loopncon7.pdb
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loopncon\cs loopncon7\obj\Debug\net6.0\cs loopncon7.csproj.AssemblyReference.cache
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loopncon\cs loopncon7\obj\Debug\net6.0\cs loopncon7.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loopncon\cs loopncon7\obj\Debug\net6.0\cs loopncon7.AssemblyInfoInputs.cache
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loopncon\cs loopncon7\obj\Debug\net6.0\cs loopncon7.AssemblyInfo.cs
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loopncon\cs loopncon7\obj\Debug\net6.0\cs loopncon7.csproj.CoreCompileInputs.cache
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loopncon\cs loopncon7\obj\Debug\net6.0\cs loopncon7.dll
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loopncon\cs loopncon7\obj\Debug\net6.0\refint\cs loopncon7.dll
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loopncon\cs loopncon7\obj\Debug\net6.0\cs loopncon7.pdb
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loopncon\cs loopncon7\obj\Debug\net6.0\cs loopncon7.genruntimeconfig.cache
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loopncon\cs loopncon7\obj\Debug\net6.0\ref\cs loopncon7.dll
