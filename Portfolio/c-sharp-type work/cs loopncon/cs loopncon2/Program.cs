@@ -1,7 +1,2 @@
-﻿int number = 1;
-do
-{
-    Console.WriteLine(number);
-    number++;
-}
-while (number <= 10);
+﻿// See https://aka.ms/new-console-template for more information
+Console.WriteLine("Hello, World!");
