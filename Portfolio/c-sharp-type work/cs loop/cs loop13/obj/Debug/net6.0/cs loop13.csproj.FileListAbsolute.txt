@@ -1,0 +1,15 @@
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loop\cs loop13\bin\Debug\net6.0\cs loop13.exe
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loop\cs loop13\bin\Debug\net6.0\cs loop13.deps.json
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loop\cs loop13\bin\Debug\net6.0\cs loop13.runtimeconfig.json
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loop\cs loop13\bin\Debug\net6.0\cs loop13.dll
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loop\cs loop13\bin\Debug\net6.0\cs loop13.pdb
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loop\cs loop13\obj\Debug\net6.0\cs loop13.csproj.AssemblyReference.cache
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loop\cs loop13\obj\Debug\net6.0\cs loop13.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loop\cs loop13\obj\Debug\net6.0\cs loop13.AssemblyInfoInputs.cache
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loop\cs loop13\obj\Debug\net6.0\cs loop13.AssemblyInfo.cs
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loop\cs loop13\obj\Debug\net6.0\cs loop13.csproj.CoreCompileInputs.cache
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loop\cs loop13\obj\Debug\net6.0\cs loop13.dll
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loop\cs loop13\obj\Debug\net6.0\refint\cs loop13.dll
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loop\cs loop13\obj\Debug\net6.0\cs loop13.pdb
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loop\cs loop13\obj\Debug\net6.0\cs loop13.genruntimeconfig.cache
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loop\cs loop13\obj\Debug\net6.0\ref\cs loop13.dll
