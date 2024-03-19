@@ -22,6 +22,7 @@
                 Console.WriteLine("Clarify it's a number.");
                 return;
             }
+<<<<<<< HEAD
             double area1 = Math.PI * radius * radius;
             Console.WriteLine("The circle's area is " + area1);
             break;
@@ -67,3 +68,12 @@
             Console.WriteLine("Clarify it's a number.");
             break;
     }
+=======
+            double area = Math.PI * radius * radius;
+            break;
+        case 2:
+            Console.WriteLine("")
+        case 3:
+    }
+}
+>>>>>>> 796a5e2c6856d17779c34a08e3297fa161b0300b
