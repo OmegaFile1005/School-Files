@@ -17,6 +17,17 @@
     switch (select)
     {
         case 1:
-            Console.WriteLine("Em)
+            Console.WriteLine("Input radius of the circle: ");
+            double radius;
+            if (!double.TryParse(Console.ReadLine(), out radius))
+            {
+                Console.WriteLine("Clarify it's a number.");
+                return;
+            }
+            double area = Math.PI * radius * radius;
+            break;
+        case 2:
+            Console.WriteLine("")
+        case 3:
     }
 }
