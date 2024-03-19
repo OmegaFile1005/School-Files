@@ -7,5 +7,10 @@ build_property.InvariantGlobalization =
 build_property.PlatformNeutralAssembly = 
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
+<<<<<<<< HEAD:Portfolio/c-sharp-type work/cs loopncon/cs loopncon2/obj/Release/net6.0/cs loopncon2.GeneratedMSBuildEditorConfig.editorconfig
 build_property.RootNamespace = cs_loopncon2
 build_property.ProjectDir = C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loopncon\cs loopncon2\
+========
+build_property.RootNamespace = cs_loop1
+build_property.ProjectDir = C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loop\cs loop1\
+>>>>>>>> 458d36454b3127524a86b1aebe7f1a5d1092f4fb:Portfolio/c-sharp-type work/cs loop/cs loop1/obj/Debug/net6.0/cs loop1.GeneratedMSBuildEditorConfig.editorconfig
