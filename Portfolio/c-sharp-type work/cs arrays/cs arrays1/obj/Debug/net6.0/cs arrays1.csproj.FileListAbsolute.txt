@@ -1,0 +1,15 @@
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs arrays\cs arrays1\bin\Debug\net6.0\cs arrays1.exe
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs arrays\cs arrays1\bin\Debug\net6.0\cs arrays1.deps.json
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs arrays\cs arrays1\bin\Debug\net6.0\cs arrays1.runtimeconfig.json
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs arrays\cs arrays1\bin\Debug\net6.0\cs arrays1.dll
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs arrays\cs arrays1\bin\Debug\net6.0\cs arrays1.pdb
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs arrays\cs arrays1\obj\Debug\net6.0\cs arrays1.csproj.AssemblyReference.cache
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs arrays\cs arrays1\obj\Debug\net6.0\cs arrays1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs arrays\cs arrays1\obj\Debug\net6.0\cs arrays1.AssemblyInfoInputs.cache
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs arrays\cs arrays1\obj\Debug\net6.0\cs arrays1.AssemblyInfo.cs
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs arrays\cs arrays1\obj\Debug\net6.0\cs arrays1.csproj.CoreCompileInputs.cache
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs arrays\cs arrays1\obj\Debug\net6.0\cs arrays1.dll
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs arrays\cs arrays1\obj\Debug\net6.0\refint\cs arrays1.dll
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs arrays\cs arrays1\obj\Debug\net6.0\cs arrays1.pdb
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs arrays\cs arrays1\obj\Debug\net6.0\cs arrays1.genruntimeconfig.cache
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs arrays\cs arrays1\obj\Debug\net6.0\ref\cs arrays1.dll
