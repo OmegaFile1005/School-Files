@@ -3,3 +3,13 @@ C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type wo
 C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loopncon\cs loopncon8\obj\Debug\net6.0\cs loopncon8.AssemblyInfoInputs.cache
 C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loopncon\cs loopncon8\obj\Debug\net6.0\cs loopncon8.AssemblyInfo.cs
 C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loopncon\cs loopncon8\obj\Debug\net6.0\cs loopncon8.csproj.CoreCompileInputs.cache
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loopncon\cs loopncon8\bin\Debug\net6.0\cs loopncon8.exe
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loopncon\cs loopncon8\bin\Debug\net6.0\cs loopncon8.deps.json
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loopncon\cs loopncon8\bin\Debug\net6.0\cs loopncon8.runtimeconfig.json
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loopncon\cs loopncon8\bin\Debug\net6.0\cs loopncon8.dll
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loopncon\cs loopncon8\bin\Debug\net6.0\cs loopncon8.pdb
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loopncon\cs loopncon8\obj\Debug\net6.0\cs loopncon8.dll
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loopncon\cs loopncon8\obj\Debug\net6.0\refint\cs loopncon8.dll
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loopncon\cs loopncon8\obj\Debug\net6.0\cs loopncon8.pdb
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loopncon\cs loopncon8\obj\Debug\net6.0\cs loopncon8.genruntimeconfig.cache
+C:\Users\lwit.PROD.002\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs loopncon\cs loopncon8\obj\Debug\net6.0\ref\cs loopncon8.dll
