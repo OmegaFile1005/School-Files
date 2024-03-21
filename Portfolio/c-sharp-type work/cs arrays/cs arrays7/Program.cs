@@ -14,3 +14,12 @@ foreach (int value in values)
     }
 }
 
+Console.WriteLine("Array Values:");
+foreach (int value in values)
+{
+    Console.Write(value + " ");
+}
+Console.WriteLine();
+
+Console.WriteLine("Positive Total: " +  posTotal);
+Console.WriteLine("Negative Total: " +  negTotal);
