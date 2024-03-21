@@ -13,7 +13,7 @@ for (int i = 0; i < evenArray.Length; i++)
 Console.WriteLine("Array values:");
 foreach (int i in evenArray)
 {
-    Console.WriteLine(i + " ");
+    Console.Write(i + " ");
 }
 
 Console.WriteLine();
