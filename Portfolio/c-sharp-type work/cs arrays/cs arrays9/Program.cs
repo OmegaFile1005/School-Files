@@ -5,7 +5,7 @@ int[] evenValues;
 Console.WriteLine("Original Values:");
 foreach (int value in values)
 {
-    Console.WriteLine(value + " ");
+    Console.Write(value + " ");
 }
 Console.WriteLine();
 
@@ -45,4 +45,16 @@ Console.WriteLine();
     }
 }
 
-Console.WriteLine("");
+Console.WriteLine("Odd values:");
+foreach (int value in oddValues)
+{
+    Console.Write(value + " ");
+}
+Console.WriteLine();
+
+Console.WriteLine("Even values:");
+foreach (int value in evenValues)
+{
+    Console.Write(value + " ");
+}
+Console.WriteLine();

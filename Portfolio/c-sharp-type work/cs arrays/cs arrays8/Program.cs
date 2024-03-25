@@ -20,7 +20,7 @@ for (int i = 1; i < values.Length; i++)
 Console.WriteLine("Array values:");
 foreach (int i in values)
 {
-    Console.WriteLine(i + " ");
+    Console.Write(i + " ");
 }
 Console.WriteLine();
 
