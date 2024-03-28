@@ -1,2 +1,6 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿Console.WriteLine("Enter a number: ");
+int value = int.Parse(Console.ReadLine());
+
+int total = value + 1;
+
+Console.WriteLine("Total: " + total);
