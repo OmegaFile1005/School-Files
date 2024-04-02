@@ -13,7 +13,6 @@ static void ReverseArray(int[] values)
 {
     int left = 0;
     int right = values.Length - 1;
-
     while (left < right)
     {
         (values[right], values[left]) = (values[left], values[right]);
