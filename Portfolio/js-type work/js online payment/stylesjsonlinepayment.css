@@ -11,6 +11,10 @@
     color: #fff905 !important;
 }
 
+#fixedImg {
+    background-attachment: fixed;
+}
+
 #form {
     background-color: #d9fbfa;
 }
