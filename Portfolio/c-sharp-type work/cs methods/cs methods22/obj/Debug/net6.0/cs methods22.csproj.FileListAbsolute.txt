@@ -1,0 +1,15 @@
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs methods\cs methods22\bin\Debug\net6.0\cs methods22.exe
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs methods\cs methods22\bin\Debug\net6.0\cs methods22.deps.json
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs methods\cs methods22\bin\Debug\net6.0\cs methods22.runtimeconfig.json
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs methods\cs methods22\bin\Debug\net6.0\cs methods22.dll
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs methods\cs methods22\bin\Debug\net6.0\cs methods22.pdb
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs methods\cs methods22\obj\Debug\net6.0\cs methods22.csproj.AssemblyReference.cache
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs methods\cs methods22\obj\Debug\net6.0\cs methods22.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs methods\cs methods22\obj\Debug\net6.0\cs methods22.AssemblyInfoInputs.cache
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs methods\cs methods22\obj\Debug\net6.0\cs methods22.AssemblyInfo.cs
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs methods\cs methods22\obj\Debug\net6.0\cs methods22.csproj.CoreCompileInputs.cache
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs methods\cs methods22\obj\Debug\net6.0\cs methods22.dll
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs methods\cs methods22\obj\Debug\net6.0\refint\cs methods22.dll
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs methods\cs methods22\obj\Debug\net6.0\cs methods22.pdb
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs methods\cs methods22\obj\Debug\net6.0\cs methods22.genruntimeconfig.cache
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs methods\cs methods22\obj\Debug\net6.0\ref\cs methods22.dll
