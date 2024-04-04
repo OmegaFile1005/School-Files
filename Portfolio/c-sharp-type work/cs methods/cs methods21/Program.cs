@@ -1,4 +1,6 @@
-﻿const int maxAtt = 3;
+﻿Console.WriteLine("Checks if user and password are correct. Only three attempts are allowed.");
+Console.WriteLine();
+const int maxAtt = 3;
 string valUs = "me";
 string valPa = "123";
 int att = 0;
@@ -19,6 +21,7 @@ while (att < maxAtt)
     {
         att++;
         Console.WriteLine("Incorrect input(s). Remaining Attempts: " + (maxAtt - att));
+        Console.WriteLine();
     }
 }
 

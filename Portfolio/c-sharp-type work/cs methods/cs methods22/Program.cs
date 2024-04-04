@@ -1,4 +1,6 @@
-﻿Console.WriteLine("Enter first number: ");
+﻿Console.WriteLine("Performs arithmetic operations with two numbers.");
+Console.WriteLine();
+Console.WriteLine("Enter first number: ");
 double value1 = double.Parse(Console.ReadLine());
 
 char op;

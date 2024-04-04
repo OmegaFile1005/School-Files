@@ -1,4 +1,6 @@
-﻿Console.WriteLine("Enter first letter: ");
+﻿Console.WriteLine("Reads three letters and returns them in reversed order.");
+Console.WriteLine();
+Console.WriteLine("Enter first letter: ");
 char char1 = char.ToUpper(Console.ReadLine()[0]);
 Console.WriteLine("Enter second letter: ");
 char char2 = char.ToUpper(Console.ReadLine()[0]);
@@ -16,4 +18,4 @@ if (input.Length != 3)
 char[] inputs = input.ToCharArray();
 Array.Reverse(inputs);
 string revInp = new string(inputs);
-Console.WriteLine("Reversed Uppercase Letters: " +  revInp);
+Console.WriteLine("Reversed Uppercase Letters: " + revInp);

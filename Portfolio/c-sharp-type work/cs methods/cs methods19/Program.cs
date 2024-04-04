@@ -1,4 +1,6 @@
-﻿Console.WriteLine("Enter a character: ");
+﻿Console.WriteLine("Prints a triangle with the symbol and with entered.");
+Console.WriteLine();
+Console.WriteLine("Enter a character: ");
 char ranChar = Console.ReadKey().KeyChar;
 Console.WriteLine();
 

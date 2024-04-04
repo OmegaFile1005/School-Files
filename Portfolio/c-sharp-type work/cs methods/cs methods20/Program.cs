@@ -1,4 +1,5 @@
-﻿string username;
+﻿Console.WriteLine("Checks if user and password are correct.");
+string username;
 string password;
 
 do

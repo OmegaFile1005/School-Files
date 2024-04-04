@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lwit.PROD.002\\OneDrive\\Documents\\School Files\\Portfolio\\c-sharp-type work\\cs methods\\cs methods18\\cs methods18.csproj": {}
+    "C:\\Users\\lwit.PROD.003\\OneDrive\\Documents\\School Files\\Portfolio\\c-sharp-type work\\cs methods\\cs methods18\\cs methods18.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lwit.PROD.002\\OneDrive\\Documents\\School Files\\Portfolio\\c-sharp-type work\\cs methods\\cs methods18\\cs methods18.csproj": {
+    "C:\\Users\\lwit.PROD.003\\OneDrive\\Documents\\School Files\\Portfolio\\c-sharp-type work\\cs methods\\cs methods18\\cs methods18.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lwit.PROD.002\\OneDrive\\Documents\\School Files\\Portfolio\\c-sharp-type work\\cs methods\\cs methods18\\cs methods18.csproj",
+        "projectUniqueName": "C:\\Users\\lwit.PROD.003\\OneDrive\\Documents\\School Files\\Portfolio\\c-sharp-type work\\cs methods\\cs methods18\\cs methods18.csproj",
         "projectName": "cs methods18",
-        "projectPath": "C:\\Users\\lwit.PROD.002\\OneDrive\\Documents\\School Files\\Portfolio\\c-sharp-type work\\cs methods\\cs methods18\\cs methods18.csproj",
-        "packagesPath": "C:\\Users\\lwit.PROD.002\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lwit.PROD.002\\OneDrive\\Documents\\School Files\\Portfolio\\c-sharp-type work\\cs methods\\cs methods18\\obj\\",
+        "projectPath": "C:\\Users\\lwit.PROD.003\\OneDrive\\Documents\\School Files\\Portfolio\\c-sharp-type work\\cs methods\\cs methods18\\cs methods18.csproj",
+        "packagesPath": "C:\\Users\\lwit.PROD.003\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lwit.PROD.003\\OneDrive\\Documents\\School Files\\Portfolio\\c-sharp-type work\\cs methods\\cs methods18\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\lwit.PROD.002\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\lwit.PROD.003\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
