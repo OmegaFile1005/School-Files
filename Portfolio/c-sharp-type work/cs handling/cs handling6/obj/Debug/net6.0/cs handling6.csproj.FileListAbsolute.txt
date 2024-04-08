@@ -1,0 +1,15 @@
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs handling\cs handling6\bin\Debug\net6.0\cs handling6.exe
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs handling\cs handling6\bin\Debug\net6.0\cs handling6.deps.json
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs handling\cs handling6\bin\Debug\net6.0\cs handling6.runtimeconfig.json
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs handling\cs handling6\bin\Debug\net6.0\cs handling6.dll
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs handling\cs handling6\bin\Debug\net6.0\cs handling6.pdb
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs handling\cs handling6\obj\Debug\net6.0\cs handling6.csproj.AssemblyReference.cache
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs handling\cs handling6\obj\Debug\net6.0\cs handling6.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs handling\cs handling6\obj\Debug\net6.0\cs handling6.AssemblyInfoInputs.cache
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs handling\cs handling6\obj\Debug\net6.0\cs handling6.AssemblyInfo.cs
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs handling\cs handling6\obj\Debug\net6.0\cs handling6.csproj.CoreCompileInputs.cache
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs handling\cs handling6\obj\Debug\net6.0\cs handling6.dll
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs handling\cs handling6\obj\Debug\net6.0\refint\cs handling6.dll
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs handling\cs handling6\obj\Debug\net6.0\cs handling6.pdb
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs handling\cs handling6\obj\Debug\net6.0\cs handling6.genruntimeconfig.cache
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs handling\cs handling6\obj\Debug\net6.0\ref\cs handling6.dll
