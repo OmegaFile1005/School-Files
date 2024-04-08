@@ -1,0 +1,15 @@
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs handling\cs handling9\bin\Debug\net6.0\cs handling9.exe
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs handling\cs handling9\bin\Debug\net6.0\cs handling9.deps.json
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs handling\cs handling9\bin\Debug\net6.0\cs handling9.runtimeconfig.json
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs handling\cs handling9\bin\Debug\net6.0\cs handling9.dll
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs handling\cs handling9\bin\Debug\net6.0\cs handling9.pdb
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs handling\cs handling9\obj\Debug\net6.0\cs handling9.csproj.AssemblyReference.cache
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs handling\cs handling9\obj\Debug\net6.0\cs handling9.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs handling\cs handling9\obj\Debug\net6.0\cs handling9.AssemblyInfoInputs.cache
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs handling\cs handling9\obj\Debug\net6.0\cs handling9.AssemblyInfo.cs
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs handling\cs handling9\obj\Debug\net6.0\cs handling9.csproj.CoreCompileInputs.cache
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs handling\cs handling9\obj\Debug\net6.0\cs handling9.dll
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs handling\cs handling9\obj\Debug\net6.0\refint\cs handling9.dll
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs handling\cs handling9\obj\Debug\net6.0\cs handling9.pdb
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs handling\cs handling9\obj\Debug\net6.0\cs handling9.genruntimeconfig.cache
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs handling\cs handling9\obj\Debug\net6.0\ref\cs handling9.dll
