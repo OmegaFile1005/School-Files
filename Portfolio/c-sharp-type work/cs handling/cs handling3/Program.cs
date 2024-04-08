@@ -1,12 +1,12 @@
 ﻿Console.Write("Enter a group size: ");
-Console.WriteLine();
 int count = int.Parse(Console.ReadLine());
+Console.WriteLine();
 
 Console.WriteLine("Selection:");
 Console.WriteLine("Normal, Gold, Platinum");
 Console.Write("Enter your package: ");
-Console.WriteLine();
 string pack = Console.ReadLine();
+Console.WriteLine();
 
 string hall;
 decimal hallP;
@@ -28,7 +28,7 @@ else if (count <= 120)
 }
 else
 {
-    Console.WriteLine("Cant hold.");
+    Console.WriteLine("Can't hold.");
     return;
 }
 
@@ -53,3 +53,11 @@ switch (pack)
         Console.WriteLine("Invalid");
         return;
 }
+
+decimal total = hallP + packP;
+decimal discA = total * (discP / 100);
+decimal final = total - discA;
+decimal person = final / count;
+
+Console.WriteLine($"We can offer you the {hall}.");
+Console.WriteLine($"The price per person is ${person:F2}.");
