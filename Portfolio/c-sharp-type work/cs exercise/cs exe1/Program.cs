@@ -1,0 +1,24 @@
+﻿Console.Write("Enter name: ");
+string name = Console.ReadLine();
+Console.Write("Enter address: ");
+string address = Console.ReadLine();
+Console.Write("Enter town: ");
+string city = Console.ReadLine();
+Console.Write("Enter state: ");
+string state = Console.ReadLine();
+Console.Write("Enter zip: ");
+string zip = Console.ReadLine();
+Console.Write("Enter phone: ");
+string phoneNumber = Console.ReadLine();
+Console.Write("Enter college major: ");
+string collegeMajor = Console.ReadLine();
+Console.WriteLine();
+
+Console.WriteLine("Personal Information");
+Console.WriteLine("Name: " + name);
+Console.WriteLine("Address: " + address);
+Console.WriteLine("City: " + city);
+Console.WriteLine("State: " + state);
+Console.WriteLine("ZIP: " + zip);
+Console.WriteLine("Phone Number: " + phoneNumber);
+Console.WriteLine("College Major: " + collegeMajor);

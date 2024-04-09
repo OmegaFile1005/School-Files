@@ -1,0 +1,15 @@
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs exercise\cs exe1\bin\Debug\net6.0\cs exe1.exe
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs exercise\cs exe1\bin\Debug\net6.0\cs exe1.deps.json
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs exercise\cs exe1\bin\Debug\net6.0\cs exe1.runtimeconfig.json
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs exercise\cs exe1\bin\Debug\net6.0\cs exe1.dll
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs exercise\cs exe1\bin\Debug\net6.0\cs exe1.pdb
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs exercise\cs exe1\obj\Debug\net6.0\cs exe1.csproj.AssemblyReference.cache
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs exercise\cs exe1\obj\Debug\net6.0\cs exe1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs exercise\cs exe1\obj\Debug\net6.0\cs exe1.AssemblyInfoInputs.cache
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs exercise\cs exe1\obj\Debug\net6.0\cs exe1.AssemblyInfo.cs
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs exercise\cs exe1\obj\Debug\net6.0\cs exe1.csproj.CoreCompileInputs.cache
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs exercise\cs exe1\obj\Debug\net6.0\cs exe1.dll
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs exercise\cs exe1\obj\Debug\net6.0\refint\cs exe1.dll
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs exercise\cs exe1\obj\Debug\net6.0\cs exe1.pdb
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs exercise\cs exe1\obj\Debug\net6.0\cs exe1.genruntimeconfig.cache
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs exercise\cs exe1\obj\Debug\net6.0\ref\cs exe1.dll
