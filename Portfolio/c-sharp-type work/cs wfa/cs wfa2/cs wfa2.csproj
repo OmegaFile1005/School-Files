@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{264F21CA-06A8-4FF4-B89C-A950EA6880E8}</ProjectGuid>
+    <ProjectGuid>{A9088934-711F-427C-A7BD-2AB4A36FF74B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>cs_wfa1</RootNamespace>
-    <AssemblyName>cs wfa1</AssemblyName>
+    <RootNamespace>cs_wfa2</RootNamespace>
+    <AssemblyName>cs wfa2</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

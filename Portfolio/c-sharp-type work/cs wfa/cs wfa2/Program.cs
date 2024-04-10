@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace cs_wfa1
+namespace cs_wfa2
 {
     internal static class Program
     {
