@@ -22,7 +22,7 @@ namespace cs_wfa1
             InitializeComponent();
         }
 
-        private void calculateButton_Click(object sender, EventArgs e)
+        private void CalculateButton_Click(object sender, EventArgs e)
         {
             // Get the food charge from the user input
             if (double.TryParse(foodChargeTextBox.Text, out double foodCharge))
