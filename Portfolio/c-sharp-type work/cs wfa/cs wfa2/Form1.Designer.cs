@@ -1,4 +1,4 @@
-﻿namespace cs_wfa2
+﻿namespace cs_wfa1
 {
     partial class Form1
     {
