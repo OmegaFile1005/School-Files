@@ -11,10 +11,10 @@ namespace cs_wfa1
 
         public Form1()
         {
-            InitializeComponent();
+            InitializeForm();
         }
 
-        private void InitializeComponent()
+        private void InitializeForm()
         {
             speedTextBox = new TextBox();
             calculateButton = new Button();

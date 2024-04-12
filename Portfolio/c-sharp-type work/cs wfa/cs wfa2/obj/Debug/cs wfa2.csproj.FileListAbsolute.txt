@@ -3,3 +3,4 @@ C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type wo
 C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa2\obj\Debug\cs_wfa2.Properties.Resources.resources
 C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa2\obj\Debug\cs wfa2.csproj.GenerateResource.cache
 C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa2\obj\Debug\cs wfa2.csproj.CoreCompileInputs.cache
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa2\obj\Debug\cs_wfa1.Form1.resources
