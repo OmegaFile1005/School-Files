@@ -1,0 +1,8 @@
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa2\obj\Debug\net6.0-windows\cs wfa2.csproj.AssemblyReference.cache
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa2\obj\Debug\net6.0-windows\cs_wfa2.Form1.resources
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa2\obj\Debug\net6.0-windows\cs wfa2.csproj.GenerateResource.cache
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa2\obj\Debug\net6.0-windows\cs wfa2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa2\obj\Debug\net6.0-windows\cs wfa2.AssemblyInfoInputs.cache
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa2\obj\Debug\net6.0-windows\cs wfa2.AssemblyInfo.cs
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa2\obj\Debug\net6.0-windows\cs wfa2.csproj.CoreCompileInputs.cache
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa2\obj\Debug\net6.0-windows\cs_wfa1.Form1.resources
