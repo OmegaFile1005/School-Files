@@ -15,10 +15,10 @@ namespace cs_wfa3
 
         public Form1()
         {
-            InitializeComponent();
+            InitializeForm();
         }
 
-        private void InitializeComponent()
+        private void InitializeForm()
         {
             purchaseAmountTextBox = new TextBox();
             calculateButton = new Button();
@@ -40,19 +40,19 @@ namespace cs_wfa3
             purchaseLabel.Size = new System.Drawing.Size(200, 20);
             purchaseLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 
-            stateTaxLabel.Location = new System.Drawing.Point(10, 110);
+            stateTaxLabel.Location = new System.Drawing.Point(10, 95);
             stateTaxLabel.Size = new System.Drawing.Size(200, 20);
             stateTaxLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 
-            countyTaxLabel.Location = new System.Drawing.Point(10, 140);
+            countyTaxLabel.Location = new System.Drawing.Point(10, 110);
             countyTaxLabel.Size = new System.Drawing.Size(200, 20);
             countyTaxLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 
-            totalTaxLabel.Location = new System.Drawing.Point(10, 170);
+            totalTaxLabel.Location = new System.Drawing.Point(10, 125);
             totalTaxLabel.Size = new System.Drawing.Size(200, 20);
             totalTaxLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 
-            totalSaleLabel.Location = new System.Drawing.Point(10, 200);
+            totalSaleLabel.Location = new System.Drawing.Point(10, 140);
             totalSaleLabel.Size = new System.Drawing.Size(200, 20);
             totalSaleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 
@@ -84,14 +84,6 @@ namespace cs_wfa3
             {
                 MessageBox.Show("Please enter a valid purchase amount.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        }
-
-        [STAThread]
-        static void Main()
-        {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
         }
     }
 }

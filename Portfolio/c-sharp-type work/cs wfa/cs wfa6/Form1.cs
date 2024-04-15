@@ -2,6 +2,7 @@ namespace cs_wfa6
 {
     public partial class Form1 : Form
     {
+<<<<<<< HEAD
         private Dictionary<PictureBox, int> fruitCalories;
         private int totalCalories;
         private Label totalCaloriesLabel;
@@ -95,6 +96,11 @@ namespace cs_wfa6
             Controls.Add(pictureBoxApple);
             Controls.Add(pictureBoxOrange);
             Controls.Add(pictureBoxPear);
+=======
+        public Form1()
+        {
+            InitializeComponent();
+>>>>>>> 54347f444a607adc2dff44b5e7a9ea01f7180c45
         }
     }
 }
