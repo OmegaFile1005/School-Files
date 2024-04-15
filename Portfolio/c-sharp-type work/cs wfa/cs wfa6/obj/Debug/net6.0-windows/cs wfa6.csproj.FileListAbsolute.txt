@@ -15,3 +15,4 @@ C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type wo
 C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa6\obj\Debug\net6.0-windows\cs wfa6.pdb
 C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa6\obj\Debug\net6.0-windows\cs wfa6.genruntimeconfig.cache
 C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa6\obj\Debug\net6.0-windows\ref\cs wfa6.dll
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa6\obj\Debug\net6.0-windows\cs_wfa6.Properties.Resources.resources
