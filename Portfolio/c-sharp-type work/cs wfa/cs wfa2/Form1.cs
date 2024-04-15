@@ -29,7 +29,7 @@ namespace cs_wfa2
             calculateButton.Click += CalculateButton_Click;
 
             distanceLabel.Location = new System.Drawing.Point(10, 80);
-            distanceLabel.Size = new System.Drawing.Size(200, 20);
+            distanceLabel.Size = new System.Drawing.Size(200, 50);
             distanceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 
             Controls.Add(speedTextBox);
@@ -53,14 +53,6 @@ namespace cs_wfa2
             {
                 MessageBox.Show("Please enter a valid speed in miles per hour.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        }
-
-        [STAThread]
-        static void Main()
-        {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
         }
     }
 }

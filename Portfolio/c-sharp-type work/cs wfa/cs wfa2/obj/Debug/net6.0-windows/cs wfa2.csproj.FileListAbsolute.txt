@@ -5,4 +5,17 @@ C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type wo
 C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa2\obj\Debug\net6.0-windows\cs wfa2.AssemblyInfoInputs.cache
 C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa2\obj\Debug\net6.0-windows\cs wfa2.AssemblyInfo.cs
 C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa2\obj\Debug\net6.0-windows\cs wfa2.csproj.CoreCompileInputs.cache
+<<<<<<< HEAD
 C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa2\obj\Debug\net6.0-windows\cs_wfa1.Form1.resources
+=======
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa2\bin\Debug\net6.0-windows\cs wfa2.exe
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa2\bin\Debug\net6.0-windows\cs wfa2.deps.json
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa2\bin\Debug\net6.0-windows\cs wfa2.runtimeconfig.json
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa2\bin\Debug\net6.0-windows\cs wfa2.dll
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa2\bin\Debug\net6.0-windows\cs wfa2.pdb
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa2\obj\Debug\net6.0-windows\cs wfa2.dll
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa2\obj\Debug\net6.0-windows\refint\cs wfa2.dll
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa2\obj\Debug\net6.0-windows\cs wfa2.pdb
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa2\obj\Debug\net6.0-windows\cs wfa2.genruntimeconfig.cache
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa2\obj\Debug\net6.0-windows\ref\cs wfa2.dll
+>>>>>>> 54347f444a607adc2dff44b5e7a9ea01f7180c45
