@@ -1,0 +1,10 @@
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa9\obj\Debug\cs wfa9.csproj.AssemblyReference.cache
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa9\obj\Debug\cs wfa9.csproj.SuggestedBindingRedirects.cache
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa9\obj\Debug\cs_wfa9.Properties.Resources.resources
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa9\obj\Debug\cs wfa9.csproj.GenerateResource.cache
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa9\obj\Debug\cs wfa9.csproj.CoreCompileInputs.cache
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa9\bin\Debug\cs wfa9.exe.config
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa9\bin\Debug\cs wfa9.exe
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa9\bin\Debug\cs wfa9.pdb
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa9\obj\Debug\cs wfa9.exe
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa9\obj\Debug\cs wfa9.pdb

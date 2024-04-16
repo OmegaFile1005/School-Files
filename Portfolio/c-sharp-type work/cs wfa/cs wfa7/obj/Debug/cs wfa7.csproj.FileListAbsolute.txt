@@ -1,0 +1,5 @@
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa7\obj\Debug\cs wfa7.csproj.AssemblyReference.cache
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa7\obj\Debug\cs wfa7.csproj.SuggestedBindingRedirects.cache
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa7\obj\Debug\cs_wfa7.Properties.Resources.resources
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa7\obj\Debug\cs wfa7.csproj.GenerateResource.cache
+C:\Users\lwit.PROD.003\OneDrive\Documents\School Files\Portfolio\c-sharp-type work\cs wfa\cs wfa7\obj\Debug\cs wfa7.csproj.CoreCompileInputs.cache
