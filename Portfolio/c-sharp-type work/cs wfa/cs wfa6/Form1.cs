@@ -1,16 +1,12 @@
-﻿using System;
-using System.Drawing;
-using System.Windows.Forms;
-
-namespace cs_wfa6
+﻿namespace cs_wfa6
 {
     public partial class Form1 : Form
     {
+
         public Form1()
         {
             InitializeComponent();
         }
-
         private int totalCal = 0;
 
         private void PictureBox1_Click(object sender, EventArgs e)
