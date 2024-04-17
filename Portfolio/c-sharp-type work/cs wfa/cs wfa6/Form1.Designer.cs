@@ -1,4 +1,4 @@
-﻿namespace CalorieCounterApp
+﻿namespace cs_wfa6
 {
     partial class Form1
     {
