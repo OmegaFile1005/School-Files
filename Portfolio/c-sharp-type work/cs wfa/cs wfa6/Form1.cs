@@ -1,4 +1,8 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
+
 namespace cs_wfa6
 {
     public partial class Form1 : Form
@@ -16,6 +20,49 @@ namespace cs_wfa6
         {
             InitializeForm();
             InitializeFruitCalories();
+        }
+
+        private int GetCaloriesByPictureBox(PictureBox pictureBox)
+        {
+            string imagePath = System.IO.Path.Combine(Application.StartupPath, "Images");
+
+            switch (pictureBox.Name)
+            {
+                case "pictureBoxBanana":
+                    return GetCaloriesFromFile(imagePath, "banana.jpg");
+
+                case "pictureBoxApple":
+                    return GetCaloriesFromFile(imagePath, "apple.jpg");
+
+                case "pictureBoxOrange":
+                    return GetCaloriesFromFile(imagePath, "orange.jpg");
+
+                case "pictureBoxPear":
+                    return GetCaloriesFromFile(imagePath, "pear.jpg");
+
+                default:
+                    return 0;
+            }
+        }
+
+        private int GetCaloriesFromFile(string imagePath, string fileName)
+        {
+            string filePath = System.IO.Path.Combine(imagePath, fileName);
+
+            var caloriesDictionary = new Dictionary<string, int>()
+            {
+                { "banana.jpg", 115 },
+                { "apple.jpg", 80 },
+                { "orange.jpg", 90 },
+                { "pear.jpg", 120 }
+            };
+
+            if (caloriesDictionary.ContainsKey(fileName))
+            {
+                return caloriesDictionary[fileName];
+            }
+
+            return 0;
         }
 
         private void InitializeFruitCalories()
@@ -62,32 +109,44 @@ namespace cs_wfa6
             resetButton.Text = "Reset";
             resetButton.Click += ResetButton_Click;
 
-            pictureBoxBanana = new PictureBox();
-            pictureBoxBanana.Location = new Point(10, 80);
-            pictureBoxBanana.Size = new Size(100, 100);
-            pictureBoxBanana.Image = Image.FromFile("Images/banana.jpg");
-            pictureBoxBanana.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBoxBanana = new PictureBox
+            {
+                Name = "pictureBoxBanana",
+                Location = new Point(10, 80),
+                Size = new Size(150, 150),
+                Image = Image.FromFile("Portfolio\\c-sharp-type work\\cs wfa\\cs wfa6\\Images\\banana.jpg"),
+                SizeMode = PictureBoxSizeMode.StretchImage
+            };
             pictureBoxBanana.Click += PictureBox_Click;
 
-            pictureBoxApple = new PictureBox();
-            pictureBoxApple.Location = new Point(120, 80);
-            pictureBoxApple.Size = new Size(100, 100);
-            pictureBoxApple.Image = Image.FromFile("Images/apple.jpg");
-            pictureBoxApple.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBoxApple = new PictureBox
+            {
+                Name = "pictureBoxApple",
+                Location = new Point(120, 80),
+                Size = new Size(150, 150),
+                Image = Image.FromFile("Images/apple.jpg"),
+                SizeMode = PictureBoxSizeMode.StretchImage
+            };
             pictureBoxApple.Click += PictureBox_Click;
 
-            pictureBoxOrange = new PictureBox();
-            pictureBoxOrange.Location = new Point(230, 80);
-            pictureBoxOrange.Size = new Size(100, 100);
-            pictureBoxOrange.Image = Image.FromFile("Images/orange.jpg");
-            pictureBoxOrange.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBoxOrange = new PictureBox
+            {
+                Name = "pictureBoxOrange",
+                Location = new Point(230, 80),
+                Size = new Size(150, 150),
+                Image = Image.FromFile("Images/orange.jpg"),
+                SizeMode = PictureBoxSizeMode.StretchImage
+            };
             pictureBoxOrange.Click += PictureBox_Click;
 
-            pictureBoxPear = new PictureBox();
-            pictureBoxPear.Location = new Point(340, 80);
-            pictureBoxPear.Size = new Size(100, 100);
-            pictureBoxPear.Image = Image.FromFile("Images/pear.jpg");
-            pictureBoxPear.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBoxPear = new PictureBox
+            {
+                Name = "pictureBoxPear",
+                Location = new Point(340, 80),
+                Size = new Size(150, 150),
+                Image = Image.FromFile("Images/pear.jpg"),
+                SizeMode = PictureBoxSizeMode.StretchImage
+            };
             pictureBoxPear.Click += PictureBox_Click;
 
             Controls.Add(totalCaloriesLabel);
