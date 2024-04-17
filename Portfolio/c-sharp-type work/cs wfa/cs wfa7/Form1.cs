@@ -1,41 +1,99 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace AutomobileExpenses
+namespace MonthlyCosts
 {
-    public partial class MainForm : Form
+    public partial class Form1 : Form
     {
-        public MainForm()
+        private TextBox loanTextBox;
+        private TextBox insuranceTextBox;
+        private TextBox gasTextBox;
+        private TextBox oilTextBox;
+        private TextBox tiresTextBox;
+        private TextBox maintenanceTextBox;
+        private Button calculateButton;
+        private Label totalMonthlyCostLabel;
+        private Label totalAnnualCostLabel;
+
+        public Form1()
         {
-            InitializeComponent();
+            InitializeForm();
         }
 
-        private void btnCalculate_Click(object sender, EventArgs e)
+        private void CalculateButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                // Parse the user input for each expense
-                decimal loanPayment = decimal.Parse(txtLoanPayment.Text);
-                decimal insurance = decimal.Parse(txtInsurance.Text);
-                decimal gas = decimal.Parse(txtGas.Text);
-                decimal oil = decimal.Parse(txtOil.Text);
-                decimal tires = decimal.Parse(txtTires.Text);
-                decimal maintenance = decimal.Parse(txtMaintenance.Text);
+            decimal loanCost = decimal.Parse(loanTextBox.Text);
+            decimal insuranceCost = decimal.Parse(insuranceTextBox.Text);
+            decimal gasCost = decimal.Parse(gasTextBox.Text);
+            decimal oilCost = decimal.Parse(oilTextBox.Text);
+            decimal tiresCost = decimal.Parse(tiresTextBox.Text);
+            decimal maintenanceCost = decimal.Parse(maintenanceTextBox.Text);
 
-                // Calculate the total monthly cost
-                decimal totalMonthlyCost = loanPayment + insurance + gas + oil + tires + maintenance;
+            decimal totalMonthlyCost = loanCost + insuranceCost + gasCost + oilCost + tiresCost + maintenanceCost;
+            decimal totalAnnualCost = totalMonthlyCost * 12;
 
-                // Calculate the total annual cost
-                decimal totalAnnualCost = totalMonthlyCost * 12;
+            totalMonthlyCostLabel.Text = $"Total Monthly Cost: ${totalMonthlyCost}";
+            totalAnnualCostLabel.Text = $"Total Annual Cost: ${totalAnnualCost}";
+        }
 
-                // Display the total monthly and annual costs
-                lblTotalMonthlyCost.Text = "Total Monthly Cost: $" + totalMonthlyCost.ToString("0.00");
-                lblTotalAnnualCost.Text = "Total Annual Cost: $" + totalAnnualCost.ToString("0.00");
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("Invalid input. Please enter numeric values for the expenses.");
-            }
+        private void InitializeForm()
+        {
+            loanTextBox = new TextBox();
+            insuranceTextBox = new TextBox();
+            gasTextBox = new TextBox();
+            oilTextBox = new TextBox();
+            tiresTextBox = new TextBox();
+            maintenanceTextBox = new TextBox();
+            calculateButton = new Button();
+            totalMonthlyCostLabel = new Label();
+            totalAnnualCostLabel = new Label();
+
+            loanTextBox.Location = new System.Drawing.Point(10, 10);
+            loanTextBox.Size = new System.Drawing.Size(200, 20);
+            loanTextBox.Text = "0";
+
+            insuranceTextBox.Location = new System.Drawing.Point(10, 40);
+            insuranceTextBox.Size = new System.Drawing.Size(200, 20);
+            insuranceTextBox.Text = "0";
+
+            gasTextBox.Location = new System.Drawing.Point(10, 70);
+            gasTextBox.Size = new System.Drawing.Size(200, 20);
+            gasTextBox.Text = "0";
+
+            oilTextBox.Location = new System.Drawing.Point(10, 100);
+            oilTextBox.Size = new System.Drawing.Size(200, 20);
+            oilTextBox.Text = "0";
+
+            tiresTextBox.Location = new System.Drawing.Point(10, 130);
+            tiresTextBox.Size = new System.Drawing.Size(200, 20);
+            tiresTextBox.Text = "0";
+
+            maintenanceTextBox.Location = new System.Drawing.Point(10, 160);
+            maintenanceTextBox.Size = new System.Drawing.Size(200, 20);
+            maintenanceTextBox.Text = "0";
+
+            calculateButton.Location = new System.Drawing.Point(10, 190);
+            calculateButton.Size = new System.Drawing.Size(100, 30);
+            calculateButton.Text = "Calculate";
+            calculateButton.Click += CalculateButton_Click;
+
+            totalMonthlyCostLabel.Location = new System.Drawing.Point(10, 230);
+            totalMonthlyCostLabel.Size = new System.Drawing.Size(300, 20);
+            totalMonthlyCostLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+
+            totalAnnualCostLabel.Location = new System.Drawing.Point(10, 260);
+            totalAnnualCostLabel.Size = new System.Drawing.Size(300, 20);
+            totalAnnualCostLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+
+            Controls.Add(loanTextBox);
+            Controls.Add(insuranceTextBox);
+            Controls.Add(gasTextBox);
+            Controls.Add(oilTextBox);
+            Controls.Add(tiresTextBox);
+            Controls.Add(maintenanceTextBox);
+            Controls.Add(calculateButton);
+            Controls.Add(totalMonthlyCostLabel);
+            Controls.Add(totalAnnualCostLabel);
         }
     }
 }

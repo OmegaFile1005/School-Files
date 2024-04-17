@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Windows.Forms;
-
-namespace CalorieCounterApp
+﻿
+namespace cs_wfa6
 {
     public partial class Form1 : Form
     {
