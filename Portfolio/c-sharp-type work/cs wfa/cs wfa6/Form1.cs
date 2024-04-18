@@ -114,7 +114,7 @@ namespace cs_wfa6
                 Name = "pictureBoxBanana",
                 Location = new Point(10, 80),
                 Size = new Size(150, 150),
-                Image = Image.FromFile("Portfolio\\c-sharp-type work\\cs wfa\\cs wfa6\\Images\\banana.jpg"),
+                Image = Image.FromFile("Images/banana.jpg"),
                 SizeMode = PictureBoxSizeMode.StretchImage
             };
             pictureBoxBanana.Click += PictureBox_Click;
